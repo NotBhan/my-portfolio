@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import type { Project, SkillCategory, Stat, Testimonial } from './definitions';
+import type { Project, SkillCategory, Stat, Testimonial, Profile } from './definitions';
 
 const dataFilePath = (filename: string) => path.join(process.cwd(), 'src', 'data', filename);
 
@@ -23,7 +23,7 @@ async function readData<T>(filename: string): Promise<T[]> {
 }
 
 // Helper function to write data
-async function writeData<T>(filename:string, data: T[]): Promise<void> {
+async function writeData<T>(filename:string, data: T[] | T): Promise<void> {
   const filePath = dataFilePath(filename);
   await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
@@ -83,7 +83,7 @@ export async function deleteProject(id: string) {
   let projects = await readData<Project>('projects.json');
   projects = projects.filter(p => p.id !== id);
   await writeData('projects.json', projects);
-  revalidatePath('/admin/projects');
+revalidatePath('/admin/projects');
   revalidatePath('/');
 }
 
@@ -124,5 +124,12 @@ export async function deleteTestimonial(id: string) {
 export async function updateStats(stats: Stat[]) {
     await writeData<Stat>('stats.json', stats);
     revalidatePath('/admin/stats');
+    revalidatePath('/');
+}
+
+// --- Profile Actions ---
+export async function updateProfile(profile: Profile) {
+    await writeData<Profile>('profile.json', profile);
+    revalidatePath('/admin/profile');
     revalidatePath('/');
 }

@@ -1,7 +1,7 @@
 import { checkAuth, signOut } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Home, LogOut, Package, Star, Users, BarChart } from 'lucide-react';
+import { Home, LogOut, Package, Star, Users, BarChart, User } from 'lucide-react';
 
 export default async function AdminLayout({
   children,
@@ -20,6 +20,13 @@ export default async function AdminLayout({
           >
             <Home className="h-4 w-4" />
             <span>Public Site</span>
+          </Link>
+          <Link
+            href="/admin/profile"
+            className="group flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+          >
+            <User className="h-4 w-4" />
+            <span>Profile</span>
           </Link>
           <Link
             href="/admin/projects"

@@ -29,3 +29,16 @@ export type Stat = {
   label: string;
   icon: string;
 };
+
+export type Profile = {
+  name: string;
+  title: string;
+  location: string;
+  languages: string;
+  role: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  instagram: string;
+  description: string;
+};

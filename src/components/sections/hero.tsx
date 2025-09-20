@@ -2,8 +2,11 @@ import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
 import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import ThemeToggle from '../theme-toggle';
+import { getProfile } from '@/lib/data';
 
-export default function Hero() {
+export default async function Hero() {
+  const profile = await getProfile();
+
   return (
     <BentoCard className="h-full">
       <div className="flex flex-col h-full">
@@ -12,7 +15,7 @@ export default function Hero() {
             <div className="relative">
               <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
                 <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary">
-                  C
+                  {profile.name?.charAt(0) || 'C'}
                 </div>
               </div>
             </div>
@@ -20,8 +23,8 @@ export default function Hero() {
             <div className="flex-grow flex flex-col">
                 <div className="flex justify-between items-start">
                     <div>
-                    <h1 className="text-2xl font-bold">Chandrabhan</h1>
-                    <p className="text-muted-foreground">Full Stack Developer</p>
+                    <h1 className="text-2xl font-bold">{profile.name || 'Chandrabhan'}</h1>
+                    <p className="text-muted-foreground">{profile.title || 'Full Stack Developer'}</p>
                     </div>
                     <div className="flex items-center gap-2">
                         <Button variant="outline" asChild>
@@ -38,39 +41,44 @@ export default function Hero() {
           <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  <span>Chhattisgarh, India</span>
+                  <span>{profile.location || 'Chhattisgarh, India'}</span>
               </div>
               <div className="flex items-center gap-2">
                   <Globe className="h-4 w-4" />
-                  <span>English, Hindi</span>
+                  <span>{profile.languages || 'English, Hindi'}</span>
               </div>
               <div className="flex items-center gap-2">
                   <Briefcase className="h-4 w-4" />
-                  <span>Software Engineer</span>
+                  <span>{profile.role || 'Software Engineer'}</span>
               </div>
           </div>
         </div>
+        <div className="flex-grow flex items-end">
+            <p className="text-sm text-muted-foreground">
+                {profile.description}
+            </p>
+        </div>
         <div className="mt-auto grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
           <Button variant="outline" asChild>
-            <a href="mailto:your-email@example.com">
+            <a href={`mailto:${profile.email || 'your-email@example.com'}`}>
               <Mail />
               Email Me
             </a>
           </Button>
           <Button variant="outline" asChild>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href={profile.github || '#'} target="_blank" rel="noopener noreferrer">
               <Github />
               My GitHub
             </a>
           </Button>
           <Button variant="outline" asChild>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href={profile.linkedin || '#'} target="_blank" rel="noopener noreferrer">
               <Linkedin />
               My LinkedIn
             </a>
           </Button>
           <Button variant="outline" asChild>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href={profile.instagram || '#'} target="_blank" rel="noopener noreferrer">
               <Instagram />
               My Instagram
             </a>
