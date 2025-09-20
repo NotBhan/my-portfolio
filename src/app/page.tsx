@@ -1,4 +1,5 @@
 import About from '@/components/sections/about';
+import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
 import Hero from '@/components/sections/hero';
 import Experiences from '@/components/sections/partners';
@@ -20,6 +21,7 @@ export default function Home() {
           <div className="md:col-span-1 row-span-2">
             <div className="flex flex-col gap-4">
               <Projects />
+              <Activities />
               <Testimonials />
             </div>
           </div>

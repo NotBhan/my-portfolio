@@ -14,20 +14,27 @@ export default async function Testimonials() {
           <h3 className="text-sm font-semibold">Rave Reviews Showcase</h3>
         </div>
       }
-      className="h-full"
     >
-      <div className="space-y-4 h-full flex flex-col justify-around">
-        {testimonials.map((testimonial) => (
-          <div key={testimonial.id}>
-            <blockquote className="text-xs text-foreground mb-1 line-clamp-3">
-              &ldquo;{testimonial.quote}&rdquo;
-            </blockquote>
-            <p className="text-xs text-muted-foreground">
-              - {testimonial.name}, {testimonial.company}
+      {testimonials.length > 0 ? (
+        <div className="space-y-4">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.id}>
+              <blockquote className="text-xs text-foreground mb-1 line-clamp-3">
+                &ldquo;{testimonial.quote}&rdquo;
+              </blockquote>
+              <p className="text-xs text-muted-foreground">
+                - {testimonial.name}, {testimonial.company}
+              </p>
+            </div>
+          ))}
+        </div>
+        ) : (
+        <div className="flex items-center justify-center h-full">
+            <p className="text-muted-foreground text-center font-mono text-sm">
+                No reviews yet.
             </p>
-          </div>
-        ))}
-      </div>
+        </div>
+      )}
     </BentoCard>
   );
 }
