@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Celestial Navigator",
+    "description": "An interactive 3D star map built with Next.js and Three.js, allowing users to explore constellations and celestial bodies.",
+    "image": "https://picsum.photos/seed/project1/400/250",
+    "link": "#"
+  },
+  {
+    "id": "2",
+    "title": "Glass UI Kit",
+    "description": "A lightweight UI component library focused on glassmorphism and modern design principles, published as an NPM package.",
+    "image": "https://picsum.photos/seed/project2/400/250",
+    "link": "#"
+  }
+]
