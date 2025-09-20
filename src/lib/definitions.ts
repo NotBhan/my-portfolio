@@ -41,4 +41,5 @@ export type Profile = {
   linkedin: string;
   instagram: string;
   description: string;
+  profilePictureUrl?: string;
 };

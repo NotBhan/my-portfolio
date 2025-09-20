@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import ThemeToggle from '../theme-toggle';
 import { getProfile } from '@/lib/data';
+import Image from 'next/image';
 
 export default async function Hero() {
   const profile = await getProfile();
@@ -11,11 +12,20 @@ export default async function Hero() {
     <BentoCard className="h-full">
       <div className="flex flex-col h-full">
         <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="relative shrink-0">
-                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
-                <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary">
+            <div className="relative shrink-0 group">
+                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1 overflow-hidden">
+                <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary transition-opacity group-hover:opacity-0">
                     {profile.name?.charAt(0) || 'C'}
                 </div>
+                 {profile.profilePictureUrl && (
+                    <Image 
+                        src={profile.profilePictureUrl} 
+                        alt={profile.name || 'Profile Picture'} 
+                        fill 
+                        className="object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                        data-ai-hint="profile picture"
+                    />
+                 )}
                 </div>
             </div>
             <div className="flex-grow w-full">

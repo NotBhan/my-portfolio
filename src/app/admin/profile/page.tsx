@@ -91,6 +91,10 @@ export default function ProfilePage() {
                 <Label htmlFor="instagram">Instagram URL</Label>
                 <Input id="instagram" value={profile.instagram || ''} onChange={(e) => handleInputChange('instagram', e.target.value)} />
             </div>
+            <div className="space-y-2">
+                <Label htmlFor="profilePictureUrl">Profile Picture URL</Label>
+                <Input id="profilePictureUrl" value={profile.profilePictureUrl || ''} onChange={(e) => handleInputChange('profilePictureUrl', e.target.value)} />
+            </div>
         </div>
       </CardContent>
       <CardFooter>
