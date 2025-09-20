@@ -53,7 +53,7 @@ export default function Home() {
         </p>
         <p>
           <a
-            href="/admin"
+            href="/admin/login"
             className="hover:text-primary transition-colors"
           >
             Admin Panel
