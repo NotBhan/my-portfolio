@@ -22,7 +22,7 @@ export default async function Hero() {
                         src={profile.profilePictureUrl} 
                         alt={profile.name || 'Profile Picture'} 
                         fill 
-                        className="object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         data-ai-hint="profile picture"
                     />
                  )}
