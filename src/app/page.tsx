@@ -51,14 +51,6 @@ export default function Home() {
         <p>
           &copy; {new Date().getFullYear()} Chandrabhan. All rights reserved.
         </p>
-        <p>
-          <a
-            href="/admin/login"
-            className="hover:text-primary transition-colors"
-          >
-            Admin Panel
-          </a>
-        </p>
       </footer>
     </main>
   );
