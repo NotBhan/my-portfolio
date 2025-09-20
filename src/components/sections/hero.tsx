@@ -5,45 +5,49 @@ import ThemeToggle from '../theme-toggle';
 
 export default function Hero() {
   return (
-    <BentoCard className="flex-col md:flex-row items-start">
-      <div className="relative mb-4 md:mb-0 md:mr-6">
-        <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
-          <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary">
-            C
+    <BentoCard>
+      <div className="flex flex-col md:flex-row items-start gap-6">
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
+              <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary">
+                C
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="flex-grow">
-        <div className="flex justify-between items-start">
           <div>
             <h1 className="text-2xl font-bold">Chandrabhan</h1>
             <p className="text-muted-foreground">Full Stack Developer</p>
           </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" asChild>
-              <a href="/resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Resume
-              </a>
-            </Button>
-            <ThemeToggle />
-          </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
-            <span>Chhattisgarh, India</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Globe className="h-4 w-4" />
-            <span>English, Hindi</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Briefcase className="h-4 w-4" />
-            <span>Software Engineer</span>
-          </div>
+        <div className="flex-grow w-full">
+            <div className="flex justify-start md:justify-end items-center gap-2 mb-4">
+                <Button variant="outline" asChild>
+                <a href="/resume.pdf" download>
+                    <Download className="mr-2 h-4 w-4" />
+                    Resume
+                </a>
+                </Button>
+                <ThemeToggle />
+            </div>
+
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    <span>Chhattisgarh, India</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Globe className="h-4 w-4" />
+                    <span>English, Hindi</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Briefcase className="h-4 w-4" />
+                    <span>Software Engineer</span>
+                </div>
+            </div>
         </div>
+      </div>
         <div className="mt-6 flex gap-4">
           <Button className="flex-1" asChild>
             <a href="mailto:your-email@example.com">Telegram Me</a>
@@ -52,7 +56,6 @@ export default function Hero() {
             <a href="#">WhatsApp Me</a>
           </Button>
         </div>
-      </div>
     </BentoCard>
   );
 }
