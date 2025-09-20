@@ -62,3 +62,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .shine-effect {
+    @apply relative overflow-hidden;
+  }
+  .shine-effect::after {
+    content: '';
+    @apply absolute top-0 -left-full h-full w-full;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+  .shine-effect:hover::after {
+    @apply left-full;
+  }
+}
