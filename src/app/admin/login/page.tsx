@@ -29,7 +29,8 @@ export default function AdminLoginPage() {
       });
 
       if (res.ok) {
-        router.push('/admin');
+        router.refresh(); // Refresh router state
+        router.push('/admin'); // Navigate to admin dashboard
       } else {
         const data = await res.json();
         toast({
