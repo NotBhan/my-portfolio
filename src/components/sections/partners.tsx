@@ -14,6 +14,7 @@ export default async function Experiences() {
         </div>
       }
       className="h-full"
+      showButtons={true}
     >
       {experiences.length > 0 ? (
         <div className="space-y-4">

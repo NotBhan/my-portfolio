@@ -15,6 +15,7 @@ export default async function Skills() {
         </div>
       }
       className="h-full"
+      showButtons={true}
     >
       <div className="flex flex-col h-full">
         <h2 className="text-xl font-headline font-bold mb-4">
