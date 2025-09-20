@@ -5,7 +5,7 @@ import Partners from '@/components/sections/partners';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 import WorkProcess from '@/components/sections/work-process';
-import ThemeToggle from '@/components/theme-toggle';
+import ThemeToggleCard from '@/components/theme-toggle-card';
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
           <div className="md:col-span-3">
             <Stats />
           </div>
-          <div className="md:col-span-1 flex justify-end items-start">
-            <ThemeToggle />
+          <div className="md:col-span-1">
+            <ThemeToggleCard />
           </div>
           <div className="md:col-span-3">
             <Hero />
