@@ -17,19 +17,19 @@ export default function About() {
         <Button variant="outline" asChild className="justify-start gap-4">
           <a href="#" target="_blank" rel="noopener noreferrer">
             <span className='font-bold'>Twitter</span>
-            <span className='text-muted-foreground ml-auto'>@chandrabhan</span>
+            <span className='text-muted-foreground ml-auto'>@yourhandle</span>
           </a>
         </Button>
         <Button variant="outline" asChild className="justify-start gap-4">
           <a href="#" target="_blank" rel="noopener noreferrer">
-             <span className='font-bold'>Instagram</span>
-            <span className='text-muted-foreground ml-auto'>@chandrabhan</span>
+             <span className='font-bold'>Discord</span>
+            <span className='text-muted-foreground ml-auto'>your-tag</span>
           </a>
         </Button>
         <Button variant="outline" asChild className="justify-start gap-4">
           <a href="#" target="_blank" rel="noopener noreferrer">
-             <span className='font-bold'>LinkedIn</span>
-             <span className='text-muted-foreground ml-auto'>/in/chandrabhan</span>
+             <span className='font-bold'>Facebook</span>
+             <span className='text-muted-foreground ml-auto'>/yourprofile</span>
           </a>
         </Button>
       </div>
