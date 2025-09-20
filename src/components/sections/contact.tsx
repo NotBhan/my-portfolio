@@ -5,7 +5,7 @@ import { Crown, Mail } from 'lucide-react';
 export default function Contact() {
   return (
     <BentoCard
-      className="flex flex-col items-center text-center h-full"
+      className="flex-col h-full"
       title={
         <div className="flex items-center gap-2">
           <Crown className="h-4 w-4 text-muted-foreground" />
@@ -14,11 +14,11 @@ export default function Contact() {
       }
       showButtons={true}
     >
-      <div className="flex flex-col justify-center flex-1">
+      <div className="flex flex-col justify-center items-center text-center flex-1">
         <p className="text-muted-foreground text-sm mb-6">
           Let's make magic happen together!
         </p>
-        <div className="w-full space-y-4">
+        <div className="w-full max-w-xs space-y-4">
           <Button asChild className="w-full">
             <a href="mailto:contact@example.com">
               <Mail className="mr-2" /> Email Me
