@@ -5,8 +5,8 @@ import ThemeToggle from '../theme-toggle';
 
 export default function Hero() {
   return (
-    <BentoCard className="h-full flex flex-col">
-      <div className="flex-grow flex flex-col">
+    <BentoCard className="h-full">
+      <div className="flex flex-col h-full">
         <div className="flex-grow">
           <div className="flex flex-col md:flex-row items-start gap-6">
             <div className="relative">
@@ -50,7 +50,7 @@ export default function Hero() {
               </div>
           </div>
         </div>
-        <div className="mt-auto grid grid-cols-2 gap-4 pt-6">
+        <div className="mt-auto grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
           <Button variant="outline" asChild>
             <a href="mailto:your-email@example.com">
               <Mail />
