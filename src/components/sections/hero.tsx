@@ -10,54 +10,54 @@ export default async function Hero() {
   return (
     <BentoCard className="h-full">
       <div className="flex flex-col h-full">
-        <div className="flex-grow">
-          <div className="flex flex-col md:flex-row items-start gap-6">
-            <div className="relative">
-              <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="relative shrink-0">
+                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
                 <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary">
-                  {profile.name?.charAt(0) || 'C'}
+                    {profile.name?.charAt(0) || 'C'}
                 </div>
-              </div>
+                </div>
             </div>
-
-            <div className="flex-grow flex flex-col">
-                <div className="flex justify-between items-start">
-                    <div>
-                    <h1 className="text-2xl font-bold">{profile.name || 'Chandrabhan'}</h1>
-                    <p className="text-muted-foreground">{profile.title || 'Full Stack Developer'}</p>
+            <div className="flex-grow w-full">
+                <div className="flex flex-col sm:flex-row justify-between items-center w-full">
+                    <div className="text-center sm:text-left">
+                        <h1 className="text-2xl font-bold">{profile.name || 'Chandrabhan'}</h1>
+                        <p className="text-muted-foreground">{profile.title || 'Full Stack Developer'}</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mt-2 sm:mt-0">
                         <Button variant="outline" asChild>
-                        <a href="/resume.pdf" download>
-                            <Download className="mr-2 h-4 w-4" />
-                            Resume
-                        </a>
+                            <a href="/resume.pdf" download>
+                                <Download className="mr-2 h-4 w-4" />
+                                Resume
+                            </a>
                         </Button>
                         <ThemeToggle />
                     </div>
                 </div>
             </div>
-          </div>
-          <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>{profile.location || 'Chhattisgarh, India'}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                  <Globe className="h-4 w-4" />
-                  <span>{profile.languages || 'English, Hindi'}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                  <Briefcase className="h-4 w-4" />
-                  <span>{profile.role || 'Software Engineer'}</span>
-              </div>
-          </div>
         </div>
-        <div className="flex-grow flex items-end">
-            <p className="text-sm text-muted-foreground">
+
+        <div className="mt-6 flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                <span>{profile.location || 'Chhattisgarh, India'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4" />
+                <span>{profile.languages || 'English, Hindi'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <Briefcase className="h-4 w-4" />
+                <span>{profile.role || 'Software Engineer'}</span>
+            </div>
+        </div>
+        
+        <div className="flex-grow flex items-end my-6">
+            <p className="text-sm text-muted-foreground text-center sm:text-left">
                 {profile.description}
             </p>
         </div>
+
         <div className="mt-auto grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
           <Button variant="outline" asChild>
             <a href={`mailto:${profile.email || 'your-email@example.com'}`}>
