@@ -25,7 +25,7 @@ export default function Stats() {
       {stats.map((stat, index) => (
         <BentoCard key={index} className="p-4 items-center justify-center flex-row gap-4">
           <stat.icon className="h-8 w-8 text-primary" />
-          <div className="text-center">
+          <div>
             <p className="text-2xl font-bold">{stat.value}</p>
             <p className="text-xs text-muted-foreground">{stat.label}</p>
           </div>

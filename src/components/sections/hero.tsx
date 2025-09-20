@@ -1,6 +1,7 @@
 import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
 import { Briefcase, Download, Globe, MapPin } from 'lucide-react';
+import ThemeToggle from '../theme-toggle';
 
 export default function Hero() {
   return (
@@ -20,12 +21,15 @@ export default function Hero() {
             <h1 className="text-2xl font-bold">Chandrabhan</h1>
             <p className="text-muted-foreground">Full Stack Developer</p>
           </div>
-          <Button variant="outline" size="sm" asChild>
-            <a href="/resume.pdf" download>
-              <Download className="mr-2 h-4 w-4" />
-              Resume
-            </a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <a href="/resume.pdf" download>
+                <Download className="mr-2 h-4 w-4" />
+                Resume
+              </a>
+            </Button>
+            <ThemeToggle />
+          </div>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
