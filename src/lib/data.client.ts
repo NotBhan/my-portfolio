@@ -4,7 +4,7 @@
 // For this project, we're re-purposing server actions or direct reads.
 // This approach is not standard but works for the self-contained nature of this app.
 
-import { Project, SkillCategory, Testimonial } from './definitions';
+import { Project, SkillCategory, Stat, Testimonial } from './definitions';
 
 // This is a workaround to make server-side file reading available on client, not a good practice.
 async function fetchData(fileName: string) {
@@ -26,3 +26,4 @@ async function fetchData(fileName: string) {
 export const getProjects = (): Promise<Project[]> => fetchData('projects.json');
 export const getSkills = (): Promise<SkillCategory[]> => fetchData('skills.json');
 export const getTestimonials = (): Promise<Testimonial[]> => fetchData('testimonials.json');
+export const getStats = (): Promise<Stat[]> => fetchData('stats.json');

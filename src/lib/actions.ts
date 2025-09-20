@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import type { Project, SkillCategory, Testimonial } from './definitions';
+import type { Project, SkillCategory, Stat, Testimonial } from './definitions';
 
 const dataFilePath = (filename: string) => path.join(process.cwd(), 'src', 'data', filename);
 
@@ -117,5 +117,12 @@ export async function deleteTestimonial(id: string) {
     testimonials = testimonials.filter(t => t.id !== id);
     await writeData('testimonials.json', testimonials);
     revalidatePath('/admin/testimonials');
+    revalidatePath('/');
+}
+
+// --- Stats Actions ---
+export async function updateStats(stats: Stat[]) {
+    await writeData<Stat>('stats.json', stats);
+    revalidatePath('/admin/stats');
     revalidatePath('/');
 }

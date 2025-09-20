@@ -1,30 +1,30 @@
-import { Briefcase, Heart, Star } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import BentoCard from '../bento-card';
+import { getStats } from '@/lib/data';
+import { Stat } from '@/lib/definitions';
 
-const stats = [
-  {
-    value: '56+',
-    label: 'Projects',
-    icon: Briefcase,
-  },
-  {
-    value: '23+',
-    label: 'Happy Clients',
-    icon: Heart,
-  },
-  {
-    value: '06+',
-    label: 'Year Expertise',
-    icon: Star,
-  },
-];
+// A type guard to check if a key is a valid Lucide icon name
+function isLucideIcon(key: string): key is keyof typeof LucideIcons {
+  return key in LucideIcons;
+}
 
-export default function Stats() {
+const StatIcon = ({ name }: { name: string }) => {
+  if (isLucideIcon(name)) {
+    const Icon = LucideIcons[name] as React.ElementType;
+    return <Icon className="h-8 w-8 text-primary" />;
+  }
+  // Return a default icon or null if the icon name is not valid
+  return <LucideIcons.AlertCircle className="h-8 w-8 text-destructive" />;
+};
+
+
+export default async function Stats() {
+    const stats: Stat[] = await getStats();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {stats.map((stat, index) => (
-        <BentoCard key={index} className="p-4 items-center justify-center flex-row gap-4">
-          <stat.icon className="h-8 w-8 text-primary" />
+      {stats.map((stat) => (
+        <BentoCard key={stat.id} className="p-4 items-center justify-center flex-row gap-4">
+          <StatIcon name={stat.icon} />
           <div>
             <p className="text-2xl font-bold">{stat.value}</p>
             <p className="text-xs text-muted-foreground">{stat.label}</p>

@@ -22,3 +22,10 @@ export type Testimonial = {
   company: string;
   quote: string;
 };
+
+export type Stat = {
+  id: string;
+  value: string;
+  label: string;
+  icon: string;
+};
