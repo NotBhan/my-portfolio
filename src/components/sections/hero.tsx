@@ -1,6 +1,6 @@
 import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
-import { Briefcase, Download, Globe, MapPin } from 'lucide-react';
+import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import ThemeToggle from '../theme-toggle';
 
 export default function Hero() {
@@ -15,22 +15,22 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex-grow">
-          <div className="flex justify-between items-start">
-            <div>
-              <h1 className="text-2xl font-bold">Chandrabhan</h1>
-              <p className="text-muted-foreground">Full Stack Developer</p>
+        <div className="flex-grow flex flex-col">
+            <div className="flex justify-between items-start">
+                <div>
+                <h1 className="text-2xl font-bold">Chandrabhan</h1>
+                <p className="text-muted-foreground">Full Stack Developer</p>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Button variant="outline" asChild>
+                    <a href="/resume.pdf" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        Resume
+                    </a>
+                    </Button>
+                    <ThemeToggle />
+                </div>
             </div>
-            <div className="flex items-center gap-2">
-                <Button variant="outline" asChild>
-                <a href="/resume.pdf" download>
-                    <Download className="mr-2 h-4 w-4" />
-                    Resume
-                </a>
-                </Button>
-                <ThemeToggle />
-            </div>
-          </div>
         </div>
       </div>
       <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
@@ -47,12 +47,30 @@ export default function Hero() {
               <span>Software Engineer</span>
           </div>
       </div>
-      <div className="mt-6 flex gap-4">
-        <Button className="flex-1" asChild>
-          <a href="mailto:your-email@example.com">Telegram Me</a>
+      <div className="mt-6 grid grid-cols-2 gap-4">
+        <Button variant="outline" asChild>
+          <a href="mailto:your-email@example.com">
+            <Mail />
+            Email Me
+          </a>
         </Button>
-        <Button variant="outline" className="flex-1" asChild>
-          <a href="#">WhatsApp Me</a>
+        <Button variant="outline" asChild>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <Github />
+            My GitHub
+          </a>
+        </Button>
+        <Button variant="outline" asChild>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <Linkedin />
+            My LinkedIn
+          </a>
+        </Button>
+        <Button variant="outline" asChild>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <Instagram />
+            My Instagram
+          </a>
         </Button>
       </div>
     </BentoCard>
