@@ -4,6 +4,7 @@ import Contact from '@/components/sections/contact';
 import Hero from '@/components/sections/hero';
 import Experiences from '@/components/sections/partners';
 import Projects from '@/components/sections/projects';
+import Skills from '@/components/sections/skills';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 
@@ -27,6 +28,9 @@ export default function Home() {
           </div>
           <div className="md:col-span-3">
             <Experiences />
+          </div>
+          <div className="md:col-span-2">
+            <Skills />
           </div>
           <div className="md:col-span-1">
             <About />
