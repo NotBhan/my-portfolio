@@ -19,12 +19,12 @@ export default async function Hero() {
                 </div>
             </div>
             <div className="flex-grow w-full">
-                <div className="flex flex-col sm:flex-row justify-between items-center w-full">
-                    <div className="text-center sm:text-left">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full">
+                    <div className="text-center sm:text-left w-full">
                         <h1 className="text-2xl font-bold">{profile.name || 'Chandrabhan'}</h1>
                         <p className="text-muted-foreground">{profile.title || 'Full Stack Developer'}</p>
                     </div>
-                    <div className="flex items-center gap-2 mt-2 sm:mt-0">
+                    <div className="flex items-center gap-2 mt-4 sm:mt-0 w-full sm:w-auto justify-center">
                         <Button variant="outline" asChild>
                             <a href="/resume.pdf" download>
                                 <Download className="mr-2 h-4 w-4" />
@@ -52,7 +52,7 @@ export default async function Hero() {
             </div>
         </div>
         
-        <div className="flex-grow flex items-end my-6">
+        <div className="flex-grow flex items-center my-6">
             <p className="text-sm text-muted-foreground text-center sm:text-left">
                 {profile.description}
             </p>
