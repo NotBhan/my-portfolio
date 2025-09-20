@@ -1,6 +1,6 @@
 import BentoCard from '@/components/bento-card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Crown, Mail } from 'lucide-react';
+import { Crown, Mail } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -20,11 +20,6 @@ export default function Contact() {
         <Button asChild className="w-full">
           <a href="mailto:contact@example.com">
             <Mail className="mr-2" /> Email Me
-          </a>
-        </Button>
-        <Button asChild variant="outline" className="w-full">
-          <a href="#">
-            <Calendar className="mr-2" /> Schedule a Call
           </a>
         </Button>
       </div>
