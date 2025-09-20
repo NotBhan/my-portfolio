@@ -83,4 +83,21 @@
   .shine-effect:hover::after {
     @apply left-full;
   }
+  .primary-shine-effect {
+    @apply relative overflow-hidden;
+  }
+  .primary-shine-effect::after {
+    content: '';
+    @apply absolute top-0 -left-full h-full w-full;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+  .primary-shine-effect:hover::after {
+    @apply left-full;
+  }
 }
