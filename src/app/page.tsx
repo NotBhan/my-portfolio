@@ -1,7 +1,7 @@
 import About from '@/components/sections/about';
 import Contact from '@/components/sections/contact';
 import Hero from '@/components/sections/hero';
-import Partners from '@/components/sections/partners';
+import Experiences from '@/components/sections/partners';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 import WorkProcess from '@/components/sections/work-process';
@@ -21,7 +21,7 @@ export default function Home() {
             <Testimonials />
           </div>
           <div className="md:col-span-3">
-            <Partners />
+            <Experiences />
           </div>
           <div className="md:col-span-1">
             <About />
