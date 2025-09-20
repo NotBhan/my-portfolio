@@ -2,17 +2,23 @@ import { checkAuth, signOut } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Home, LogOut, Package, Star, Users, BarChart, User } from 'lucide-react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  await checkAuth();
+  const session = await checkAuth();
 
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
       <aside className="hidden w-64 flex-col border-r bg-background sm:flex">
+        <div className="flex h-[60px] items-center border-b px-6">
+          <Link href="/" className="flex items-center gap-2 font-semibold">
+            <span className="">My Portfolio</span>
+          </Link>
+        </div>
         <nav className="flex flex-col gap-2 p-4">
           <Link
             href="/"
@@ -57,13 +63,20 @@ export default async function AdminLayout({
             <span>Stats</span>
           </Link>
         </nav>
-        <div className="mt-auto p-4">
-          <form action={signOut}>
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </Button>
-          </form>
+        <div className="mt-auto p-4 border-t">
+          <div className="flex items-center gap-2 mb-4">
+             <Avatar className="h-8 w-8">
+                <AvatarFallback>{session?.email?.[0].toUpperCase()}</AvatarFallback>
+            </Avatar>
+            <div className='flex flex-col'>
+                <span className="text-sm font-medium">{session?.name || session?.email}</span>
+                 <form action={signOut} className='w-fit'>
+                    <button type="submit" className="text-xs text-muted-foreground hover:text-primary">
+                        Sign Out
+                    </button>
+                </form>
+            </div>
+          </div>
         </div>
       </aside>
       <main className="flex flex-1 flex-col p-4 sm:p-6">{children}</main>

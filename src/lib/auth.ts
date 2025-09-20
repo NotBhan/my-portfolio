@@ -2,20 +2,62 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import fs from 'fs/promises';
+import path from 'path';
 
 const SESSION_COOKIE_NAME = 'chandrabhan-portfolio-session';
-// IMPORTANT: In a real application, use a secure, randomly generated password
-// stored in environment variables (e.g., process.env.ADMIN_PASSWORD).
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "password123";
+
+type User = {
+  email: string;
+  password?: string; // In a real app, this should be a hashed password
+};
+
+async function getAllowedUsers(): Promise<User[]> {
+  try {
+    const filePath = path.join(process.cwd(), 'src', 'data', 'users.json');
+    const jsonData = await fs.readFile(filePath, 'utf-8');
+    const users = JSON.parse(jsonData);
+    // Add default user if not present, for simplicity in this context.
+    const adminPassword = process.env.ADMIN_PASSWORD || "password123";
+    const defaultUserEmail = "admin@example.com";
+    if (!users.some((u: User) => u.email === defaultUserEmail)) {
+        users.push({email: defaultUserEmail, password: adminPassword });
+    }
+    return users;
+
+  } catch (error) {
+    console.error("Error reading users.json:", error);
+    // Fallback to environment variable if file is missing/corrupt
+    return [{ email: "admin@example.com", password: process.env.ADMIN_PASSWORD || "password123" }];
+  }
+}
+
 
 export async function getSession() {
   const sessionCookie = cookies().get(SESSION_COOKIE_NAME);
-  return sessionCookie?.value === 'authenticated';
+  if (!sessionCookie) return null;
+  // In a real app, you'd verify a session token here.
+  // For this example, we'll just check if the cookie value contains a valid email.
+  try {
+    const user = JSON.parse(sessionCookie.value);
+    if (user && user.email) {
+      return user;
+    }
+  } catch {
+    return null;
+  }
+  return null;
 }
 
-export async function signIn(password: string) {
-  if (password === ADMIN_PASSWORD) {
-    cookies().set(SESSION_COOKIE_NAME, 'authenticated', {
+export async function signIn(email: string, password?: string) {
+  const allowedUsers = await getAllowedUsers();
+  const user = allowedUsers.find(u => u.email === email);
+
+  // In a real app, you would use a library like bcrypt to compare hashed passwords.
+  // For this project, we are comparing plain text passwords for simplicity.
+  if (user && user.password && password === user.password) {
+    const sessionData = JSON.stringify({ email: user.email, name: user.email });
+    cookies().set(SESSION_COOKIE_NAME, sessionData, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       maxAge: 60 * 60 * 24, // 1 day
@@ -23,6 +65,7 @@ export async function signIn(password: string) {
     });
     return true;
   }
+
   return false;
 }
 
@@ -32,8 +75,9 @@ export async function signOut() {
 }
 
 export async function checkAuth() {
-  const isAuthenticated = await getSession();
-  if (!isAuthenticated) {
+  const session = await getSession();
+  if (!session) {
     redirect('/admin/login');
   }
+  return session;
 }
