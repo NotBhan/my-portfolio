@@ -47,7 +47,13 @@ export default function AdminLoginPage() {
           </p>
         </div>
         <Card>
-          <CardContent className="p-6">
+          <CardHeader>
+            <CardTitle>Sign In</CardTitle>
+            <CardDescription>
+                Enter your credentials to access the admin dashboard.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
