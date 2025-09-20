@@ -2,6 +2,7 @@ import About from '@/components/sections/about';
 import Contact from '@/components/sections/contact';
 import Hero from '@/components/sections/hero';
 import Experiences from '@/components/sections/partners';
+import Projects from '@/components/sections/projects';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 
@@ -17,7 +18,10 @@ export default function Home() {
             <Hero />
           </div>
           <div className="md:col-span-1 row-span-2">
-            <Testimonials />
+            <div className="flex flex-col gap-4">
+              <Projects />
+              <Testimonials />
+            </div>
           </div>
           <div className="md:col-span-3">
             <Experiences />

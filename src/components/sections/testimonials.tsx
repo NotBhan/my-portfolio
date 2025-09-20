@@ -16,10 +16,10 @@ export default async function Testimonials() {
       }
       className="h-full"
     >
-      <div className="space-y-6 h-full flex flex-col justify-around">
+      <div className="space-y-4 h-full flex flex-col justify-around">
         {testimonials.map((testimonial) => (
           <div key={testimonial.id}>
-            <blockquote className="text-sm text-foreground mb-2">
+            <blockquote className="text-xs text-foreground mb-1 line-clamp-3">
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
             <p className="text-xs text-muted-foreground">
