@@ -18,6 +18,11 @@ export default function BentoCard({ children, className, title, as: Component = 
     >
       {title && (
         <div className="flex items-center justify-center gap-2 border-b p-4 relative">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 flex gap-1.5">
+                <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                <div className="h-3 w-3 rounded-full bg-green-500"></div>
+            </div>
             <div className="flex-grow flex justify-center">
                 {typeof title === 'string' ? (
                     <p className="font-code text-sm font-bold text-muted-foreground">{title}</p>
