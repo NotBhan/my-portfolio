@@ -15,19 +15,21 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex-grow w-full flex flex-col items-start md:items-end">
-          <div className="text-left md:text-right">
-            <h1 className="text-2xl font-bold">Chandrabhan</h1>
-            <p className="text-muted-foreground">Full Stack Developer</p>
-          </div>
-          <div className="flex items-center gap-2 mt-4">
-              <Button variant="outline" asChild>
-              <a href="/resume.pdf" download>
-                  <Download className="mr-2 h-4 w-4" />
-                  Resume
-              </a>
-              </Button>
-              <ThemeToggle />
+        <div className="flex-grow">
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="text-2xl font-bold">Chandrabhan</h1>
+              <p className="text-muted-foreground">Full Stack Developer</p>
+            </div>
+            <div className="flex items-center gap-2">
+                <Button variant="outline" asChild>
+                <a href="/resume.pdf" download>
+                    <Download className="mr-2 h-4 w-4" />
+                    Resume
+                </a>
+                </Button>
+                <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>
