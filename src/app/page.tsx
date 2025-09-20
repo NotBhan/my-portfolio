@@ -13,13 +13,13 @@ export default function Home() {
     <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12 lg:p-16">
       <div className="w-full max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="md:col-span-4 hidden md:block">
+          <div className="md:col-span-4">
             <Stats />
           </div>
           <div className="md:col-span-3">
             <Hero />
           </div>
-          <div className="md:col-span-1 row-span-2 hidden md:flex md:flex-col gap-4">
+          <div className="md:col-span-1 row-span-2 flex flex-col gap-4">
               <Projects />
               <Activities />
               <Testimonials />
@@ -33,15 +33,6 @@ export default function Home() {
            <div className="md:col-span-1">
             <About />
           </div>
-
-          {/* These will now appear below skills on mobile */}
-          <div className="flex flex-col gap-4 md:hidden">
-              <Projects />
-              <Stats />
-              <Activities />
-              <Testimonials />
-          </div>
-
            <div className="md:col-span-2">
             <Contact />
           </div>
