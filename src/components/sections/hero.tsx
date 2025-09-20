@@ -49,7 +49,7 @@ export default function Hero() {
             </div>
         </div>
       </div>
-      <div className="mt-auto pt-6 grid grid-cols-2 gap-4">
+      <div className="mt-auto grid grid-cols-2 gap-4 pt-6">
         <Button variant="outline" asChild>
           <a href="mailto:your-email@example.com">
             <Mail />
