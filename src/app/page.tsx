@@ -23,12 +23,16 @@ export default function Home() {
                 <div className="md:col-span-3">
                     <Hero />
                 </div>
-                <div className="md:col-span-2">
+                <div className="md:col-span-2 row-span-2">
                     <Projects />
                 </div>
-                <div className="md:col-span-1 grid grid-rows-3 gap-4">
+                <div className="md:col-span-1">
                     <About />
+                </div>
+                <div className="md:col-span-1">
                     <Skills />
+                </div>
+                 <div className="md:col-span-3">
                     <Testimonials />
                 </div>
                 <div className="md:col-span-3">
