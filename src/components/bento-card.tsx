@@ -4,29 +4,28 @@ import type { ReactNode } from 'react';
 type BentoCardProps = {
   children: ReactNode;
   className?: string;
-  title?: string;
+  title?: string | ReactNode;
+  as?: React.ElementType;
 };
 
-export default function BentoCard({ children, className, title }: BentoCardProps) {
+export default function BentoCard({ children, className, title, as: Component = 'div' }: BentoCardProps) {
   return (
-    <div
+    <Component
       className={cn(
-        'relative flex flex-col w-full rounded-xl border bg-card/50 shadow-inner shadow-white/5 backdrop-blur-sm',
-        'transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20',
+        'relative flex flex-col w-full rounded-xl border bg-card text-card-foreground shadow-sm',
         className
       )}
     >
       {title && (
-        <div className="flex items-center gap-2 border-b bg-black/10 px-4 py-2.5">
-          <div className="flex gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-red-500/80"></div>
-            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></div>
-            <div className="h-2.5 w-2.5 rounded-full bg-green-500/80"></div>
-          </div>
-          <p className="font-code text-sm text-muted-foreground">{title}</p>
+        <div className="flex items-center gap-2 border-b p-4">
+            {typeof title === 'string' ? (
+                <p className="font-code text-sm font-bold text-muted-foreground">{title}</p>
+            ) : (
+                title
+            )}
         </div>
       )}
       <div className="p-4 md:p-6 flex-1">{children}</div>
-    </div>
+    </Component>
   );
 }

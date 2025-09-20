@@ -1,34 +1,32 @@
 import BentoCard from '@/components/bento-card';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Twitter, Send } from 'lucide-react';
+import { Calendar, Crown, Mail } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <BentoCard title="connect.ts">
-      <div className="flex h-full flex-col items-center justify-center text-center">
-        <h2 className="text-xl font-headline font-bold">
-          Let&apos;s Connect
-        </h2>
-        <p className="mt-2 mb-6 text-sm text-muted-foreground font-code max-w-sm">
-          I&apos;m always open to new opportunities and collaborations. Feel free to reach out!
-        </p>
-        <div className="flex gap-4">
-          <Button variant="outline" size="icon" asChild>
-            <a href="#" aria-label="GitHub">
-              <Github />
-            </a>
-          </Button>
-          <Button variant="outline" size="icon" asChild>
-            <a href="#" aria-label="LinkedIn">
-              <Linkedin />
-            </a>
-          </Button>
-          <Button variant="outline" size="icon" asChild>
-            <a href="#" aria-label="Twitter">
-              <Twitter />
-            </a>
-          </Button>
+    <BentoCard
+      className="flex flex-col items-center justify-center text-center"
+      title={
+        <div className="flex items-center gap-2">
+          <Crown className="h-4 w-4 text-muted-foreground" />
+          <h3 className="text-sm font-semibold">Let's Work Together</h3>
         </div>
+      }
+    >
+      <p className="text-muted-foreground text-sm mb-6">
+        Let's make magic happen together!
+      </p>
+      <div className="w-full space-y-4">
+        <Button asChild className="w-full">
+          <a href="mailto:contact@example.com">
+            <Mail className="mr-2" /> Email Me
+          </a>
+        </Button>
+        <Button asChild variant="outline" className="w-full">
+          <a href="#">
+            <Calendar className="mr-2" /> Schedule a Call
+          </a>
+        </Button>
       </div>
     </BentoCard>
   );

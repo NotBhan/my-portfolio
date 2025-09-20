@@ -1,14 +1,15 @@
+
 [
   {
     "id": "1",
-    "name": "Jane Doe",
-    "company": "Tech Solutions Inc.",
-    "quote": "Working with Chandrabhan was a breeze. Their attention to detail and creative vision transformed our project from a simple idea into a stunning reality."
+    "name": "Sarah Johnson",
+    "company": "New York City, USA",
+    "quote": "Chandrabhan's design skills are unparalleled. He transformed my vague ideas into a stunning website that perfectly represents my brand."
   },
   {
     "id": "2",
-    "name": "John Smith",
-    "company": "Innovate Labs",
-    "quote": "The final product exceeded all our expectations. The UI is not only beautiful but also incredibly intuitive. Highly recommended!"
+    "name": "David Smith",
+    "company": "London, UK",
+    "quote": "Working with Chandrabhan was a breeze. He not only delivered a sleek and functional website but also provided excellent support throughout the process."
   }
 ]

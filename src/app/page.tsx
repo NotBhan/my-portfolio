@@ -1,11 +1,11 @@
-import Hero from '@/components/sections/hero';
 import About from '@/components/sections/about';
-import Projects from '@/components/sections/projects';
-import Skills from '@/components/sections/skills';
-import Testimonials from '@/components/sections/testimonials';
 import Contact from '@/components/sections/contact';
+import Hero from '@/components/sections/hero';
+import Partners from '@/components/sections/partners';
+import Stats from '@/components/sections/stats';
+import Testimonials from '@/components/sections/testimonials';
+import WorkProcess from '@/components/sections/work-process';
 import ThemeToggle from '@/components/theme-toggle';
-import Navbar from '@/components/navbar';
 
 export default function Home() {
   return (
@@ -14,38 +14,41 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="md:col-span-1">
-            <Navbar />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-3">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="md:col-span-3">
-                    <Hero />
-                </div>
-                <div className="md:col-span-2 row-span-2">
-                    <Projects />
-                </div>
-                <div className="md:col-span-1">
-                    <About />
-                </div>
-                <div className="md:col-span-1">
-                    <Skills />
-                </div>
-                 <div className="md:col-span-3">
-                    <Testimonials />
-                </div>
-                <div className="md:col-span-3">
-                    <Contact />
-                </div>
-            </div>
+            <Stats />
+          </div>
+          <div className="md:col-span-2">
+            <Hero />
+          </div>
+          <div className="md:col-span-1 row-span-2">
+            <Testimonials />
+          </div>
+          <div className="md:col-span-2">
+            <Partners />
+          </div>
+          <div className="md:col-span-1">
+            <About />
+          </div>
+           <div className="md:col-span-1">
+             <WorkProcess />
+          </div>
+           <div className="md:col-span-1">
+            <Contact />
           </div>
         </div>
       </div>
-       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
-        <p>&copy; {new Date().getFullYear()} Chandrabhan. All rights reserved.</p>
+      <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
         <p>
-          <a href="/admin" className="hover:text-primary transition-colors">Admin Panel</a>
+          &copy; {new Date().getFullYear()} Chandrabhan. All rights reserved.
+        </p>
+        <p>
+          <a
+            href="/admin"
+            className="hover:text-primary transition-colors"
+          >
+            Admin Panel
+          </a>
         </p>
       </footer>
     </main>

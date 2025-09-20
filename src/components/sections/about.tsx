@@ -1,15 +1,37 @@
 import BentoCard from '@/components/bento-card';
+import { Button } from '../ui/button';
+import { Globe } from 'lucide-react';
 
 export default function About() {
   return (
-    <BentoCard title="about-me.md">
-      <div className="prose prose-sm dark:prose-invert font-code">
-        <p>
-          Hello! I&apos;m Chandrabhan, a passionate developer with a knack for building beautiful and functional web applications. My journey in tech is driven by a love for elegant design, clean code, and creating seamless user experiences.
-        </p>
-        <p className="mt-4">
-          This portfolio is a showcase of my skills and projects, built with a celestial dark theme and a touch of glassmorphism.
-        </p>
+    <BentoCard
+        title={
+            <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4 text-muted-foreground"/>
+                <h3 className="text-sm font-semibold">Online Presence</h3>
+            </div>
+        }
+        className="h-full"
+    >
+      <div className="flex flex-col h-full justify-center gap-4">
+        <Button variant="outline" asChild className="justify-start gap-4">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <span className='font-bold'>Twitter</span>
+            <span className='text-muted-foreground ml-auto'>@chandrabhan</span>
+          </a>
+        </Button>
+        <Button variant="outline" asChild className="justify-start gap-4">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+             <span className='font-bold'>Instagram</span>
+            <span className='text-muted-foreground ml-auto'>@chandrabhan</span>
+          </a>
+        </Button>
+        <Button variant="outline" asChild className="justify-start gap-4">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+             <span className='font-bold'>LinkedIn</span>
+             <span className='text-muted-foreground ml-auto'>/in/chandrabhan</span>
+          </a>
+        </Button>
       </div>
     </BentoCard>
   );
