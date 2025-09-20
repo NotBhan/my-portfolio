@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const file = searchParams.get('file');
 
-  if (!file || !['projects.json', 'skills.json', 'testimonials.json'].includes(file)) {
+  if (!file || !['projects.json', 'skills.json', 'testimonials.json', 'stats.json'].includes(file)) {
     return NextResponse.json({ error: 'Invalid file requested' }, { status: 400 });
   }
 

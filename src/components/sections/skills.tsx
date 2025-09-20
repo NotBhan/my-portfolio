@@ -1,7 +1,8 @@
 import BentoCard from '@/components/bento-card';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { getSkills } from '@/lib/data';
 import { Star } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default async function Skills() {
   const skillData = await getSkills();
@@ -17,42 +18,40 @@ export default async function Skills() {
       className="h-full"
       showButtons={true}
     >
-      <div className="flex flex-col h-full">
-        <h2 className="text-xl font-headline font-bold mb-4">
-          {'const mySkills = {'}
-        </h2>
-        <ScrollArea className="flex-grow">
-          <div className="space-y-6 font-code text-sm pr-4">
-            {skillData.length > 0 ? (
-              skillData.map((category) => (
-                <div key={category.category}>
-                  <h3 className="font-bold text-primary mb-2">
-                    {`  '${category.category}': [`}
-                  </h3>
-                  <div className="space-y-2 pl-4">
-                    {category.skills.map((skill) => (
-                      <div key={skill.name}>
-                        <div className="flex justify-between items-center text-muted-foreground">
-                          <span>{`    '${skill.name}'`}</span>
-                          <span className="text-xs font-mono bg-muted px-2 py-1 rounded-md">{`${skill.level} months`}</span>
-                        </div>
+      <ScrollArea className="h-full">
+        <div className="space-y-6 pr-4">
+          {skillData.length > 0 ? (
+            skillData.map((category) => (
+              <div key={category.category}>
+                <h3 className="font-semibold text-sm text-foreground mb-3">
+                  {category.category}
+                </h3>
+                <div className="space-y-4">
+                  {category.skills.map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-xs font-medium text-muted-foreground">
+                          {skill.name}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {skill.level}%
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                  <h3 className="font-bold text-primary mt-2">{`  ],`}</h3>
+                      <Progress value={skill.level} className="h-2" />
+                    </div>
+                  ))}
                 </div>
-              ))
-            ) : (
-              <div className="flex items-center justify-center h-full">
-                <p className="text-muted-foreground text-center font-mono text-sm">
-                  No skills added yet.
-                </p>
               </div>
-            )}
-          </div>
-        </ScrollArea>
-        <h2 className="text-xl font-headline font-bold mt-4">{'}'}</h2>
-      </div>
+            ))
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-muted-foreground text-center font-mono text-sm">
+                No skills added yet.
+              </p>
+            </div>
+          )}
+        </div>
+      </ScrollArea>
     </BentoCard>
   );
 }
