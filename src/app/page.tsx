@@ -4,7 +4,6 @@ import Hero from '@/components/sections/hero';
 import Experiences from '@/components/sections/partners';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
-import WorkProcess from '@/components/sections/work-process';
 
 export default function Home() {
   return (
@@ -26,10 +25,7 @@ export default function Home() {
           <div className="md:col-span-1">
             <About />
           </div>
-           <div className="md:col-span-1">
-             <WorkProcess />
-          </div>
-           <div className="md:col-span-1">
+           <div className="md:col-span-2">
             <Contact />
           </div>
         </div>
