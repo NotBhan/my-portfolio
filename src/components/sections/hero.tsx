@@ -8,21 +8,19 @@ export default function Hero() {
     <BentoCard className="flex-col md:flex-row items-start">
       <div className="relative mb-4 md:mb-0 md:mr-6">
         <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
-          <div className="w-full h-full rounded-[6px] bg-background flex items-center justify-center font-bold text-4xl text-primary">
+          <div className="w-full h-full rounded-md bg-background flex items-center justify-center font-bold text-4xl text-primary">
             C
           </div>
         </div>
-        <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background"></div>
       </div>
       <div className="flex-grow">
         <div className="flex justify-between items-start">
           <div>
-            <p className="text-xs text-green-400 mb-1">Available To Work</p>
             <h1 className="text-2xl font-bold">Chandrabhan</h1>
             <p className="text-muted-foreground">Full Stack Developer</p>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" asChild>
               <a href="/resume.pdf" download>
                 <Download className="mr-2 h-4 w-4" />
                 Resume
