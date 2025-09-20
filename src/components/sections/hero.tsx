@@ -20,11 +20,11 @@ export default async function Hero() {
             </div>
             <div className="flex-grow w-full">
                 <div className="flex flex-col lg:flex-row justify-between items-center w-full gap-4">
-                    <div className="text-center lg:text-left w-full">
+                    <div className="text-center sm:text-left w-full">
                         <h1 className="text-2xl font-bold">{profile.name || 'Chandrabhan'}</h1>
                         <p className="text-muted-foreground">{profile.title || 'Full Stack Developer'}</p>
                     </div>
-                    <div className="flex shrink-0 items-center gap-2 w-full lg:w-auto justify-center">
+                    <div className="flex shrink-0 items-center gap-2 w-full lg:w-auto justify-center sm:justify-start">
                         <Button variant="outline" asChild className="w-full sm:w-auto">
                             <a href="/resume.pdf" download>
                                 <Download className="mr-2 h-4 w-4" />
