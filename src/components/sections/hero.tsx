@@ -19,13 +19,13 @@ export default async function Hero() {
                 </div>
             </div>
             <div className="flex-grow w-full">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full">
-                    <div className="text-center sm:text-left w-full">
+                <div className="flex flex-col lg:flex-row justify-between items-center w-full gap-4">
+                    <div className="text-center lg:text-left w-full">
                         <h1 className="text-2xl font-bold">{profile.name || 'Chandrabhan'}</h1>
                         <p className="text-muted-foreground">{profile.title || 'Full Stack Developer'}</p>
                     </div>
-                    <div className="flex items-center gap-2 mt-4 sm:mt-0 w-full sm:w-auto justify-center">
-                        <Button variant="outline" asChild>
+                    <div className="flex shrink-0 items-center gap-2 w-full lg:w-auto justify-center">
+                        <Button variant="outline" asChild className="w-full sm:w-auto">
                             <a href="/resume.pdf" download>
                                 <Download className="mr-2 h-4 w-4" />
                                 Resume
@@ -58,7 +58,7 @@ export default async function Hero() {
             </p>
         </div>
 
-        <div className="mt-auto grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+        <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6">
           <Button variant="outline" asChild>
             <a href={`mailto:${profile.email || 'your-email@example.com'}`}>
               <Mail />
