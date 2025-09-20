@@ -4,15 +4,15 @@
     "skills": [
       {
         "name": "React & Next.js",
-        "level": 95
+        "level": 18
       },
       {
         "name": "TypeScript",
-        "level": 90
+        "level": 12
       },
       {
         "name": "Tailwind CSS",
-        "level": 98
+        "level": 24
       }
     ]
   },
@@ -21,11 +21,11 @@
     "skills": [
       {
         "name": "Node.js",
-        "level": 85
+        "level": 12
       },
       {
         "name": "Firebase",
-        "level": 80
+        "level": 9
       }
     ]
   },
@@ -34,11 +34,11 @@
     "skills": [
       {
         "name": "Figma",
-        "level": 92
+        "level": 18
       },
       {
         "name": "UI/UX Principles",
-        "level": 88
+        "level": 12
       }
     ]
   }

@@ -1,5 +1,4 @@
 import BentoCard from '@/components/bento-card';
-import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { getSkills } from '@/lib/data';
 
@@ -16,14 +15,13 @@ export default async function Skills() {
                     <h3 className="font-bold text-primary mb-2">
                     {`  '${category.category}': [`}
                     </h3>
-                    <div className="space-y-3 pl-4">
+                    <div className="space-y-2 pl-4">
                     {category.skills.map((skill) => (
                         <div key={skill.name}>
-                        <div className="flex justify-between mb-1 text-muted-foreground">
+                        <div className="flex justify-between items-center text-muted-foreground">
                             <span>{`    '${skill.name}'`}</span>
-                            <span>{`${skill.level}%`}</span>
+                            <span className='text-xs font-mono bg-muted px-2 py-1 rounded-md'>{`${skill.level} months`}</span>
                         </div>
-                        <Progress value={skill.level} className="h-2" />
                         </div>
                     ))}
                     </div>
