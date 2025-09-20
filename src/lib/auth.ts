@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import fs from 'fs/promises';
 import path from 'path';
+import 'dotenv/config';
 
 const SESSION_COOKIE_NAME = 'chandrabhan-portfolio-session';
 
@@ -13,23 +14,10 @@ type User = {
 };
 
 async function getAllowedUsers(): Promise<User[]> {
-  try {
-    const filePath = path.join(process.cwd(), 'src', 'data', 'users.json');
-    const jsonData = await fs.readFile(filePath, 'utf-8');
-    const users = JSON.parse(jsonData);
-    // Add default user if not present, for simplicity in this context.
+    const adminEmail = process.env.ADMIN_EMAIL || "admin@example.com";
     const adminPassword = process.env.ADMIN_PASSWORD || "password123";
-    const defaultUserEmail = "admin@example.com";
-    if (!users.some((u: User) => u.email === defaultUserEmail)) {
-        users.push({email: defaultUserEmail, password: adminPassword });
-    }
-    return users;
-
-  } catch (error) {
-    console.error("Error reading users.json:", error);
-    // Fallback to environment variable if file is missing/corrupt
-    return [{ email: "admin@example.com", password: process.env.ADMIN_PASSWORD || "password123" }];
-  }
+    
+    return [{ email: adminEmail, password: adminPassword }];
 }
 
 
