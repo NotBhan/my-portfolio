@@ -5,6 +5,7 @@ import Skills from '@/components/sections/skills';
 import Testimonials from '@/components/sections/testimonials';
 import Contact from '@/components/sections/contact';
 import ThemeToggle from '@/components/theme-toggle';
+import Navbar from '@/components/navbar';
 
 export default function Home() {
   return (
@@ -12,26 +13,33 @@ export default function Home() {
       <div className="absolute top-4 right-4 z-10">
         <ThemeToggle />
       </div>
-      <div className="w-full max-w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="md:col-span-3">
-                <Hero />
+      <div className="w-full max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="md:col-span-1 h-full">
+            <Navbar />
+          </div>
+          <div className="md:col-span-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="md:col-span-3">
+                    <Hero />
+                </div>
+                <div className="md:col-span-3">
+                    <Projects />
+                </div>
+                <div className="md:col-span-1">
+                    <About />
+                </div>
+                <div className="md:col-span-1">
+                    <Skills />
+                </div>
+                <div className="md:col-span-1">
+                    <Testimonials />
+                </div>
+                <div className="md:col-span-3">
+                    <Contact />
+                </div>
             </div>
-            <div className="md:col-span-3">
-                <Projects />
-            </div>
-            <div className="md:col-span-1">
-                <About />
-            </div>
-            <div className="md:col-span-1">
-                <Skills />
-            </div>
-            <div className="md:col-span-1">
-                <Testimonials />
-            </div>
-            <div className="md:col-span-3">
-                <Contact />
-            </div>
+          </div>
         </div>
       </div>
        <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
