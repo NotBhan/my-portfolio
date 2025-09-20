@@ -17,7 +17,7 @@ export default function Hero() {
           Chandrabhan
         </h1>
         <p className="mt-2 text-lg text-muted-foreground font-code">
-          {`// Creative Developer & UI/UX Enthusiast`}
+          Full Stack Developer | Chhattisgarh, India | Fresher
         </p>
         <div className="mt-6 flex gap-4">
           <Button variant="ghost" size="icon" asChild>
