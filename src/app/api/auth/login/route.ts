@@ -22,15 +22,6 @@ export async function POST(request: NextRequest) {
     session.email = user.email;
     await session.save();
     
-    // The response needs to be manipulated to set the cookie.
-    const res = NextResponse.json({ ok: true });
-    res.cookies.set(sessionOptions.cookieName, session.id, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        path: '/',
-    });
-
-
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
     console.error('Login error:', error);
