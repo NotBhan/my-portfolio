@@ -5,7 +5,7 @@ import ThemeToggle from '../theme-toggle';
 
 export default function Hero() {
   return (
-    <BentoCard>
+    <BentoCard className="h-full">
       <div className="flex flex-col md:flex-row items-start gap-6">
         <div className="relative">
           <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-primary to-accent p-1">
