@@ -11,7 +11,7 @@ export default function BentoCard({ children, className, title }: BentoCardProps
   return (
     <div
       className={cn(
-        'relative flex flex-col h-full w-full rounded-xl border bg-card/50 shadow-inner shadow-white/5 backdrop-blur-sm',
+        'relative flex flex-col w-full rounded-xl border bg-card/50 shadow-inner shadow-white/5 backdrop-blur-sm',
         'transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20',
         className
       )}

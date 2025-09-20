@@ -12,7 +12,7 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <BentoCard title="navigation.menu">
+    <BentoCard title="navigation.menu" className="h-fit">
       <nav className="flex flex-col items-start justify-center">
         <ul className="space-y-2">
           {navItems.map((item) => (
