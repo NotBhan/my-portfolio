@@ -12,8 +12,8 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <BentoCard title="navigation.menu" className="h-full">
-      <nav className="flex flex-col items-start h-full justify-center">
+    <BentoCard title="navigation.menu">
+      <nav className="flex flex-col items-start justify-center">
         <ul className="space-y-2">
           {navItems.map((item) => (
             <li key={item.label}>

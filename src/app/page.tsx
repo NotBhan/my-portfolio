@@ -15,7 +15,7 @@ export default function Home() {
       </div>
       <div className="w-full max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="md:col-span-1 h-full">
+          <div className="md:col-span-1">
             <Navbar />
           </div>
           <div className="md:col-span-3">
