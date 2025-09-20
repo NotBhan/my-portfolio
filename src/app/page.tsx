@@ -19,12 +19,10 @@ export default function Home() {
           <div className="md:col-span-3">
             <Hero />
           </div>
-          <div className="md:col-span-1 row-span-2">
-            <div className="flex flex-col gap-4">
+          <div className="md:col-span-1 row-span-2 hidden md:flex md:flex-col gap-4">
               <Projects />
               <Activities />
               <Testimonials />
-            </div>
           </div>
           <div className="md:col-span-3">
             <Experiences />
@@ -32,9 +30,17 @@ export default function Home() {
           <div className="md:col-span-2">
             <Skills />
           </div>
-          <div className="md:col-span-1">
+           <div className="md:col-span-1">
             <About />
           </div>
+
+          {/* These will now appear below skills on mobile */}
+          <div className="flex flex-col gap-4 md:hidden">
+              <Projects />
+              <Activities />
+              <Testimonials />
+          </div>
+
            <div className="md:col-span-2">
             <Contact />
           </div>
