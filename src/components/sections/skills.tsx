@@ -1,9 +1,7 @@
 import BentoCard from '@/components/bento-card';
 import { getSkills } from '@/lib/data';
 import { Star } from 'lucide-react';
-import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { SkillCategory } from '@/lib/definitions';
 
 export default async function Skills() {
   const allSkillData = await getSkills();
@@ -39,10 +37,9 @@ export default async function Skills() {
                           {skill.name}
                         </span>
                         <span className="text-xs text-muted-foreground">
-                          {skill.level}%
+                          {skill.level} {skill.level === 1 ? 'year' : 'years'}
                         </span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
                     </div>
                   ))}
                 </div>

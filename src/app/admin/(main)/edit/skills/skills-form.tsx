@@ -2,7 +2,6 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { Skill, SkillCategory } from '@/lib/definitions';
@@ -37,13 +36,18 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
   ) => {
     const newData = [...skillData];
     const skill = newData[catIndex].skills[skillIndex];
-    (skill[field] as string | number | boolean) = value;
+    if (field === 'level' && typeof value === 'string') {
+      const parsedValue = parseFloat(value);
+      (skill[field] as number) = isNaN(parsedValue) ? 0 : parsedValue;
+    } else {
+        (skill[field] as string | number | boolean) = value;
+    }
     setSkillData(newData);
   };
 
   const handleAddSkill = (catIndex: number) => {
     const newData = [...skillData];
-    newData[catIndex].skills.push({ name: 'New Skill', level: 50, isVisible: true });
+    newData[catIndex].skills.push({ name: 'New Skill', level: 1, isVisible: true });
     setSkillData(newData);
   };
 
@@ -127,14 +131,13 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
                   value={skill.name}
                   onChange={(e) => handleSkillChange(catIndex, skillIndex, 'name', e.target.value)}
                 />
-                <Label htmlFor={`skill-level-${catIndex}-${skillIndex}`}>Skill Level: {skill.level}%</Label>
-                <Slider
+                <Label htmlFor={`skill-level-${catIndex}-${skillIndex}`}>Years of Experience</Label>
+                 <Input
                   id={`skill-level-${catIndex}-${skillIndex}`}
-                  min={0}
-                  max={100}
-                  step={1}
-                  value={[skill.level]}
-                  onValueChange={(value) => handleSkillChange(catIndex, skillIndex, 'level', value[0])}
+                  type="number"
+                  step="0.5"
+                  value={skill.level}
+                  onChange={(e) => handleSkillChange(catIndex, skillIndex, 'level', e.target.value)}
                 />
               </div>
             ))}
