@@ -1,6 +1,8 @@
+
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,6 +14,7 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,8 +30,8 @@ export default function AdminLoginPage() {
       });
 
       if (res.ok) {
-        // Use window.location.href for a full redirect
-        window.location.href = '/admin';
+        router.push('/admin');
+        router.refresh(); // Ensure the page reloads to reflect the session change
       } else {
         const data = await res.json();
         toast({
