@@ -11,5 +11,5 @@ export default function AdminRootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <AdminDashboardLayout>{children}</AdminDashboardLayout>;
+    return <>{children}</>;
 }
