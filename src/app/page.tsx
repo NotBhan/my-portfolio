@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <main className="container mx-auto p-4">
        <div className="text-center my-12 animate-slide-in-down opacity-0" style={{ animationFillMode: 'forwards' }}>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground">
           CHANDRABHAN
         </h1>
       </div>
