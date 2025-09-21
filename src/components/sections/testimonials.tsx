@@ -8,12 +8,17 @@ export default async function Testimonials() {
   const testimonials = allTestimonials.filter((t) => t.isVisible);
 
   return (
-    <BentoCard className="h-full">
-      <div className="flex flex-col h-full">
-        <div className="flex items-center gap-2 mb-4">
+    <BentoCard
+      title={
+        <div className="flex items-center gap-2">
           <MessageSquare className="h-4 w-4 text-muted-foreground" />
           <h3 className="text-sm font-semibold">Rave Reviews Showcase</h3>
         </div>
+      }
+      className="h-full"
+      showButtons={true}
+    >
+      <div className="flex flex-col h-full">
         {testimonials.length > 0 ? (
           <ScrollArea className="flex-grow">
             <div className="space-y-4 pr-4">
