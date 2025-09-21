@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "1",
+    "title": "Amity Uniity Algostorm 1.0 Hackathon",
+    "description": "Participated in Amity University Algostorm 1.0 24hr Hackathon while leading a team of 4.",
+    "icon": "Laptop",
+    "isVisible": true
+  }
+]
