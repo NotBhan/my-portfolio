@@ -25,14 +25,14 @@ export default async function Home() {
         <div className="lg:col-span-3">
           <div className="flex flex-col gap-4">
             <div
-              className="animate-slide-in-down"
-              style={{ animationDelay: '100ms' }}
+              className="animate-slide-in-down opacity-0"
+              style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
             >
               <Hero />
             </div>
             <div
-              className="animate-slide-in-up"
-              style={{ animationDelay: '300ms' }}
+              className="animate-slide-in-up opacity-0"
+              style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
             >
               <Experiences />
             </div>
@@ -40,16 +40,16 @@ export default async function Home() {
               <div className="flex flex-col gap-4">
                 {showCreativeSkills && (
                   <div
-                    className="animate-slide-in-left"
-                    style={{ animationDelay: '500ms' }}
+                    className="animate-slide-in-left opacity-0"
+                    style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
                   >
                     <CreativeSkills />
                   </div>
                 )}
                 {showActivities && (
                   <div
-                    className="animate-slide-in-left"
-                    style={{ animationDelay: '700ms' }}
+                    className="animate-slide-in-left opacity-0"
+                    style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}
                   >
                     <Activities />
                   </div>
@@ -57,14 +57,14 @@ export default async function Home() {
               </div>
               <div className="flex flex-col gap-4">
                 <div
-                  className="animate-slide-in-right"
-                  style={{ animationDelay: '600ms' }}
+                  className="animate-slide-in-right opacity-0"
+                  style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
                 >
                   <Testimonials />
                 </div>
                 <div
-                  className="animate-slide-in-right"
-                  style={{ animationDelay: '800ms' }}
+                  className="animate-slide-in-right opacity-0"
+                  style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
                 >
                   <Contact />
                 </div>
@@ -74,21 +74,21 @@ export default async function Home() {
         </div>
         <div className="lg:col-span-1 flex flex-col gap-4">
           <div
-            className="animate-slide-in-up"
-            style={{ animationDelay: '200ms' }}
+            className="animate-slide-in-up opacity-0"
+            style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
           >
             <Projects />
           </div>
           <div
-            className="animate-slide-in-up"
-            style={{ animationDelay: '400ms' }}
+            className="animate-slide-in-up opacity-0"
+            style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}
           >
             <Skills />
           </div>
           {showAbout && (
             <div
-              className="animate-slide-in-up"
-              style={{ animationDelay: '900ms' }}
+              className="animate-slide-in-up opacity-0"
+              style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}
             >
               <About />
             </div>
