@@ -9,23 +9,9 @@
   },
   {
     "id": "2",
-    "name": "Discord",
-    "url": "#",
-    "icon": "Discord",
-    "isVisible": true
-  },
-  {
-    "id": "3",
     "name": "Facebook",
     "url": "#",
     "icon": "Facebook",
-    "isVisible": true
-  },
-  {
-    "id": "4",
-    "name": "Pinterest",
-    "url": "#",
-    "icon": "Pinterest",
     "isVisible": true
   }
 ]
