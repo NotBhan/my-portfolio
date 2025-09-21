@@ -17,32 +17,40 @@ export default function Home() {
           <div className="lg:col-span-3 hidden lg:block">
             <Stats />
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-1 lg:order-none">
             <Hero />
           </div>
-          <div className="lg:col-span-1 order-first lg:order-none">
-            <Projects />
-          </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-2 lg:order-none">
             <Experiences />
           </div>
-          <div className="lg:col-span-1">
-            <CreativeSkills />
+          <div className="lg:col-span-1 order-3 lg:order-none">
+            <Projects />
           </div>
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 order-4 lg:order-none">
             <Skills />
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1 order-5 block lg:hidden">
+              <Stats />
+          </div>
+          <div className="lg:col-span-2 order-6 lg:order-none">
             <Testimonials />
           </div>
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2 order-7 lg:order-none grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Activities />
+          </div>
+          <div className="lg:col-span-1 order-8 lg:order-none">
+            <CreativeSkills />
+          </div>
+          <div className="lg:col-span-1 order-9 lg:order-none">
             <About />
           </div>
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-             <div className="block lg:hidden">
+          <div className="lg:col-span-2 order-10 lg:order-none grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div className="hidden lg:block">
               <Stats />
             </div>
-            <Activities />
+            <div className="hidden lg:block">
+              <Activities />
+            </div>
             <Contact />
           </div>
         </div>
