@@ -22,7 +22,7 @@ export default function Spotlight() {
   }, []);
 
   const spotlightColor =
-    theme === 'light' ? 'rgba(63, 81, 181, 0.4)' : 'rgba(63, 81, 181, 0.1)';
+    theme === 'light' ? 'rgba(63, 81, 181, 0.2)' : 'rgba(63, 81, 181, 0.1)';
 
   if (!isMounted) {
     return null;
