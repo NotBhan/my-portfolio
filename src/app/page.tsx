@@ -14,28 +14,28 @@ export default function Home() {
     <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12 lg:p-16">
       <div className="w-full max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 md:order-1 order-2">
             <Stats />
           </div>
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 md:order-2 order-1">
             <Hero />
           </div>
-          <div className="md:col-span-1 row-span-2 flex flex-col gap-4">
+          <div className="md:col-span-1 row-span-2 flex flex-col gap-4 md:order-3 order-4">
               <Projects />
               <Activities />
               <CreativeSkills />
               <Testimonials />
           </div>
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 md:order-4 order-3">
             <Experiences />
           </div>
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 md:order-5 order-5">
             <Skills />
           </div>
-           <div className="md:col-span-1">
+           <div className="md:col-span-1 md:order-6 order-6">
             <About />
           </div>
-           <div className="md:col-span-2">
+           <div className="md:col-span-2 md:order-7 order-7">
             <Contact />
           </div>
         </div>
