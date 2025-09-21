@@ -103,7 +103,9 @@ export default function Projects() {
                           <p className="line-clamp-2">{project.description}</p>
                         </CardContent>
                         <CardFooter>
-                          <p className='text-xs font-code text-primary'>Click to see more</p>
+                           <Button variant="default" size="sm" className="font-code text-xs w-full">
+                            Click to see more
+                          </Button>
                         </CardFooter>
                       </Card>
                     </div>
