@@ -11,6 +11,7 @@ const ALLOWED_FILES = [
   'creative-skills.json',
   'experiences.json',
   'social-links.json',
+  'activities.json',
 ];
 
 export async function GET(request: Request) {

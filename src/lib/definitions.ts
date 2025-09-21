@@ -72,3 +72,11 @@ export type SocialLink = {
   icon: string;
   isVisible: boolean;
 };
+
+export type Activity = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  isVisible: boolean;
+};
