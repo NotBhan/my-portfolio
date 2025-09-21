@@ -21,7 +21,7 @@ const StatIcon = ({ name }: { name: string }) => {
 export default async function Stats() {
     const stats: Stat[] = await getStats();
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {stats.map((stat) => (
         <BentoCard key={stat.id} className="p-4 items-center justify-center flex-row gap-4">
           <StatIcon name={stat.icon} />
