@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import AdminDashboardLayout from './(main)/layout';
 
 export const metadata: Metadata = {
     title: 'Admin',
@@ -10,5 +11,5 @@ export default function AdminRootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <>{children}</>;
+    return <AdminDashboardLayout>{children}</AdminDashboardLayout>;
 }
