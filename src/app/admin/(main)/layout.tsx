@@ -10,7 +10,7 @@ export default function AdminLayout({
         <header className="flex items-center justify-between p-4 border-b">
           <h1 className="text-lg font-semibold">Admin Panel</h1>
         </header>
-        <main className="p-4">{children}</main>
+        <main className="p-4 sm:p-6 md:p-8">{children}</main>
         <Toaster />
     </div>
   );
