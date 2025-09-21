@@ -43,3 +43,8 @@ export type Profile = {
   description: string;
   profilePictureUrl?: string;
 };
+
+export type CreativeSkill = {
+  id: string;
+  name: string;
+};

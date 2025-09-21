@@ -7,6 +7,7 @@ import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
+import CreativeSkills from '@/components/sections/creative-skills';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
           <div className="md:col-span-1 row-span-2 flex flex-col gap-4">
               <Projects />
               <Activities />
+              <CreativeSkills />
               <Testimonials />
           </div>
           <div className="md:col-span-3">
