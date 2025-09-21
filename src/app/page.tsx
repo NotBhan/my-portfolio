@@ -11,7 +11,7 @@ import CreativeSkills from '@/components/sections/creative-skills';
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12 lg:p-16">
+    <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
       <div className="w-full max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-3">
@@ -21,11 +21,11 @@ export default function Home() {
             <Hero />
           </div>
           <Projects />
-          <CreativeSkills />
-          <Testimonials />
           <div className="lg:col-span-3">
             <Experiences />
           </div>
+          <CreativeSkills />
+          <Testimonials />
           <div className="lg:col-span-2">
             <Skills />
           </div>
