@@ -25,8 +25,11 @@ export default async function Home() {
         <div className="md:col-span-2 lg:col-span-3">
           <Hero />
         </div>
-        <div className="row-span-2">
-          <Skills />
+        <div className="row-span-2 md:col-span-2 lg:col-span-1">
+          <div className="flex flex-col gap-4">
+            <Projects />
+            <Skills />
+          </div>
         </div>
         <div className="md:col-span-2 lg:col-span-3">
           <Experiences />
@@ -37,9 +40,6 @@ export default async function Home() {
             <CreativeSkills />
           </div>
         )}
-        <div className="md:col-span-2 lg:col-span-1">
-          <Projects />
-        </div>
 
         <div className="row-span-2">
           <Testimonials />
