@@ -13,11 +13,11 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12 lg:p-16">
       <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="md:col-span-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-3">
             <Stats />
           </div>
-          <div className="md:col-span-2">
+          <div className="lg:col-span-2">
             <Hero />
           </div>
           <div className="flex flex-col gap-4">
@@ -25,16 +25,16 @@ export default function Home() {
               <CreativeSkills />
               <Testimonials />
           </div>
-          <div className="md:col-span-3">
+          <div className="lg:col-span-3">
             <Experiences />
           </div>
-          <div className="md:col-span-2">
+          <div className="lg:col-span-2">
             <Skills />
           </div>
           <div>
             <About />
           </div>
-           <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+           <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
             <Activities />
             <Contact />
           </div>
