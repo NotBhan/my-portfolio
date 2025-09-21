@@ -1,6 +1,7 @@
+
 import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
-import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram, User } from 'lucide-react';
 import ThemeToggle from '../theme-toggle';
 import { getProfile } from '@/lib/data';
 import Image from 'next/image';
@@ -9,7 +10,14 @@ export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <BentoCard>
+    <BentoCard
+      title={
+        <div className="flex items-center gap-2">
+          <User className="h-4 w-4 text-muted-foreground" />
+          <h3 className="text-sm font-semibold">My Details</h3>
+        </div>
+      }
+    >
       <div className="flex flex-col h-full">
         <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="relative shrink-0 group">
