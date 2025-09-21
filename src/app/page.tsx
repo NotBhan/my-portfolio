@@ -20,19 +20,45 @@ export default async function Home() {
   const showAbout = socialLinks.length > 0;
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center p-4">
-      <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2"><Hero /></div>
-          <div className="row-span-2"><Skills /></div>
-          <div className="lg:col-span-2"><Experiences /></div>
-          <div className="lg:col-span-2"><Projects /></div>
-          <div className="row-span-2"><Testimonials /></div>
-          {showAbout && <div className="lg:col-span-1"><About /></div>}
-          <div className="lg:col-span-1"><Contact /></div>
-          {showCreativeSkills && <div className="lg:col-span-1"><CreativeSkills /></div>}
-          {showActivities && <div className="lg:col-span-1"><Activities /></div>}
+    <main className="container mx-auto p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="md:col-span-2 lg:col-span-3">
+          <Hero />
         </div>
+        <div className="row-span-2">
+          <Skills />
+        </div>
+        <div className="md:col-span-2 lg:col-span-3">
+          <Experiences />
+        </div>
+
+        {showCreativeSkills && (
+          <div className="lg:col-span-1">
+            <CreativeSkills />
+          </div>
+        )}
+        <div className="md:col-span-2 lg:col-span-1">
+          <Projects />
+        </div>
+
+        <div className="row-span-2">
+          <Testimonials />
+        </div>
+
+        {showAbout && (
+          <div className="lg:col-span-1">
+            <About />
+          </div>
+        )}
+        <div className="lg:col-span-1">
+          <Contact />
+        </div>
+
+        {showActivities && (
+          <div className="lg:col-span-1">
+            <Activities />
+          </div>
+        )}
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
         <p>
