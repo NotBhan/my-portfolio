@@ -12,6 +12,7 @@ export default function Contact() {
           <h3 className="text-sm font-semibold">Let's Work Together</h3>
         </div>
       }
+      showButtons={true}
     >
       <div className="flex flex-col justify-center items-center text-center flex-1">
         <p className="text-muted-foreground text-sm mb-6">
