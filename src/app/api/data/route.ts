@@ -2,11 +2,21 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
+const ALLOWED_FILES = [
+  'projects.json',
+  'skills.json',
+  'testimonials.json',
+  'stats.json',
+  'profile.json',
+  'creative-skills.json',
+  'experiences.json',
+];
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const file = searchParams.get('file');
 
-  if (!file || !['projects.json', 'skills.json', 'testimonials.json', 'stats.json', 'profile.json', 'creative-skills.json'].includes(file)) {
+  if (!file || !ALLOWED_FILES.includes(file)) {
     return NextResponse.json({ error: 'Invalid file requested' }, { status: 400 });
   }
 
@@ -24,7 +34,7 @@ export async function POST(request: Request) {
     const { searchParams } = new URL(request.url);
     const file = searchParams.get('file');
   
-    if (!file || !['projects.json', 'skills.json', 'testimonials.json', 'stats.json', 'profile.json', 'creative-skills.json'].includes(file)) {
+    if (!file || !ALLOWED_FILES.includes(file)) {
       return NextResponse.json({ error: 'Invalid file specified' }, { status: 400 });
     }
   

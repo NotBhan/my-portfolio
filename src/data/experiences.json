@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "title": "Software Engineer",
+    "company": "Tech Solutions Inc.",
+    "duration": "Jan 2022 - Present",
+    "description": "Developing and maintaining web applications using React, Node.js, and TypeScript. Collaborating with cross-functional teams to deliver high-quality software.",
+    "isVisible": true
+  },
+  {
+    "id": "2",
+    "title": "Junior Developer",
+    "company": "Web Innovations LLC",
+    "duration": "Jun 2020 - Dec 2021",
+    "description": "Assisted in the development of client websites, focusing on front-end features and responsive design using HTML, CSS, and JavaScript.",
+    "isVisible": true
+  }
+]

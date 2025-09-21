@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import type { Project, SkillCategory, Testimonial, Stat, Profile, CreativeSkill } from './definitions';
+import type { Project, SkillCategory, Testimonial, Stat, Profile, CreativeSkill, Experience } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
 const dataFilePath = (filename: string) => path.join(process.cwd(), 'src', 'data', filename);
@@ -49,6 +49,7 @@ async function readDataArray<T>(filename: string): Promise<T[]> {
 
 
 export const getProjects = () => readDataArray<Project>('projects.json');
+export const getExperiences = () => readDataArray<Experience>('experiences.json');
 export const getSkills = () => readDataArray<SkillCategory>('skills.json');
 export const getTestimonials = () => readDataArray<Testimonial>('testimonials.json');
 export const getStats = () => readDataArray<Stat>('stats.json');

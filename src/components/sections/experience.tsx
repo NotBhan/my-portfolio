@@ -1,9 +1,9 @@
 import { Briefcase } from 'lucide-react';
 import BentoCard from '../bento-card';
-import { getProjects } from '@/lib/data';
+import { getExperiences } from '@/lib/data';
 
 export default async function Experiences() {
-  const allExperiences = await getProjects();
+  const allExperiences = await getExperiences();
   const experiences = allExperiences.filter((e) => e.isVisible);
 
   return (
@@ -21,7 +21,13 @@ export default async function Experiences() {
         <div className="space-y-4">
           {experiences.map((exp) => (
             <div key={exp.id} className="p-3 bg-muted/50 rounded-lg">
-              <h4 className="font-semibold text-sm">{exp.title}</h4>
+              <div className="flex justify-between items-start">
+                <div>
+                    <h4 className="font-semibold text-sm">{exp.title}</h4>
+                    <p className="text-xs text-muted-foreground">{exp.company}</p>
+                </div>
+                <p className="text-xs text-muted-foreground text-right shrink-0">{exp.duration}</p>
+              </div>
               <p className="text-xs text-muted-foreground mt-1">{exp.description}</p>
             </div>
           ))}
@@ -29,7 +35,7 @@ export default async function Experiences() {
       ) : (
         <div className="flex items-center justify-center h-full">
             <p className="text-muted-foreground text-center font-mono text-sm">
-                Error 404 - No Experiences Found
+                No Experiences Found Yet.
             </p>
         </div>
       )}

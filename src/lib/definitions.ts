@@ -7,6 +7,15 @@ export type Project = {
   isVisible: boolean;
 };
 
+export type Experience = {
+  id: string;
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+  isVisible: boolean;
+};
+
 export type Skill = {
   name: string;
   level: number;
