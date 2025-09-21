@@ -23,22 +23,22 @@ export default function Home() {
           <div className="lg:col-span-1 order-first lg:order-none">
             <Projects />
           </div>
-          <div className="lg:col-span-1">
-            <CreativeSkills />
-          </div>
           <div className="lg:col-span-2">
             <Experiences />
           </div>
           <div className="lg:col-span-1">
-            <Testimonials />
+            <CreativeSkills />
           </div>
           <div className="lg:col-span-2">
             <Skills />
           </div>
           <div className="lg:col-span-1">
+            <Testimonials />
+          </div>
+          <div className="lg:col-span-1">
             <About />
           </div>
-          <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
              <div className="block lg:hidden">
               <Stats />
             </div>
