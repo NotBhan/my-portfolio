@@ -1,3 +1,4 @@
+
 [
   {
     "id": "1",
@@ -10,7 +11,7 @@
     "id": "2",
     "name": "Discord",
     "url": "#",
-    "icon": "MessageCircle",
+    "icon": "Slack",
     "isVisible": true
   },
   {
