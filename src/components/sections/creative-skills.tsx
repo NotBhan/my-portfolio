@@ -17,9 +17,9 @@ export default async function CreativeSkills() {
       }
     >
       {creativeSkills.length > 0 ? (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           {creativeSkills.map((skill) => (
-            <Badge key={skill.id} variant="secondary">
+            <Badge key={skill.id} variant="secondary" className="flex-grow text-center justify-center">
               {skill.name}
             </Badge>
           ))}
