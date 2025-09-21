@@ -106,6 +106,14 @@ export default function ProfileForm({ profile: initialProfile }: { profile: Prof
           />
         </div>
         <div className="space-y-2">
+            <Label htmlFor="profile-education">Education</Label>
+            <Input
+                id="profile-education"
+                value={profile.education || ''}
+                onChange={(e) => handleProfileChange('education', e.target.value)}
+            />
+        </div>
+        <div className="space-y-2">
           <Label htmlFor="profile-description">Description</Label>
           <Textarea
             id="profile-description"

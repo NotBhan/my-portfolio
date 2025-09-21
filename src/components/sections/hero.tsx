@@ -1,7 +1,7 @@
 
 import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
-import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram, User } from 'lucide-react';
+import { Briefcase, Download, Globe, MapPin, Mail, Github, Linkedin, Instagram, User, School } from 'lucide-react';
 import ThemeToggle from '../theme-toggle';
 import { getProfile } from '@/lib/data';
 import Image from 'next/image';
@@ -64,6 +64,12 @@ export default async function Hero() {
                 <Globe className="h-4 w-4" />
                 <span>{profile.languages || 'English, Hindi'}</span>
             </div>
+             {profile.education && (
+              <div className="flex items-center gap-2">
+                  <School className="h-4 w-4" />
+                  <span>{profile.education}</span>
+              </div>
+            )}
             <div className="flex items-center gap-2">
                 <Briefcase className="h-4 w-4" />
                 <span>{profile.role || 'Software Engineer'}</span>

@@ -50,6 +50,7 @@ export type Profile = {
   location: string;
   languages: string;
   role: string;
+  education?: string;
   email: string;
   github: string;
   linkedin: string;
