@@ -21,7 +21,8 @@ import {
   MessageSquare,
   Star,
   User,
-  History
+  History,
+  Share2
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -41,6 +42,11 @@ const navItems = [
     href: '/admin/edit/testimonials',
     label: 'Testimonials',
     icon: MessageSquare,
+  },
+  {
+    href: '/admin/edit/social-links',
+    label: 'Social Links',
+    icon: Share2,
   },
 ];
 

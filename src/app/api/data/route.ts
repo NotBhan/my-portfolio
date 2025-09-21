@@ -10,6 +10,7 @@ const ALLOWED_FILES = [
   'profile.json',
   'creative-skills.json',
   'experiences.json',
+  'social-links.json',
 ];
 
 export async function GET(request: Request) {

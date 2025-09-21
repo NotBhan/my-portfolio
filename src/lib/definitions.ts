@@ -63,3 +63,11 @@ export type CreativeSkill = {
   name: string;
   isVisible: boolean;
 };
+
+export type SocialLink = {
+  id: string;
+  name: string;
+  url: string;
+  icon: string;
+  isVisible: boolean;
+};
