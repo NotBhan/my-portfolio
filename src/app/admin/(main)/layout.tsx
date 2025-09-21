@@ -65,8 +65,9 @@ export default function AdminDashboardLayout({
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.label}>
-                <Link href={item.href} legacyBehavior passHref>
+                <Link href={item.href} passHref>
                   <SidebarMenuButton
+                    as="a"
                     isActive={pathname === item.href}
                     tooltip={item.label}
                   >
@@ -81,8 +82,8 @@ export default function AdminDashboardLayout({
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem>
-              <Link href="/" passHref legacyBehavior>
-                <SidebarMenuButton tooltip="Back to Home">
+              <Link href="/" passHref>
+                <SidebarMenuButton as="a" tooltip="Back to Home">
                   <Home />
                   <span>Back to Home</span>
                 </SidebarMenuButton>
