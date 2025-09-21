@@ -17,36 +17,46 @@ export default function Home() {
           <div className="lg:col-span-3 hidden lg:block">
             <Stats />
           </div>
-          <div className="lg:col-span-2 order-1 lg:order-none">
+          
+          <div className="lg:col-span-2 order-1 lg:order-auto">
             <Hero />
           </div>
-          <div className="lg:col-span-2 order-2 lg:order-none">
+          
+          <div className="lg:col-span-2 order-2 lg:order-auto">
             <Experiences />
           </div>
-          <div className="lg:col-span-1 order-3 lg:order-none">
+          
+          <div className="lg:col-span-1 order-3 lg:order-3">
             <Projects />
           </div>
-          <div className="lg:col-span-1 order-4 lg:order-none">
+          
+          <div className="lg:col-span-1 order-4 lg:order-2">
             <Skills />
           </div>
-          <div className="lg:col-span-1 order-5 block lg:hidden">
-              <Stats />
+          
+          <div className="order-5 block lg:hidden">
+            <Stats />
           </div>
+          
           <div className="lg:col-span-2 order-6 lg:order-none">
             <Testimonials />
           </div>
-          <div className="lg:col-span-2 order-7 lg:order-none grid grid-cols-2 md:grid-cols-2 gap-4">
-            <Activities />
-            <CreativeSkills />
+
+          <div className="lg:col-span-2 order-7 lg:order-none grid grid-cols-2 gap-4">
+            <div className="col-span-1">
+              <Activities />
+            </div>
+            <div className="col-span-1">
+              <CreativeSkills />
+            </div>
           </div>
-          <div className="lg:col-span-1 order-8 lg:order-none hidden lg:block">
-            <CreativeSkills />
-          </div>
+          
           <div className="lg:col-span-1 order-9 lg:order-none hidden lg:block">
             <About />
           </div>
+          
           <div className="lg:col-span-2 order-10 lg:order-none grid grid-cols-1 md:grid-cols-2 gap-4">
-             <div className="block lg:hidden">
+            <div className="block lg:hidden col-span-1 md:col-span-1">
               <About />
             </div>
             <div className="col-span-1 md:col-span-1">
