@@ -55,19 +55,19 @@ export default function AdminLayout({
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton href="#">
+              <SidebarMenuButton href="/admin/edit/projects">
                 <FolderKanban />
                 Projects
               </SidebarMenuButton>
             </SidebarMenuItem>
              <SidebarMenuItem>
-              <SidebarMenuButton href="#">
+              <SidebarMenuButton href="/admin/edit/skills">
                 <Star />
                 Skills
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton href="#">
+              <SidebarMenuButton href="/admin/edit/testimonials">
                 <MessageSquare />
                 Testimonials
               </SidebarMenuButton>
