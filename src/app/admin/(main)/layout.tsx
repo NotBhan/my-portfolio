@@ -10,7 +10,6 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarFooter,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
@@ -96,7 +95,7 @@ export default function AdminDashboardLayout({
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
-        <SidebarContent>
+        <SidebarContent className="p-4">
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.label}>
