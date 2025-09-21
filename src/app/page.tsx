@@ -35,10 +35,10 @@ export default async function Home() {
         <div className="lg:col-span-1 flex flex-col gap-4">
           <Projects />
           <Skills />
+          {showAbout && <About />}
         </div>
         <div className="lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:col-span-4">
-                {showAbout && <div className="lg:col-span-1"><About /></div>}
                 <div className="lg:col-span-1"><Contact /></div>
                 {showActivities && <div className="lg:col-span-2"><Activities /></div>}
             </div>
