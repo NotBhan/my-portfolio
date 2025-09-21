@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "category": "Web Development",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "level": 0.6,
+        "isVisible": true
+      },
+      {
+        "name": "TailwindCSS",
+        "level": 1.2,
+        "isVisible": true
+      },
+      {
+        "name": "NextJS",
+        "level": 0.6,
+        "isVisible": true
+      }
+    ]
+  }
+]

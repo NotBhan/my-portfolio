@@ -22,32 +22,16 @@ export default async function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center p-4">
       <div className="w-full max-w-6xl">
-        {/* Small Screen Layout */}
-        <div className="grid grid-cols-1 gap-4 md:hidden">
-          <Hero />
-          <Experiences />
-          <Projects />
-          <Skills />
-          <Testimonials />
-          {showActivities && <Activities />}
-          {showCreativeSkills && <CreativeSkills />}
-          {showAbout && <About />}
-          <Contact />
-        </div>
-
-        {/* Large Screen Layout */}
-        <div className="hidden md:grid grid-cols-4 auto-rows-fr gap-4">
-            <div className="col-span-2 row-span-2"><Hero /></div>
-            <div className="col-span-1 row-span-2"><Skills /></div>
-            <div className="col-span-1 row-span-2"><Testimonials /></div>
-            
-            <div className="col-span-2 row-span-2"><Experiences /></div>
-            <div className="col-span-2 row-span-2"><Projects /></div>
-
-            {showActivities && <div className="col-span-1 row-span-1"><Activities /></div>}
-            {showCreativeSkills && <div className="col-span-1 row-span-1"><CreativeSkills /></div>}
-            {showAbout && <div className="col-span-1 row-span-1"><About /></div>}
-            <div className="col-span-1 row-span-1"><Contact /></div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="sm:col-span-2 lg:col-span-2 xl:col-span-2"><Hero /></div>
+          <div className="sm:col-span-1 lg:col-span-1 xl:col-span-1"><Skills /></div>
+          <div className="sm:col-span-1 lg:col-span-1 xl:col-span-1"><Testimonials /></div>
+          <div className="sm:col-span-2 lg:col-span-2 xl:col-span-2"><Experiences /></div>
+          <div className="sm:col-span-2 lg:col-span-2 xl:col-span-2"><Projects /></div>
+          {showActivities && <div className="sm:col-span-1 lg:col-span-1 xl:col-span-1"><Activities /></div>}
+          {showCreativeSkills && <div className="sm:col-span-1 lg:col-span-1 xl:col-span-1"><CreativeSkills /></div>}
+          {showAbout && <div className="sm:col-span-1 lg:col-span-1 xl:col-span-1"><About /></div>}
+          <div className="sm:col-span-1 lg:col-span-1 xl:col-span-1"><Contact /></div>
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
