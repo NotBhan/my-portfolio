@@ -13,7 +13,7 @@ export default function BentoCard({ children, className, title, as: Component = 
   return (
     <Component
       className={cn(
-        'relative flex w-full flex-col rounded-xl border bg-card/90 dark:bg-card/50 backdrop-blur-sm text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1',
+        'relative flex w-full flex-col rounded-xl border bg-card/90 dark:bg-card/70 backdrop-blur-sm text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1',
         className
       )}
     >
