@@ -3,12 +3,16 @@ import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
 import { getSocialLinks } from '@/lib/data';
 import Link from 'next/link';
+import DiscordIcon from '../icons/discord-icon';
 
 function isLucideIcon(key: string): key is keyof typeof LucideIcons {
   return key in LucideIcons;
 }
 
 const SocialIcon = ({ name, className }: { name: string; className?: string }) => {
+  if (name === 'Discord') {
+    return <DiscordIcon className={className} />;
+  }
   if (isLucideIcon(name)) {
     const Icon = LucideIcons[name] as React.ElementType;
     return <Icon className={className} />;

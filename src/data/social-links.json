@@ -11,7 +11,7 @@
     "id": "2",
     "name": "Discord",
     "url": "#",
-    "icon": "Slack",
+    "icon": "Discord",
     "isVisible": true
   },
   {
@@ -19,6 +19,13 @@
     "name": "Facebook",
     "url": "#",
     "icon": "Facebook",
+    "isVisible": true
+  },
+  {
+    "id": "4",
+    "name": "Pinterest",
+    "url": "#",
+    "icon": "Pinterest",
     "isVisible": true
   }
 ]
