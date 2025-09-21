@@ -32,10 +32,21 @@ export default async function Home() {
           <Skills />
           <Stats />
           <Testimonials />
-          <Activities />
-          <CreativeSkills />
-          <About />
-          <Contact />
+          <div
+            className={cn(
+              'grid grid-cols-1 gap-4',
+              showActivities && showCreativeSkills && 'md:grid-cols-2'
+            )}
+          >
+            {showActivities && <Activities />}
+            {showCreativeSkills && <CreativeSkills />}
+          </div>
+          <div
+            className={cn('grid grid-cols-1 gap-4', showAbout && 'md:grid-cols-2')}
+          >
+            {showAbout && <About />}
+            <Contact />
+          </div>
         </div>
 
         {/* Large Screen Layout */}
