@@ -1,4 +1,3 @@
-import BentoCard from '@/components/bento-card';
 import {
   getProfile,
   getProjects,
@@ -14,6 +13,7 @@ import SkillsForm from './(main)/edit/skills/skills-form';
 import TestimonialsForm from './(main)/edit/testimonials/testimonials-form';
 import StatsForm from './(main)/edit/stats/stats-form';
 import CreativeSkillsForm from './(main)/edit/creative-skills/creative-skills-form';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default async function AdminPage() {
   const profile = await getProfile();
@@ -23,31 +23,27 @@ export default async function AdminPage() {
   const stats = await getStats();
   const creativeSkills = await getCreativeSkills();
 
+  const sections = [
+    { title: 'Edit Profile', component: <ProfileForm profile={profile} /> },
+    { title: 'Edit Stats', component: <StatsForm stats={stats} /> },
+    { title: 'Edit Projects', component: <ProjectForm projects={projects} /> },
+    { title: 'Edit Skills', component: <SkillsForm skills={skills} /> },
+    { title: 'Edit Creative Skills', component: <CreativeSkillsForm creativeSkills={creativeSkills} /> },
+    { title: 'Edit Testimonials', component: <TestimonialsForm testimonials={testimonials} /> },
+  ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <BentoCard title="Edit Profile" className="lg:col-span-2">
-        <ProfileForm profile={profile} />
-      </BentoCard>
-
-      <BentoCard title="Edit Stats">
-        <StatsForm stats={stats} />
-      </BentoCard>
-
-      <BentoCard title="Edit Projects" className="lg:col-span-3">
-        <ProjectForm projects={projects} />
-      </BentoCard>
-
-      <BentoCard title="Edit Skills" className="lg:col-span-2">
-        <SkillsForm skills={skills} />
-      </BentoCard>
-
-      <BentoCard title="Edit Creative Skills">
-        <CreativeSkillsForm creativeSkills={creativeSkills} />
-      </BentoCard>
-
-      <BentoCard title="Edit Testimonials" className="lg:col-span-3">
-        <TestimonialsForm testimonials={testimonials} />
-      </BentoCard>
+    <div className="space-y-6">
+      {sections.map((section, index) => (
+        <Card key={index}>
+          <CardHeader>
+            <CardTitle>{section.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {section.component}
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }
