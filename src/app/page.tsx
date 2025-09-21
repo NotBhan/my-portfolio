@@ -2,7 +2,7 @@ import About from '@/components/sections/about';
 import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
 import Hero from '@/components/sections/hero';
-import Experiences from '@/components/sections/partners';
+import Experiences from '@/components/sections/experience';
 import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
 import Stats from '@/components/sections/stats';

@@ -11,7 +11,7 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
-import { LayoutDashboard, User, FolderKanban, Star, MessageSquare, BarChart3, LogOut } from 'lucide-react';
+import { LayoutDashboard, User, FolderKanban, Star, MessageSquare, BarChart3, Settings } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export const metadata: Metadata = {
@@ -80,12 +80,10 @@ export default function AdminLayout({
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
-          <form action="/api/auth/logout" method="post" className="w-full">
-            <SidebarMenuButton type="submit">
-              <LogOut />
-              Logout
+            <SidebarMenuButton href="/">
+              <Settings />
+              Go to Site
             </SidebarMenuButton>
-          </form>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>

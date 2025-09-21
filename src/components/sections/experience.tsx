@@ -28,7 +28,7 @@ export default async function Experiences() {
       ) : (
         <div className="flex items-center justify-center h-full">
             <p className="text-muted-foreground text-center font-mono text-sm">
-                404 - No Experiences Found
+                Error 404 - No Experiences Found
             </p>
         </div>
       )}

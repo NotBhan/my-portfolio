@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Admin Login',
-    description: 'Login to manage your portfolio.',
+    title: 'Admin',
+    description: 'Manage your portfolio.',
 };
 
 export default function AdminRootLayout({
