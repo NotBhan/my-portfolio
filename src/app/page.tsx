@@ -9,7 +9,6 @@ import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 import CreativeSkills from '@/components/sections/creative-skills';
 import { getCreativeSkills, getSocialLinks } from '@/lib/data';
-import { cn } from '@/lib/utils';
 
 export default async function Home() {
   const allCreativeSkills = await getCreativeSkills();
@@ -17,7 +16,7 @@ export default async function Home() {
   const allSocialLinks = await getSocialLinks();
   const socialLinks = allSocialLinks.filter((link) => link.isVisible);
 
-  const showActivities = true; // This can be replaced with actual logic later
+  const showActivities = true;
   const showCreativeSkills = creativeSkills.length > 0;
   const showAbout = socialLinks.length > 0;
 
@@ -38,37 +37,37 @@ export default async function Home() {
           <Contact />
         </div>
 
-        {/* Large Screen Layout */}
-        <div className="hidden lg:grid grid-cols-4 auto-rows-min gap-4">
-          <div className="col-span-2 row-span-2">
+        {/* Large Screen Layout - New Bento Design */}
+        <div className="hidden lg:grid grid-cols-4 grid-rows-5 gap-4">
+          <div className="col-span-4">
+            <Stats />
+          </div>
+          <div className="col-span-3 row-span-2">
             <Hero />
           </div>
-          <div className="col-span-2 row-span-3">
-            <Experiences />
-          </div>
-          <div className="col-span-2 row-span-2">
-            <Projects />
-          </div>
-          <div className="col-span-2 row-span-2">
+          <div className="col-span-1 row-span-2">
             <Skills />
           </div>
           <div className="col-span-4">
-            <Stats />
+            <Projects />
+          </div>
+          <div className="col-span-2">
+            <Experiences />
           </div>
           <div className="col-span-2 row-span-2">
             <Testimonials />
           </div>
-          <div className="col-span-2">
+          <div className="col-span-1">
+            {showAbout && <About />}
+          </div>
+          <div className="col-span-1">
+            <Contact />
+          </div>
+          <div className="col-span-1">
             {showActivities && <Activities />}
           </div>
-          <div className="col-span-2">
+          <div className="col-span-1">
             {showCreativeSkills && <CreativeSkills />}
-          </div>
-          <div className="col-span-2">
-           {showAbout && <About />}
-          </div>
-          <div className="col-span-2">
-            <Contact />
           </div>
         </div>
       </div>
