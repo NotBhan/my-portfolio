@@ -32,80 +32,42 @@ export default async function Home() {
           <Skills />
           <Stats />
           <Testimonials />
-          <div
-            className={cn('grid grid-cols-1 gap-4', {
-              'md:grid-cols-2': showActivities && showCreativeSkills,
-            })}
-          >
-            {showActivities && (
-              <div
-                className={cn({
-                  'md:col-span-2': !showCreativeSkills,
-                })}
-              >
-                <Activities />
-              </div>
-            )}
-            {showCreativeSkills && (
-              <div
-                className={cn({
-                  'md:col-span-2': !showActivities,
-                })}
-              >
-                <CreativeSkills />
-              </div>
-            )}
-          </div>
-          <div
-            className={cn('grid grid-cols-1 gap-4', {
-              'md:grid-cols-2': showAbout,
-            })}
-          >
-            {showAbout && (
-              <div
-                className={cn({
-                  'md:col-span-2': true,
-                })}
-              >
-                <About />
-              </div>
-            )}
-            <div className="md:col-span-2">
-              <Contact />
-            </div>
-          </div>
+          <Activities />
+          <CreativeSkills />
+          <About />
+          <Contact />
         </div>
 
         {/* Large Screen Layout */}
-        <div className="hidden lg:grid grid-cols-4 grid-rows-5 gap-4">
+        <div className="hidden lg:grid grid-cols-4 grid-rows-[repeat(5,minmax(0,auto))] gap-4">
           <div className="col-span-2 row-span-2">
             <Hero />
           </div>
-          <div className="col-span-2 row-span-2">
+          <div className="col-span-2 row-span-3">
             <Experiences />
           </div>
-          <div className="col-span-1 row-span-1">
+          <div className="col-span-2 row-span-2">
             <Projects />
           </div>
-          <div className="col-span-1 row-span-2">
+          <div className="col-span-2 row-span-2">
             <Skills />
           </div>
-          <div className="col-span-2 row-span-1">
+          <div className="col-span-4">
             <Stats />
           </div>
-          <div className="col-span-1 row-span-1">
+          <div className="col-span-2 row-span-2">
             <Testimonials />
           </div>
-          <div className="col-span-1 row-span-1">
+          <div className="col-span-2">
             <Activities />
           </div>
-          <div className="col-span-1 row-span-1">
+          <div className="col-span-2">
             <CreativeSkills />
           </div>
-          <div className="col-span-1 row-span-1">
+          <div className="col-span-2">
             <About />
           </div>
-          <div className="col-span-1 row-span-1">
+          <div className="col-span-2">
             <Contact />
           </div>
         </div>
