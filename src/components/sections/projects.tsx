@@ -103,7 +103,7 @@ export default function Projects() {
                         </CardContent>
                         <CardFooter>
                           <Button variant="default" size="sm" className="w-full font-code text-xs">
-                            View more
+                            View details
                           </Button>
                         </CardFooter>
                       </Card>
