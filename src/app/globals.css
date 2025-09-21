@@ -77,8 +77,8 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 2rem 2rem;
   }
 
