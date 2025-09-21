@@ -38,7 +38,7 @@ export default async function Home() {
         </div>
 
         {/* Large Screen Layout - New Bento Design */}
-        <div className="hidden md:grid grid-cols-4 gap-4">
+        <div className="hidden md:grid grid-cols-4 auto-rows-min gap-4">
           <div className="col-span-3 row-span-2">
             <Hero />
           </div>
@@ -59,8 +59,10 @@ export default async function Home() {
           </div>
           {showActivities && <div className="col-span-1"><Activities /></div>}
           {showCreativeSkills && <div className="col-span-1"><CreativeSkills /></div>}
-          {showAbout && <div className="col-span-1"><About /></div>}
-          <div className="col-span-1"><Contact /></div>
+          <div className="col-span-2 grid grid-cols-2 gap-4">
+            {showAbout && <div className="col-span-1"><About /></div>}
+            <div className="col-span-1"><Contact /></div>
+          </div>
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
