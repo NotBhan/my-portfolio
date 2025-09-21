@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react';
 
 export default function Spotlight() {
   const [position, setPosition] = useState({ x: -200, y: -200 });
+  const [isMounted, setIsMounted] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
+    setIsMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -20,7 +22,11 @@ export default function Spotlight() {
   }, []);
 
   const spotlightColor =
-    theme === 'light' ? 'rgba(63, 81, 181, 0.2)' : 'rgba(63, 81, 181, 0.1)';
+    theme === 'light' ? 'rgba(63, 81, 181, 0.4)' : 'rgba(63, 81, 181, 0.1)';
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div
