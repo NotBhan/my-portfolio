@@ -23,25 +23,25 @@ export default async function Home() {
     <main className="container mx-auto p-4">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <div className="lg:col-span-3">
-            <div className="flex flex-col gap-4">
-                <Hero />
-                <Experiences />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {showCreativeSkills && <CreativeSkills />}
-                    <Testimonials />
-                </div>
+          <div className="flex flex-col gap-4">
+            <Hero />
+            <Experiences />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-4">
+                {showCreativeSkills && <CreativeSkills />}
+                {showActivities && <Activities />}
+              </div>
+              <div className="flex flex-col gap-4">
+                <Testimonials />
+                <Contact />
+              </div>
             </div>
+          </div>
         </div>
         <div className="lg:col-span-1 flex flex-col gap-4">
           <Projects />
           <Skills />
           {showAbout && <About />}
-        </div>
-        <div className="lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:col-span-4">
-                <div className="lg:col-span-1"><Contact /></div>
-                {showActivities && <div className="lg:col-span-2"><Activities /></div>}
-            </div>
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
