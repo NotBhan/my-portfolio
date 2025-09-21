@@ -53,14 +53,14 @@ export default async function Projects() {
                         </CardContent>
                         <CardFooter className='gap-4'>
                         {project.link && (
-                          <Button variant="link" asChild className="p-0 h-auto font-code text-xs">
+                          <Button variant="secondary" size="sm" asChild className="font-code text-xs">
                               <a href={project.link} target="_blank" rel="noopener noreferrer">
                               Source Code <ArrowRight className="ml-1 h-3 w-3" />
                               </a>
                           </Button>
                         )}
                          {project.liveLink && (
-                          <Button variant="link" asChild className="p-0 h-auto font-code text-xs">
+                          <Button variant="default" size="sm" asChild className="font-code text-xs">
                               <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
                               Live Link <ArrowRight className="ml-1 h-3 w-3" />
                               </a>

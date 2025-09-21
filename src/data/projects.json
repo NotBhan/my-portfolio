@@ -5,7 +5,8 @@
     "description": "An AI powered localized platform for students to use and prepare for exams.",
     "image": "https://picsum.photos/seed/placeholder/400/250",
     "link": "github.com",
-    "isVisible": true
+    "isVisible": true,
+    "liveLink": "https://www.google.com"
   },
   {
     "id": "2",
