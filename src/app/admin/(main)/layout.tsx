@@ -10,8 +10,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
+  SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import {
   Briefcase,
@@ -47,18 +47,17 @@ export default function AdminDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { toast } = useToast();
   const pathname = usePathname();
 
   return (
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader>
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg font-semibold group-data-[collapsible=icon]:hidden">
-              Admin Panel
+          <div className="flex h-10 items-center gap-2 p-2">
+            <Briefcase className="h-6 w-6 text-primary" />
+            <h2 className="text-xl font-bold group-data-[collapsible=icon]:hidden">
+              Portfolio
             </h2>
-            <SidebarTrigger />
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -70,8 +69,9 @@ export default function AdminDashboardLayout({
                     as="a"
                     isActive={pathname === item.href}
                     tooltip={item.label}
+                    className="justify-start"
                   >
-                    <item.icon />
+                    <item.icon className="h-5 w-5" />
                     <span>{item.label}</span>
                   </SidebarMenuButton>
                 </Link>
@@ -80,14 +80,21 @@ export default function AdminDashboardLayout({
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
+          <SidebarSeparator />
           <SidebarMenu>
             <SidebarMenuItem>
               <Link href="/" passHref>
-                <SidebarMenuButton as="a" tooltip="Back to Home">
-                  <Home />
+                <SidebarMenuButton as="a" tooltip="Back to Home" className="justify-start">
+                  <Home className="h-5 w-5" />
                   <span>Back to Home</span>
                 </SidebarMenuButton>
               </Link>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+                <SidebarTrigger className="w-full justify-start">
+                    <User className="h-5 w-5" />
+                    <span>Collapse</span>
+                </SidebarTrigger>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
