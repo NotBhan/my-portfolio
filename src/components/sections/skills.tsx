@@ -23,7 +23,6 @@ export default async function Skills() {
         </div>
       }
       className="h-full"
-      showButtons={true}
     >
       <ScrollArea className="h-full">
         <div className="space-y-6 pr-4">
