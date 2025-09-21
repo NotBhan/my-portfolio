@@ -21,58 +21,121 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto p-4">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div className="lg:col-span-3">
-          <div className="flex flex-col gap-4">
+      <div className="flex flex-col lg:grid lg:grid-cols-4 lg:gap-4">
+        {/* Mobile and Tablet Layout (Flexbox) */}
+        <div className="flex flex-col gap-4 lg:hidden">
+          <div
+            className="order-1 animate-slide-in-down opacity-0"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            <Hero />
+          </div>
+          <div
+            className="order-2 animate-slide-in-up opacity-0"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            <Experiences />
+          </div>
+          <div
+            className="order-3 animate-slide-in-up opacity-0"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            <Skills />
+          </div>
+          <div
+            className="order-4 animate-slide-in-up opacity-0"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            <Projects />
+          </div>
+          <div
+            className="order-5 animate-slide-in-right opacity-0"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            <Testimonials />
+          </div>
+          {showCreativeSkills && (
             <div
-              className="animate-slide-in-down opacity-0"
-              style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+              className="order-6 animate-slide-in-left opacity-0"
+              style={{ animationFillMode: 'forwards' }}
             >
-              <Hero />
+              <CreativeSkills />
             </div>
+          )}
+          {showActivities && (
             <div
-              className="animate-slide-in-up opacity-0"
-              style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
+              className="order-7 animate-slide-in-left opacity-0"
+              style={{ animationFillMode: 'forwards' }}
             >
-              <Experiences />
+              <Activities />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-4">
-                {showCreativeSkills && (
-                  <div
-                    className="animate-slide-in-left opacity-0"
-                    style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
-                  >
-                    <CreativeSkills />
-                  </div>
-                )}
-                {showActivities && (
-                  <div
-                    className="animate-slide-in-left opacity-0"
-                    style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}
-                  >
-                    <Activities />
-                  </div>
-                )}
+          )}
+          {showAbout && (
+            <div
+              className="order-8 animate-slide-in-up opacity-0"
+              style={{ animationFillMode: 'forwards' }}
+            >
+              <About />
+            </div>
+          )}
+          <div
+            className="order-9 animate-slide-in-right opacity-0"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            <Contact />
+          </div>
+        </div>
+
+        {/* Desktop Layout (Grid) */}
+        <div className="hidden lg:col-span-3 lg:flex lg:flex-col lg:gap-4">
+          <div
+            className="animate-slide-in-down opacity-0"
+            style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+          >
+            <Hero />
+          </div>
+          <div
+            className="animate-slide-in-up opacity-0"
+            style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
+          >
+            <Experiences />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-4">
+              {showCreativeSkills && (
+                <div
+                  className="animate-slide-in-left opacity-0"
+                  style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
+                >
+                  <CreativeSkills />
+                </div>
+              )}
+              {showActivities && (
+                <div
+                  className="animate-slide-in-left opacity-0"
+                  style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}
+                >
+                  <Activities />
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col gap-4">
+              <div
+                className="animate-slide-in-right opacity-0"
+                style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
+              >
+                <Testimonials />
               </div>
-              <div className="flex flex-col gap-4">
-                <div
-                  className="animate-slide-in-right opacity-0"
-                  style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
-                >
-                  <Testimonials />
-                </div>
-                <div
-                  className="animate-slide-in-right opacity-0"
-                  style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
-                >
-                  <Contact />
-                </div>
+              <div
+                className="animate-slide-in-right opacity-0"
+                style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
+              >
+                <Contact />
               </div>
             </div>
           </div>
         </div>
-        <div className="lg:col-span-1 flex flex-col gap-4">
+        <div className="hidden lg:col-span-1 lg:flex lg:flex-col lg:gap-4">
           <div
             className="animate-slide-in-up opacity-0"
             style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
