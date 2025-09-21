@@ -77,7 +77,7 @@ export default async function Home() {
         </div>
 
         {/* Large Screen Layout */}
-        <div className="hidden lg:grid grid-cols-4 grid-rows-5 gap-4 h-[calc(100vh-6rem)]">
+        <div className="hidden lg:grid grid-cols-4 grid-rows-5 gap-4">
           <div className="col-span-2 row-span-2">
             <Hero />
           </div>
