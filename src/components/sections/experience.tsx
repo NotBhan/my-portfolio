@@ -14,7 +14,6 @@ export default async function Experiences() {
           <h3 className="text-sm font-semibold">My Experiences</h3>
         </div>
       }
-      className="h-full"
       showButtons={true}
     >
       {experiences.length > 0 ? (

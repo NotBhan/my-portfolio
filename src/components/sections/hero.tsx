@@ -9,7 +9,7 @@ export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <BentoCard className='h-full'>
+    <BentoCard>
       <div className="flex flex-col h-full">
         <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="relative shrink-0 group">

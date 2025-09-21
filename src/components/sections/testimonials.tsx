@@ -15,7 +15,6 @@ export default async function Testimonials() {
           <h3 className="text-sm font-semibold">Rave Reviews Showcase</h3>
         </div>
       }
-      className="h-full"
       showButtons={true}
     >
       <div className="flex flex-col h-full">

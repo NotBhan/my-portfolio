@@ -22,7 +22,6 @@ export default async function Skills() {
           <h3 className="text-sm font-semibold">Tech I Use</h3>
         </div>
       }
-      className="h-full"
     >
       <ScrollArea className="h-full">
         <div className="space-y-6 pr-4">

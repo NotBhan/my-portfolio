@@ -24,7 +24,6 @@ export default async function Projects() {
           <h3 className="text-sm font-semibold">My Projects</h3>
         </div>
       }
-      className="h-full"
     >
       {projects.length > 0 ? (
       <Carousel
