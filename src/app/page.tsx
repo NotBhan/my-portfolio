@@ -24,7 +24,7 @@ export default async function Home() {
     <main className="container mx-auto p-4">
        <div className="text-center my-12 animate-slide-in-down opacity-0" style={{ animationFillMode: 'forwards' }}>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground">
-          CHANDRABHAN
+          CHANDRABHAN'S PORTFOLIO
         </h1>
       </div>
       <div className="flex flex-col lg:grid lg:grid-cols-4 lg:gap-4">
