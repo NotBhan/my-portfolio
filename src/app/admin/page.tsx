@@ -15,7 +15,7 @@ export default function AdminPage() {
         <Card>
             <CardHeader>
                 <CardTitle>Quick Stats</CardTitle>
-            </Header>
+            </CardHeader>
             <CardContent>
                 <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
