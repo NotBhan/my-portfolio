@@ -21,10 +21,10 @@ export default async function Home() {
   const showAbout = socialLinks.length > 0;
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
+    <main className="relative flex min-h-screen flex-col items-center p-4">
       <div className="w-full max-w-6xl">
         {/* Small Screen Layout */}
-        <div className="grid grid-cols-1 gap-4 lg:hidden">
+        <div className="grid grid-cols-1 gap-4 md:hidden">
           <Hero />
           <Experiences />
           <Projects />
@@ -38,37 +38,29 @@ export default async function Home() {
         </div>
 
         {/* Large Screen Layout - New Bento Design */}
-        <div className="hidden lg:grid grid-cols-4 grid-rows-5 gap-4">
-          <div className="col-span-4">
-            <Stats />
-          </div>
+        <div className="hidden md:grid grid-cols-4 gap-4">
           <div className="col-span-3 row-span-2">
             <Hero />
           </div>
           <div className="col-span-1 row-span-2">
             <Skills />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-2 row-span-2">
+            <Experiences />
+          </div>
+          <div className="col-span-2 row-span-2">
             <Projects />
           </div>
-          <div className="col-span-2">
-            <Experiences />
+          <div className="col-span-4">
+            <Stats />
           </div>
           <div className="col-span-2 row-span-2">
             <Testimonials />
           </div>
-          <div className="col-span-1">
-            {showAbout && <About />}
-          </div>
-          <div className="col-span-1">
-            <Contact />
-          </div>
-          <div className="col-span-1">
-            {showActivities && <Activities />}
-          </div>
-          <div className="col-span-1">
-            {showCreativeSkills && <CreativeSkills />}
-          </div>
+          {showActivities && <div className="col-span-1"><Activities /></div>}
+          {showCreativeSkills && <div className="col-span-1"><CreativeSkills /></div>}
+          {showAbout && <div className="col-span-1"><About /></div>}
+          <div className="col-span-1"><Contact /></div>
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
