@@ -77,34 +77,37 @@ export default async function Home() {
         </div>
 
         {/* Large Screen Layout */}
-        <div className="hidden lg:grid grid-cols-4 grid-rows-4 gap-4 h-[calc(100vh-6rem)]">
-            <div className='col-span-2 row-span-2'>
-                <Hero />
-            </div>
-            <div className='col-span-1 row-span-2'>
-                <Skills />
-            </div>
-            <div className='col-span-1 row-span-1'>
-                <About />
-            </div>
-            <div className='col-span-1 row-span-1'>
-                <Contact />
-            </div>
-            <div className='col-span-2 row-span-2'>
-                <Experiences />
-            </div>
-            <div className='col-span-1 row-span-1'>
-                <Projects />
-            </div>
-            <div className='col-span-1 row-span-1'>
-                <Testimonials />
-            </div>
-             <div className='col-span-1 row-span-1'>
-                <CreativeSkills />
-            </div>
-            <div className='col-span-1 row-span-1'>
-                <Activities />
-            </div>
+        <div className="hidden lg:grid grid-cols-4 grid-rows-5 gap-4 h-[calc(100vh-6rem)]">
+          <div className="col-span-2 row-span-2">
+            <Hero />
+          </div>
+          <div className="col-span-1 row-span-2">
+            <Skills />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <About />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <Contact />
+          </div>
+          <div className="col-span-2 row-span-2">
+            <Experiences />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <Projects />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <Testimonials />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <CreativeSkills />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <Activities />
+          </div>
+          <div className='col-span-2 row-span-1'>
+            <Stats />
+          </div>
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
