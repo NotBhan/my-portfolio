@@ -35,7 +35,7 @@ export default async function Projects() {
       >
         <CarouselContent>
           {projects.map((project) => (
-            <CarouselItem key={project.id}>
+            <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-full">
                 <div className="p-1 h-full">
                     <Card className="bg-card/50 border-border/50 overflow-hidden h-full flex flex-col">
                         <CardHeader>
