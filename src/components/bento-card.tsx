@@ -13,11 +13,11 @@ export default function BentoCard({ children, className, title, as: Component = 
   return (
     <Component
       className={cn(
-        'relative flex w-full flex-col rounded-xl border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1',
+        'relative flex w-full h-full flex-col rounded-xl border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1',
         className
       )}
     >
-      <div className="flex-1 p-4 md:p-6">
+      <div className="flex-1 p-4 md:p-6 flex flex-col">
         {title && (
             <div className="relative -mx-4 -mt-4 mb-4 flex items-center justify-center gap-2 border-b p-4 md:-mx-6 md:-mt-6">
                 {showButtons && (
@@ -36,7 +36,7 @@ export default function BentoCard({ children, className, title, as: Component = 
                 </div>
             </div>
         )}
-        {children}
+        <div className="flex-grow flex flex-col">{children}</div>
       </div>
     </Component>
   );
