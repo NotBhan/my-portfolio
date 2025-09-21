@@ -32,25 +32,14 @@ export default async function Home() {
           <Skills />
           <Stats />
           <Testimonials />
-          <div
-            className={cn(
-              'grid grid-cols-1 gap-4',
-              showActivities && showCreativeSkills && 'md:grid-cols-2'
-            )}
-          >
-            {showActivities && <Activities />}
-            {showCreativeSkills && <CreativeSkills />}
-          </div>
-          <div
-            className={cn('grid grid-cols-1 gap-4', showAbout && 'md:grid-cols-2')}
-          >
-            {showAbout && <About />}
-            <Contact />
-          </div>
+          {showActivities && <Activities />}
+          {showCreativeSkills && <CreativeSkills />}
+          {showAbout && <About />}
+          <Contact />
         </div>
 
         {/* Large Screen Layout */}
-        <div className="hidden lg:grid grid-cols-4 grid-rows-[repeat(5,minmax(0,auto))] gap-4">
+        <div className="hidden lg:grid grid-cols-4 auto-rows-min gap-4">
           <div className="col-span-2 row-span-2">
             <Hero />
           </div>
@@ -70,13 +59,13 @@ export default async function Home() {
             <Testimonials />
           </div>
           <div className="col-span-2">
-            <Activities />
+            {showActivities && <Activities />}
           </div>
           <div className="col-span-2">
-            <CreativeSkills />
+            {showCreativeSkills && <CreativeSkills />}
           </div>
           <div className="col-span-2">
-            <About />
+           {showAbout && <About />}
           </div>
           <div className="col-span-2">
             <Contact />
