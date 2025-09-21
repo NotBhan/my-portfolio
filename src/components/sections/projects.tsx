@@ -51,12 +51,21 @@ export default async function Projects() {
                             />
                         <p className='line-clamp-2'>{project.description}</p>
                         </CardContent>
-                        <CardFooter>
-                        <Button variant="link" asChild className="p-0 h-auto font-code text-xs">
-                            <a href={project.link} target="_blank" rel="noopener noreferrer">
-                            View Project <ArrowRight className="ml-1 h-3 w-3" />
-                            </a>
-                        </Button>
+                        <CardFooter className='gap-4'>
+                        {project.link && (
+                          <Button variant="link" asChild className="p-0 h-auto font-code text-xs">
+                              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                              Source Code <ArrowRight className="ml-1 h-3 w-3" />
+                              </a>
+                          </Button>
+                        )}
+                         {project.liveLink && (
+                          <Button variant="link" asChild className="p-0 h-auto font-code text-xs">
+                              <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                              Live Link <ArrowRight className="ml-1 h-3 w-3" />
+                              </a>
+                          </Button>
+                        )}
                         </CardFooter>
                     </Card>
                 </div>

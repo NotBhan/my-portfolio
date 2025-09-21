@@ -24,6 +24,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
         description: '',
         image: 'https://picsum.photos/seed/placeholder/400/250',
         link: '',
+        liveLink: '',
         isVisible: true,
       },
     ]);
@@ -115,12 +116,21 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor={`project-link-${project.id}`}>Link</Label>
+              <Label htmlFor={`project-link-${project.id}`}>Source Code URL</Label>
               <Input
                 id={`project-link-${project.id}`}
                 value={project.link}
                 onChange={(e) => handleProjectChange(project.id, 'link', e.target.value)}
-                placeholder="Project Link"
+                placeholder="https://github.com/..."
+              />
+            </div>
+             <div className="space-y-2">
+              <Label htmlFor={`project-live-link-${project.id}`}>Live Link</Label>
+              <Input
+                id={`project-live-link-${project.id}`}
+                value={project.liveLink || ''}
+                onChange={(e) => handleProjectChange(project.id, 'liveLink', e.target.value)}
+                placeholder="https://vercel.app/..."
               />
             </div>
           </div>
