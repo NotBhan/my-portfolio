@@ -36,7 +36,7 @@ export default function BentoCard({ children, className, title, as: Component = 
                 </div>
             </div>
         )}
-        <div className="flex-grow flex flex-col">{children}</div>
+        <div className="flex flex-col">{children}</div>
       </div>
     </Component>
   );
