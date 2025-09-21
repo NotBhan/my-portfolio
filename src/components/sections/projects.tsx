@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { getProjects } from '@/lib/data';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import { ArrowRight, FolderKanban } from 'lucide-react';
+import { FolderKanban } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -55,14 +55,14 @@ export default async function Projects() {
                         {project.link && (
                           <Button variant="secondary" size="sm" asChild className="font-code text-xs">
                               <a href={project.link} target="_blank" rel="noopener noreferrer">
-                              Source Code <ArrowRight className="ml-1 h-3 w-3" />
+                              Source Code
                               </a>
                           </Button>
                         )}
                          {project.liveLink && (
                           <Button variant="default" size="sm" asChild className="font-code text-xs">
                               <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                              Live Link <ArrowRight className="ml-1 h-3 w-3" />
+                              Live Link
                               </a>
                           </Button>
                         )}
