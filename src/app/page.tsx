@@ -21,7 +21,7 @@ export default function Home() {
             <Hero />
           </div>
           <Projects />
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <Experiences />
           </div>
           <CreativeSkills />
