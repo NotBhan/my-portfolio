@@ -22,7 +22,8 @@ import {
   User,
   History,
   Share2,
-  Flame
+  Flame,
+  LineChart
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -52,6 +53,11 @@ const navItems = [
     label: 'Activities',
     icon: Flame,
   },
+  {
+    href: '/admin/edit/stats',
+    label: 'Stats',
+    icon: LineChart,
+  }
 ];
 
 export default function AdminDashboardLayout({
