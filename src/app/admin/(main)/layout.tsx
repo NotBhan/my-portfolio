@@ -24,7 +24,8 @@ import {
   History,
   Share2,
   Flame,
-  LineChart
+  LineChart,
+  PanelLeftClose,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -72,12 +73,28 @@ export default function AdminDashboardLayout({
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader>
-          <div className="flex h-10 items-center gap-2 p-2">
-            <Briefcase className="h-6 w-6 text-primary" />
-            <h2 className="text-xl font-bold group-data-[collapsible=icon]:hidden">
-              Portfolio
-            </h2>
+          <div className="flex h-10 items-center justify-between p-2">
+            <div className="flex items-center gap-2">
+              <Briefcase className="h-6 w-6 text-primary" />
+              <h2 className="text-xl font-bold group-data-[collapsible=icon]:hidden">
+                Portfolio
+              </h2>
+            </div>
+            <SidebarTrigger>
+                <PanelLeftClose />
+            </SidebarTrigger>
           </div>
+          <SidebarSeparator />
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <Link href="/" passHref>
+                <SidebarMenuButton as="a" tooltip="Back to Home" className="justify-start">
+                  <Home className="h-5 w-5" />
+                  <span>Back to Home</span>
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
@@ -98,25 +115,6 @@ export default function AdminDashboardLayout({
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter>
-          <SidebarSeparator />
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <Link href="/" passHref>
-                <SidebarMenuButton as="a" tooltip="Back to Home" className="justify-start">
-                  <Home className="h-5 w-5" />
-                  <span>Back to Home</span>
-                </SidebarMenuButton>
-              </Link>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-                <SidebarTrigger className="w-full justify-start">
-                    <User className="h-5 w-5" />
-                    <span>Collapse</span>
-                </SidebarTrigger>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
       </Sidebar>
       <SidebarInset>
         <main className="flex justify-center p-4 sm:p-6 lg:p-8">
