@@ -21,44 +21,24 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto p-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="md:col-span-2 lg:col-span-3">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <div className="lg:col-span-3">
           <Hero />
         </div>
-        <div className="row-span-2 md:col-span-2 lg:col-span-1">
-          <div className="flex flex-col gap-4">
-            <Projects />
-            <Skills />
-          </div>
+        <div className="lg:col-span-1 flex flex-col gap-4">
+          <Projects />
+          <Skills />
         </div>
-        <div className="md:col-span-2 lg:col-span-3">
+        <div className="lg:col-span-2">
           <Experiences />
         </div>
-
-        {showCreativeSkills && (
-          <div className="lg:col-span-1">
-            <CreativeSkills />
-          </div>
-        )}
-
-        <div className="row-span-2">
-          <Testimonials />
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {showCreativeSkills && <CreativeSkills />}
+            <Testimonials />
+            {showAbout && <About />}
+            <Contact />
+            {showActivities && <Activities />}
         </div>
-
-        {showAbout && (
-          <div className="lg:col-span-1">
-            <About />
-          </div>
-        )}
-        <div className="lg:col-span-1">
-          <Contact />
-        </div>
-
-        {showActivities && (
-          <div className="lg:col-span-1">
-            <Activities />
-          </div>
-        )}
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
         <p>

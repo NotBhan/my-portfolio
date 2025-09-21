@@ -18,5 +18,25 @@
         "isVisible": true
       }
     ]
+  },
+  {
+    "category": "Programming",
+    "skills": [
+      {
+        "name": "Python",
+        "level": 0.5,
+        "isVisible": true
+      },
+      {
+        "name": "C++",
+        "level": 1,
+        "isVisible": true
+      },
+      {
+        "name": "C Language",
+        "level": 1,
+        "isVisible": true
+      }
+    ]
   }
 ]
