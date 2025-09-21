@@ -29,10 +29,10 @@ export default function Home() {
           <div className="lg:col-span-1">
             <CreativeSkills />
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <Skills />
           </div>
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <Testimonials />
           </div>
           <div className="lg:col-span-1">
