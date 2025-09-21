@@ -35,10 +35,11 @@ export default function Home() {
           <div className="lg:col-span-2 order-6 lg:order-none">
             <Testimonials />
           </div>
-          <div className="lg:col-span-2 order-7 lg:order-none grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="lg:col-span-2 order-7 lg:order-none grid grid-cols-2 md:grid-cols-2 gap-4">
             <Activities />
+            <CreativeSkills />
           </div>
-          <div className="lg:col-span-1 order-8 lg:order-none">
+          <div className="lg:col-span-1 order-8 lg:order-none hidden lg:block">
             <CreativeSkills />
           </div>
           <div className="lg:col-span-1 order-9 lg:order-none">
