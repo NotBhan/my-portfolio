@@ -1,33 +1,52 @@
-import BentoCard from "@/components/bento-card";
+import BentoCard from '@/components/bento-card';
+import {
+  getProfile,
+  getProjects,
+  getSkills,
+  getTestimonials,
+  getStats,
+  getCreativeSkills,
+} from '@/lib/data';
 
-export default function AdminPage() {
+import ProfileForm from './(main)/edit/profile/profile-form';
+import ProjectForm from './(main)/edit/projects/project-form';
+import SkillsForm from './(main)/edit/skills/skills-form';
+import TestimonialsForm from './(main)/edit/testimonials/testimonials-form';
+import StatsForm from './(main)/edit/stats/stats-form';
+import CreativeSkillsForm from './(main)/edit/creative-skills/creative-skills-form';
+
+export default async function AdminPage() {
+  const profile = await getProfile();
+  const projects = await getProjects();
+  const skills = await getSkills();
+  const testimonials = await getTestimonials();
+  const stats = await getStats();
+  const creativeSkills = await getCreativeSkills();
+
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      <BentoCard
-        title="Welcome Back!"
-        className="col-span-1"
-        showButtons={true}
-      >
-        <p className="text-muted-foreground">
-          Here's a quick overview of your portfolio. You can manage your
-          projects, skills, and other content from the sidebar.
-        </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <BentoCard title="Edit Profile" className="lg:col-span-2">
+        <ProfileForm profile={profile} />
       </BentoCard>
-      <BentoCard title="Quick Stats" className="col-span-1" showButtons={true}>
-        <div className="grid grid-cols-3 gap-4 text-center">
-          <div>
-            <p className="text-2xl font-bold">12</p>
-            <p className="text-xs text-muted-foreground">Projects</p>
-          </div>
-          <div>
-            <p className="text-2xl font-bold">25</p>
-            <p className="text-xs text-muted-foreground">Skills</p>
-          </div>
-          <div>
-            <p className="text-2xl font-bold">5</p>
-            <p className="text-xs text-muted-foreground">Testimonials</p>
-          </div>
-        </div>
+
+      <BentoCard title="Edit Stats">
+        <StatsForm stats={stats} />
+      </BentoCard>
+
+      <BentoCard title="Edit Projects" className="lg:col-span-3">
+        <ProjectForm projects={projects} />
+      </BentoCard>
+
+      <BentoCard title="Edit Skills" className="lg:col-span-2">
+        <SkillsForm skills={skills} />
+      </BentoCard>
+
+      <BentoCard title="Edit Creative Skills">
+        <CreativeSkillsForm creativeSkills={creativeSkills} />
+      </BentoCard>
+
+      <BentoCard title="Edit Testimonials" className="lg:col-span-3">
+        <TestimonialsForm testimonials={testimonials} />
       </BentoCard>
     </div>
   );
