@@ -13,32 +13,35 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
       <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
-          <div className="lg:col-span-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 auto-rows-fr">
+          <div className="lg:col-span-3 hidden lg:block">
             <Stats />
           </div>
-          <div className="md:col-span-2 lg:col-span-2 row-span-2">
+          <div className="lg:col-span-2 row-span-2">
             <Hero />
           </div>
-          <div className="row-span-1">
+          <div className="lg:col-span-1 row-span-1 order-first lg:order-none">
             <Projects />
           </div>
-          <div className="row-span-1">
+          <div className="lg:col-span-1 row-span-1">
             <CreativeSkills />
           </div>
-          <div className="md:col-span-2 lg:col-span-2 row-span-2">
+          <div className="lg:col-span-2 row-span-2">
             <Experiences />
           </div>
-          <div className="row-span-2">
-             <Testimonials />
+          <div className="lg:col-span-1 row-span-2">
+            <Testimonials />
           </div>
-           <div className="row-span-1">
-             <About />
-          </div>
-           <div className="md:col-span-2 lg:col-span-2 row-span-2">
+          <div className="lg:col-span-2 row-span-2">
             <Skills />
           </div>
+          <div className="lg:col-span-1 row-span-1">
+            <About />
+          </div>
           <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div className="block lg:hidden">
+              <Stats />
+            </div>
             <Activities />
             <Contact />
           </div>
