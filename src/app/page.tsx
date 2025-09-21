@@ -42,15 +42,12 @@ export default function Home() {
           <div className="lg:col-span-1 order-8 lg:order-none hidden lg:block">
             <CreativeSkills />
           </div>
-          <div className="lg:col-span-1 order-9 lg:order-none">
+          <div className="lg:col-span-1 order-9 lg:order-none hidden lg:block">
             <About />
           </div>
           <div className="lg:col-span-2 order-10 lg:order-none grid grid-cols-1 md:grid-cols-2 gap-4">
-             <div className="hidden lg:block">
-              <Stats />
-            </div>
-            <div className="hidden lg:block">
-              <Activities />
+             <div className="block lg:hidden">
+              <About />
             </div>
             <div className="col-span-1 md:col-span-1">
               <Contact />
