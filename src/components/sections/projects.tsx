@@ -63,8 +63,8 @@ export default async function Projects() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-1.5 top-1/2 -translate-y-1/2 size-7" />
-        <CarouselNext className="absolute right-1.5 top-1/2 -translate-y-1/2 size-7" />
+        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 size-6" />
+        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 size-6" />
       </Carousel>
       ) : (
         <div className="flex items-center justify-center h-full">

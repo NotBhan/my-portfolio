@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "1",
+    "title": "ExamPrep AI",
+    "description": "An AI powered localized platform for students to use and prepare for exams.",
+    "image": "https://picsum.photos/seed/placeholder/400/250",
+    "link": "github.com",
+    "isVisible": true
+  }
+]
