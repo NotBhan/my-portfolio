@@ -2,6 +2,7 @@ import * as LucideIcons from 'lucide-react';
 import BentoCard from '@/components/bento-card';
 import { Button } from '../ui/button';
 import { getSocialLinks } from '@/lib/data';
+import Link from 'next/link';
 
 function isLucideIcon(key: string): key is keyof typeof LucideIcons {
   return key in LucideIcons;
@@ -15,10 +16,9 @@ const SocialIcon = ({ name, className }: { name: string; className?: string }) =
   return <LucideIcons.Globe className={className} />;
 };
 
-
 export default async function About() {
   const allSocialLinks = await getSocialLinks();
-  const socialLinks = allSocialLinks.filter(link => link.isVisible);
+  const socialLinks = allSocialLinks.filter((link) => link.isVisible);
 
   return (
     <BentoCard
@@ -30,22 +30,29 @@ export default async function About() {
       }
       className="h-full"
     >
-      <div className="flex h-full flex-col justify-center gap-4">
+      <div className="flex h-full flex-col justify-center">
         {socialLinks.length > 0 ? (
-          socialLinks.map((link) => (
-            <Button variant="outline" asChild className="justify-start gap-4" key={link.id}>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                <SocialIcon name={link.icon} className="h-5 w-5" />
-                <span className="font-bold">{link.name}</span>
-              </a>
-            </Button>
-          ))
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {socialLinks.map((link) => (
+              <Button
+                key={link.id}
+                variant="outline"
+                size="icon"
+                asChild
+                className="h-12 w-12"
+              >
+                <Link href={link.url} target="_blank" rel="noopener noreferrer" title={link.name}>
+                  <SocialIcon name={link.icon} className="h-6 w-6" />
+                </Link>
+              </Button>
+            ))}
+          </div>
         ) : (
-            <div className="flex items-center justify-center h-full">
-                <p className="text-muted-foreground text-center font-mono text-sm">
-                    No social links added yet.
-                </p>
-            </div>
+          <div className="flex h-full items-center justify-center">
+            <p className="font-mono text-sm text-muted-foreground">
+              No social links added yet.
+            </p>
+          </div>
         )}
       </div>
     </BentoCard>
