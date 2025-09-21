@@ -28,7 +28,6 @@ export default async function About() {
           <h3 className="text-sm font-semibold">Online Presence</h3>
         </div>
       }
-      className="h-full"
     >
       <div className="flex h-full flex-col justify-center items-center">
         {socialLinks.length > 0 ? (

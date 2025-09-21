@@ -5,7 +5,7 @@ import { Crown, Mail } from 'lucide-react';
 export default function Contact() {
   return (
     <BentoCard
-      className="h-full flex-col"
+      className="flex-col"
       title={
         <div className="flex items-center gap-2">
           <Crown className="h-4 w-4 text-muted-foreground" />
