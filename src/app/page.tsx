@@ -52,7 +52,9 @@ export default function Home() {
             <div className="hidden lg:block">
               <Activities />
             </div>
-            <Contact />
+            <div className="col-span-1 md:col-span-1">
+              <Contact />
+            </div>
           </div>
         </div>
       </div>
