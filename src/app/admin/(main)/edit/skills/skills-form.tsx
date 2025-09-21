@@ -1,3 +1,4 @@
+
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,11 +9,14 @@ import type { Skill, SkillCategory } from '@/lib/definitions';
 import { Plus, Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import PasswordDialog from '@/components/password-dialog';
 
 export default function SkillsForm({ skills: initialSkills }: { skills: SkillCategory[] }) {
   const [skillData, setSkillData] = useState<SkillCategory[]>(initialSkills);
   const { toast } = useToast();
   const router = useRouter();
+  const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
 
   const handleCategoryChange = (catIndex: number, value: string) => {
     const newData = [...skillData];
@@ -57,8 +61,7 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
     setSkillData(newData);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSave = async () => {
     try {
       const response = await fetch('/api/data?file=skills.json', {
         method: 'POST',
@@ -77,88 +80,134 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsPasswordDialogOpen(true);
+  };
+
+  const handlePasswordConfirm = async (password: string) => {
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Incorrect password.');
+      }
+
+      const { success } = await response.json();
+      if (success) {
+        setIsPasswordDialogOpen(false);
+        await handleSave();
+      } else {
+        throw new Error('Incorrect password.');
+      }
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message || 'Password verification failed.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      {skillData.map((category, catIndex) => (
-        <div key={`category-${catIndex}`} className="rounded-lg border p-4">
-          <div className="flex items-center justify-between">
-            <Label htmlFor={`category-name-${catIndex}`} className="text-lg font-semibold">
-              Category
-            </Label>
+    <>
+      <form onSubmit={handleSubmit} className="space-y-8">
+        {skillData.map((category, catIndex) => (
+          <div key={`category-${catIndex}`} className="rounded-lg border p-4">
+            <div className="flex items-center justify-between">
+              <Label htmlFor={`category-name-${catIndex}`} className="text-lg font-semibold">
+                Category
+              </Label>
+              <Button
+                type="button"
+                variant="destructive"
+                size="icon"
+                onClick={() => handleRemoveCategory(catIndex)}
+              >
+                <Trash className="h-4 w-4" />
+              </Button>
+            </div>
+            <Input
+              id={`category-name-${catIndex}`}
+              value={category.category}
+              onChange={(e) => handleCategoryChange(catIndex, e.target.value)}
+              className="mt-2"
+            />
+
+            <div className="mt-4 space-y-4">
+              {category.skills.map((skill, skillIndex) => (
+                <div key={`skill-${catIndex}-${skillIndex}`} className="ml-4 space-y-2 rounded-md border p-3">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor={`skill-name-${catIndex}-${skillIndex}`}>Skill Name</Label>
+                    <div className="flex items-center gap-2">
+                      <Switch
+                        id={`skill-visible-${catIndex}-${skillIndex}`}
+                        checked={skill.isVisible}
+                        onCheckedChange={(checked) =>
+                          handleSkillChange(catIndex, skillIndex, 'isVisible', checked)
+                        }
+                      />
+                      <Label htmlFor={`skill-visible-${catIndex}-${skillIndex}`}>Visible</Label>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="text-destructive"
+                        onClick={() => handleRemoveSkill(catIndex, skillIndex)}
+                      >
+                        <Trash className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                  <Input
+                    id={`skill-name-${catIndex}-${skillIndex}`}
+                    value={skill.name}
+                    onChange={(e) => handleSkillChange(catIndex, skillIndex, 'name', e.target.value)}
+                  />
+                  <Label htmlFor={`skill-level-${catIndex}-${skillIndex}`}>Years of Experience</Label>
+                  <Input
+                    id={`skill-level-${catIndex}-${skillIndex}`}
+                    type="number"
+                    step="0.5"
+                    value={skill.level}
+                    onChange={(e) => handleSkillChange(catIndex, skillIndex, 'level', e.target.value)}
+                  />
+                </div>
+              ))}
+            </div>
             <Button
               type="button"
-              variant="destructive"
-              size="icon"
-              onClick={() => handleRemoveCategory(catIndex)}
+              variant="outline"
+              size="sm"
+              className="mt-4"
+              onClick={() => handleAddSkill(catIndex)}
             >
-              <Trash className="h-4 w-4" />
+              <Plus className="mr-2 h-4 w-4" /> Add Skill
             </Button>
           </div>
-          <Input
-            id={`category-name-${catIndex}`}
-            value={category.category}
-            onChange={(e) => handleCategoryChange(catIndex, e.target.value)}
-            className="mt-2"
-          />
-
-          <div className="mt-4 space-y-4">
-            {category.skills.map((skill, skillIndex) => (
-              <div key={`skill-${catIndex}-${skillIndex}`} className="ml-4 space-y-2 rounded-md border p-3">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor={`skill-name-${catIndex}-${skillIndex}`}>Skill Name</Label>
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      id={`skill-visible-${catIndex}-${skillIndex}`}
-                      checked={skill.isVisible}
-                      onCheckedChange={(checked) =>
-                        handleSkillChange(catIndex, skillIndex, 'isVisible', checked)
-                      }
-                    />
-                    <Label htmlFor={`skill-visible-${catIndex}-${skillIndex}`}>Visible</Label>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className="text-destructive"
-                      onClick={() => handleRemoveSkill(catIndex, skillIndex)}
-                    >
-                      <Trash className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-                <Input
-                  id={`skill-name-${catIndex}-${skillIndex}`}
-                  value={skill.name}
-                  onChange={(e) => handleSkillChange(catIndex, skillIndex, 'name', e.target.value)}
-                />
-                <Label htmlFor={`skill-level-${catIndex}-${skillIndex}`}>Years of Experience</Label>
-                 <Input
-                  id={`skill-level-${catIndex}-${skillIndex}`}
-                  type="number"
-                  step="0.5"
-                  value={skill.level}
-                  onChange={(e) => handleSkillChange(catIndex, skillIndex, 'level', e.target.value)}
-                />
-              </div>
-            ))}
-          </div>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-4"
-            onClick={() => handleAddSkill(catIndex)}
-          >
-            <Plus className="mr-2 h-4 w-4" /> Add Skill
+        ))}
+        <div className="flex justify-between">
+          <Button type="button" variant="outline" onClick={handleAddCategory}>
+            Add Category
           </Button>
+          <Button type="submit">Save All Skills</Button>
         </div>
-      ))}
-      <div className="flex justify-between">
-        <Button type="button" variant="outline" onClick={handleAddCategory}>
-          Add Category
-        </Button>
-        <Button type="submit">Save All Skills</Button>
-      </div>
-    </form>
+      </form>
+      <PasswordDialog
+        isOpen={isPasswordDialogOpen}
+        onClose={() => setIsPasswordDialogOpen(false)}
+        onConfirm={handlePasswordConfirm}
+        isVerifying={isVerifying}
+      />
+    </>
   );
 }

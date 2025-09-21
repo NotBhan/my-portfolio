@@ -1,3 +1,4 @@
+
 'use client';
 import BentoCard from '@/components/bento-card';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -48,19 +49,17 @@ export default function Projects() {
 
   if (isLoading) {
     return (
-        <BentoCard
+      <BentoCard
         title={
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <FolderKanban className="h-4 w-4 text-muted-foreground" />
             <h3 className="text-sm font-semibold">My Projects</h3>
-            </div>
+          </div>
         }
-        >
-            <div className="flex items-center justify-center h-full">
-                <p className="text-muted-foreground text-center font-mono text-sm">
-                    Loading projects...
-                </p>
-            </div>
+      >
+        <div className="flex h-full items-center justify-center">
+          <p className="font-mono text-sm text-muted-foreground">Loading projects...</p>
+        </div>
       </BentoCard>
     );
   }
@@ -87,23 +86,23 @@ export default function Projects() {
               <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-full">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className="p-1 h-full">
-                      <Card className="bg-card/50 border-border/50 overflow-hidden h-full flex flex-col cursor-pointer hover:border-primary/50 transition-colors">
+                    <div className="h-full p-1">
+                      <Card className="flex h-full flex-col overflow-hidden border-border/50 bg-card/50 transition-colors hover:border-primary/50 cursor-pointer">
                         <CardHeader>
                           <CardTitle className="font-code text-base">{project.title}</CardTitle>
                         </CardHeader>
-                        <CardContent className="font-code text-xs text-muted-foreground flex-grow">
+                        <CardContent className="flex-grow font-code text-xs text-muted-foreground">
                           <Image
                             src={project.image}
                             alt={project.title}
                             width={400}
                             height={250}
-                            className="w-full rounded-md mb-2 aspect-video object-cover"
+                            className="mb-2 w-full rounded-md aspect-video object-cover"
                           />
                           <p className="line-clamp-2">{project.description}</p>
                         </CardContent>
                         <CardFooter>
-                           <Button variant="default" size="sm" className="font-code text-xs w-full">
+                          <Button variant="default" size="sm" className="w-full font-code text-xs">
                             Click to see more
                           </Button>
                         </CardFooter>
@@ -113,18 +112,18 @@ export default function Projects() {
                   <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                       <DialogTitle className="font-code">{project.title}</DialogTitle>
-                      <DialogDescription className="font-code text-sm text-muted-foreground pt-2">
-                         <Image
-                            src={project.image}
-                            alt={project.title}
-                            width={400}
-                            height={250}
-                            className="w-full rounded-md mb-4 aspect-video object-cover"
+                      <DialogDescription className="pt-2 font-code text-sm text-muted-foreground">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={400}
+                          height={250}
+                          className="mb-4 w-full rounded-md aspect-video object-cover"
                         />
                         {project.description}
                       </DialogDescription>
                     </DialogHeader>
-                    <DialogFooter className='gap-2 sm:justify-start'>
+                    <DialogFooter className="gap-2 sm:justify-start">
                       {project.link && (
                         <Button variant="secondary" size="sm" asChild className="font-code text-xs">
                           <a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -149,8 +148,8 @@ export default function Projects() {
           <CarouselNext className="absolute right-[-16px] top-1/2 -translate-y-1/2 size-8" />
         </Carousel>
       ) : (
-        <div className="flex items-center justify-center h-full">
-          <p className="text-muted-foreground text-center font-mono text-sm">No projects yet.</p>
+        <div className="flex h-full items-center justify-center">
+          <p className="font-mono text-sm text-muted-foreground">No projects yet.</p>
         </div>
       )}
     </BentoCard>

@@ -1,3 +1,4 @@
+
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,11 +9,14 @@ import type { CreativeSkill } from '@/lib/definitions';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import PasswordDialog from '@/components/password-dialog';
 
 export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { creativeSkills: CreativeSkill[] }) {
   const [skills, setSkills] = useState<CreativeSkill[]>(initialSkills);
   const { toast } = useToast();
   const router = useRouter();
+  const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
 
   const handleAddSkill = () => {
     setSkills([
@@ -33,9 +37,7 @@ export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { 
     setSkills(skills.map((s) => (s.id === id ? { ...s, [field]: value } : s)));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSave = async () => {
     const skillsWithIds = skills.map((s, index) => ({
       ...s,
       id: s.id.startsWith('new-') ? `${index + 1}` : s.id,
@@ -59,48 +61,93 @@ export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { 
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsPasswordDialogOpen(true);
+  };
+
+  const handlePasswordConfirm = async (password: string) => {
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Incorrect password.');
+      }
+
+      const { success } = await response.json();
+      if (success) {
+        setIsPasswordDialogOpen(false);
+        await handleSave();
+      } else {
+        throw new Error('Incorrect password.');
+      }
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message || 'Password verification failed.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="space-y-6">
-        {skills.map((skill, index) => (
-          <div key={skill.id} className="space-y-4 rounded-lg border p-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold">Skill {index + 1}</h3>
-              <div className="flex items-center gap-2">
-                <Switch
-                  id={`skill-visible-${skill.id}`}
-                  checked={skill.isVisible}
-                  onCheckedChange={(checked) => handleSkillChange(skill.id, 'isVisible', checked)}
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="space-y-6">
+          {skills.map((skill, index) => (
+            <div key={skill.id} className="space-y-4 rounded-lg border p-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold">Skill {index + 1}</h3>
+                <div className="flex items-center gap-2">
+                  <Switch
+                    id={`skill-visible-${skill.id}`}
+                    checked={skill.isVisible}
+                    onCheckedChange={(checked) => handleSkillChange(skill.id, 'isVisible', checked)}
+                  />
+                  <Label htmlFor={`skill-visible-${skill.id}`}>Visible</Label>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    onClick={() => handleRemoveSkill(skill.id)}
+                  >
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor={`skill-name-${skill.id}`}>Name</Label>
+                <Input
+                  id={`skill-name-${skill.id}`}
+                  value={skill.name}
+                  onChange={(e) => handleSkillChange(skill.id, 'name', e.target.value)}
+                  placeholder="Skill Name"
                 />
-                <Label htmlFor={`skill-visible-${skill.id}`}>Visible</Label>
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="icon"
-                  onClick={() => handleRemoveSkill(skill.id)}
-                >
-                  <Trash className="h-4 w-4" />
-                </Button>
               </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor={`skill-name-${skill.id}`}>Name</Label>
-              <Input
-                id={`skill-name-${skill.id}`}
-                value={skill.name}
-                onChange={(e) => handleSkillChange(skill.id, 'name', e.target.value)}
-                placeholder="Skill Name"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 flex justify-between">
-        <Button type="button" variant="outline" onClick={handleAddSkill}>
-          Add Skill
-        </Button>
-        <Button type="submit">Save All Skills</Button>
-      </div>
-    </form>
+          ))}
+        </div>
+        <div className="mt-6 flex justify-between">
+          <Button type="button" variant="outline" onClick={handleAddSkill}>
+            Add Skill
+          </Button>
+          <Button type="submit">Save All Skills</Button>
+        </div>
+      </form>
+      <PasswordDialog
+        isOpen={isPasswordDialogOpen}
+        onClose={() => setIsPasswordDialogOpen(false)}
+        onConfirm={handlePasswordConfirm}
+        isVerifying={isVerifying}
+      />
+    </>
   );
 }

@@ -1,3 +1,4 @@
+
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,11 +9,15 @@ import type { Stat } from '@/lib/definitions';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import PasswordDialog from '@/components/password-dialog';
 
 export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
   const [stats, setStats] = useState<Stat[]>(initialStats);
   const { toast } = useToast();
   const router = useRouter();
+  const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+
 
   const handleAddStat = () => {
     setStats([
@@ -35,9 +40,7 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
     setStats(stats.map((s) => (s.id === id ? { ...s, [field]: value } : s)));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSave = async () => {
     const statsWithIds = stats.map((s, index) => ({
       ...s,
       id: s.id.startsWith('new-') ? `${index + 1}` : s.id,
@@ -61,66 +64,111 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsPasswordDialogOpen(true);
+  };
+
+  const handlePasswordConfirm = async (password: string) => {
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Incorrect password.');
+      }
+
+      const { success } = await response.json();
+      if (success) {
+        setIsPasswordDialogOpen(false);
+        await handleSave();
+      } else {
+        throw new Error('Incorrect password.');
+      }
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message || 'Password verification failed.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="space-y-6">
-        {stats.map((stat, index) => (
-          <div key={stat.id} className="space-y-4 rounded-lg border p-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold">Stat {index + 1}</h3>
-              <div className="flex items-center gap-2">
-                <Switch
-                  id={`stat-visible-${stat.id}`}
-                  checked={stat.isVisible}
-                  onCheckedChange={(checked) => handleStatChange(stat.id, 'isVisible', checked)}
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="space-y-6">
+          {stats.map((stat, index) => (
+            <div key={stat.id} className="space-y-4 rounded-lg border p-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold">Stat {index + 1}</h3>
+                <div className="flex items-center gap-2">
+                  <Switch
+                    id={`stat-visible-${stat.id}`}
+                    checked={stat.isVisible}
+                    onCheckedChange={(checked) => handleStatChange(stat.id, 'isVisible', checked)}
+                  />
+                  <Label htmlFor={`stat-visible-${stat.id}`}>Visible</Label>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    onClick={() => handleRemoveStat(stat.id)}
+                  >
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor={`stat-value-${stat.id}`}>Value</Label>
+                <Input
+                  id={`stat-value-${stat.id}`}
+                  value={stat.value}
+                  onChange={(e) => handleStatChange(stat.id, 'value', e.target.value)}
+                  placeholder="e.g., 56+"
                 />
-                <Label htmlFor={`stat-visible-${stat.id}`}>Visible</Label>
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="icon"
-                  onClick={() => handleRemoveStat(stat.id)}
-                >
-                  <Trash className="h-4 w-4" />
-                </Button>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor={`stat-label-${stat.id}`}>Label</Label>
+                <Input
+                  id={`stat-label-${stat.id}`}
+                  value={stat.label}
+                  onChange={(e) => handleStatChange(stat.id, 'label', e.target.value)}
+                  placeholder="e.g., Projects"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor={`stat-icon-${stat.id}`}>Icon Name</Label>
+                <Input
+                  id={`stat-icon-${stat.id}`}
+                  value={stat.icon}
+                  onChange={(e) => handleStatChange(stat.id, 'icon', e.target.value)}
+                  placeholder="e.g., Briefcase (from lucide-react)"
+                />
               </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor={`stat-value-${stat.id}`}>Value</Label>
-              <Input
-                id={`stat-value-${stat.id}`}
-                value={stat.value}
-                onChange={(e) => handleStatChange(stat.id, 'value', e.target.value)}
-                placeholder="e.g., 56+"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor={`stat-label-${stat.id}`}>Label</Label>
-              <Input
-                id={`stat-label-${stat.id}`}
-                value={stat.label}
-                onChange={(e) => handleStatChange(stat.id, 'label', e.target.value)}
-                placeholder="e.g., Projects"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor={`stat-icon-${stat.id}`}>Icon Name</Label>
-              <Input
-                id={`stat-icon-${stat.id}`}
-                value={stat.icon}
-                onChange={(e) => handleStatChange(stat.id, 'icon', e.target.value)}
-                placeholder="e.g., Briefcase (from lucide-react)"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 flex justify-between">
-        <Button type="button" variant="outline" onClick={handleAddStat}>
-          Add Stat
-        </Button>
-        <Button type="submit">Save All Stats</Button>
-      </div>
-    </form>
+          ))}
+        </div>
+        <div className="mt-6 flex justify-between">
+          <Button type="button" variant="outline" onClick={handleAddStat}>
+            Add Stat
+          </Button>
+          <Button type="submit">Save All Stats</Button>
+        </div>
+      </form>
+      <PasswordDialog
+        isOpen={isPasswordDialogOpen}
+        onClose={() => setIsPasswordDialogOpen(false)}
+        onConfirm={handlePasswordConfirm}
+        isVerifying={isVerifying}
+      />
+    </>
   );
 }
