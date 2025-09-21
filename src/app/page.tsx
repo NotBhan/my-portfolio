@@ -81,32 +81,32 @@ export default async function Home() {
           <div className="col-span-2 row-span-2">
             <Hero />
           </div>
-          <div className="col-span-1 row-span-2">
-            <Skills />
-          </div>
-          <div className="col-span-1 row-span-1">
-            <About />
-          </div>
-          <div className="col-span-1 row-span-1">
-            <Contact />
-          </div>
           <div className="col-span-2 row-span-2">
             <Experiences />
           </div>
           <div className="col-span-1 row-span-1">
             <Projects />
           </div>
+          <div className="col-span-1 row-span-2">
+            <Skills />
+          </div>
+          <div className="col-span-2 row-span-1">
+            <Stats />
+          </div>
           <div className="col-span-1 row-span-1">
             <Testimonials />
+          </div>
+          <div className="col-span-1 row-span-1">
+            <Activities />
           </div>
           <div className="col-span-1 row-span-1">
             <CreativeSkills />
           </div>
           <div className="col-span-1 row-span-1">
-            <Activities />
+            <About />
           </div>
-          <div className='col-span-2 row-span-1'>
-            <Stats />
+          <div className="col-span-1 row-span-1">
+            <Contact />
           </div>
         </div>
       </div>
