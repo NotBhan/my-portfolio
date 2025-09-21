@@ -100,8 +100,10 @@ export default function AdminDashboardLayout({
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <main className="p-4 sm:p-6 lg:p-8">
-          {children}
+        <main className="flex justify-center p-4 sm:p-6 lg:p-8">
+            <div className="w-full max-w-4xl">
+                {children}
+            </div>
         </main>
       </SidebarInset>
       <Toaster />
