@@ -24,24 +24,75 @@ export default async function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <div className="lg:col-span-3">
           <div className="flex flex-col gap-4">
-            <Hero />
-            <Experiences />
+            <div
+              className="animate-slide-in-down"
+              style={{ animationDelay: '100ms' }}
+            >
+              <Hero />
+            </div>
+            <div
+              className="animate-slide-in-up"
+              style={{ animationDelay: '300ms' }}
+            >
+              <Experiences />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-4">
-                {showCreativeSkills && <CreativeSkills />}
-                {showActivities && <Activities />}
+                {showCreativeSkills && (
+                  <div
+                    className="animate-slide-in-left"
+                    style={{ animationDelay: '500ms' }}
+                  >
+                    <CreativeSkills />
+                  </div>
+                )}
+                {showActivities && (
+                  <div
+                    className="animate-slide-in-left"
+                    style={{ animationDelay: '700ms' }}
+                  >
+                    <Activities />
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-4">
-                <Testimonials />
-                <Contact />
+                <div
+                  className="animate-slide-in-right"
+                  style={{ animationDelay: '600ms' }}
+                >
+                  <Testimonials />
+                </div>
+                <div
+                  className="animate-slide-in-right"
+                  style={{ animationDelay: '800ms' }}
+                >
+                  <Contact />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div className="lg:col-span-1 flex flex-col gap-4">
-          <Projects />
-          <Skills />
-          {showAbout && <About />}
+          <div
+            className="animate-slide-in-up"
+            style={{ animationDelay: '200ms' }}
+          >
+            <Projects />
+          </div>
+          <div
+            className="animate-slide-in-up"
+            style={{ animationDelay: '400ms' }}
+          >
+            <Skills />
+          </div>
+          {showAbout && (
+            <div
+              className="animate-slide-in-up"
+              style={{ animationDelay: '900ms' }}
+            >
+              <About />
+            </div>
+          )}
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
