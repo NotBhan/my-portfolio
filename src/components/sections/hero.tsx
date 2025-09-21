@@ -36,7 +36,7 @@ export default async function Hero() {
                     </div>
                     <div className="flex shrink-0 items-center gap-2 w-full lg:w-auto justify-center sm:justify-start">
                         <Button variant="outline" asChild className="w-full sm:w-auto">
-                            <a href="/resume.pdf" download>
+                            <a href={profile.resumeUrl || '/resume.pdf'} download>
                                 <Download className="mr-2 h-4 w-4" />
                                 Resume
                             </a>

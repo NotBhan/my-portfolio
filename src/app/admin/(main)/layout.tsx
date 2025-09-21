@@ -11,8 +11,9 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
-import { LayoutDashboard, User, FolderKanban, Star, MessageSquare, BarChart3, Settings } from 'lucide-react';
+import { LayoutDashboard, User, FolderKanban, Star, MessageSquare, BarChart3, Settings, PenSquare } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'Admin Panel',
@@ -48,7 +49,7 @@ export default function AdminLayout({
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton href="#">
+              <SidebarMenuButton href="/admin/edit/profile">
                 <User />
                 Profile
               </SidebarMenuButton>
@@ -72,9 +73,15 @@ export default function AdminLayout({
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton href="#">
+              <SidebarMenuButton href="/admin/edit/stats">
                 <BarChart3 />
                 Stats
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton href="/admin/edit/creative-skills">
+                <PenSquare />
+                Creative Skills
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -94,6 +101,7 @@ export default function AdminLayout({
           </div>
         </header>
         <main className="p-4">{children}</main>
+        <Toaster />
       </SidebarInset>
     </SidebarProvider>
   );

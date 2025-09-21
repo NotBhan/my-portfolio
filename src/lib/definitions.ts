@@ -42,6 +42,7 @@ export type Profile = {
   instagram: string;
   description: string;
   profilePictureUrl?: string;
+  resumeUrl?: string;
 };
 
 export type CreativeSkill = {
