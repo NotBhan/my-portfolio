@@ -17,7 +17,6 @@ import {
   Briefcase,
   Brush,
   Home,
-  LayoutDashboard,
   MessageSquare,
   Star,
   User,
@@ -29,7 +28,6 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/admin/edit/profile', label: 'Profile', icon: User },
-  { href: '/admin/edit/stats', label: 'Stats', icon: LayoutDashboard },
   { href: '/admin/edit/experiences', label: 'Experiences', icon: History },
   { href: '/admin/edit/projects', label: 'Projects', icon: Briefcase },
   { href: '/admin/edit/skills', label: 'Tech Skills', icon: Star },

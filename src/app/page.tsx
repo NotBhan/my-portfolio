@@ -5,7 +5,6 @@ import Hero from '@/components/sections/hero';
 import Experiences from '@/components/sections/experience';
 import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
-import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 import CreativeSkills from '@/components/sections/creative-skills';
 import { getCreativeSkills, getSocialLinks } from '@/lib/data';
@@ -29,7 +28,6 @@ export default async function Home() {
           <Experiences />
           <Projects />
           <Skills />
-          <Stats />
           <Testimonials />
           {showActivities && <Activities />}
           {showCreativeSkills && <CreativeSkills />}
@@ -37,12 +35,12 @@ export default async function Home() {
           <Contact />
         </div>
 
-        {/* Large Screen Layout - New Bento Design */}
+        {/* Large Screen Layout */}
         <div className="hidden md:grid grid-cols-4 auto-rows-min gap-4">
-          <div className="col-span-3 row-span-2">
+          <div className="col-span-3">
             <Hero />
           </div>
-          <div className="col-span-1 row-span-2">
+          <div className="col-span-1">
             <Skills />
           </div>
           <div className="col-span-2 row-span-2">
@@ -51,15 +49,12 @@ export default async function Home() {
           <div className="col-span-2 row-span-2">
             <Projects />
           </div>
-          <div className="col-span-4">
-            <Stats />
-          </div>
           <div className="col-span-2 row-span-2">
             <Testimonials />
           </div>
-          {showActivities && <div className="col-span-1"><Activities /></div>}
-          {showCreativeSkills && <div className="col-span-1"><CreativeSkills /></div>}
-          <div className="col-span-2 grid grid-cols-2 gap-4">
+          <div className="grid col-span-2 grid-cols-2 gap-4">
+            {showActivities && <div className="col-span-1"><Activities /></div>}
+            {showCreativeSkills && <div className="col-span-1"><CreativeSkills /></div>}
             {showAbout && <div className="col-span-1"><About /></div>}
             <div className="col-span-1"><Contact /></div>
           </div>
