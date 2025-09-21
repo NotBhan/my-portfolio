@@ -8,61 +8,103 @@ import Skills from '@/components/sections/skills';
 import Stats from '@/components/sections/stats';
 import Testimonials from '@/components/sections/testimonials';
 import CreativeSkills from '@/components/sections/creative-skills';
+import { getCreativeSkills, getSocialLinks } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
-export default function Home() {
+export default async function Home() {
+  const allCreativeSkills = await getCreativeSkills();
+  const creativeSkills = allCreativeSkills.filter((s) => s.isVisible);
+  const allSocialLinks = await getSocialLinks();
+  const socialLinks = allSocialLinks.filter((link) => link.isVisible);
+
+  const showActivities = true; // This can be replaced with actual logic later
+  const showCreativeSkills = creativeSkills.length > 0;
+  const showAbout = socialLinks.length > 0;
+
   return (
     <main className="relative flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
       <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-3 hidden lg:block">
-            <Stats />
+        {/* Small Screen Layout */}
+        <div className="grid grid-cols-1 gap-4 lg:hidden">
+          <Hero />
+          <Experiences />
+          <Projects />
+          <Skills />
+          <Stats />
+          <Testimonials />
+          <div
+            className={cn('grid grid-cols-1 gap-4', {
+              'md:grid-cols-2': showActivities && showCreativeSkills,
+            })}
+          >
+            {showActivities && (
+              <div
+                className={cn({
+                  'md:col-span-2': !showCreativeSkills,
+                })}
+              >
+                <Activities />
+              </div>
+            )}
+            {showCreativeSkills && (
+              <div
+                className={cn({
+                  'md:col-span-2': !showActivities,
+                })}
+              >
+                <CreativeSkills />
+              </div>
+            )}
           </div>
-          
-          <div className="lg:col-span-2 order-1 lg:order-auto">
-            <Hero />
-          </div>
-          
-          <div className="lg:col-span-2 order-2 lg:order-auto">
-            <Experiences />
-          </div>
-          
-          <div className="lg:col-span-1 order-3 lg:order-3">
-            <Projects />
-          </div>
-          
-          <div className="lg:col-span-1 order-4 lg:order-2">
-            <Skills />
-          </div>
-          
-          <div className="order-5 block lg:hidden">
-            <Stats />
-          </div>
-          
-          <div className="lg:col-span-2 order-6 lg:order-none">
-            <Testimonials />
-          </div>
-
-          <div className="lg:col-span-2 order-7 lg:order-none grid grid-cols-2 gap-4">
-            <div className="col-span-1">
-              <Activities />
-            </div>
-            <div className="col-span-1">
-              <CreativeSkills />
-            </div>
-          </div>
-          
-          <div className="lg:col-span-1 order-9 lg:order-none hidden lg:block">
-            <About />
-          </div>
-          
-          <div className="lg:col-span-2 order-10 lg:order-none grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="block lg:hidden col-span-1 md:col-span-1">
-              <About />
-            </div>
-            <div className="col-span-1 md:col-span-1">
+          <div
+            className={cn('grid grid-cols-1 gap-4', {
+              'md:grid-cols-2': showAbout,
+            })}
+          >
+            {showAbout && (
+              <div
+                className={cn({
+                  'md:col-span-2': true,
+                })}
+              >
+                <About />
+              </div>
+            )}
+            <div className="md:col-span-2">
               <Contact />
             </div>
           </div>
+        </div>
+
+        {/* Large Screen Layout */}
+        <div className="hidden lg:grid grid-cols-4 grid-rows-4 gap-4 h-[calc(100vh-6rem)]">
+            <div className='col-span-2 row-span-2'>
+                <Hero />
+            </div>
+            <div className='col-span-1 row-span-2'>
+                <Skills />
+            </div>
+            <div className='col-span-1 row-span-1'>
+                <About />
+            </div>
+            <div className='col-span-1 row-span-1'>
+                <Contact />
+            </div>
+            <div className='col-span-2 row-span-2'>
+                <Experiences />
+            </div>
+            <div className='col-span-1 row-span-1'>
+                <Projects />
+            </div>
+            <div className='col-span-1 row-span-1'>
+                <Testimonials />
+            </div>
+             <div className='col-span-1 row-span-1'>
+                <CreativeSkills />
+            </div>
+            <div className='col-span-1 row-span-1'>
+                <Activities />
+            </div>
         </div>
       </div>
       <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
