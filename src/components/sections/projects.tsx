@@ -13,7 +13,8 @@ import {
 } from '@/components/ui/carousel';
 
 export default async function Projects() {
-  const projects = await getProjects();
+  const allProjects = await getProjects();
+  const projects = allProjects.filter((p) => p.isVisible);
 
   return (
     <BentoCard

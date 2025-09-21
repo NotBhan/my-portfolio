@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { Skill, SkillCategory } from '@/lib/definitions';
 import { Plus, Trash } from 'lucide-react';
@@ -28,16 +29,21 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
     setSkillData(skillData.filter((_, i) => i !== catIndex));
   };
 
-  const handleSkillChange = (catIndex: number, skillIndex: number, field: keyof Skill, value: string | number) => {
+  const handleSkillChange = (
+    catIndex: number,
+    skillIndex: number,
+    field: keyof Skill,
+    value: string | number | boolean
+  ) => {
     const newData = [...skillData];
     const skill = newData[catIndex].skills[skillIndex];
-    (skill[field] as string | number) = value;
+    (skill[field] as string | number | boolean) = value;
     setSkillData(newData);
   };
 
   const handleAddSkill = (catIndex: number) => {
     const newData = [...skillData];
-    newData[catIndex].skills.push({ name: 'New Skill', level: 50 });
+    newData[catIndex].skills.push({ name: 'New Skill', level: 50, isVisible: true });
     setSkillData(newData);
   };
 
@@ -94,17 +100,27 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
           <div className="mt-4 space-y-4">
             {category.skills.map((skill, skillIndex) => (
               <div key={`skill-${catIndex}-${skillIndex}`} className="ml-4 space-y-2 rounded-md border p-3">
-                 <div className="flex items-center justify-between">
-                    <Label htmlFor={`skill-name-${catIndex}-${skillIndex}`}>Skill Name</Label>
+                <div className="flex items-center justify-between">
+                  <Label htmlFor={`skill-name-${catIndex}-${skillIndex}`}>Skill Name</Label>
+                  <div className="flex items-center gap-2">
+                    <Switch
+                      id={`skill-visible-${catIndex}-${skillIndex}`}
+                      checked={skill.isVisible}
+                      onCheckedChange={(checked) =>
+                        handleSkillChange(catIndex, skillIndex, 'isVisible', checked)
+                      }
+                    />
+                    <Label htmlFor={`skill-visible-${catIndex}-${skillIndex}`}>Visible</Label>
                     <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="text-destructive"
-                        onClick={() => handleRemoveSkill(catIndex, skillIndex)}
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="text-destructive"
+                      onClick={() => handleRemoveSkill(catIndex, skillIndex)}
                     >
-                        <Trash className="h-4 w-4" />
+                      <Trash className="h-4 w-4" />
                     </Button>
+                  </div>
                 </div>
                 <Input
                   id={`skill-name-${catIndex}-${skillIndex}`}
@@ -123,7 +139,13 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
               </div>
             ))}
           </div>
-          <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => handleAddSkill(catIndex)}>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-4"
+            onClick={() => handleAddSkill(catIndex)}
+          >
             <Plus className="mr-2 h-4 w-4" /> Add Skill
           </Button>
         </div>

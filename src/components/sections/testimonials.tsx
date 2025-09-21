@@ -4,7 +4,8 @@ import { MessageSquare } from 'lucide-react';
 import { ScrollArea } from '../ui/scroll-area';
 
 export default async function Testimonials() {
-  const testimonials = await getTestimonials();
+  const allTestimonials = await getTestimonials();
+  const testimonials = allTestimonials.filter((t) => t.isVisible);
 
   return (
     <BentoCard className="h-full">

@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { Stat } from '@/lib/definitions';
 import { Trash } from 'lucide-react';
@@ -21,6 +22,7 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
         value: '',
         label: '',
         icon: 'Activity',
+        isVisible: true,
       },
     ]);
   };
@@ -29,7 +31,7 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
     setStats(stats.filter((s) => s.id !== id));
   };
 
-  const handleStatChange = (id: string, field: keyof Stat, value: string) => {
+  const handleStatChange = (id: string, field: keyof Stat, value: string | boolean) => {
     setStats(stats.map((s) => (s.id === id ? { ...s, [field]: value } : s)));
   };
 
@@ -66,14 +68,22 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
           <div key={stat.id} className="space-y-4 rounded-lg border p-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Stat {index + 1}</h3>
-              <Button
-                type="button"
-                variant="destructive"
-                size="icon"
-                onClick={() => handleRemoveStat(stat.id)}
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
+              <div className="flex items-center gap-2">
+                <Switch
+                  id={`stat-visible-${stat.id}`}
+                  checked={stat.isVisible}
+                  onCheckedChange={(checked) => handleStatChange(stat.id, 'isVisible', checked)}
+                />
+                <Label htmlFor={`stat-visible-${stat.id}`}>Visible</Label>
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="icon"
+                  onClick={() => handleRemoveStat(stat.id)}
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
             <div className="space-y-2">
               <Label htmlFor={`stat-value-${stat.id}`}>Value</Label>

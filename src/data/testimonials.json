@@ -4,12 +4,14 @@
     "id": "1",
     "name": "Sarah Johnson",
     "company": "New York City, USA",
-    "quote": "Chandrabhan's design skills are unparalleled. He transformed my vague ideas into a stunning website that perfectly represents my brand."
+    "quote": "Chandrabhan's design skills are unparalleled. He transformed my vague ideas into a stunning website that perfectly represents my brand.",
+    "isVisible": true
   },
   {
     "id": "2",
     "name": "David Smith",
     "company": "London, UK",
-    "quote": "Working with Chandrabhan was a breeze. He not only delivered a sleek and functional website but also provided excellent support throughout the process."
+    "quote": "Working with Chandrabhan was a breeze. He not only delivered a sleek and functional website but also provided excellent support throughout the process.",
+    "isVisible": true
   }
 ]

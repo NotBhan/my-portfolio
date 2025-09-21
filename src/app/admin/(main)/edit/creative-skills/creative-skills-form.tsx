@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { CreativeSkill } from '@/lib/definitions';
 import { Trash } from 'lucide-react';
@@ -19,6 +20,7 @@ export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { 
       {
         id: `new-${Date.now()}`,
         name: '',
+        isVisible: true,
       },
     ]);
   };
@@ -27,8 +29,8 @@ export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { 
     setSkills(skills.filter((s) => s.id !== id));
   };
 
-  const handleSkillChange = (id: string, value: string) => {
-    setSkills(skills.map((s) => (s.id === id ? { ...s, name: value } : s)));
+  const handleSkillChange = (id: string, field: keyof CreativeSkill, value: string | boolean) => {
+    setSkills(skills.map((s) => (s.id === id ? { ...s, [field]: value } : s)));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -64,21 +66,29 @@ export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { 
           <div key={skill.id} className="space-y-4 rounded-lg border p-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Skill {index + 1}</h3>
-              <Button
-                type="button"
-                variant="destructive"
-                size="icon"
-                onClick={() => handleRemoveSkill(skill.id)}
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
+              <div className="flex items-center gap-2">
+                <Switch
+                  id={`skill-visible-${skill.id}`}
+                  checked={skill.isVisible}
+                  onCheckedChange={(checked) => handleSkillChange(skill.id, 'isVisible', checked)}
+                />
+                <Label htmlFor={`skill-visible-${skill.id}`}>Visible</Label>
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="icon"
+                  onClick={() => handleRemoveSkill(skill.id)}
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
             <div className="space-y-2">
               <Label htmlFor={`skill-name-${skill.id}`}>Name</Label>
               <Input
                 id={`skill-name-${skill.id}`}
                 value={skill.name}
-                onChange={(e) => handleSkillChange(skill.id, e.target.value)}
+                onChange={(e) => handleSkillChange(skill.id, 'name', e.target.value)}
                 placeholder="Skill Name"
               />
             </div>

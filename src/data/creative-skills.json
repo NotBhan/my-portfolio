@@ -1,8 +1,8 @@
 
 [
-  { "id": "1", "name": "Music Production" },
-  { "id": "2", "name": "Sound Design" },
-  { "id": "3", "name": "Figma" },
-  { "id": "4", "name": "Photoshop" },
-  { "id": "5", "name": "Video Editing" }
+  { "id": "1", "name": "Music Production", "isVisible": true },
+  { "id": "2", "name": "Sound Design", "isVisible": true },
+  { "id": "3", "name": "Figma", "isVisible": true },
+  { "id": "4", "name": "Photoshop", "isVisible": true },
+  { "id": "5", "name": "Video Editing", "isVisible": true }
 ]

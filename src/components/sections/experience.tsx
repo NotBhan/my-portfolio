@@ -3,7 +3,8 @@ import BentoCard from '../bento-card';
 import { getProjects } from '@/lib/data';
 
 export default async function Experiences() {
-  const experiences = await getProjects();
+  const allExperiences = await getProjects();
+  const experiences = allExperiences.filter((e) => e.isVisible);
 
   return (
     <BentoCard

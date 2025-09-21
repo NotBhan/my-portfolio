@@ -4,11 +4,13 @@ export type Project = {
   description: string;
   image: string;
   link: string;
+  isVisible: boolean;
 };
 
 export type Skill = {
   name: string;
   level: number;
+  isVisible: boolean;
 };
 
 export type SkillCategory = {
@@ -21,6 +23,7 @@ export type Testimonial = {
   name: string;
   company: string;
   quote: string;
+  isVisible: boolean;
 };
 
 export type Stat = {
@@ -28,6 +31,7 @@ export type Stat = {
   value: string;
   label: string;
   icon: string;
+  isVisible: boolean;
 };
 
 export type Profile = {
@@ -48,4 +52,5 @@ export type Profile = {
 export type CreativeSkill = {
   id: string;
   name: string;
+  isVisible: boolean;
 };

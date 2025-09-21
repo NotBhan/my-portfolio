@@ -4,7 +4,9 @@ import { getCreativeSkills } from '@/lib/data';
 import { Brush } from 'lucide-react';
 
 export default async function CreativeSkills() {
-  const creativeSkills = await getCreativeSkills();
+  const allCreativeSkills = await getCreativeSkills();
+  const creativeSkills = allCreativeSkills.filter((s) => s.isVisible);
+
   return (
     <BentoCard
       title={

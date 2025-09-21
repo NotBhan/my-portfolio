@@ -1,20 +1,24 @@
+
 [
   {
     "id": "1",
     "value": "56+",
     "label": "Projects",
-    "icon": "Briefcase"
+    "icon": "Briefcase",
+    "isVisible": true
   },
   {
     "id": "2",
     "value": "23+",
     "label": "Happy Clients",
-    "icon": "Heart"
+    "icon": "Heart",
+    "isVisible": true
   },
   {
     "id": "3",
     "value": "06+",
     "label": "Year Expertise",
-    "icon": "Star"
+    "icon": "Star",
+    "isVisible": true
   }
 ]

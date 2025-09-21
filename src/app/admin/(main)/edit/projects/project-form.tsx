@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import type { Project } from '@/lib/definitions';
@@ -23,6 +24,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
         description: '',
         image: 'https://picsum.photos/seed/placeholder/400/250',
         link: '',
+        isVisible: true,
       },
     ]);
   };
@@ -31,7 +33,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
     setProjects(projects.filter((p) => p.id !== id));
   };
 
-  const handleProjectChange = (id: string, field: keyof Project, value: string) => {
+  const handleProjectChange = (id: string, field: keyof Project, value: string | boolean) => {
     setProjects(projects.map((p) => (p.id === id ? { ...p, [field]: value } : p)));
   };
 
@@ -68,14 +70,22 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
           <div key={project.id} className="space-y-4 rounded-lg border p-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Project {index + 1}</h3>
-              <Button
-                type="button"
-                variant="destructive"
-                size="icon"
-                onClick={() => handleRemoveProject(project.id)}
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
+              <div className="flex items-center gap-2">
+                <Switch
+                  id={`project-visible-${project.id}`}
+                  checked={project.isVisible}
+                  onCheckedChange={(checked) => handleProjectChange(project.id, 'isVisible', checked)}
+                />
+                <Label htmlFor={`project-visible-${project.id}`}>Visible</Label>
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="icon"
+                  onClick={() => handleRemoveProject(project.id)}
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
             <div className="space-y-2">
               <Label htmlFor={`project-title-${project.id}`}>Title</Label>

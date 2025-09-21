@@ -3,9 +3,16 @@ import { getSkills } from '@/lib/data';
 import { Star } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { SkillCategory } from '@/lib/definitions';
 
 export default async function Skills() {
-  const skillData = await getSkills();
+  const allSkillData = await getSkills();
+  const skillData = allSkillData
+    .map((category) => ({
+      ...category,
+      skills: category.skills.filter((skill) => skill.isVisible),
+    }))
+    .filter((category) => category.skills.length > 0);
 
   return (
     <BentoCard

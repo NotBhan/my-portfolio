@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import type { Testimonial } from '@/lib/definitions';
@@ -22,6 +23,7 @@ export default function TestimonialsForm({ testimonials: initialTestimonials }: 
         name: '',
         company: '',
         quote: '',
+        isVisible: true,
       },
     ]);
   };
@@ -30,7 +32,7 @@ export default function TestimonialsForm({ testimonials: initialTestimonials }: 
     setTestimonials(testimonials.filter((t) => t.id !== id));
   };
 
-  const handleTestimonialChange = (id: string, field: keyof Testimonial, value: string) => {
+  const handleTestimonialChange = (id: string, field: keyof Testimonial, value: string | boolean) => {
     setTestimonials(testimonials.map((t) => (t.id === id ? { ...t, [field]: value } : t)));
   };
 
@@ -67,14 +69,22 @@ export default function TestimonialsForm({ testimonials: initialTestimonials }: 
           <div key={testimonial.id} className="space-y-4 rounded-lg border p-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Testimonial {index + 1}</h3>
-              <Button
-                type="button"
-                variant="destructive"
-                size="icon"
-                onClick={() => handleRemoveTestimonial(testimonial.id)}
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
+              <div className="flex items-center gap-2">
+                <Switch
+                  id={`testimonial-visible-${testimonial.id}`}
+                  checked={testimonial.isVisible}
+                  onCheckedChange={(checked) => handleTestimonialChange(testimonial.id, 'isVisible', checked)}
+                />
+                <Label htmlFor={`testimonial-visible-${testimonial.id}`}>Visible</Label>
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="icon"
+                  onClick={() => handleRemoveTestimonial(testimonial.id)}
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
             <div className="space-y-2">
               <Label htmlFor={`testimonial-name-${testimonial.id}`}>Name</Label>
