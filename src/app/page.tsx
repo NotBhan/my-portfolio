@@ -1,3 +1,4 @@
+
 import About from '@/components/sections/about';
 import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
@@ -21,6 +22,11 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto p-4">
+       <div className="text-center my-12 animate-slide-in-down opacity-0" style={{ animationFillMode: 'forwards' }}>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground">
+          CHANDRABHAN
+        </h1>
+      </div>
       <div className="flex flex-col lg:grid lg:grid-cols-4 lg:gap-4">
         {/* Mobile and Tablet Layout (Flexbox) */}
         <div className="flex flex-col gap-4 lg:hidden">
