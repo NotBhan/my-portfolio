@@ -10,25 +10,26 @@ async function readData<T>(filename: string): Promise<T> {
   try {
     const filePath = dataFilePath(filename);
     const jsonData = await fs.readFile(filePath, 'utf-8');
-    // For single object files, parse directly.
     if (filename === 'profile.json') {
       return JSON.parse(jsonData) as T;
     }
-    // For array files, handle as before, though we might need to adjust.
-    // This function is now more generic. Assuming array for others.
-    return JSON.parse(jsonData) as T;
+    const data = JSON.parse(jsonData);
+    if (typeof data === 'object' && data !== null && !Array.isArray(data)) {
+      return Object.values(data) as T;
+    }
+    return data as T;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
       if (filename === 'profile.json') {
-        return {} as T; // Return empty object for profile
+        return {} as T; 
       }
-      return [] as T; // Return empty array for others
+      return [] as unknown as T;
     }
     console.error(`Error reading ${filename}:`, error);
     if (filename === 'profile.json') {
       return {} as T;
     }
-    return [] as T;
+    return [] as unknown as T;
   }
 }
 
@@ -37,10 +38,14 @@ async function readDataArray<T>(filename: string): Promise<T[]> {
     try {
       const filePath = dataFilePath(filename);
       const jsonData = await fs.readFile(filePath, 'utf-8');
-      return JSON.parse(jsonData) as T[];
+      const data = JSON.parse(jsonData);
+      if (typeof data === 'object' && data !== null && !Array.isArray(data)) {
+        return Object.values(data) as T[];
+      }
+      return data as T[];
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-        return []; // Return empty array if file doesn't exist
+        return []; 
       }
       console.error(`Error reading ${filename}:`, error);
       return [];

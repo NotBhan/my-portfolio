@@ -5,5 +5,12 @@
     "description": "Participated in Amity University Algostorm 1.0 24hr Hackathon while leading a team of 4.",
     "icon": "Laptop",
     "isVisible": true
+  },
+  {
+    "id": "2",
+    "title": "Smart India Hackathon 23,24",
+    "description": "Participation on Smart India Hackathon 2023 and 2024",
+    "icon": "BrainCircuit",
+    "isVisible": true
   }
 ]

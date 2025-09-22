@@ -1,16 +1,15 @@
-
 [
   {
     "id": "1",
     "name": "Twitter",
-    "url": "#",
+    "url": "https://x.com/Ardnahc?t=EOT08AOjT4byvYIs8asf7g&s=09",
     "icon": "Twitter",
     "isVisible": true
   },
   {
     "id": "2",
     "name": "Facebook",
-    "url": "#",
+    "url": "https://www.facebook.com/share/1CMMm2V5yx/",
     "icon": "Facebook",
     "isVisible": true
   }

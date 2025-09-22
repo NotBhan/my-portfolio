@@ -2,18 +2,27 @@
   {
     "id": "1",
     "title": "ExamPrep AI",
-    "description": "An AI powered localized platform for students to use and prepare for exams.",
-    "image": "https://picsum.photos/seed/placeholder/400/250",
-    "link": "github.com",
+    "description": "An intelligent study assistant designed to help students supercharge their exam preparation.",
+    "image": "https://drive.google.com/uc?id=1szE-LqQGzsf_--8iRf2Mxuowx3I0KwPh",
+    "link": "https://github.com/NotBhan/examprep-ai.git",
     "isVisible": true,
-    "liveLink": "https://www.google.com"
+    "liveLink": ""
   },
   {
     "id": "2",
-    "title": "Gamified habit tracker",
-    "description": "A telegram bot as a gamified life habit tracker ",
-    "image": "https://picsum.photos/seed/placeholder/400/250",
-    "link": "github.com",
+    "title": "Telegram Gamified Habit Tracker",
+    "description": "A professional gamified Telegram bot that tracks user experience points (XP), quests, and inventory using Notion as a backend database. Built with Python 3.8+ and modern async practices.",
+    "image": "https://drive.google.com/uc?id=16-4V9pJsDUeRwr0C60RB6dWE3o1XWbea",
+    "link": "https://github.com/NotBhan/xp-telegram-bot.git",
+    "isVisible": true
+  },
+  {
+    "id": "3",
+    "title": "Bhopal Weather Analysis Dashboard",
+    "description": "an interactive web dashboard built to analyze and visualize historical weather data for Bhopal, Madhya Pradesh, India",
+    "image": "https://drive.google.com/uc?id=1fHvyqYwe6ZNg5L_9CZRHsxjxUZzMvDB9",
+    "link": "https://github.com/NotBhan/bhopal-weather-dashboard.git",
+    "liveLink": "",
     "isVisible": true
   }
 ]
