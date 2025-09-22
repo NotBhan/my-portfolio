@@ -142,7 +142,7 @@ export default function Projects() {
                             alt={project.title}
                             width={400}
                             height={250}
-                            className="w-full h-auto object-cover"
+                            className="w-full rounded-md aspect-video object-cover"
                             placeholder="blur"
                             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                           />
