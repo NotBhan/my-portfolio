@@ -19,7 +19,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from '@/components/ui/dialog';
 import { useEffect, useState } from 'react';
@@ -98,6 +97,8 @@ export default function Projects() {
                             width={400}
                             height={250}
                             className="mb-2 w-full rounded-md aspect-video object-cover"
+                            placeholder="blur"
+                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                           />
                           <p className="line-clamp-2">{project.description}</p>
                         </CardContent>
@@ -119,6 +120,8 @@ export default function Projects() {
                           width={400}
                           height={250}
                           className="mb-4 w-full rounded-md aspect-video object-cover"
+                           placeholder="blur"
+                           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
                         />
                         {project.description}
                       </DialogDescription>
