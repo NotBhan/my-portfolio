@@ -111,15 +111,15 @@ export default function Projects() {
                       </Card>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
+                  <DialogContent className="sm:max-w-[550px] md:max-w-2xl">
                     <DialogHeader>
-                      <DialogTitle className="font-code">{project.title}</DialogTitle>
+                      <DialogTitle className="font-code text-xl">{project.title}</DialogTitle>
                       <DialogDescription className="pt-2 font-code text-sm text-muted-foreground">
                         <Image
                           src={project.image}
                           alt={project.title}
-                          width={400}
-                          height={250}
+                          width={600}
+                          height={375}
                           className="mb-4 w-full rounded-md aspect-video object-cover"
                            placeholder="blur"
                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
