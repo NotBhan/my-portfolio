@@ -130,22 +130,28 @@ export default function Projects() {
                       </Card>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[550px] md:max-w-2xl">
+                  <DialogContent className="sm:max-w-md">
                     <DialogHeader>
                       <DialogTitle className="font-code text-xl">{project.title}</DialogTitle>
-                      <DialogDescription className="pt-2 font-code text-sm text-muted-foreground">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          width={600}
-                          height={375}
-                          className="mb-4 w-full rounded-md aspect-video object-cover"
-                           placeholder="blur"
-                           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
-                        />
-                        {project.description}
-                      </DialogDescription>
                     </DialogHeader>
+                    <DialogDescription asChild>
+                      <div className="space-y-4">
+                        <div className="overflow-hidden rounded-lg">
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            width={400}
+                            height={250}
+                            className="w-full h-auto object-cover"
+                            placeholder="blur"
+                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
+                          />
+                        </div>
+                        <p className="font-code text-sm text-muted-foreground">
+                          {project.description}
+                        </p>
+                      </div>
+                    </DialogDescription>
                     <DialogFooter className="gap-2 sm:justify-start">
                       {project.link && (
                         <Button variant="secondary" size="sm" asChild className="font-code text-xs">
