@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import { FolderKanban } from 'lucide-react';
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -22,11 +23,12 @@ import {
   DialogFooter,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [api, setApi] = useState<CarouselApi>();
 
   useEffect(() => {
     async function fetchProjects() {
@@ -46,6 +48,22 @@ export default function Projects() {
     }
     fetchProjects();
   }, []);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        api.scrollTo(0);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [api]);
 
   if (isLoading) {
     return (
@@ -75,6 +93,7 @@ export default function Projects() {
     >
       {projects.length > 0 ? (
         <Carousel
+          setApi={setApi}
           opts={{
             align: 'start',
             loop: true,
