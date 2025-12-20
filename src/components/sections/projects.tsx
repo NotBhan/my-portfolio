@@ -102,7 +102,7 @@ export default function Projects() {
         >
           <CarouselContent>
             {projects.map((project) => (
-              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-full">
+              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
                 <Dialog>
                   <DialogTrigger asChild>
                     <div className="h-full p-1">
