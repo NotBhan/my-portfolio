@@ -22,15 +22,15 @@ export default async function Home() {
   const showAbout = socialLinks.length > 0;
 
   return (
-    <main className="container mx-auto p-2 sm:p-4">
+    <main className="container mx-auto max-w-7xl p-2 sm:p-4">
        <div className="text-center my-12 animate-slide-in-down opacity-0" style={{ animationFillMode: 'forwards' }}>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground">
           CHANDRABHAN'S PORTFOLIO
         </h1>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Left Column */}
-        <div className="lg:col-span-3 flex flex-col gap-4">
+        <div className="lg:col-span-2 flex flex-col gap-4">
           <div
             className="animate-slide-in-down opacity-0"
             style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
@@ -42,6 +42,12 @@ export default async function Home() {
             style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
           >
             <Experiences />
+          </div>
+           <div
+            className="animate-slide-in-up opacity-0"
+            style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
+          >
+            <Projects />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-4">
@@ -80,12 +86,6 @@ export default async function Home() {
         </div>
         {/* Right Column */}
         <div className="lg:col-span-1 flex flex-col gap-4">
-          <div
-            className="animate-slide-in-up opacity-0"
-            style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
-          >
-            <Projects />
-          </div>
           <div
             className="animate-slide-in-up opacity-0"
             style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}
