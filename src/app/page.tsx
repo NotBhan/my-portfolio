@@ -6,7 +6,6 @@ import Hero from '@/components/sections/hero';
 import Experiences from '@/components/sections/experience';
 import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
-import Testimonials from '@/components/sections/testimonials';
 import CreativeSkills from '@/components/sections/creative-skills';
 import { getCreativeSkills, getSocialLinks } from '@/lib/data';
 import Footer from '@/components/footer';
@@ -75,12 +74,6 @@ export default async function Home() {
           )}
           <div
             className="animate-slide-in-right opacity-0"
-            style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}
-          >
-            <Testimonials />
-          </div>
-          <div
-            className="animate-slide-in-right opacity-0"
             style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
           >
             <Contact />
@@ -99,3 +92,4 @@ export default async function Home() {
     </main>
   );
 }
+
