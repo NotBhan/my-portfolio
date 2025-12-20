@@ -9,11 +9,17 @@ type BentoCardProps = {
   showButtons?: boolean;
 };
 
-export default function BentoCard({ children, className, title, as: Component = 'div', showButtons = false }: BentoCardProps) {
+export default function BentoCard({
+  children,
+  className,
+  title,
+  as: Component = 'div',
+  showButtons = false,
+}: BentoCardProps) {
   return (
     <Component
       className={cn(
-        'relative flex w-full flex-col rounded-xl border bg-card/90 dark:bg-card/80 backdrop-blur-md text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1',
+        'relative flex w-full flex-col rounded-xl border bg-card/90 text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg dark:bg-card/80 backdrop-blur-md',
         className
       )}
     >

@@ -1,4 +1,3 @@
-
 import About from '@/components/sections/about';
 import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
@@ -9,6 +8,7 @@ import Skills from '@/components/sections/skills';
 import Testimonials from '@/components/sections/testimonials';
 import CreativeSkills from '@/components/sections/creative-skills';
 import { getCreativeSkills, getSocialLinks } from '@/lib/data';
+import Footer from '@/components/footer';
 
 export default async function Home() {
   const allCreativeSkills = await getCreativeSkills();
@@ -27,73 +27,9 @@ export default async function Home() {
           CHANDRABHAN'S PORTFOLIO
         </h1>
       </div>
-      <div className="flex flex-col lg:grid lg:grid-cols-4 lg:gap-4">
-        {/* Mobile and Tablet Layout (Flexbox) */}
-        <div className="flex flex-col gap-4 lg:hidden">
-          <div
-            className="order-1 animate-slide-in-down opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            <Hero />
-          </div>
-          <div
-            className="order-2 animate-slide-in-up opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            <Experiences />
-          </div>
-          <div
-            className="order-3 animate-slide-in-up opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            <Skills />
-          </div>
-          <div
-            className="order-4 animate-slide-in-up opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            <Projects />
-          </div>
-          <div
-            className="order-5 animate-slide-in-right opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            <Testimonials />
-          </div>
-          {showCreativeSkills && (
-            <div
-              className="order-6 animate-slide-in-left opacity-0"
-              style={{ animationFillMode: 'forwards' }}
-            >
-              <CreativeSkills />
-            </div>
-          )}
-          {showActivities && (
-            <div
-              className="order-7 animate-slide-in-left opacity-0"
-              style={{ animationFillMode: 'forwards' }}
-            >
-              <Activities />
-            </div>
-          )}
-          {showAbout && (
-            <div
-              className="order-8 animate-slide-in-up opacity-0"
-              style={{ animationFillMode: 'forwards' }}
-            >
-              <About />
-            </div>
-          )}
-          <div
-            className="order-9 animate-slide-in-right opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            <Contact />
-          </div>
-        </div>
-
-        {/* Desktop Layout (Grid) */}
-        <div className="hidden lg:col-span-3 lg:flex lg:flex-col lg:gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        {/* Left Column */}
+        <div className="lg:col-span-3 flex flex-col gap-4">
           <div
             className="animate-slide-in-down opacity-0"
             style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
@@ -141,7 +77,8 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden lg:col-span-1 lg:flex lg:flex-col lg:gap-4">
+        {/* Right Column */}
+        <div className="lg:col-span-1 flex flex-col gap-4">
           <div
             className="animate-slide-in-up opacity-0"
             style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
@@ -164,11 +101,7 @@ export default async function Home() {
           )}
         </div>
       </div>
-      <footer className="mt-12 text-center text-muted-foreground font-code text-sm">
-        <p>
-          &copy; {new Date().getFullYear()} Chandrabhan. All rights reserved.
-        </p>
-      </footer>
+      <Footer />
     </main>
   );
 }
