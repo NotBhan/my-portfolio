@@ -1,3 +1,4 @@
+
 import About from '@/components/sections/about';
 import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
@@ -21,7 +22,7 @@ export default async function Home() {
   const showAbout = socialLinks.length > 0;
 
   return (
-    <main className="container mx-auto p-4">
+    <main className="container mx-auto p-2 sm:p-4">
        <div className="text-center my-12 animate-slide-in-down opacity-0" style={{ animationFillMode: 'forwards' }}>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground">
           CHANDRABHAN'S PORTFOLIO
