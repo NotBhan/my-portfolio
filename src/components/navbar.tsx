@@ -15,11 +15,17 @@ const navItems = [
 ];
 
 export default function Sidebar() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
     <div className="flex flex-col items-center h-full pt-3 pb-4">
@@ -61,11 +67,11 @@ export default function Sidebar() {
       {/* Sidebar Footer: Theme Toggle */}
       <div className="mt-auto">
         <button 
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          onClick={toggleTheme}
           className="p-3 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center rounded-xl hover:bg-white/5"
           title="Toggle Theme"
         >
-          {mounted && theme === 'dark' ? (
+          {mounted && resolvedTheme === 'dark' ? (
             <Sun size={20} strokeWidth={1.5} />
           ) : (
             <Moon size={20} strokeWidth={1.5} />
