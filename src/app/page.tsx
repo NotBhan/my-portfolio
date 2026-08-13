@@ -33,18 +33,18 @@ export default async function Home() {
   ];
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
+    <main className="min-h-screen flex items-center justify-center p-2 sm:p-4">
       <div className="interface-shell">
         {/* Top Header Rail — Redesigned for Bento Architecture */}
-        <header className="h-[80px] col-start-2 row-start-1 flex items-center px-6 z-20 gap-3 bg-transparent">
-          <div className="flex-1 h-[54px] bg-[#11141b]/40 border border-white/5 rounded-2xl flex items-center px-10 relative group">
+        <header className="h-[64px] col-start-2 row-start-1 flex items-center px-6 z-20 gap-3 bg-transparent">
+          <div className="flex-1 h-[48px] bg-[#11141b]/40 border border-white/5 rounded-2xl flex items-center px-8 relative group">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
               <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.25em] font-black">Available for New Projects</span>
             </div>
           </div>
           
-          <div className="h-[54px] bg-[#11141b] border border-white/10 rounded-2xl flex items-center gap-6 px-8 shadow-2xl relative transition-all hover:border-white/20">
+          <div className="h-[48px] bg-[#11141b] border border-white/10 rounded-2xl flex items-center gap-6 px-6 shadow-2xl relative transition-all hover:border-white/20">
             <a href={profile.github} target="_blank" rel="noreferrer" title="GitHub" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
               <Github size={18} strokeWidth={1.5} />
             </a>
@@ -66,7 +66,7 @@ export default async function Home() {
         </aside>
 
         {/* Main 12-Column Content Surface */}
-        <div className="col-start-2 row-start-2 overflow-y-auto p-4 custom-scrollbar bg-[#0c0f16]">
+        <div className="col-start-2 row-start-2 overflow-y-auto px-4 pt-2 pb-4 custom-scrollbar bg-[#0c0f16]">
           <div className="grid grid-cols-12 gap-[10px] items-start content-start pb-12">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}

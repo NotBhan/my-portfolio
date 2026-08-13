@@ -43,13 +43,13 @@
 
 @layer components {
   .interface-shell {
-    @apply relative bg-[#0c0f16] border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden mx-auto my-6;
+    @apply relative bg-[#0c0f16] border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden mx-auto my-4;
     width: min(1480px, calc(100vw - 48px));
-    min-height: calc(100vh - 48px);
+    min-height: calc(100vh - 32px);
     border-radius: var(--outer-radius);
     display: grid;
     grid-template-columns: 72px minmax(0, 1fr);
-    grid-template-rows: 80px minmax(0, 1fr);
+    grid-template-rows: 64px minmax(0, 1fr);
   }
 
   .bento-card {
