@@ -13,7 +13,7 @@ export default async function CreativeSkills() {
           <Music size={18} />
         </div>
         <div className="space-y-0.5">
-          <h3 className="text-[10px] font-black text-white/80 uppercase tracking-[0.3em]">Beyond Code</h3>
+          <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Beyond Code</h3>
           <p className="text-[10px] text-muted-foreground font-medium max-w-[180px] mx-auto leading-tight">
             Merging technology with music production and sound design.
           </p>

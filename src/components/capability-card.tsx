@@ -22,12 +22,12 @@ export default function CapabilityCard({ title, skills, icon, className }: Capab
             <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/10">
                 <Icon size={14} />
             </div>
-            <h3 className="text-[13px] font-black text-white/70 uppercase tracking-[0.2em]">{title}</h3>
+            <h3 className="text-[13px] font-black text-white uppercase tracking-[0.2em]">{title}</h3>
         </div>
         
         <div className="grid grid-cols-2 gap-x-8 gap-y-2 content-start">
           {skills.filter(s => s.isVisible !== false).map((skill) => (
-            <p key={skill.name} className="text-[11px] font-bold text-white/90 uppercase tracking-wide truncate">
+            <p key={skill.name} className="text-[11px] font-bold text-white uppercase tracking-wide truncate">
               {skill.name}
             </p>
           ))}
