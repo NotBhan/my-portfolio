@@ -11,13 +11,13 @@ import { Button } from '@/components/ui/button';
 
 export default async function Home() {
   return (
-    <main className="container mx-auto max-w-[1400px] p-6 lg:p-10 min-h-screen flex flex-col gap-6">
+    <main className="container mx-auto max-w-[1400px] p-4 sm:p-6 lg:p-10 min-h-screen flex flex-col gap-6">
       {/* Top Header Reference Row */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-2">
         <div className="glass-card flex items-center p-2 rounded-full gap-2 px-6 h-16 bg-[#151921]/40 border-[#ffffff05] w-full md:w-auto">
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-code text-muted-foreground uppercase tracking-widest">Available for hire</span>
+            <span className="text-xs sm:text-sm font-code text-muted-foreground uppercase tracking-widest">Available for hire</span>
           </div>
         </div>
         
@@ -32,12 +32,15 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-12 gap-6">
         {/* ROW 1: 3-Column Layout from Reference */}
-        <div className="lg:col-span-4 h-full">
+        {/* Column 1: Hero */}
+        <div className="col-span-12 md:col-span-12 lg:col-span-4 h-full">
           <Hero />
         </div>
-        <div className="lg:col-span-4 h-full">
+
+        {/* Column 2: Stats & Activities */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-full">
           <div className="flex flex-col gap-6 h-full">
             <div className="flex-1">
               <Stats />
@@ -47,15 +50,20 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-4 h-full">
+
+        {/* Column 3: Skills */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-full">
           <Skills />
         </div>
 
-        {/* ROW 2: 2-Column Layout (Big Card + Regular Card) from Reference */}
-        <div className="lg:col-span-8">
+        {/* ROW 2: 2-Column Layout (Big Card + Regular Card) */}
+        {/* Column 1: Projects (Span 2/3) */}
+        <div className="col-span-12 lg:col-span-8">
           <Projects />
         </div>
-        <div className="lg:col-span-4">
+
+        {/* Column 2: Experience & Contact (Span 1/3) */}
+        <div className="col-span-12 lg:col-span-4">
           <div className="flex flex-col gap-6 h-full">
             <div className="flex-1">
               <Experiences />

@@ -23,7 +23,7 @@ export default function Sidebar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="fixed left-6 top-6 bottom-6 w-24 flex flex-col items-center py-10 glass-card bg-[#151921]/90 z-50">
+    <div className="hidden lg:flex fixed left-6 top-6 bottom-6 w-24 flex-col items-center py-10 glass-card bg-[#151921]/90 z-50">
       <div className="mb-14">
         <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white font-bold text-3xl glow-purple shadow-primary/40">
           C

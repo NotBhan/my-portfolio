@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-background font-body antialiased min-w-[350px]',
+          'min-h-screen bg-background font-body antialiased min-w-[320px]',
           fontBody.variable,
           fontCode.variable
         )}
@@ -47,7 +47,7 @@ export default function RootLayout({
         >
           <Spotlight />
           <Sidebar />
-          <div className="pl-20">
+          <div className="lg:pl-32 transition-all duration-300">
             {children}
           </div>
           <Toaster />
