@@ -45,9 +45,9 @@ export default async function Home() {
 
         {/* Main 12-Column Content Surface */}
         <div className="col-start-2 row-start-2 overflow-y-auto p-3 custom-scrollbar bg-[#0c0f16]">
-          <div className="grid grid-cols-12 grid-rows-[120px_300px_72px] gap-[10px] h-full">
+          <div className="grid grid-cols-12 grid-rows-[112px_285px_68px] gap-[9px] h-full content-start">
             
-            {/* Top Row: Identity & Capabilities (Proportionally balanced 4-4-4) */}
+            {/* Top Row: Exactly Three Modules (4-4-4) */}
             <div className="col-span-4 h-full">
               <Hero />
             </div>
@@ -70,25 +70,25 @@ export default async function Home() {
               />
             </div>
 
-            {/* Dominant Feature Area - Row 2 (8-column Feature) */}
-            <div className="col-span-8 row-span-1">
+            {/* Dominant Feature Area - Row 2 (8-column Landscape Feature) */}
+            <div className="col-span-8 row-start-2 h-full">
               <Projects />
             </div>
 
             {/* Right Stack: Activities + CTA (4-column Right Column spanning row 2-3) */}
-            <div className="col-span-4 row-span-2 grid grid-rows-[1fr_155px] gap-[10px]">
+            <div className="col-span-4 row-start-2 row-span-2 grid grid-rows-[1fr_125px] gap-[9px]">
               <Activities />
               <Contact />
             </div>
 
             {/* Nested Experience Strip - Attached to Feature Bottom */}
-            <div className="col-span-8 row-span-1">
+            <div className="col-span-8 row-start-3 h-full">
               <Experiences />
             </div>
 
-            {/* Sub-footer Section for Demoted Content */}
-            <div className="col-span-12 mt-4 pb-12">
-               <div className="grid grid-cols-12 gap-[10px]">
+            {/* Sub-footer Section for Secondary Content */}
+            <div className="col-span-12 mt-2 pb-12">
+               <div className="grid grid-cols-12 gap-[9px]">
                   <div className="col-span-12">
                     <CreativeSkills />
                   </div>

@@ -1,4 +1,4 @@
-import { Users, Zap, Trophy } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { getActivities } from '@/lib/data';
 
 export default async function Activities() {
@@ -6,39 +6,31 @@ export default async function Activities() {
   const activities = allActivities.filter((a) => a.isVisible);
 
   return (
-    <div className="bento-card p-5 flex flex-col gap-4 relative overflow-hidden h-full bg-[#11141b] carve-bottom-right">
+    <div className="bento-card p-4 flex flex-col gap-3 relative overflow-hidden h-full bg-[#11141b]">
       <div className="space-y-0.5 relative z-20">
-        <span className="text-[8px] font-code text-primary uppercase tracking-[0.2em] font-bold">Leadership</span>
-        <h3 className="text-sm font-black text-white uppercase tracking-tight">Activities</h3>
+        <span className="text-[7px] font-code text-primary uppercase tracking-[0.2em] font-bold">Leadership</span>
+        <h3 className="text-[11px] font-black text-white uppercase tracking-tight">Activities</h3>
       </div>
 
-      <div className="flex flex-col gap-3 relative z-20">
-        <div className="flex gap-3 group items-start">
-          <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary border border-primary/10">
-            <Users size={12} />
-          </div>
-          <div className="space-y-0.5 min-w-0">
-            <h4 className="text-[9px] font-bold text-white group-hover:text-primary transition-colors uppercase tracking-wider">Team Lead</h4>
-            <p className="text-[8px] text-muted-foreground leading-tight line-clamp-2">
-              Led a 4-person team for StudentVoice development.
-            </p>
-          </div>
-        </div>
-
+      <div className="flex flex-col gap-3 relative z-20 overflow-y-auto custom-scrollbar pr-1">
         {activities.map((activity) => (
-          <div key={activity.id} className="flex gap-3 group items-start">
-            <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-muted-foreground border border-white/5">
-              <Zap size={12} />
+          <div key={activity.id} className="flex gap-2.5 group items-start">
+            <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-muted-foreground border border-white/5">
+              <Zap size={10} />
             </div>
             <div className="space-y-0.5 min-w-0">
-              <h4 className="text-[9px] font-bold text-white uppercase tracking-wider truncate">{activity.title}</h4>
-              <p className="text-[8px] text-muted-foreground leading-tight line-clamp-2">
+              <h4 className="text-[8px] font-bold text-white uppercase tracking-wider truncate leading-tight">{activity.title}</h4>
+              <p className="text-[7px] text-muted-foreground leading-snug line-clamp-2">
                 {activity.description}
               </p>
             </div>
           </div>
         ))}
       </div>
+      
+      {/* Structural Cut-Out Notch for Activities */}
+      <div className="absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] w-[30px] h-[22px] border-top-left-radius-[14px] border-l border-t border-white/5 z-10" 
+           style={{ borderTopLeftRadius: '14px' }} />
     </div>
   );
 }
