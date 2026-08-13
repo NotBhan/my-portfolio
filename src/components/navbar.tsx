@@ -62,22 +62,20 @@ export default function Sidebar() {
             </Link>
           );
         })}
-      </nav>
 
-      {/* Sidebar Footer: Theme Toggle */}
-      <div className="mt-auto">
+        {/* Theme Toggle integrated into the group */}
         <button 
           onClick={toggleTheme}
-          className="p-3 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center rounded-xl hover:bg-white/5"
+          className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center"
           title="Toggle Theme"
         >
           {mounted && resolvedTheme === 'dark' ? (
-            <Sun size={20} strokeWidth={1.5} />
+            <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
           ) : (
-            <Moon size={20} strokeWidth={1.5} />
+            <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
           )}
         </button>
-      </div>
+      </nav>
     </div>
   );
 }
