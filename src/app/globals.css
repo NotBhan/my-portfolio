@@ -119,4 +119,14 @@
   .glow-purple {
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
   }
+
+  /* Magic Navigation Specifics */
+  .magic-indicator-curve-left {
+    @apply absolute top-1/2 -left-[22px] w-[20px] h-[20px] bg-transparent rounded-tr-[20px];
+    box-shadow: 1px -10px 0 0 hsl(var(--background));
+  }
+  .magic-indicator-curve-right {
+    @apply absolute top-1/2 -right-[22px] w-[20px] h-[20px] bg-transparent rounded-tl-[20px];
+    box-shadow: -1px -10px 0 0 hsl(var(--background));
+  }
 }

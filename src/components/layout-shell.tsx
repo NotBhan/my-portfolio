@@ -76,11 +76,11 @@ export default function LayoutShell({ children, profile }: LayoutShellProps) {
           </div>
         </header>
 
-        {/* Navigation - Sidebar on Desktop, Bottom bar on Mobile */}
+        {/* Navigation - Sidebar on Desktop, Magic bar on Mobile */}
         <aside className={cn(
           "bg-background z-30 shrink-0",
           isMobile 
-            ? "fixed bottom-0 left-0 right-0 h-[64px] border-t border-border" 
+            ? "fixed bottom-0 left-0 right-0 h-[70px] z-[50]" 
             : "col-start-1 row-start-1 row-end-3 border-r border-border min-h-full"
         )}>
           <Navbar />
@@ -88,10 +88,10 @@ export default function LayoutShell({ children, profile }: LayoutShellProps) {
 
         {/* Content surface */}
         <div className={cn(
-          "bg-background overflow-y-auto custom-scrollbar pb-20 md:pb-2",
+          "bg-background overflow-y-auto custom-scrollbar",
           isMobile 
-            ? "flex-1 px-4 py-4" 
-            : "col-start-2 row-start-2 px-4 pt-0 min-h-[600px]"
+            ? "flex-1 px-4 pt-4 pb-[100px]" 
+            : "col-start-2 row-start-2 px-4 pt-0 min-h-[600px] pb-2"
         )}>
           {children}
         </div>

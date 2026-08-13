@@ -26,49 +26,81 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const isMobile = useIsMobile();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    const index = navItems.findIndex(item => item.href === pathname);
+    if (index !== -1) setActiveIndex(index);
+  }, [pathname]);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
   if (isMobile) {
+    // Magic Navigation implementation for Mobile
     return (
-      <nav className="flex items-center justify-around h-full px-4 bg-background/80 backdrop-blur-xl">
-        {navItems.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn(
-                "relative flex flex-col items-center gap-1 p-2 transition-all duration-300",
-                isActive ? "text-primary" : "text-muted-foreground"
-              )}
+      <div className="flex justify-center w-full h-full items-center bg-background/80 backdrop-blur-xl border-t border-border/50">
+        <div className="relative w-full max-w-[420px] h-[70px] bg-card flex justify-center items-center rounded-t-[20px] px-2">
+          <ul className="flex w-full relative">
+            {navItems.map((item, index) => {
+              const isActive = pathname === item.href;
+              return (
+                <li key={item.label} className="relative list-none flex-1 h-[70px] z-10">
+                  <Link
+                    href={item.href}
+                    className="relative flex flex-col justify-center items-center w-full h-full text-center"
+                  >
+                    <span className={cn(
+                      "relative block transition-all duration-500",
+                      isActive ? "transform -translate-y-[32px] text-primary-foreground" : "text-muted-foreground"
+                    )}>
+                      <item.icon size={22} strokeWidth={isActive ? 2.5 : 1.5} />
+                    </span>
+                    <span className={cn(
+                      "absolute text-primary text-[9px] font-black uppercase tracking-widest transition-all duration-500 opacity-0 transform translate-y-[20px]",
+                      isActive ? "opacity-100 transform translate-y-[12px]" : ""
+                    )}>
+                      {item.label}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+            
+            {/* Theme Toggle as 6th Item */}
+            <li className="relative list-none flex-1 h-[70px] z-10">
+              <button
+                onClick={toggleTheme}
+                className="relative flex flex-col justify-center items-center w-full h-full text-center"
+              >
+                <span className="relative block text-muted-foreground transition-all duration-500">
+                  {mounted ? (
+                    resolvedTheme === 'dark' ? <Sun size={22} strokeWidth={1.5} /> : <Moon size={22} strokeWidth={1.5} />
+                  ) : (
+                    <div className="w-[22px] h-[22px]" />
+                  )}
+                </span>
+                <span className="absolute text-muted-foreground text-[8px] font-black uppercase tracking-widest transform translate-y-[12px] opacity-60">
+                  Theme
+                </span>
+              </button>
+            </li>
+
+            {/* The Indicator - Calculated for 6 items total (5 links + 1 theme) */}
+            <div 
+              className="absolute -top-[35px] w-[50px] h-[50px] bg-primary border-[6px] border-background rounded-full transition-all duration-500 ease-in-out pointer-events-none"
+              style={{
+                left: `calc((100% / 6) * ${activeIndex} + (100% / 12) - 25px)`,
+              }}
             >
-              <item.icon size={20} strokeWidth={isActive ? 2.5 : 1.5} />
-              <span className="text-[8px] font-black uppercase tracking-widest">{item.label}</span>
-              {isActive && (
-                <div className="absolute -top-1 w-8 h-1 bg-primary rounded-full shadow-[0_0_10px_rgba(139,92,246,0.6)]" />
-              )}
-            </Link>
-          );
-        })}
-        <button 
-          onClick={toggleTheme}
-          className="p-2 text-muted-foreground flex flex-col items-center gap-1"
-        >
-          {mounted ? (
-            resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
-          ) : (
-            <div className="w-5 h-5" />
-          )}
-          <span className="text-[8px] font-black uppercase tracking-widest">Theme</span>
-        </button>
-      </nav>
+              <div className="magic-indicator-curve-left"></div>
+              <div className="magic-indicator-curve-right"></div>
+            </div>
+          </ul>
+        </div>
+      </div>
     );
   }
 
