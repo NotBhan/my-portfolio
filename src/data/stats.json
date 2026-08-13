@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "1",
+    "value": "4",
+    "label": "Deployed Applications",
+    "icon": "Rocket",
+    "isVisible": true
+  },
+  {
+    "id": "2",
+    "value": "100%",
+    "label": "Commitment",
+    "icon": "Target",
+    "isVisible": true
+  }
+]

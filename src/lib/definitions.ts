@@ -1,10 +1,12 @@
 export type Project = {
   id: string;
   title: string;
+  subtitle?: string;
   description: string;
   image: string;
   link: string;
   liveLink?: string;
+  technologies: string[];
   isVisible: boolean;
 };
 
@@ -19,7 +21,6 @@ export type Experience = {
 
 export type Skill = {
   name: string;
-  level: number;
   isVisible: boolean;
 };
 

@@ -1,66 +1,50 @@
 import BentoCard from '@/components/bento-card';
 import { getSkills } from '@/lib/data';
-import { Code2, Braces, Music } from 'lucide-react';
+import { Code2, Server, BrainCircuit, Sparkles } from 'lucide-react';
+import { Badge } from '../ui/badge';
 
 export default async function Skills() {
   const allSkillData = await getSkills();
 
-  return (
-    <div className="flex flex-col gap-6 h-full">
-      {allSkillData.map((category, idx) => (
-        <BentoCard 
-          key={category.category}
-          className="p-8 bg-[#151921]/60 flex-1"
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="p-3 bg-primary/10 rounded-2xl text-primary">
-              {idx === 0 ? <Code2 size={24} /> : <Braces size={24} />}
-            </div>
-            <h3 className="text-lg font-bold text-white uppercase tracking-wider">{category.category}</h3>
-          </div>
-          
-          <div className="space-y-5">
-            {category.skills.map((skill) => (
-              <div key={skill.name} className="space-y-2">
-                <div className="flex justify-between text-xs font-medium text-white/70 uppercase tracking-widest font-code">
-                  <span>{skill.name}</span>
-                </div>
-                <div className="skill-progress-bar h-2 bg-secondary/30">
-                  <div 
-                    className="skill-progress-fill bg-primary h-full glow-purple" 
-                    style={{ width: `${skill.level * 100}%` }} 
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </BentoCard>
-      ))}
+  const getIcon = (category: string) => {
+    switch (category) {
+      case 'Frontend': return <Code2 size={22} />;
+      case 'Backend': return <Server size={22} />;
+      case 'AI': return <BrainCircuit size={22} />;
+      default: return <Sparkles size={22} />;
+    }
+  };
 
-      <BentoCard className="p-8 bg-[#151921]/60 flex-1">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="p-3 bg-primary/10 rounded-2xl text-primary">
-            <Music size={24} />
-          </div>
-          <h3 className="text-lg font-bold text-white uppercase tracking-wider">Creative</h3>
-        </div>
-        
-        <div className="space-y-5">
-          {[
-            { name: 'Music Production', level: '85%' },
-            { name: 'Sound Design', level: '70%' }
-          ].map((skill) => (
-            <div key={skill.name} className="space-y-2">
-              <div className="flex justify-between text-xs font-medium text-white/70 uppercase tracking-widest font-code">
-                <span>{skill.name}</span>
+  return (
+    <BentoCard 
+      title="Technology Stack"
+      icon={<Code2 size={20} className="text-primary/70" />}
+      className="p-8 bg-[#151921]/60 h-full"
+    >
+      <div className="space-y-8 mt-4">
+        {allSkillData.map((category) => (
+          <div key={category.category} className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-xl text-primary">
+                {getIcon(category.category)}
               </div>
-              <div className="skill-progress-bar h-2 bg-secondary/30">
-                <div className="skill-progress-fill bg-primary h-full glow-purple" style={{ width: skill.level }} />
-              </div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest">{category.category}</h3>
             </div>
-          ))}
-        </div>
-      </BentoCard>
-    </div>
+            
+            <div className="flex flex-wrap gap-2">
+              {category.skills.filter(s => s.isVisible).map((skill) => (
+                <Badge 
+                  key={skill.name} 
+                  variant="secondary" 
+                  className="px-4 py-2 bg-secondary/20 hover:bg-secondary/40 text-muted-foreground hover:text-white transition-colors text-sm font-medium border-white/5 rounded-xl"
+                >
+                  {skill.name}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </BentoCard>
   );
 }

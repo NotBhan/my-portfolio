@@ -1,26 +1,18 @@
 [
   {
     "id": "1",
-    "title": "Software Engineer",
-    "company": "Tech Solutions Inc.",
-    "duration": "Jan 2022 - Present",
-    "description": "Developing and maintaining web applications using React, Node.js, and TypeScript. Collaborating with cross-functional teams to deliver high-quality software.",
-    "isVisible": false
+    "title": "Full Stack Web Development Intern",
+    "company": "Pantech Prolabs India Pvt. Ltd.",
+    "duration": "Nov 2024 – Feb 2025",
+    "description": "Worked on real-world full stack projects, focusing on frontend-backend integration and cloud deployments.",
+    "isVisible": true
   },
   {
     "id": "2",
-    "title": "Junior Developer",
-    "company": "Web Innovations LLC",
-    "duration": "Jun 2020 - Dec 2021",
-    "description": "Assisted in the development of client websites, focusing on front-end features and responsive design using HTML, CSS, and JavaScript.",
-    "isVisible": false
-  },
-  {
-    "id": "3",
-    "title": "Freelancer",
-    "company": "",
-    "duration": "Jan 2024 - Present",
-    "description": "A freelancer open to work on web apps, Mixing Mastering, and Full Song production.",
+    "title": "Software Developer / Independent Projects",
+    "company": "Self-Employed",
+    "duration": "2024 – Present",
+    "description": "Building and deploying web applications and AI-powered software products independently, covering frontend development, backend integration, deployment and product iteration.",
     "isVisible": true
   }
 ]

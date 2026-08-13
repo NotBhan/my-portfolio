@@ -1,28 +1,35 @@
 [
   {
     "id": "1",
-    "title": "ExamPrep AI",
-    "description": "An intelligent study assistant designed to help students supercharge their exam preparation.",
-    "image": "https://drive.google.com/uc?id=1szE-LqQGzsf_--8iRf2Mxuowx3I0KwPh",
-    "link": "https://github.com/NotBhan/examprep-ai.git",
-    "isVisible": true,
-    "liveLink": ""
+    "title": "CaramelPepper",
+    "subtitle": "AI-powered development environment",
+    "description": "A desktop/browser coding environment combining Monaco Editor, local/cloud LLMs and AI-assisted development workflows.",
+    "image": "https://picsum.photos/seed/cp1/800/500",
+    "link": "https://github.com/NotBhan/CaramelPepper",
+    "liveLink": "https://caramel-pepper.vercel.app",
+    "technologies": ["Next.js", "React", "TypeScript", "Firebase", "Electron", "Genkit"],
+    "isVisible": true
   },
   {
     "id": "2",
-    "title": "Telegram Gamified Habit Tracker",
-    "description": "A professional gamified Telegram bot that tracks user experience points (XP), quests, and inventory using Notion as a backend database. Built with Python 3.8+ and modern async practices.",
-    "image": "https://drive.google.com/uc?id=16-4V9pJsDUeRwr0C60RB6dWE3o1XWbea",
-    "link": "https://github.com/NotBhan/xp-telegram-bot.git",
+    "title": "ExamPrep AI",
+    "subtitle": "AI-powered exam preparation platform",
+    "description": "Turns a syllabus into structured study plans, quizzes, flashcards and AI-assisted tutoring.",
+    "image": "https://drive.google.com/uc?id=1szE-LqQGzsf_--8iRf2Mxuowx3I0KwPh",
+    "link": "https://github.com/NotBhan/examprep-ai.git",
+    "liveLink": "https://examprep-ai.vercel.app",
+    "technologies": ["Next.js", "React", "TypeScript", "Gemini", "Genkit"],
     "isVisible": true
   },
   {
     "id": "3",
-    "title": "Bhopal Weather Analysis Dashboard",
-    "description": "an interactive web dashboard built to analyze and visualize historical weather data for Bhopal, Madhya Pradesh, India",
-    "image": "https://drive.google.com/uc?id=1fHvyqYwe6ZNg5L_9CZRHsxjxUZzMvDB9",
-    "link": "https://github.com/NotBhan/bhopal-weather-dashboard.git",
-    "liveLink": "",
+    "title": "StudentVoice",
+    "subtitle": "Anonymous student feedback platform",
+    "description": "Led a 4-person team building a platform for anonymous campus feedback, administrative workflows and AI-assisted analysis.",
+    "image": "https://picsum.photos/seed/sv1/800/500",
+    "link": "https://github.com/NotBhan/StudentVoice",
+    "liveLink": "https://student-voice.vercel.app",
+    "technologies": ["Next.js", "React", "TypeScript", "Gemini", "Genkit"],
     "isVisible": true
   }
 ]
