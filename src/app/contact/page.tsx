@@ -80,7 +80,7 @@ export default async function ContactPage() {
                 </div>
               </a>
 
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2.5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2.5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all group">
                 <div className="w-8 h-8 rounded-lg bg-[#0077B5]/20 flex items-center justify-center text-[#0077B5] shrink-0">
                   <Linkedin size={14} />
                 </div>
@@ -90,7 +90,7 @@ export default async function ContactPage() {
                 </div>
               </a>
 
-              <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2.5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all">
+              <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2.5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all group">
                 <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-foreground shrink-0">
                   <Github size={14} />
                 </div>
@@ -119,14 +119,13 @@ export default async function ContactPage() {
                     href={link.url} 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="flex flex-col gap-1.5 p-2 rounded-xl bg-card border border-border hover:border-primary/30 transition-all group"
+                    className="flex items-center gap-3 p-2.5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all group"
                   >
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110 ${getIconColor(link.name)}`}>
-                      <SocialIcon name={link.icon} size={12} />
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 ${getIconColor(link.name)}`}>
+                      <SocialIcon name={link.icon} size={14} />
                     </div>
                     <div className="min-w-0">
-                      <span className="block text-[7px] font-bold text-muted-foreground uppercase tracking-widest leading-none mb-0.5">{link.name}</span>
-                      <span className="block text-[9px] text-foreground font-medium truncate">View</span>
+                      <span className="block text-[9px] font-bold text-foreground uppercase tracking-wider truncate leading-none">{link.name}</span>
                     </div>
                   </a>
                 ))}
