@@ -23,7 +23,7 @@
     --border: 217 33% 15%;
     --input: 217 33% 15%;
     --ring: 262 83% 58%;
-    --radius: 1.25rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -32,31 +32,35 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#0f111a] text-foreground font-body antialiased;
+    @apply bg-[#0b0e14] text-foreground font-body antialiased;
     background-image: 
-      radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 25%),
-      radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 25%);
+      radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 25%),
+      radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.03) 0%, transparent 25%);
   }
 }
 
 @layer components {
-  .bento-grid {
-    @apply grid gap-4 p-4;
-  }
-  
   .glass-card {
-    @apply bg-[#161b22]/80 backdrop-blur-md border border-[#30363d]/50 shadow-xl rounded-3xl;
+    @apply bg-[#151921]/80 backdrop-blur-md border border-[#ffffff0a] shadow-2xl rounded-[2.5rem] transition-all duration-300;
   }
   
   .sidebar-icon {
-    @apply p-2 rounded-xl transition-all duration-200 hover:bg-primary/20 text-muted-foreground hover:text-primary;
+    @apply p-3 rounded-2xl transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10;
   }
   
   .sidebar-icon.active {
-    @apply bg-primary/20 text-primary shadow-[0_0_15px_rgba(139,92,246,0.3)];
+    @apply text-white shadow-[0_0_15px_rgba(139,92,246,0.4)] bg-primary/20;
   }
 
   .glow-purple {
-    @apply shadow-[0_0_20px_rgba(139,92,246,0.15)];
+    @apply shadow-[0_0_20px_rgba(139,92,246,0.3)];
+  }
+
+  .skill-progress-bar {
+    @apply h-1.5 bg-secondary rounded-full overflow-hidden;
+  }
+
+  .skill-progress-fill {
+    @apply h-full bg-primary rounded-full transition-all duration-1000;
   }
 }

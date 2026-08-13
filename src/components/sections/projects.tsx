@@ -28,41 +28,40 @@ export default function Projects() {
   return (
     <BentoCard
       title="My Projects"
-      icon={<FolderKanban size={16} />}
-      headerAction={<Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">View all</Button>}
-      className="h-full"
+      icon={<FolderKanban size={20} className="text-primary/70" />}
+      headerAction={<Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white bg-secondary/20 rounded-xl px-4">View all</Button>}
+      className="h-full bg-[#151921]/60 p-8"
     >
-      <div className="relative group">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="relative group mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <div key={project.id} className="glass-card p-4 border-[#30363d]/30 bg-secondary/20 flex flex-col gap-4 group/item hover:bg-secondary/40 transition-colors">
-              <div className="aspect-video relative rounded-xl overflow-hidden">
+            <div key={project.id} className="glass-card p-6 border-[#ffffff08] bg-[#1c222d]/60 flex flex-col gap-6 group/item hover:bg-[#252c39] transition-all duration-300">
+              <div className="space-y-2 mb-2">
+                <h4 className="font-bold text-xl text-white">{project.title}</h4>
+              </div>
+              <div className="aspect-[16/10] relative rounded-2xl overflow-hidden bg-black/40">
                 <Image 
                   src={project.image} 
                   alt={project.title} 
                   fill 
-                  className="object-cover" 
-                  data-ai-hint="project screenshot"
+                  className="object-cover opacity-90 group-hover/item:opacity-100 transition-opacity" 
                 />
               </div>
-              <div className="space-y-2">
-                <h4 className="font-bold text-lg">{project.title}</h4>
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {project.description}
-                </p>
-              </div>
-              <Button className="mt-auto bg-primary/20 text-primary hover:bg-primary hover:text-white rounded-xl h-10 w-full transition-all">
+              <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                {project.description}
+              </p>
+              <Button className="mt-auto bg-primary text-white hover:bg-primary/80 rounded-2xl h-12 w-full transition-all font-semibold">
                 View details
               </Button>
             </div>
           ))}
         </div>
         
-        <button className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 glass-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <ChevronLeft size={20} />
+        <button className="absolute -left-6 top-1/2 -translate-y-1/2 w-12 h-12 glass-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-[#1c222d]/80 border-white/10">
+          <ChevronLeft size={24} />
         </button>
-        <button className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 glass-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <ChevronRight size={20} />
+        <button className="absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 glass-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-[#1c222d]/80 border-white/10">
+          <ChevronRight size={24} />
         </button>
       </div>
     </BentoCard>

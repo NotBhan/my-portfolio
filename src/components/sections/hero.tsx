@@ -7,45 +7,47 @@ export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <BentoCard className="h-full">
+    <BentoCard className="h-full bg-[#151921]/60">
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-start">
-          <div className="space-y-2">
-            <p className="text-muted-foreground flex items-center gap-2">
-              <span className="text-lg">👋</span> Hi, I'm
+          <div className="space-y-4">
+            <p className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+              <span className="text-xl">👋</span> Hi, I'm
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              {profile.name}
-            </h1>
-            <p className="text-xl text-primary font-medium">{profile.title}</p>
+            <div className="space-y-1">
+              <h1 className="text-5xl font-bold tracking-tight text-white">
+                {profile.name}
+              </h1>
+              <p className="text-2xl text-primary font-semibold">{profile.title}</p>
+            </div>
           </div>
           
-          <div className="flex gap-3">
-            <Button className="bg-primary hover:bg-primary/80 text-white rounded-2xl h-11 px-6 glow-purple">
-              <Download size={18} className="mr-2" /> Resume
+          <div className="flex gap-4">
+            <Button className="bg-primary hover:bg-primary/80 text-white rounded-2xl h-14 px-8 text-lg font-semibold glow-purple">
+              <Download size={20} className="mr-3" /> Resume
             </Button>
-            <Button variant="secondary" className="glass-card border-[#30363d] rounded-2xl h-11 px-6">
-              Theme <Moon size={18} className="ml-2" />
+            <Button variant="secondary" className="glass-card border-[#ffffff0a] bg-secondary/40 rounded-2xl h-14 px-8 text-lg font-semibold">
+              Theme <Moon size={20} className="ml-3" />
             </Button>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-6 text-muted-foreground text-sm">
-          <div className="flex items-center gap-2">
-            <MapPin size={16} className="text-primary" />
+        <div className="flex flex-wrap gap-8 text-muted-foreground text-base">
+          <div className="flex items-center gap-3">
+            <MapPin size={20} className="text-primary/70" />
             {profile.location}
           </div>
-          <div className="flex items-center gap-2">
-            <Globe size={16} className="text-primary" />
+          <div className="flex items-center gap-3">
+            <Globe size={20} className="text-primary/70" />
             {profile.languages}
           </div>
-          <div className="flex items-center gap-2">
-            <School size={16} className="text-primary" />
+          <div className="flex items-center gap-3">
+            <School size={20} className="text-primary/70" />
             {profile.education}
           </div>
         </div>
 
-        <p className="text-muted-foreground leading-relaxed max-w-2xl">
+        <p className="text-muted-foreground leading-relaxed max-w-3xl text-lg opacity-80">
           {profile.description}
         </p>
       </div>
