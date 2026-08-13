@@ -27,7 +27,7 @@ export default function CapabilityCard({ title, skills, icon, className }: Capab
         
         <div className="flex-1 grid grid-cols-2 gap-x-8 gap-y-2 content-start">
           {skills.filter(s => s.isVisible !== false).map((skill) => (
-            <p key={skill.name} className="text-[12px] font-bold text-white/90 uppercase tracking-wide truncate">
+            <p key={skill.name} className="text-[11px] font-bold text-white/90 uppercase tracking-wide truncate">
               {skill.name}
             </p>
           ))}
