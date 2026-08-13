@@ -10,21 +10,21 @@ export default async function ProjectsPage() {
 
   return (
     <div className="space-y-6 pt-4">
-      <div className="flex items-center gap-4 mb-12">
-        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/5">
-          <FolderKanban size={24} />
+      <div className="flex items-center gap-3 mb-10">
+        <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/5">
+          <FolderKanban size={20} />
         </div>
         <div>
-          <h1 className="text-2xl font-black text-foreground uppercase tracking-tight">Full Project Gallery</h1>
-          <p className="text-sm text-muted-foreground font-medium">An exhaustive list of my builds, tools, and prototypes.</p>
+          <h1 className="text-xl font-black text-foreground uppercase tracking-tight">Full Project Gallery</h1>
+          <p className="text-[11px] text-muted-foreground font-medium">An exhaustive list of my builds, tools, and prototypes.</p>
         </div>
       </div>
 
-      <div className="flex flex-col gap-6 pb-20">
+      <div className="flex flex-col gap-4 pb-12">
         {visibleProjects.map((project) => (
-          <div key={project.id} className="bento-card flex flex-col md:flex-row overflow-hidden group min-h-[220px] bg-card/30 hover:bg-card/60 transition-colors">
+          <div key={project.id} className="bento-card flex flex-col md:flex-row overflow-hidden group min-h-[160px] bg-card/30 hover:bg-card/60 transition-colors">
             {/* Image Section - Compact & Horizontal */}
-            <div className="relative w-full md:w-[320px] h-52 md:h-auto shrink-0 overflow-hidden border-r border-border/50">
+            <div className="relative w-full md:w-[220px] h-40 md:h-auto shrink-0 overflow-hidden border-r border-border/50">
               <Image 
                 src={project.image} 
                 alt={project.title} 
@@ -36,48 +36,47 @@ export default async function ProjectsPage() {
             </div>
             
             {/* Content Section */}
-            <div className="p-8 flex flex-col flex-1 justify-center gap-5">
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                    <h2 className="text-xl font-black text-foreground uppercase tracking-tight">{project.title}</h2>
+            <div className="p-5 flex flex-col flex-1 justify-center gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                    <h2 className="text-base font-black text-foreground uppercase tracking-tight">{project.title}</h2>
                     {project.subtitle && (
-                      <span className="text-[10px] font-code text-primary uppercase font-bold tracking-widest bg-primary/10 px-2 py-0.5 rounded-md">
+                      <span className="text-[9px] font-code text-primary uppercase font-bold tracking-widest bg-primary/10 px-1.5 py-0.5 rounded-md">
                         {project.subtitle}
                       </span>
                     )}
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed font-medium line-clamp-2 max-w-2xl">
+                <p className="text-[12px] text-muted-foreground leading-relaxed font-medium line-clamp-2 max-w-2xl">
                   {project.description}
                 </p>
               </div>
               
-              <div className="flex flex-wrap gap-2">
-                {project.technologies?.map(tech => (
-                  <Badge key={tech} variant="secondary" className="text-[9px] bg-muted/50 border-border text-muted-foreground uppercase font-bold tracking-wider px-2.5">
+              <div className="flex flex-wrap gap-1.5">
+                {project.technologies?.slice(0, 5).map(tech => (
+                  <Badge key={tech} variant="secondary" className="text-[8px] bg-muted/50 border-border text-muted-foreground uppercase font-bold tracking-wider px-2 py-0">
                     {tech}
                   </Badge>
                 ))}
+                {project.technologies?.length > 5 && (
+                  <Badge variant="outline" className="text-[8px] border-border text-muted-foreground uppercase font-bold px-2 py-0">
+                    +{project.technologies.length - 5} More
+                  </Badge>
+                )}
               </div>
 
-              <div className="flex gap-6 pt-2">
+              <div className="flex items-center gap-3 pt-1">
                 {project.liveLink && (
-                  <a 
-                    href={project.liveLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center text-[10px] font-black uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/link"
-                  >
-                    Live Demo <ExternalLink size={12} className="ml-1.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                  </a>
+                  <Button variant="default" size="sm" className="h-7 px-3 text-[9px] font-black uppercase tracking-widest rounded-lg" asChild>
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      Live Demo <ExternalLink size={10} className="ml-1.5" />
+                    </a>
+                  </Button>
                 )}
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors group/link"
-                >
-                  Source Code <Github size={12} className="ml-1.5 transition-transform group-hover/link:scale-110" />
-                </a>
+                <Button variant="outline" size="sm" className="h-7 px-3 text-[9px] font-black uppercase tracking-widest rounded-lg border-border bg-muted/30" asChild>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    Source <Github size={10} className="ml-1.5" />
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
