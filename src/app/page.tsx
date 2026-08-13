@@ -7,6 +7,7 @@ import SidebarRail from '@/components/navbar';
 import CapabilityCard from '@/components/capability-card';
 import CreativeSkills from '@/components/sections/creative-skills';
 import { getProfile, getSkills } from '@/lib/data';
+import { Github, Linkedin } from 'lucide-react';
 
 export default async function Home() {
   const profile = await getProfile();
@@ -34,17 +35,28 @@ export default async function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
       <div className="interface-shell">
-        {/* Top Header Rail */}
-        <header className="h-[64px] col-start-2 row-start-1 flex items-center justify-between px-10 border-b border-white/5 bg-[#0c0f16] z-20">
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
-            <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.2em] font-bold">Available for New Projects</span>
+        {/* Top Header Rail — Redesigned for Bento Architecture */}
+        <header className="h-[80px] col-start-2 row-start-1 flex items-center px-6 z-20 gap-3 bg-transparent">
+          <div className="flex-1 h-[54px] bg-[#11141b]/40 border border-white/5 rounded-2xl flex items-center px-10 relative group">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
+              <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.25em] font-black">Available for New Projects</span>
+            </div>
+            {/* Architectural Notch: Carves the bottom-right corner to transition into the action region */}
+            <div className="absolute -right-px -bottom-px w-8 h-6 bg-[#0c0f16] border-l border-t border-white/5 rounded-tl-xl pointer-events-none" />
           </div>
           
-          <div className="flex items-center gap-8">
-            <a href={profile.github} target="_blank" rel="noreferrer" className="text-[10px] font-code text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-medium">GitHub</a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-[10px] font-code text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-medium">LinkedIn</a>
-            <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="text-[10px] font-code text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest border border-white/10 px-4 py-1.5 rounded-full font-bold">Resume</a>
+          <div className="h-[54px] bg-[#11141b] border border-white/10 rounded-2xl flex items-center gap-6 px-8 shadow-2xl relative transition-all hover:border-white/20">
+            <a href={profile.github} target="_blank" rel="noreferrer" title="GitHub" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
+              <Github size={18} strokeWidth={1.5} />
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
+              <Linkedin size={18} strokeWidth={1.5} />
+            </a>
+            <div className="w-px h-4 bg-white/10" />
+            <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="text-[11px] font-code text-muted-foreground hover:text-primary transition-all uppercase tracking-widest font-bold border border-white/10 px-5 py-2 rounded-xl bg-white/5 hover:bg-white/10">
+              Resume
+            </a>
           </div>
         </header>
 
