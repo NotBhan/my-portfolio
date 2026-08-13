@@ -14,7 +14,7 @@ export default function CapabilityCard({ title, skills, icon, className }: Capab
 
   return (
     <div className={cn(
-      "bento-card flex flex-col relative group min-h-[140px]",
+      "bento-card flex flex-col relative group h-full",
       className
     )}>
       <div className="flex flex-col p-5 pb-7 z-20">
