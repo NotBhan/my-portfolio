@@ -3,7 +3,6 @@ import BentoCard from '../bento-card';
 import { getStats } from '@/lib/data';
 import { Stat } from '@/lib/definitions';
 
-// A type guard to check if a key is a valid Lucide icon name
 function isLucideIcon(key: string): key is keyof typeof LucideIcons {
   return key in LucideIcons;
 }
@@ -11,28 +10,39 @@ function isLucideIcon(key: string): key is keyof typeof LucideIcons {
 const StatIcon = ({ name }: { name: string }) => {
   if (isLucideIcon(name)) {
     const Icon = LucideIcons[name] as React.ElementType;
-    return <Icon className="h-8 w-8 text-primary" />;
+    return <Icon className="h-6 w-6 text-primary" />;
   }
-  // Return a default icon or null if the icon name is not valid
-  return <LucideIcons.AlertCircle className="h-8 w-8 text-destructive" />;
+  return <LucideIcons.Activity className="h-6 w-6 text-primary" />;
 };
 
-
 export default async function Stats() {
-    const allStats: Stat[] = await getStats();
-    const stats = allStats.filter(s => s.isVisible);
+  const allStats: Stat[] = await getStats();
+  const stats = allStats.filter(s => s.isVisible);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {stats.map((stat) => (
-        <BentoCard key={stat.id} className="p-4 items-center justify-center flex-row gap-4">
-          <StatIcon name={stat.icon} />
-          <div>
-            <p className="text-2xl font-bold">{stat.value}</p>
-            <p className="text-xs text-muted-foreground">{stat.label}</p>
+    <BentoCard 
+      title="Quick Stats" 
+      icon={<LucideIcons.LineChart size={20} className="text-primary/70" />}
+      className="bg-[#151921]/60 p-6 h-full justify-center"
+    >
+      <div className="grid grid-cols-2 gap-4">
+        {stats.length > 0 ? (
+          stats.map((stat) => (
+            <div key={stat.id} className="glass-card p-4 flex flex-col items-center justify-center gap-2 border-white/5 bg-secondary/10 hover:bg-secondary/20 transition-colors">
+              <StatIcon name={stat.icon} />
+              <div className="text-center">
+                <p className="text-2xl font-bold text-white leading-none">{stat.value}</p>
+                <p className="text-[10px] uppercase tracking-tighter text-muted-foreground mt-1 font-code">{stat.label}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="col-span-2 flex flex-col items-center justify-center py-4 gap-3 opacity-50">
+            <LucideIcons.Activity size={32} className="text-muted-foreground" />
+            <p className="text-xs font-code text-center">Continuous improvement in progress...</p>
           </div>
-        </BentoCard>
-      ))}
-    </div>
+        )}
+      </div>
+    </BentoCard>
   );
 }

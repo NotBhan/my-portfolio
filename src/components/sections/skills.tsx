@@ -10,24 +10,24 @@ export default async function Skills() {
       {allSkillData.map((category, idx) => (
         <BentoCard 
           key={category.category}
-          className="p-8 bg-[#151921]/60"
+          className="p-8 bg-[#151921]/60 flex-1"
         >
-          <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-primary/10 rounded-2xl text-primary">
               {idx === 0 ? <Code2 size={24} /> : <Braces size={24} />}
             </div>
             <h3 className="text-lg font-bold text-white uppercase tracking-wider">{category.category}</h3>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-5">
             {category.skills.map((skill) => (
-              <div key={skill.name} className="space-y-3">
-                <div className="flex justify-between text-sm font-medium text-white/80">
+              <div key={skill.name} className="space-y-2">
+                <div className="flex justify-between text-xs font-medium text-white/70 uppercase tracking-widest font-code">
                   <span>{skill.name}</span>
                 </div>
                 <div className="skill-progress-bar h-2 bg-secondary/30">
                   <div 
-                    className="skill-progress-fill bg-primary h-full" 
+                    className="skill-progress-fill bg-primary h-full glow-purple" 
                     style={{ width: `${skill.level * 100}%` }} 
                   />
                 </div>
@@ -37,39 +37,28 @@ export default async function Skills() {
         </BentoCard>
       ))}
 
-      <BentoCard className="p-8 bg-[#151921]/60">
-        <div className="flex items-center gap-4 mb-8">
+      <BentoCard className="p-8 bg-[#151921]/60 flex-1">
+        <div className="flex items-center gap-4 mb-6">
           <div className="p-3 bg-primary/10 rounded-2xl text-primary">
             <Music size={24} />
           </div>
-          <h3 className="text-lg font-bold text-white uppercase tracking-wider">Creative Skills</h3>
+          <h3 className="text-lg font-bold text-white uppercase tracking-wider">Creative</h3>
         </div>
         
-        <div className="space-y-6">
-          <div className="space-y-3">
-            <div className="flex justify-between text-sm font-medium text-white/80">
-              <span>Music Production</span>
+        <div className="space-y-5">
+          {[
+            { name: 'Music Production', level: '85%' },
+            { name: 'Sound Design', level: '70%' }
+          ].map((skill) => (
+            <div key={skill.name} className="space-y-2">
+              <div className="flex justify-between text-xs font-medium text-white/70 uppercase tracking-widest font-code">
+                <span>{skill.name}</span>
+              </div>
+              <div className="skill-progress-bar h-2 bg-secondary/30">
+                <div className="skill-progress-fill bg-primary h-full glow-purple" style={{ width: skill.level }} />
+              </div>
             </div>
-            <div className="skill-progress-bar h-2 bg-secondary/30">
-              <div className="skill-progress-fill bg-primary h-full" style={{ width: '85%' }} />
-            </div>
-          </div>
-          <div className="space-y-3">
-            <div className="flex justify-between text-sm font-medium text-white/80">
-              <span>Sound Design</span>
-            </div>
-            <div className="skill-progress-bar h-2 bg-secondary/30">
-              <div className="skill-progress-fill bg-primary h-full" style={{ width: '70%' }} />
-            </div>
-          </div>
-          <div className="space-y-3">
-            <div className="flex justify-between text-sm font-medium text-white/80">
-              <span>Song Writing</span>
-            </div>
-            <div className="skill-progress-bar h-2 bg-secondary/30">
-              <div className="skill-progress-fill bg-primary h-full" style={{ width: '60%' }} />
-            </div>
-          </div>
+          ))}
         </div>
       </BentoCard>
     </div>
