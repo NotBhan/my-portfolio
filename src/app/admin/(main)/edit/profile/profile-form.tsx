@@ -9,6 +9,7 @@ import type { Profile } from '@/lib/definitions';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import { Save } from 'lucide-react';
 
 export default function ProfileForm({ profile: initialProfile }: { profile: Profile }) {
   const [profile, setProfile] = useState<Profile>(initialProfile);
@@ -80,114 +81,87 @@ export default function ProfileForm({ profile: initialProfile }: { profile: Prof
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="profile-name">Name</Label>
-          <Input
-            id="profile-name"
-            value={profile.name || ''}
-            onChange={(e) => handleProfileChange('name', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-title">Title</Label>
-          <Input
-            id="profile-title"
-            value={profile.title || ''}
-            onChange={(e) => handleProfileChange('title', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-role">Role</Label>
-          <Input
-            id="profile-role"
-            value={profile.role || ''}
-            onChange={(e) => handleProfileChange('role', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-            <Label htmlFor="profile-education">Education</Label>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Name</Label>
             <Input
-                id="profile-education"
-                value={profile.education || ''}
-                onChange={(e) => handleProfileChange('education', e.target.value)}
+              className="bg-background/50 border-border/50 h-11 rounded-xl focus:border-primary/50"
+              value={profile.name || ''}
+              onChange={(e) => handleProfileChange('name', e.target.value)}
             />
+          </div>
+          <div className="space-y-2">
+            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Role Title</Label>
+            <Input
+              className="bg-background/50 border-border/50 h-11 rounded-xl focus:border-primary/50"
+              value={profile.title || ''}
+              onChange={(e) => handleProfileChange('title', e.target.value)}
+            />
+          </div>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Current Role</Label>
+            <Input
+              className="bg-background/50 border-border/50 h-11 rounded-xl focus:border-primary/50"
+              value={profile.role || ''}
+              onChange={(e) => handleProfileChange('role', e.target.value)}
+            />
+          </div>
+          <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Education</Label>
+              <Input
+                className="bg-background/50 border-border/50 h-11 rounded-xl focus:border-primary/50"
+                  value={profile.education || ''}
+                  onChange={(e) => handleProfileChange('education', e.target.value)}
+              />
+          </div>
+        </div>
+
         <div className="space-y-2">
-          <Label htmlFor="profile-description">Description</Label>
+          <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Bio Description</Label>
           <Textarea
-            id="profile-description"
+            className="bg-background/50 border-border/50 min-h-[120px] rounded-xl focus:border-primary/50 resize-none"
             value={profile.description || ''}
             onChange={(e) => handleProfileChange('description', e.target.value)}
           />
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-email">Email</Label>
-          <Input
-            id="profile-email"
-            type="email"
-            value={profile.email || ''}
-            onChange={(e) => handleProfileChange('email', e.target.value)}
-          />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Email</Label>
+            <Input
+              className="bg-background/50 border-border/50 h-11 rounded-xl focus:border-primary/50"
+              type="email"
+              value={profile.email || ''}
+              onChange={(e) => handleProfileChange('email', e.target.value)}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Location</Label>
+            <Input
+              className="bg-background/50 border-border/50 h-11 rounded-xl focus:border-primary/50"
+              value={profile.location || ''}
+              onChange={(e) => handleProfileChange('location', e.target.value)}
+            />
+          </div>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-github">GitHub URL</Label>
-          <Input
-            id="profile-github"
-            value={profile.github || ''}
-            onChange={(e) => handleProfileChange('github', e.target.value)}
-          />
+
+        <div className="space-y-2 border-t border-border/30 pt-6">
+          <Label className="text-[11px] font-black uppercase tracking-[0.2em] text-primary mb-4 block">Social & Asset URLs</Label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input placeholder="GitHub URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.github || ''} onChange={(e) => handleProfileChange('github', e.target.value)} />
+            <Input placeholder="LinkedIn URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.linkedin || ''} onChange={(e) => handleProfileChange('linkedin', e.target.value)} />
+            <Input placeholder="Instagram URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.instagram || ''} onChange={(e) => handleProfileChange('instagram', e.target.value)} />
+            <Input placeholder="Resume URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.resumeUrl || ''} onChange={(e) => handleProfileChange('resumeUrl', e.target.value)} />
+            <Input placeholder="Profile Picture URL" className="bg-background/50 border-border/50 rounded-xl col-span-full" value={profile.profilePictureUrl || ''} onChange={(e) => handleProfileChange('profilePictureUrl', e.target.value)} />
+          </div>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-linkedin">LinkedIn URL</Label>
-          <Input
-            id="profile-linkedin"
-            value={profile.linkedin || ''}
-            onChange={(e) => handleProfileChange('linkedin', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-instagram">Instagram URL</Label>
-          <Input
-            id="profile-instagram"
-            value={profile.instagram || ''}
-            onChange={(e) => handleProfileChange('instagram', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-resume">Resume URL</Label>
-          <Input
-            id="profile-resume"
-            value={profile.resumeUrl || ''}
-            onChange={(e) => handleProfileChange('resumeUrl', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-picture">Profile Picture URL</Label>
-          <Input
-            id="profile-picture"
-            value={profile.profilePictureUrl || ''}
-            onChange={(e) => handleProfileChange('profilePictureUrl', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-location">Location</Label>
-          <Input
-            id="profile-location"
-            value={profile.location || ''}
-            onChange={(e) => handleProfileChange('location', e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="profile-languages">Languages</Label>
-          <Input
-            id="profile-languages"
-            value={profile.languages || ''}
-            onChange={(e) => handleProfileChange('languages', e.target.value)}
-          />
-        </div>
-        <Button type="submit" className="w-full">
-          Save Profile
+
+        <Button type="submit" className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.2em] shadow-lg shadow-primary/20">
+          Sync Profile <Save className="ml-2 h-4 w-4" />
         </Button>
       </form>
       <PasswordDialog

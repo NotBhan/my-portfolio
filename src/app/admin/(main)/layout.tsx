@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/admin/edit/profile', label: 'Profile', icon: User },
@@ -70,33 +71,42 @@ export default function AdminDashboardLayout({
 
   return (
     <SidebarProvider>
-      <Sidebar>
-        <SidebarHeader>
-          <div className="flex h-10 items-center justify-between p-2">
-            <div className="flex items-center gap-2">
-              <Briefcase className="h-6 w-6 text-primary" />
-              <h2 className="text-xl font-bold group-data-[collapsible=icon]:hidden">
-                Portfolio
+      <Sidebar className="border-r border-border bg-card/50 backdrop-blur-xl">
+        <SidebarHeader className="p-4">
+          <div className="flex h-12 items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-black shadow-[0_0_15px_rgba(139,92,246,0.4)]">
+                C
+              </div>
+              <h2 className="text-sm font-black uppercase tracking-[0.2em] group-data-[collapsible=icon]:hidden">
+                Terminal
               </h2>
             </div>
-            <SidebarTrigger>
-                <PanelLeftClose />
+            <SidebarTrigger className="hover:bg-primary/10 hover:text-primary">
+                <PanelLeftClose size={18} />
             </SidebarTrigger>
           </div>
-          <SidebarSeparator />
-          <SidebarMenu>
+          
+          <div className="mb-6 px-2 [writing-mode:vertical-lr] rotate-180 text-[9px] font-black text-muted-foreground/20 uppercase pointer-events-none select-none font-code transform scale-y-[2.5] scale-x-[0.8] tracking-tighter group-data-[collapsible=icon]:hidden">
+            ADMINISTRATION
+          </div>
+
+          <SidebarSeparator className="bg-border/50" />
+          
+          <SidebarMenu className="mt-4">
             <SidebarMenuItem>
               <Link href="/" passHref>
-                <SidebarMenuButton as="a" tooltip="Back to Home" className="justify-start">
+                <SidebarMenuButton as="a" tooltip="Back to Home" className="h-10 px-4 rounded-xl hover:bg-primary/10 hover:text-primary transition-all group">
                   <Home className="h-5 w-5" />
-                  <span>Back to Home</span>
+                  <span className="font-bold uppercase tracking-widest text-[10px]">Portal Home</span>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
-        <SidebarContent className="p-4">
-          <SidebarMenu>
+        
+        <SidebarContent className="px-3 pb-4">
+          <SidebarMenu className="gap-1">
             {navItems.map((item) => (
               <SidebarMenuItem key={item.label}>
                 <Link href={item.href} passHref>
@@ -104,9 +114,14 @@ export default function AdminDashboardLayout({
                     as="a"
                     isActive={pathname === item.href}
                     tooltip={item.label}
-                    className="justify-start"
+                    className={cn(
+                      "h-10 px-4 rounded-xl transition-all font-bold uppercase tracking-widest text-[10px]",
+                      pathname === item.href 
+                        ? "bg-primary text-primary-foreground shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:bg-primary/90" 
+                        : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                    )}
                   >
-                    <item.icon className="h-5 w-5" />
+                    <item.icon className="h-4 w-4 shrink-0" />
                     <span>{item.label}</span>
                   </SidebarMenuButton>
                 </Link>
@@ -115,9 +130,17 @@ export default function AdminDashboardLayout({
           </SidebarMenu>
         </SidebarContent>
       </Sidebar>
-      <SidebarInset>
-        <main className="flex justify-center p-4 sm:p-6 lg:p-8">
-            <div className="w-full max-w-4xl">
+      
+      <SidebarInset className="bg-background">
+        <header className="h-16 border-b border-border/50 flex items-center px-8 bg-card/30 backdrop-blur-sm sticky top-0 z-30">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.3em] font-black">System Ready // Configuration Mode</span>
+          </div>
+        </header>
+        
+        <main className="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10 flex justify-center">
+            <div className="w-full max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
                 {children}
             </div>
         </main>
