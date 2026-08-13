@@ -70,7 +70,7 @@ export default function LayoutShell({ children, profile }: LayoutShellProps) {
               rel="noreferrer"
               className="text-[9px] md:text-[11px] font-code text-foreground dark:text-muted-foreground hover:text-primary transition-all uppercase tracking-widest font-bold border border-border px-3 md:px-5 py-1 md:py-2 rounded-lg md:rounded-xl bg-muted/50 hover:bg-muted"
             >
-              PDF
+              Resume
             </a>
           </div>
         </header>
