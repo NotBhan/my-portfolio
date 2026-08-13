@@ -1,4 +1,3 @@
-
 'use client';
 import { Home, Briefcase, History, Star, Mail, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -37,7 +36,7 @@ export default function Sidebar() {
 
       {/* Branding / Logo */}
       <div className="h-[40px] flex items-center justify-center mb-10 shrink-0">
-        <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+        <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-primary-foreground font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
           C
         </div>
       </div>
