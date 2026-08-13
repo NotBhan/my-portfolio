@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Tooltip,
   TooltipContent,
@@ -20,10 +21,11 @@ const navItems = [
   { icon: Mail, label: 'Contact', href: '/contact' },
 ];
 
-export default function Sidebar() {
+export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setMounted(true);
@@ -32,6 +34,43 @@ export default function Sidebar() {
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
+
+  if (isMobile) {
+    return (
+      <nav className="flex items-center justify-around h-full px-4 bg-background/80 backdrop-blur-xl">
+        {navItems.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={cn(
+                "relative flex flex-col items-center gap-1 p-2 transition-all duration-300",
+                isActive ? "text-primary" : "text-muted-foreground"
+              )}
+            >
+              <item.icon size={20} strokeWidth={isActive ? 2.5 : 1.5} />
+              <span className="text-[8px] font-black uppercase tracking-widest">{item.label}</span>
+              {isActive && (
+                <div className="absolute -top-1 w-8 h-1 bg-primary rounded-full shadow-[0_0_10px_rgba(139,92,246,0.6)]" />
+              )}
+            </Link>
+          );
+        })}
+        <button 
+          onClick={toggleTheme}
+          className="p-2 text-muted-foreground flex flex-col items-center gap-1"
+        >
+          {mounted ? (
+            resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />
+          ) : (
+            <div className="w-5 h-5" />
+          )}
+          <span className="text-[8px] font-black uppercase tracking-widest">Theme</span>
+        </button>
+      </nav>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center h-full pt-3 pb-4">
