@@ -29,7 +29,7 @@ export default function Projects() {
 
   if (projects.length === 0) {
     return (
-      <div className="bento-card flex items-center justify-center h-full">
+      <div className="bento-card flex items-center justify-center h-[380px]">
         <div className="animate-pulse flex flex-col items-center gap-3">
           <FolderKanban className="text-muted-foreground w-10 h-10" />
           <span className="text-[10px] font-code text-muted-foreground uppercase tracking-widest font-bold">Initializing...</span>
@@ -41,7 +41,7 @@ export default function Projects() {
   if (!activeProject) return null;
 
   return (
-    <div className="bento-card p-0 flex flex-col relative h-full group" id="projects">
+    <div className="bento-card p-0 flex flex-col relative h-[380px] group" id="projects">
       {/* Background Gradient for Header Readability */}
       <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-transparent pointer-events-none" />
 

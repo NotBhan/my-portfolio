@@ -14,10 +14,10 @@ export default function CapabilityCard({ title, skills, icon, className }: Capab
 
   return (
     <div className={cn(
-      "bento-card flex flex-col relative group h-full",
+      "bento-card flex flex-col relative group min-h-[140px]",
       className
     )}>
-      <div className="flex flex-col h-full p-5 pb-7 z-20">
+      <div className="flex flex-col p-5 pb-7 z-20">
         <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/10">
                 <Icon size={14} />
@@ -25,7 +25,7 @@ export default function CapabilityCard({ title, skills, icon, className }: Capab
             <h3 className="text-[13px] font-black text-white/70 uppercase tracking-[0.2em]">{title}</h3>
         </div>
         
-        <div className="flex-1 grid grid-cols-2 gap-x-8 gap-y-2 content-start">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-2 content-start">
           {skills.filter(s => s.isVisible !== false).map((skill) => (
             <p key={skill.name} className="text-[11px] font-bold text-white/90 uppercase tracking-wide truncate">
               {skill.name}

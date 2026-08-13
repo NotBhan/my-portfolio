@@ -67,14 +67,14 @@ export default async function Home() {
 
         {/* Main 12-Column Content Surface */}
         <div className="col-start-2 row-start-2 overflow-y-auto p-4 custom-scrollbar bg-[#0c0f16]">
-          <div className="grid grid-cols-12 grid-rows-[minmax(160px,auto)_390px_82px] gap-[10px] h-full content-start">
+          <div className="grid grid-cols-12 gap-[10px] items-start content-start">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
-            <div className="col-span-4 h-full">
+            <div className="col-span-4">
               <Hero />
             </div>
 
-            <div className="col-span-4 h-full">
+            <div className="col-span-4">
               <CapabilityCard 
                 title="Web Stack" 
                 skills={webStack}
@@ -82,7 +82,7 @@ export default async function Home() {
               />
             </div>
 
-            <div className="col-span-4 h-full">
+            <div className="col-span-4">
               <CapabilityCard 
                 title="Systems & AI" 
                 skills={systemsAI}
@@ -90,20 +90,15 @@ export default async function Home() {
               />
             </div>
 
-            {/* Dominant Feature Area - Row 2 */}
-            <div className="col-span-8 row-start-2 h-full">
+            {/* Main Content Area - Detached Stacked columns */}
+            <div className="col-span-8 flex flex-col gap-[10px]">
               <Projects />
+              <Experiences />
             </div>
 
-            {/* Right Stack: Activities + CTA */}
-            <div className="col-span-4 row-start-2 row-span-2 grid grid-rows-[1fr_125px] gap-[10px]">
+            <div className="col-span-4 flex flex-col gap-[10px]">
               <Activities />
               <Contact />
-            </div>
-
-            {/* Experience Strip */}
-            <div className="col-span-8 row-start-3 h-full">
-              <Experiences />
             </div>
 
             {/* Sub-footer Section */}
