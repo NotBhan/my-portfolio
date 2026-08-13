@@ -1,10 +1,10 @@
 'use client';
+import { cn, optimizeImageUrl } from '@/lib/utils';
 import { FolderKanban, Github, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import type { Project } from '@/lib/definitions';
-import { cn } from '@/lib/utils';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -16,7 +16,11 @@ export default function Projects() {
         const response = await fetch('/api/data?file=projects.json');
         const data = await response.json();
         if (Array.isArray(data)) {
-          setProjects(data.filter((p: Project) => p.isVisible));
+          const visible = data.filter((p: Project) => p.isVisible);
+          const featured = visible.filter((p: Project) => p.isFeatured);
+          // Display only 3 chosen projects via admin (fallback to first 3 visible if none marked)
+          const selectedProjects = (featured.length > 0 ? featured : visible).slice(0, 3);
+          setProjects(selectedProjects);
         }
       } catch (error) {
         console.error('Projects fetch error:', error);
@@ -42,18 +46,20 @@ export default function Projects() {
 
   return (
     <div className="bento-card p-0 flex flex-col relative h-[372px] group" id="projects">
-      {/* Upper-left overlay heading */}
-      <div className="absolute top-[22px] left-[24px] z-20 space-y-1.5">
-        <div className="flex items-center gap-2 mb-1">
-          <FolderKanban size={14} className="text-primary/90" />
+      {/* Upper-left overlay heading with backdrop blur */}
+      <div className="absolute top-[16px] left-[16px] z-20 bg-card/90 backdrop-blur-xl border border-border/80 rounded-[14px] px-3.5 py-2 shadow-lg space-y-0.5 max-w-[calc(100%-32px)]">
+        <div className="flex items-center gap-1.5">
+          <FolderKanban size={13} className="text-primary/90" />
           <span className="text-[9px] font-code text-primary uppercase tracking-[0.25em] font-black">Featured Production</span>
         </div>
-        <h3 className="text-[22px] font-black text-white leading-none uppercase tracking-tight mix-blend-difference">{activeProject.title}</h3>
+        <h3 className="text-[18px] sm:text-[20px] font-black text-foreground uppercase tracking-tight leading-snug truncate">
+          {activeProject.title}
+        </h3>
       </div>
 
       <div className="flex-1 relative">
         <Image 
-          src={activeProject.image} 
+          src={optimizeImageUrl(activeProject.image)} 
           alt={activeProject.title} 
           fill 
           className="object-cover transition-all duration-1000 group-hover:scale-105 z-0 opacity-80 dark:opacity-60" 
@@ -89,12 +95,14 @@ export default function Projects() {
               key={p.id}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "h-[34px] bg-card/60 border border-border px-3 flex items-center justify-between text-left transition-all hover:bg-card rounded-[10px] backdrop-blur-xl",
-                activeIndex === i ? "border-primary/50 bg-primary/20 -translate-x-2 shadow-lg" : "opacity-70 hover:opacity-100"
+                "h-[34px] px-3 flex items-center justify-between text-left transition-all rounded-[10px] backdrop-blur-xl border shadow-md",
+                activeIndex === i 
+                  ? "bg-primary text-white border-primary -translate-x-2 shadow-lg shadow-primary/25 font-black" 
+                  : "bg-card/95 border-border/80 text-foreground hover:bg-card hover:border-primary/50 hover:text-primary font-bold"
               )}
             >
-              <span className="text-[9px] font-bold text-foreground uppercase truncate tracking-wide">{p.title}</span>
-              <div className={cn("w-1 h-1 rounded-full", activeIndex === i ? "bg-primary shadow-[0_0_8px_rgba(139,92,246,0.8)]" : "bg-muted-foreground/40")} />
+              <span className="text-[9px] uppercase truncate tracking-wide">{p.title}</span>
+              <div className={cn("w-1.5 h-1.5 rounded-full shrink-0", activeIndex === i ? "bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]" : "bg-muted-foreground/40")} />
             </button>
           ))}
         </div>

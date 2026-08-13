@@ -1,27 +1,32 @@
-{
-  "1": {
+[
+  {
     "id": "1",
     "name": "Music Production",
     "isVisible": true
   },
-  "2": {
+  {
     "id": "2",
     "name": "Sound Design",
     "isVisible": true
   },
-  "3": {
+  {
     "id": "3",
     "name": "Song Writing",
     "isVisible": true
   },
-  "4": {
+  {
     "id": "4",
     "name": "FL Studio",
     "isVisible": true
   },
-  "5": {
+  {
     "id": "5",
     "name": "Audio Synthesis",
     "isVisible": true
+  },
+  {
+    "id": "6",
+    "name": "Ableton Live Suite",
+    "isVisible": true
   }
-}
+]

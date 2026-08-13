@@ -4,11 +4,20 @@
     "title": "CaramelPepper",
     "subtitle": "AI Coding Environment",
     "description": "An AI-powered coding environment combining modern development tooling with cloud and local LLM workflows. Features a Monaco-based editor and AI-assisted development integration.",
-    "image": "https://picsum.photos/seed/cp1/800/500",
+    "image": "https://drive.google.com/thumbnail?id=1d1fJGV6utMFoAUw0VsJysuC0SJKmfcyc&sz=w1600",
     "link": "https://github.com/NotBhan/caramelpepper",
     "liveLink": "https://caramelpepper.vercel.app",
-    "technologies": ["Next.js", "React", "TypeScript", "Firebase", "Electron", "Genkit", "Monaco Editor"],
-    "isVisible": true
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Firebase",
+      "Electron",
+      "Genkit",
+      "Monaco Editor"
+    ],
+    "isVisible": true,
+    "isFeatured": true
   },
   {
     "id": "2",
@@ -18,18 +27,45 @@
     "image": "https://drive.google.com/uc?id=1szE-LqQGzsf_--8iRf2Mxuowx3I0KwPh",
     "link": "https://github.com/NotBhan/examprep-ai",
     "liveLink": "https://examprep-ai-five.vercel.app",
-    "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Gemini", "Genkit"],
-    "isVisible": true
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Gemini",
+      "Genkit"
+    ],
+    "isVisible": true,
+    "isFeatured": true
   },
   {
     "id": "3",
     "title": "StudentVoice",
     "subtitle": "Campus Feedback Platform",
     "description": "Team Lead of a 4-member team. Built an anonymous feedback platform connecting student reports with administrative workflows and AI-assisted analysis.",
-    "image": "https://picsum.photos/seed/sv1/800/500",
+    "image": "https://drive.google.com/thumbnail?id=1oZB41OKEOBuaVuEDo4CwAJGZd98oRL08",
     "link": "https://github.com/NotBhan/team-epicode--student-voice",
     "liveLink": "https://student-voice-sigma.vercel.app",
-    "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Gemini", "Genkit"],
-    "isVisible": true
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Gemini",
+      "Genkit"
+    ],
+    "isVisible": true,
+    "isFeatured": true
+  },
+  {
+    "id": "4",
+    "title": "Andes Context",
+    "description": "AndesContext enables AI coding agents to start every task with the right project knowledge instead of repeatedly rediscovering it.",
+    "image": "https://drive.google.com/thumbnail?id=1fQDW0A9DKe1ErE6PsIYPka-haYZlH2vV",
+    "link": "github.com/NotBhan/andes-context",
+    "liveLink": "",
+    "isVisible": true,
+    "isFeatured": false,
+    "technologies": []
   }
 ]

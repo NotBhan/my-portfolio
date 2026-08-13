@@ -36,6 +36,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
         link: '',
         liveLink: '',
         isVisible: true,
+        isFeatured: false,
         technologies: [],
       },
     ]);
@@ -125,23 +126,53 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
                     <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
                       {project.title || `Untitled Project ${index + 1}`}
                     </h3>
-                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
-                      Project #{index + 1} {project.isVisible ? '// Visible' : '// Hidden'}
-                    </p>
+                    <div className="text-[10px] text-muted-foreground font-code uppercase tracking-widest flex items-center gap-2 mt-0.5">
+                      <span>Project #{index + 1} {project.isVisible ? '// Visible' : '// Hidden'}</span>
+                      {project.isFeatured && (
+                        <span className="text-[9px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
+                          ★ Carousel Featured
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
-                <div className="flex items-center justify-between pt-2">
-                   <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+                  <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-3">
                       <Switch
                         id={`project-visible-${project.id}`}
                         checked={project.isVisible}
                         onCheckedChange={(checked) => handleProjectChange(project.id, 'isVisible', checked)}
                       />
                       <Label htmlFor={`project-visible-${project.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Visibility Status</Label>
-                   </div>
-                   <Button
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Switch
+                        id={`project-featured-${project.id}`}
+                        checked={!!project.isFeatured}
+                        onCheckedChange={(checked) => {
+                          const featuredCount = projects.filter((p) => p.isFeatured && p.id !== project.id).length;
+                          if (checked && featuredCount >= 3) {
+                            toast({
+                              title: 'Limit Reached',
+                              description: 'Maximum 3 projects can be featured on the homepage carousel.',
+                              variant: 'destructive',
+                            });
+                            return;
+                          }
+                          handleProjectChange(project.id, 'isFeatured', checked);
+                        }}
+                      />
+                      <Label htmlFor={`project-featured-${project.id}`} className="text-[10px] font-black uppercase tracking-widest text-primary">
+                        Featured on Carousel (Max 3)
+                      </Label>
+                    </div>
+                  </div>
+
+                  <Button
                     type="button"
                     variant="destructive"
                     size="sm"

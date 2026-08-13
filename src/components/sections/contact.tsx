@@ -1,7 +1,11 @@
 import { Mail, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getProfile } from '@/lib/data';
 
-export default function Contact() {
+export default async function Contact() {
+  const profile = await getProfile();
+  const email = profile?.email || 'chandrabhan09.dev@gmail.com';
+
   return (
     <div className="bento-card flex flex-col relative overflow-hidden group flex-1 min-h-[160px]">
       {/* Decorative Card Stack Visual - Behind Content */}
@@ -19,8 +23,10 @@ export default function Contact() {
           </p>
         </div>
 
-        <Button className="bg-primary hover:bg-primary/90 text-white rounded-xl h-[34px] px-5 text-[11px] font-black uppercase tracking-wider glow-purple group transition-all w-fit flex-shrink-0 mt-auto">
-          <Mail size={12} className="mr-2 group-hover:animate-bounce" /> Email Me
+        <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-xl h-[34px] px-5 text-[11px] font-black uppercase tracking-wider glow-purple group transition-all w-fit flex-shrink-0 mt-auto">
+          <a href={`mailto:${email}`}>
+            <Mail size={12} className="mr-2 group-hover:animate-bounce" /> Email Me
+          </a>
         </Button>
       </div>
 
@@ -30,3 +36,4 @@ export default function Contact() {
     </div>
   );
 }
+

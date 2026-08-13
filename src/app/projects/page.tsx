@@ -1,4 +1,5 @@
 import { getProjects } from '@/lib/data';
+import { cn, optimizeImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 import { ExternalLink, Github, FolderKanban, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -22,8 +23,8 @@ export default async function ProjectsPage({
   const paginatedProjects = visibleProjects.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="space-y-6 pt-4">
-      <div className="flex items-center gap-3 mb-10">
+    <div className="flex flex-col min-h-[calc(100vh-180px)] pt-4 pb-4">
+      <div className="flex items-center gap-3 mb-8 shrink-0">
         <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/5">
           <FolderKanban size={20} />
         </div>
@@ -33,13 +34,13 @@ export default async function ProjectsPage({
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 flex-1 mb-8">
         {paginatedProjects.map((project) => (
           <div key={project.id} className="bento-card flex flex-col md:flex-row overflow-hidden group min-h-[160px] bg-card/30 hover:bg-card/60 transition-colors border-border/50">
             {/* Image Section - Compact & Horizontal */}
             <div className="relative w-full md:w-[220px] h-40 md:h-auto shrink-0 overflow-hidden border-r border-border/50">
               <Image 
-                src={project.image} 
+                src={optimizeImageUrl(project.image)} 
                 alt={project.title} 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -91,9 +92,9 @@ export default async function ProjectsPage({
         ))}
       </div>
 
-      {/* Subtle Pagination Controls */}
+      {/* Subtle Pagination Controls - Anchored to bottom */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-8 py-8 border-t border-border/30 mt-8">
+        <div className="flex items-center justify-center gap-8 py-6 border-t border-border/30 mt-auto shrink-0">
           <Link 
             href={currentPage > 1 ? `/projects?page=${currentPage - 1}` : '#'}
             className={cn(

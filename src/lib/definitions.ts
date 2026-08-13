@@ -8,6 +8,7 @@ export type Project = {
   liveLink?: string;
   technologies: string[];
   isVisible: boolean;
+  isFeatured?: boolean;
 };
 
 export type Experience = {
