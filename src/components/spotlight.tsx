@@ -21,8 +21,9 @@ export default function Spotlight() {
     };
   }, []);
 
+  // Use a very subtle gray for light mode and maintain the existing subtle purple/blue for dark mode
   const spotlightColor =
-    theme === 'light' ? 'rgba(63, 81, 181, 0.2)' : 'rgba(63, 81, 181, 0.1)';
+    theme === 'light' ? 'rgba(100, 116, 139, 0.05)' : 'rgba(139, 92, 246, 0.08)';
 
   if (!isMounted) {
     return null;
