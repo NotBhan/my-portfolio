@@ -6,7 +6,7 @@ export default async function Experiences() {
   const experiences = allExperiences.filter((e) => e.isVisible);
 
   return (
-    <div className="bento-card p-5 flex flex-col gap-5 group relative overflow-hidden backdrop-blur-xl bg-[#11141b]/95 border-white/5">
+    <div className="bento-card p-5 flex flex-col gap-5 group relative overflow-hidden backdrop-blur-xl bg-[#11141b]/95 border-white/5 flex-1">
       <div className="flex items-center gap-2">
          <History size={12} className="text-primary" />
          <span className="text-[9px] font-code text-primary uppercase tracking-[0.2em] font-black">Latest Experience</span>

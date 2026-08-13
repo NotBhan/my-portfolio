@@ -1,4 +1,3 @@
-
 import { Zap } from 'lucide-react';
 import { getActivities } from '@/lib/data';
 
@@ -7,7 +6,7 @@ export default async function Activities() {
   const activities = allActivities.filter((a) => a.isVisible).slice(0, 3);
 
   return (
-    <div className="bento-card flex flex-col relative overflow-hidden">
+    <div className="bento-card flex flex-col relative overflow-hidden h-[202px]">
       <div className="flex flex-col p-5 pb-7 z-20">
         <div className="space-y-1 mb-5">
           <span className="text-[9px] font-code text-primary uppercase tracking-[0.25em] font-black">Leadership</span>

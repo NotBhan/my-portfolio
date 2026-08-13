@@ -67,7 +67,7 @@ export default async function Home() {
 
         {/* Main 12-Column Content Surface */}
         <div className="col-start-2 row-start-2 overflow-y-auto px-4 pt-2 pb-4 custom-scrollbar bg-[#0c0f16]">
-          <div className="grid grid-cols-12 gap-[10px] items-start content-start pb-12">
+          <div className="grid grid-cols-12 gap-[10px] items-stretch content-start pb-12">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
             <div className="col-span-4">
