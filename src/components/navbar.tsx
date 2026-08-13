@@ -5,6 +5,12 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const navItems = [
   { icon: Home, label: 'Home', href: '/' },
@@ -42,44 +48,57 @@ export default function Sidebar() {
       </div>
       
       {/* Primary Navigation Items */}
-      <nav className="flex flex-col gap-6 items-center flex-1">
-        {navItems.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn(
-                "relative p-2.5 text-muted-foreground transition-all duration-300 hover:text-primary group flex items-center justify-center",
-                isActive && "text-primary"
-              )}
-              title={item.label}
-            >
-              {isActive && (
-                <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-primary rounded-l-full shadow-[0_0_15px_rgba(139,92,246,0.6)]" />
-              )}
-              <item.icon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-            </Link>
-          );
-        })}
+      <TooltipProvider delayDuration={0}>
+        <nav className="flex flex-col gap-6 items-center flex-1">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Tooltip key={item.label}>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "relative p-2.5 text-muted-foreground transition-all duration-300 hover:text-primary group flex items-center justify-center",
+                      isActive && "text-primary"
+                    )}
+                  >
+                    {isActive && (
+                      <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-primary rounded-l-full shadow-[0_0_15px_rgba(139,92,246,0.6)]" />
+                    )}
+                    <item.icon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="right" sideOffset={15} className="bg-card border-border text-foreground font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xl">
+                  {item.label}
+                </TooltipContent>
+              </Tooltip>
+            );
+          })}
 
-        {/* Theme Toggle integrated into the group - Hydration Safe */}
-        <button 
-          onClick={toggleTheme}
-          className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center h-[42px] w-[42px]"
-          title="Toggle Theme"
-        >
-          {mounted ? (
-            resolvedTheme === 'dark' ? (
-              <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-            ) : (
-              <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-            )
-          ) : (
-            <div className="w-[22px] h-[22px]" />
-          )}
-        </button>
-      </nav>
+          {/* Theme Toggle integrated into the group - Hydration Safe */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button 
+                onClick={toggleTheme}
+                className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center h-[42px] w-[42px]"
+              >
+                {mounted ? (
+                  resolvedTheme === 'dark' ? (
+                    <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+                  ) : (
+                    <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+                  )
+                ) : (
+                  <div className="w-[22px] h-[22px]" />
+                )}
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="right" sideOffset={15} className="bg-card border-border text-foreground font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xl">
+              {resolvedTheme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
+            </TooltipContent>
+          </Tooltip>
+        </nav>
+      </TooltipProvider>
     </div>
   );
 }
