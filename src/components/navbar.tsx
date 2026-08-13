@@ -63,18 +63,20 @@ export default function Sidebar() {
           );
         })}
 
-        {/* Theme Toggle integrated into the group */}
+        {/* Theme Toggle integrated into the group - Hydration Safe */}
         <button 
           onClick={toggleTheme}
-          className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center"
+          className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center h-[42px] w-[42px]"
           title="Toggle Theme"
         >
-          {!mounted ? (
-            <div className="w-[22px] h-[22px]" />
-          ) : resolvedTheme === 'dark' ? (
-            <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+          {mounted ? (
+            resolvedTheme === 'dark' ? (
+              <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+            ) : (
+              <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+            )
           ) : (
-            <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+            <div className="w-[22px] h-[22px]" />
           )}
         </button>
       </nav>
