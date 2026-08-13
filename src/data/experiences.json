@@ -1,13 +1,5 @@
 [
   {
-    "id": "1",
-    "title": "Full Stack Web Development Intern",
-    "company": "Pantech Prolabs India Pvt. Ltd.",
-    "duration": "Nov 2024 – Feb 2025",
-    "description": "3-month internship focused on building real-world full stack projects and cloud deployments.",
-    "isVisible": true
-  },
-  {
     "id": "2",
     "title": "Independent Software Development",
     "company": "Personal Projects",
@@ -21,6 +13,14 @@
     "company": "DigitalShakha",
     "duration": "May 2025 – Jun 2025",
     "description": "Specialized training in backend development and Django frameworks.",
+    "isVisible": true
+  },
+  {
+    "id": "1",
+    "title": "Full Stack Web Development Intern",
+    "company": "Pantech Prolabs India Pvt. Ltd.",
+    "duration": "Nov 2024 – Feb 2025",
+    "description": "3-month internship focused on building real-world full stack projects and cloud deployments.",
     "isVisible": true
   },
   {
