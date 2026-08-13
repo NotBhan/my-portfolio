@@ -132,15 +132,12 @@ export default function AdminDashboardLayout({
       </Sidebar>
       
       <SidebarInset className="bg-background">
-        <header className="h-16 border-b border-border/50 flex items-center px-8 bg-card/30 backdrop-blur-sm sticky top-0 z-30">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.3em] font-black">System Ready // Configuration Mode</span>
-          </div>
-        </header>
-        
         <main className="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10 flex justify-center">
             <div className="w-full max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <header className="flex items-center gap-2 mb-6 opacity-50">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.3em] font-black">Configuration Mode // System Live</span>
+                </header>
                 {children}
             </div>
         </main>
