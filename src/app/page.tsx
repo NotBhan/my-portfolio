@@ -69,7 +69,7 @@ export default async function Home() {
 
         {/* Main 12-Column Content Surface */}
         <div className="col-start-2 row-start-2 overflow-y-auto p-4 custom-scrollbar bg-[#0c0f16]">
-          <div className="grid grid-cols-12 grid-rows-[180px_390px_82px] gap-[10px] h-full content-start">
+          <div className="grid grid-cols-12 grid-rows-[135px_390px_82px] gap-[10px] h-full content-start">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
             <div className="col-span-4 h-full">
