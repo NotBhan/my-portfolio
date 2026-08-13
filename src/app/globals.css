@@ -68,8 +68,7 @@
   .interface-shell {
     @apply relative bg-background border border-border shadow-[0_0_50px_rgba(0,0,0,0.05)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden mx-auto transition-all duration-300;
     width: 1400px;
-    min-height: 800px;
-    height: auto;
+    height: 860px; /* Fixed height for architectural shell consistency */
     border-radius: var(--outer-radius);
     display: grid;
     grid-template-columns: 72px minmax(0, 1fr);
