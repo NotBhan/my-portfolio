@@ -1,4 +1,3 @@
-
 import { getProjects } from '@/lib/data';
 import Image from 'next/image';
 import { ExternalLink, Github, FolderKanban, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -92,46 +91,34 @@ export default async function ProjectsPage({
         ))}
       </div>
 
-      {/* Pagination Controls */}
+      {/* Subtle Pagination Controls */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-4 py-8">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="h-8 text-[9px] font-black uppercase tracking-widest rounded-xl border-border bg-card"
-            disabled={currentPage <= 1}
-            asChild={currentPage > 1}
-          >
-            {currentPage > 1 ? (
-              <Link href={`/projects?page=${currentPage - 1}`}>
-                <ChevronLeft size={12} className="mr-1.5" /> Prev
-              </Link>
-            ) : (
-              <span className="opacity-50"><ChevronLeft size={12} className="mr-1.5" /> Prev</span>
+        <div className="flex items-center justify-center gap-8 py-8 border-t border-border/30 mt-8">
+          <Link 
+            href={currentPage > 1 ? `/projects?page=${currentPage - 1}` : '#'}
+            className={cn(
+              "flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all",
+              currentPage > 1 ? "text-foreground hover:text-primary" : "text-muted-foreground/30 pointer-events-none"
             )}
-          </Button>
+          >
+            <ChevronLeft size={14} /> Previous
+          </Link>
 
-          <div className="flex items-center gap-2">
-            <span className="text-[9px] font-code text-muted-foreground uppercase tracking-[0.2em] font-black">
-              Page {currentPage} <span className="text-primary/40 mx-1">/</span> {totalPages}
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.3em] font-black">
+              {currentPage} <span className="text-primary/40 mx-1">/</span> {totalPages}
             </span>
           </div>
 
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="h-8 text-[9px] font-black uppercase tracking-widest rounded-xl border-border bg-card"
-            disabled={currentPage >= totalPages}
-            asChild={currentPage < totalPages}
-          >
-            {currentPage < totalPages ? (
-              <Link href={`/projects?page=${currentPage + 1}`}>
-                Next <ChevronRight size={12} className="ml-1.5" />
-              </Link>
-            ) : (
-              <span className="opacity-50">Next <ChevronRight size={12} className="ml-1.5" /></span>
+          <Link 
+            href={currentPage < totalPages ? `/projects?page=${currentPage + 1}` : '#'}
+            className={cn(
+              "flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all",
+              currentPage < totalPages ? "text-foreground hover:text-primary" : "text-muted-foreground/30 pointer-events-none"
             )}
-          </Button>
+          >
+            Next <ChevronRight size={14} />
+          </Link>
         </div>
       )}
     </div>
