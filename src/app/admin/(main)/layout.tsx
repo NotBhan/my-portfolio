@@ -1,4 +1,3 @@
-
 'use client';
 import {
   SidebarProvider,
@@ -25,10 +24,12 @@ import {
   Flame,
   LineChart,
   PanelLeftClose,
+  LogOut,
 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
 
 const navItems = [
   { href: '/admin/edit/profile', label: 'Profile', icon: User },
@@ -68,6 +69,18 @@ export default function AdminDashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      toast({ title: 'Logged Out', description: 'Session terminated.' });
+      router.push('/admin/login');
+    } catch (error) {
+      toast({ title: 'Error', description: 'Logout failed.', variant: 'destructive' });
+    }
+  };
 
   return (
     <SidebarProvider>
@@ -127,6 +140,19 @@ export default function AdminDashboardLayout({
                 </Link>
               </SidebarMenuItem>
             ))}
+            
+            <SidebarSeparator className="my-4 bg-border/30" />
+            
+            <SidebarMenuItem>
+              <SidebarMenuButton 
+                onClick={handleLogout}
+                tooltip="Logout"
+                className="h-10 px-4 rounded-xl hover:bg-destructive/10 hover:text-destructive transition-all font-bold uppercase tracking-widest text-[10px]"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Logout Session</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarContent>
       </Sidebar>
