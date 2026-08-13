@@ -1,5 +1,5 @@
 'use client';
-import { Home, User, Briefcase, Star, Calendar, Mail, Globe, Download, Moon, Sun } from 'lucide-react';
+import { Home, User, Briefcase, Star, Globe, Mail, Moon, Sun, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -23,14 +23,14 @@ export default function Sidebar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="hidden lg:flex w-[72px] flex-col items-center py-8 border-r border-white/[0.03] bg-[#0c0f16] shrink-0 z-50">
-      <div className="mb-12">
-        <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl glow-purple shadow-primary/20">
+    <div className="flex flex-col items-center h-full">
+      <div className="mb-8">
+        <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-primary/20">
           C
         </div>
       </div>
       
-      <nav className="flex-1 flex flex-col gap-6">
+      <nav className="flex-1 flex flex-col gap-5">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -44,23 +44,20 @@ export default function Sidebar() {
               title={item.label}
             >
               {isActive && (
-                <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 bg-primary rounded-r-full shadow-[0_0_10px_rgba(139,92,246,0.5)]" />
+                <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-5 bg-primary rounded-l-full shadow-[0_0_10px_rgba(139,92,246,0.5)]" />
               )}
-              <item.icon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+              <item.icon size={20} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
             </Link>
           );
         })}
       </nav>
 
-      <div className="mt-auto flex flex-col gap-6 items-center">
+      <div className="mt-auto flex flex-col gap-4 items-center">
         <button 
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="p-2 text-muted-foreground hover:text-primary transition-colors"
         >
-          {mounted && theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-        <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
-          <Download size={18} />
+          {mounted && theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
         </button>
       </div>
     </div>

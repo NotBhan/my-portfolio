@@ -6,23 +6,26 @@ type CapabilityCardProps = {
   title: string;
   skills: string[];
   icon: string;
-  extension?: 'left' | 'right' | 'bottom';
+  carve?: 'bottom-right';
 };
 
-export default function CapabilityCard({ title, skills, icon, extension }: CapabilityCardProps) {
+export default function CapabilityCard({ title, skills, icon, carve }: CapabilityCardProps) {
   const Icon = (LucideIcons as any)[icon] || LucideIcons.Sparkles;
 
   return (
-    <div className="glass-card p-5 flex flex-col gap-4 relative group overflow-hidden h-full min-h-[160px]">
+    <div className={cn(
+      "bento-card p-5 flex flex-col gap-4 relative group",
+      carve === 'bottom-right' && "carve-bottom-right"
+    )}>
       <div className="flex items-center justify-between">
-        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/10 group-hover:bg-primary/20 transition-colors">
-          <Icon size={18} />
+        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/10">
+          <Icon size={16} />
         </div>
       </div>
       
       <div className="flex-1 flex flex-col justify-end">
         <h3 className="text-[10px] font-bold text-white uppercase tracking-widest mb-3 opacity-60">{title}</h3>
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           {skills.map((skill, i) => (
             <div key={skill} className="flex flex-col gap-1">
               <div className="flex justify-between text-[9px] font-code text-muted-foreground uppercase tracking-wider">
@@ -38,17 +41,6 @@ export default function CapabilityCard({ title, skills, icon, extension }: Capab
           ))}
         </div>
       </div>
-
-      {/* Reference extension cutout geometry */}
-      {extension === 'right' && (
-        <div className="absolute -bottom-1 -right-1 w-14 h-6 bg-[#0c0f16] rounded-tl-xl border-t border-l border-white/[0.03]" />
-      )}
-      {extension === 'bottom' && (
-        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-20 h-4 bg-[#0c0f16] rounded-t-xl border-t border-x border-white/[0.03]" />
-      )}
-      {extension === 'left' && (
-        <div className="absolute -bottom-1 -left-1 w-14 h-6 bg-[#0c0f16] rounded-tr-xl border-t border-r border-white/[0.03]" />
-      )}
     </div>
   );
 }

@@ -24,6 +24,11 @@
     --input: 217 33% 15%;
     --ring: 262 83% 58%;
     --radius: 2.25rem;
+
+    --outer-radius: 2.25rem;
+    --card-radius: 1.5rem;
+    --cutout-radius: 1.25rem;
+    --shell-bg: #0c0f16;
   }
 }
 
@@ -33,26 +38,44 @@
   }
   body {
     @apply bg-[#080a0f] text-foreground font-body antialiased overflow-hidden;
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.02) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
   }
 }
 
 @layer components {
   .interface-shell {
-    @apply bg-[#0c0f16] border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-[2.25rem] overflow-hidden flex h-[96vh] w-[98vw] max-w-[1700px];
-  }
-  
-  .glass-card {
-    @apply bg-[#11141b] border border-white/[0.04] shadow-xl rounded-[1.75rem] transition-all duration-300;
-  }
-  
-  .nested-module {
-    @apply bg-[#1a1f29] border border-white/[0.06] rounded-[1.25rem] p-4 shadow-inner;
+    @apply relative bg-[#0c0f16] border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden;
+    width: min(1440px, calc(100vw - 32px));
+    height: min(900px, calc(100vh - 32px));
+    border-radius: var(--outer-radius);
   }
 
-  .glow-purple {
-    @apply shadow-[0_0_20px_rgba(139,92,246,0.15)];
+  .bento-card {
+    @apply bg-[#11141b] border border-white/[0.04] shadow-xl overflow-hidden transition-all duration-300;
+    border-radius: var(--card-radius);
+  }
+
+  /* Custom Carved Geometries */
+  .carve-bottom-right {
+    @apply relative;
+  }
+  .carve-bottom-right::after {
+    content: "";
+    @apply absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
+    width: 60px;
+    height: 32px;
+    border-top-left-radius: var(--cutout-radius);
+  }
+
+  .carve-bottom-left {
+    @apply relative;
+  }
+  .carve-bottom-left::after {
+    content: "";
+    @apply absolute -left-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
+    width: 52%;
+    height: 70px;
+    border-top-right-radius: var(--cutout-radius);
   }
 
   .custom-scrollbar::-webkit-scrollbar {

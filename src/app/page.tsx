@@ -4,72 +4,80 @@ import Experiences from '@/components/sections/experience';
 import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
 import Sidebar from '@/components/navbar';
-import { getProfile } from '@/lib/data';
 import CapabilityCard from '@/components/capability-card';
+import { getProfile } from '@/lib/data';
 
 export default async function Home() {
   const profile = await getProfile();
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#080a0f] overflow-hidden">
-      <div className="interface-shell">
-        <Sidebar />
+    <main className="min-h-screen flex items-center justify-center p-4">
+      <div className="interface-shell flex">
+        {/* Sidebar Rail - Anchored below header as per reference */}
+        <div className="w-[72px] shrink-0 pt-24 pb-4 px-2 h-full border-r border-white/5 bg-[#0c0f16]">
+          <Sidebar />
+        </div>
 
-        <div className="flex-1 flex flex-col overflow-hidden bg-[#0c0f16] relative">
-          {/* Top Utility Area */}
-          <header className="flex h-12 items-center justify-between px-8 border-b border-white/[0.03] bg-[#0c0f16] z-10 shrink-0">
+        <div className="flex-1 flex flex-col relative">
+          {/* Top Utility Area - Thin structural band */}
+          <header className="h-[70px] flex items-center justify-between px-8 border-b border-white/5 shrink-0 bg-[#0c0f16] z-20">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
-              <span className="text-[9px] font-code text-muted-foreground uppercase tracking-[0.2em] font-bold">Available for New Projects</span>
+              <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.2em] font-bold">Available for New Projects</span>
             </div>
             
             <div className="flex items-center gap-6">
               <a href={profile.github} target="_blank" rel="noreferrer" className="text-[10px] font-code text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">GitHub</a>
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-[10px] font-code text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">LinkedIn</a>
+              <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="text-[10px] font-code text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest border border-white/10 px-3 py-1 rounded-full">Resume</a>
             </div>
           </header>
 
-          {/* Main Bento Composition */}
-          <div className="flex-1 overflow-y-auto p-4 lg:p-6 custom-scrollbar">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 auto-rows-min h-full">
+          {/* Main Bento Composition Surface */}
+          <div className="flex-1 overflow-y-auto p-4 lg:p-6 custom-scrollbar bg-[#0c0f16]">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 h-full">
               
-              {/* Profile / Identity Area */}
-              <div className="col-span-1 lg:col-span-3">
+              {/* Identity Row */}
+              <div className="lg:col-span-3">
                 <Hero />
               </div>
 
-              {/* Three Top Capability Modules */}
+              {/* Capability Tier - Row 1 of content */}
               <CapabilityCard 
                 title="Web Stack" 
                 skills={['React', 'Next.js', 'TypeScript', 'Tailwind']}
                 icon="Code2"
-                extension="right"
+                carve="bottom-right"
               />
               <CapabilityCard 
                 title="Programming" 
                 skills={['Python', 'Django', 'PostgreSQL', 'Firebase']}
                 icon="Server"
-                extension="bottom"
+                carve="bottom-right"
               />
               <CapabilityCard 
                 title="Creative" 
                 skills={['Music Prod.', 'Sound Design', 'FL Studio']}
                 icon="Music"
-                extension="left"
+                carve="bottom-right"
               />
 
-              {/* Large Feature Anchor */}
-              <div className="col-span-1 lg:col-span-2 row-span-2 relative">
-                <Projects />
+              {/* Dominant Feature Area - Row 2 */}
+              <div className="lg:col-span-2 row-span-2 flex flex-col gap-3">
+                <div className="flex-1 min-h-[400px]">
+                  <Projects />
+                </div>
                 {/* Nested Experience Module */}
-                <div className="absolute bottom-4 left-4 right-4 lg:right-auto lg:w-80 z-20">
+                <div className="h-32">
                   <Experiences />
                 </div>
               </div>
 
-              {/* Supporting Side Modules */}
-              <div className="col-span-1 space-y-3">
-                <Activities />
+              {/* Side Modules - Activities + CTA Stack */}
+              <div className="lg:col-span-1 flex flex-col gap-3">
+                <div className="flex-1">
+                  <Activities />
+                </div>
                 <Contact />
               </div>
 
