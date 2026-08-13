@@ -23,9 +23,9 @@ export default function Sidebar() {
 
   return (
     <div className="flex flex-col items-center h-full pt-3 pb-4">
-      {/* Vertical Title Label - Aligned to top */}
-      <div className="mb-10 [writing-mode:vertical-lr] rotate-180 text-[14px] font-black text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[1.8] origin-center tracking-tighter">
-        Portfolio
+      {/* Vertical Title Label - Tallboy aesthetic */}
+      <div className="mb-14 [writing-mode:vertical-lr] rotate-180 text-[11px] font-black text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[2.5] origin-center tracking-tighter">
+        PORTFOLIO
       </div>
 
       {/* Branding / Logo - Representing Profile Identity */}
