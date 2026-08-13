@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 export default function Contact() {
   return (
     <div className="bento-card p-5 flex flex-col gap-4 relative overflow-hidden group h-[155px] bg-[#11141b]">
-      {/* The Stacked Card Visual Motif from Reference */}
-      <div className="absolute bottom-[-30px] right-[-20px] w-[110px] h-[150px] pointer-events-none z-0">
-        <div className="absolute bottom-0 right-0 w-[62px] h-[120px] bg-primary/20 rounded-[14px] transform rotate-[-18deg] border border-white/5" />
-        <div className="absolute bottom-0 right-0 w-[62px] h-[120px] bg-primary/10 rounded-[14px] transform rotate-[-8deg] border border-white/5" />
-        <div className="absolute bottom-0 right-0 w-[62px] h-[120px] bg-primary/30 rounded-[14px] transform rotate-[5deg] border border-white/5 shadow-2xl" />
+      {/* Reference-Style Stacked Card Visual Decoration */}
+      <div className="absolute bottom-[-20px] right-[-10px] w-[130px] height-[170px] pointer-events-none z-0">
+        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/20 rounded-[18px] transform-origin-bottom-right rotate-[4deg] border border-white/5" />
+        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/10 rounded-[18px] transform-origin-bottom-right translate-x-[-12px] translate-y-[-8px] rotate-[-3deg] border border-white/5" />
+        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/30 rounded-[18px] transform-origin-bottom-right translate-x-[-24px] translate-y-[-16px] rotate-[-10deg] border border-white/5 shadow-2xl" />
       </div>
       
       <div className="space-y-3 relative z-10 flex flex-col justify-between h-full">

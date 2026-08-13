@@ -1,5 +1,5 @@
 'use client';
-import { FolderKanban, Github, ArrowRight, ExternalLink } from 'lucide-react';
+import { FolderKanban, Github, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -60,8 +60,8 @@ export default function Projects() {
           data-ai-hint="project screenshot"
         />
         
-        {/* The Nested Info Card - Physically breaking into the project surface */}
-        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b] border border-white/5 rounded-[14px] p-4 w-[min(430px,58%)] min-h-[105px] shadow-2xl">
+        {/* The Nested Info Card - Physically breaking into the surface */}
+        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b] border border-white/5 rounded-[14px] p-4 w-[min(430px,58%)] min-h-[105px] shadow-2xl flex flex-col justify-center">
           <p className="text-[10px] text-white/90 font-medium leading-relaxed mb-3 line-clamp-3">
             {activeProject.description}
           </p>
