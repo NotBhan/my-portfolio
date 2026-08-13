@@ -33,6 +33,7 @@ export const metadata: Metadata = {
       { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png', rel: 'apple-touch-icon' },
     ],
   },
+  manifest: '/favicon/site.webmanifest',
 };
 
 export default async function RootLayout({
