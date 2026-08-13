@@ -1,13 +1,26 @@
 
 import { getProjects } from '@/lib/data';
 import Image from 'next/image';
-import { ExternalLink, Github, FolderKanban } from 'lucide-react';
+import { ExternalLink, Github, FolderKanban, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { page } = await searchParams;
   const projects = await getProjects();
   const visibleProjects = projects.filter(p => p.isVisible);
+  
+  const itemsPerPage = 3;
+  const currentPage = Math.max(1, Number(page) || 1);
+  const totalPages = Math.ceil(visibleProjects.length / itemsPerPage);
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedProjects = visibleProjects.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="space-y-6 pt-4">
@@ -21,9 +34,9 @@ export default async function ProjectsPage() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 pb-12">
-        {visibleProjects.map((project) => (
-          <div key={project.id} className="bento-card flex flex-col md:flex-row overflow-hidden group min-h-[160px] bg-card/30 hover:bg-card/60 transition-colors">
+      <div className="flex flex-col gap-4">
+        {paginatedProjects.map((project) => (
+          <div key={project.id} className="bento-card flex flex-col md:flex-row overflow-hidden group min-h-[160px] bg-card/30 hover:bg-card/60 transition-colors border-border/50">
             {/* Image Section - Compact & Horizontal */}
             <div className="relative w-full md:w-[220px] h-40 md:h-auto shrink-0 overflow-hidden border-r border-border/50">
               <Image 
@@ -78,6 +91,49 @@ export default async function ProjectsPage() {
           </div>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-4 py-8">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="h-8 text-[9px] font-black uppercase tracking-widest rounded-xl border-border bg-card"
+            disabled={currentPage <= 1}
+            asChild={currentPage > 1}
+          >
+            {currentPage > 1 ? (
+              <Link href={`/projects?page=${currentPage - 1}`}>
+                <ChevronLeft size={12} className="mr-1.5" /> Prev
+              </Link>
+            ) : (
+              <span className="opacity-50"><ChevronLeft size={12} className="mr-1.5" /> Prev</span>
+            )}
+          </Button>
+
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] font-code text-muted-foreground uppercase tracking-[0.2em] font-black">
+              Page {currentPage} <span className="text-primary/40 mx-1">/</span> {totalPages}
+            </span>
+          </div>
+
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="h-8 text-[9px] font-black uppercase tracking-widest rounded-xl border-border bg-card"
+            disabled={currentPage >= totalPages}
+            asChild={currentPage < totalPages}
+          >
+            {currentPage < totalPages ? (
+              <Link href={`/projects?page=${currentPage + 1}`}>
+                Next <ChevronRight size={12} className="ml-1.5" />
+              </Link>
+            ) : (
+              <span className="opacity-50">Next <ChevronRight size={12} className="ml-1.5" /></span>
+            )}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
