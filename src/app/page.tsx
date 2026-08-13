@@ -3,16 +3,10 @@ import Projects from '@/components/sections/projects';
 import Experiences from '@/components/sections/experience';
 import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
-import SidebarRail from '@/components/navbar';
 import CapabilityCard from '@/components/capability-card';
 import CreativeSkills from '@/components/sections/creative-skills';
-import { getProfile } from '@/lib/data';
-import { Github, Linkedin } from 'lucide-react';
 
 export default async function Home() {
-  const profile = await getProfile();
-
-  // Curated skills for top row modules
   const webStack = [
     { name: 'React', isVisible: true },
     { name: 'Next.js', isVisible: true },
@@ -32,78 +26,39 @@ export default async function Home() {
   ];
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-2">
-      <div className="interface-shell">
-        {/* Top Header Rail — Redesigned for Bento Architecture */}
-        <header className="h-[64px] col-start-2 row-start-1 flex items-center px-4 z-20 gap-3 bg-transparent">
-          <div className="flex-1 h-[48px] bg-[#11141b]/40 border border-white/5 rounded-2xl flex items-center px-8 relative group">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
-              <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.25em] font-black">Available for New Projects</span>
-            </div>
-          </div>
-          
-          <div className="h-[48px] bg-[#11141b] border border-white/10 rounded-2xl flex items-center gap-6 px-6 shadow-2xl relative transition-all hover:border-white/20">
-            <a href={profile.github} target="_blank" rel="noreferrer" title="GitHub" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
-              <Github size={18} strokeWidth={1.5} />
-            </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
-              <Linkedin size={18} strokeWidth={1.5} />
-            </a>
-            <div className="w-px h-4 bg-white/10" />
-            <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="text-[11px] font-code text-muted-foreground hover:text-primary transition-all uppercase tracking-widest font-bold border border-white/10 px-5 py-2 rounded-xl bg-white/5 hover:bg-white/10">
-              Resume
-            </a>
-          </div>
-        </header>
-
-        {/* Sidebar Rail */}
-        <aside className="col-start-1 row-start-1 row-end-3 border-r border-white/5 bg-[#0c0f16] flex flex-col items-center min-h-full">
-          <div className="px-2 w-full h-full">
-            <SidebarRail />
-          </div>
-        </aside>
-
-        {/* Main 12-Column Content Surface */}
-        <div className="col-start-2 row-start-2 px-4 pt-0 pb-2 bg-[#0c0f16] h-auto">
-          <div className="grid grid-cols-12 gap-[10px] items-stretch content-start">
-            
-            {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
-            <div className="col-span-4 h-full">
-              <Hero />
-            </div>
-
-            <div className="col-span-4 h-full">
-              <CapabilityCard 
-                title="Web Stack" 
-                skills={webStack}
-                icon="Code2"
-              />
-            </div>
-
-            <div className="col-span-4 h-full">
-              <CapabilityCard 
-                title="Systems & AI" 
-                skills={systemsAI}
-                icon="Cpu"
-              />
-            </div>
-
-            {/* Main Content Area - Detached Stacked columns */}
-            <div className="col-span-8 flex flex-col gap-[10px]">
-              <Projects />
-              <Experiences />
-            </div>
-
-            <div className="col-span-4 flex flex-col gap-[10px]">
-              <Activities />
-              <Contact />
-              <CreativeSkills />
-            </div>
-
-          </div>
-        </div>
+    <div className="grid grid-cols-12 gap-[10px] items-stretch content-start">
+      {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
+      <div className="col-span-4 h-full min-h-[160px]">
+        <Hero />
       </div>
-    </main>
+
+      <div className="col-span-4 h-full min-h-[160px]">
+        <CapabilityCard 
+          title="Web Stack" 
+          skills={webStack}
+          icon="Code2"
+        />
+      </div>
+
+      <div className="col-span-4 h-full min-h-[160px]">
+        <CapabilityCard 
+          title="Systems & AI" 
+          skills={systemsAI}
+          icon="Cpu"
+        />
+      </div>
+
+      {/* Main Content Area */}
+      <div className="col-span-8 flex flex-col gap-[10px]">
+        <Projects />
+        <Experiences />
+      </div>
+
+      <div className="col-span-4 flex flex-col gap-[10px]">
+        <Activities />
+        <Contact />
+        <CreativeSkills />
+      </div>
+    </div>
   );
 }

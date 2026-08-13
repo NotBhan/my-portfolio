@@ -1,4 +1,3 @@
-
 'use client';
 import { Home, Briefcase, History, Star, Mail, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -9,10 +8,10 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { icon: Home, label: 'Home', href: '/' },
-  { icon: Briefcase, label: 'Projects', href: '#projects' },
-  { icon: History, label: 'Experience', href: '#experience' },
-  { icon: Star, label: 'Skills', href: '#skills' },
-  { icon: Mail, label: 'Contact', href: '#contact' },
+  { icon: Briefcase, label: 'Projects', href: '/projects' },
+  { icon: History, label: 'Experience', href: '/experience' },
+  { icon: Star, label: 'Skills', href: '/skills' },
+  { icon: Mail, label: 'Contact', href: '/contact' },
 ];
 
 export default function Sidebar() {
@@ -29,14 +28,14 @@ export default function Sidebar() {
         PORTFOLIO
       </div>
 
-      {/* Branding / Logo - Representing Profile Identity */}
+      {/* Branding / Logo */}
       <div className="h-[40px] flex items-center justify-center mb-10">
         <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
           C
         </div>
       </div>
       
-      {/* Primary Navigation Items - Aligned from top */}
+      {/* Primary Navigation Items */}
       <nav className="flex flex-col gap-6">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
@@ -59,7 +58,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Sidebar Footer: Theme Toggle - Pushed to bottom */}
+      {/* Sidebar Footer: Theme Toggle */}
       <div className="mt-auto">
         <button 
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
