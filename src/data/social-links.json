@@ -1,7 +1,8 @@
+
 [
   {
     "id": "1",
-    "name": "Twitter",
+    "name": "Twitter / X",
     "url": "https://x.com/Ardnahc?t=EOT08AOjT4byvYIs8asf7g&s=09",
     "icon": "Twitter",
     "isVisible": true
@@ -11,6 +12,20 @@
     "name": "Facebook",
     "url": "https://www.facebook.com/share/1CMMm2V5yx/",
     "icon": "Facebook",
+    "isVisible": true
+  },
+  {
+    "id": "3",
+    "name": "Instagram",
+    "url": "https://www.instagram.com/ig_cbhan",
+    "icon": "Instagram",
+    "isVisible": true
+  },
+  {
+    "id": "4",
+    "name": "Reddit",
+    "url": "https://reddit.com/user/placeholder",
+    "icon": "Reddit",
     "isVisible": true
   }
 ]
