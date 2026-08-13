@@ -45,14 +45,14 @@ export default async function Home() {
 
         {/* Main 12-Column Content Surface */}
         <div className="col-start-2 row-start-2 overflow-y-auto p-3 custom-scrollbar bg-[#0c0f16]">
-          <div className="grid grid-cols-12 grid-rows-[125px_minmax(430px,1fr)] gap-[10px] h-full">
+          <div className="grid grid-cols-12 grid-rows-[120px_300px_72px] gap-[10px] h-full">
             
             {/* Top Row: Identity & Capabilities (Proportionally balanced 4-4-4) */}
-            <div className="col-span-4 h-[125px]">
+            <div className="col-span-4 h-full">
               <Hero />
             </div>
 
-            <div className="col-span-4 h-[125px]">
+            <div className="col-span-4 h-full">
               <CapabilityCard 
                 title="Web Stack" 
                 skills={webStack}
@@ -61,7 +61,7 @@ export default async function Home() {
               />
             </div>
 
-            <div className="col-span-4 h-[125px]">
+            <div className="col-span-4 h-full">
               <CapabilityCard 
                 title="Systems & AI" 
                 skills={progStack}
@@ -71,21 +71,19 @@ export default async function Home() {
             </div>
 
             {/* Dominant Feature Area - Row 2 (8-column Feature) */}
-            <div className="col-span-8 flex flex-col gap-[10px]">
-              <div className="flex-1 relative">
-                <Projects />
-              </div>
-              
-              {/* Nested Experience Strip - Attached to Feature Bottom */}
-              <div className="h-[72px] relative z-20">
-                <Experiences />
-              </div>
+            <div className="col-span-8 row-span-1">
+              <Projects />
             </div>
 
-            {/* Right Stack: Activities + CTA (4-column Right Column) */}
-            <div className="col-span-4 grid grid-rows-[1fr_155px] gap-[10px]">
+            {/* Right Stack: Activities + CTA (4-column Right Column spanning row 2-3) */}
+            <div className="col-span-4 row-span-2 grid grid-rows-[1fr_155px] gap-[10px]">
               <Activities />
               <Contact />
+            </div>
+
+            {/* Nested Experience Strip - Attached to Feature Bottom */}
+            <div className="col-span-8 row-span-1">
+              <Experiences />
             </div>
 
             {/* Sub-footer Section for Demoted Content */}

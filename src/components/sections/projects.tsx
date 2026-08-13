@@ -1,11 +1,10 @@
 'use client';
-import { FolderKanban, Github, ExternalLink, Code2 } from 'lucide-react';
+import { FolderKanban, Github, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import type { Project } from '@/lib/definitions';
 import { cn } from '@/lib/utils';
-import { Badge } from '../ui/badge';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -42,7 +41,7 @@ export default function Projects() {
   if (!activeProject) return null;
 
   return (
-    <div className="bento-card p-0 flex flex-col relative h-full group carve-bottom-left" id="projects">
+    <div className="bento-card p-0 flex flex-col relative h-full group carve-top-right carve-bottom-left" id="projects">
       {/* Absolute top label */}
       <div className="absolute top-5 left-5 z-20 space-y-0.5">
         <div className="flex items-center gap-2 mb-0.5">
@@ -50,7 +49,6 @@ export default function Projects() {
           <span className="text-[7px] font-code text-primary uppercase tracking-[0.2em] font-bold">Featured Production</span>
         </div>
         <h3 className="text-lg font-black text-white leading-none">{activeProject.title}</h3>
-        <p className="text-[8px] font-bold text-primary/80 uppercase tracking-wider">{activeProject.subtitle}</p>
       </div>
 
       <div className="flex-1 relative">
@@ -62,19 +60,12 @@ export default function Projects() {
           data-ai-hint="project screenshot"
         />
         
-        {/* The Nested Info Card */}
-        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b]/95 backdrop-blur-md border border-white/5 rounded-[14px] p-4 w-[min(430px,58%)] min-h-[110px] shadow-2xl flex flex-col justify-center gap-3">
-          <div className="space-y-1.5">
-            <p className="text-[9px] text-white/90 font-medium leading-relaxed line-clamp-3">
+        {/* The Nested Info Card - Physically Carved Into Corner */}
+        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b]/95 backdrop-blur-md border border-white/5 rounded-[14px] p-4 w-[min(430px,48%)] min-h-[70px] max-h-[92px] shadow-2xl flex flex-col justify-center gap-3">
+          <div className="space-y-1">
+            <p className="text-[9px] text-white/90 font-medium leading-relaxed line-clamp-2">
                 {activeProject.description}
             </p>
-            <div className="flex flex-wrap gap-1">
-                {activeProject.technologies.slice(0, 5).map(tech => (
-                    <Badge key={tech} variant="secondary" className="bg-white/5 text-[7px] h-3 px-1 text-muted-foreground border-none">
-                        {tech}
-                    </Badge>
-                ))}
-            </div>
           </div>
           <div className="flex gap-2">
             {activeProject.liveLink && (
@@ -92,14 +83,14 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Mini Project Stack Navigation */}
+        {/* Mini Project Stack Navigation - Lower Right Selector */}
         <div className="absolute right-3 bottom-3 z-30 flex flex-col gap-1.5 w-[145px]">
           {projects.map((p, i) => (
             <button
               key={p.id}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "h-8 glass-card border-white/5 bg-white/5 px-3 flex items-center justify-between text-left transition-all hover:bg-white/10 rounded-[10px] backdrop-blur-md",
+                "h-7 glass-card border-white/5 bg-white/5 px-3 flex items-center justify-between text-left transition-all hover:bg-white/10 rounded-[8px] backdrop-blur-md",
                 activeIndex === i ? "border-primary/50 bg-primary/20 -translate-x-2" : "opacity-60 grayscale hover:grayscale-0 hover:opacity-100"
               )}
             >
