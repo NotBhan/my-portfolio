@@ -23,12 +23,12 @@
     --border: 217 33% 15%;
     --input: 217 33% 15%;
     --ring: 262 83% 58%;
-    --radius: 2.25rem;
+    --radius: 28px;
 
-    --outer-radius: 2.25rem;
-    --card-radius: 1.5rem;
-    --cutout-radius: 1.25rem;
-    --shell-bg: #0c0f16;
+    --outer-radius: 28px;
+    --card-radius: 20px;
+    --nested-radius: 14px;
+    --cutout-radius: 16px;
   }
 }
 
@@ -48,6 +48,9 @@
     width: min(1440px, calc(100vw - 32px));
     height: min(900px, calc(100vh - 32px));
     border-radius: var(--outer-radius);
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: 64px minmax(0, 1fr);
   }
 
   .bento-card {
@@ -62,9 +65,9 @@
   .carve-bottom-right::after {
     content: "";
     @apply absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
-    width: 60px;
-    height: 32px;
-    border-top-left-radius: var(--cutout-radius);
+    width: 34px;
+    height: 22px;
+    border-top-left-radius: var(--nested-radius);
   }
 
   .carve-bottom-left {
@@ -73,9 +76,9 @@
   .carve-bottom-left::after {
     content: "";
     @apply absolute -left-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
-    width: 52%;
-    height: 70px;
-    border-top-right-radius: var(--cutout-radius);
+    width: 61%;
+    height: 125px;
+    border-top-right-radius: var(--nested-radius);
   }
 
   .custom-scrollbar::-webkit-scrollbar {
@@ -87,5 +90,9 @@
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
   }
 }

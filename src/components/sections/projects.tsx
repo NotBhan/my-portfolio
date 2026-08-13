@@ -1,10 +1,9 @@
 'use client';
-import { FolderKanban, Github, ArrowRight } from 'lucide-react';
+import { FolderKanban, Github, ArrowRight, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import type { Project } from '@/lib/definitions';
-import { Badge } from '../ui/badge';
 import { cn } from '@/lib/utils';
 
 export default function Projects() {
@@ -60,46 +59,43 @@ export default function Projects() {
           className="object-cover transition-all duration-700 group-hover:scale-105 z-0" 
           data-ai-hint="project screenshot"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0f16] via-[#0c0f16]/40 to-transparent z-10" />
-
+        
         {/* The Nested Info Card - Physically breaking into the project surface */}
-        <div className="absolute bottom-2 left-2 right-2 z-30 flex items-end justify-between">
-          <div className="bg-[#11141b] border border-white/5 rounded-xl p-4 max-w-[50%] shadow-2xl">
-            <p className="text-[11px] text-white/90 font-medium leading-relaxed mb-3 line-clamp-2">
-              {activeProject.description}
-            </p>
-            <div className="flex gap-2">
-              {activeProject.liveLink && (
-                <Button size="sm" className="bg-primary hover:bg-primary/80 text-white rounded-lg h-7 px-3 text-[9px] font-bold" asChild>
-                  <a href={activeProject.liveLink} target="_blank" rel="noopener noreferrer">
-                    Demo <ArrowRight size={10} className="ml-1" />
-                  </a>
-                </Button>
-              )}
-              <Button variant="outline" size="sm" className="bg-white/5 border-white/10 hover:bg-white/10 rounded-lg h-7 px-3 text-[9px] font-bold" asChild>
-                <a href={activeProject.link} target="_blank" rel="noopener noreferrer">
-                  <Github size={10} className="mr-1" /> Code
+        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b] border border-white/5 rounded-[14px] p-4 w-[min(430px,58%)] min-h-[105px] shadow-2xl">
+          <p className="text-[10px] text-white/90 font-medium leading-relaxed mb-3 line-clamp-3">
+            {activeProject.description}
+          </p>
+          <div className="flex gap-2">
+            {activeProject.liveLink && (
+              <Button size="sm" className="bg-primary hover:bg-primary/80 text-white rounded-lg h-7 px-3 text-[9px] font-bold" asChild>
+                <a href={activeProject.liveLink} target="_blank" rel="noopener noreferrer">
+                  Live Demo <ExternalLink size={10} className="ml-1" />
                 </a>
               </Button>
-            </div>
+            )}
+            <Button variant="outline" size="sm" className="bg-white/5 border-white/10 hover:bg-white/10 rounded-lg h-7 px-3 text-[9px] font-bold" asChild>
+              <a href={activeProject.link} target="_blank" rel="noopener noreferrer">
+                <Github size={10} className="mr-1" /> Source Code
+              </a>
+            </Button>
           </div>
+        </div>
 
-          {/* Mini Project Stack Navigation */}
-          <div className="flex flex-col gap-1 pb-2 pr-2">
-            {projects.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => setActiveIndex(i)}
-                className={cn(
-                  "w-32 h-8 glass-card border-white/5 bg-white/5 px-2 flex items-center justify-between text-left transition-all hover:bg-white/10 rounded-lg",
-                  activeIndex === i ? "border-primary/50 bg-primary/10" : "opacity-40 grayscale"
-                )}
-              >
-                <span className="text-[8px] font-bold text-white uppercase truncate">{p.title}</span>
-                <div className={cn("w-1 h-1 rounded-full", activeIndex === i ? "bg-primary" : "bg-white/20")} />
-              </button>
-            ))}
-          </div>
+        {/* Mini Project Stack Navigation */}
+        <div className="absolute right-3 bottom-3 z-30 flex flex-col gap-1.5 w-[145px]">
+          {projects.map((p, i) => (
+            <button
+              key={p.id}
+              onClick={() => setActiveIndex(i)}
+              className={cn(
+                "h-8 glass-card border-white/5 bg-white/5 px-3 flex items-center justify-between text-left transition-all hover:bg-white/10 rounded-[10px] backdrop-blur-md",
+                activeIndex === i ? "border-primary/50 bg-primary/20 -translate-x-2" : "opacity-60 grayscale hover:grayscale-0 hover:opacity-100"
+              )}
+            >
+              <span className="text-[8px] font-bold text-white uppercase truncate">{p.title}</span>
+              <div className={cn("w-1 h-1 rounded-full", activeIndex === i ? "bg-primary shadow-[0_0_8px_rgba(139,92,246,0.8)]" : "bg-white/20")} />
+            </button>
+          ))}
         </div>
       </div>
     </div>
