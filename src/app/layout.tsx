@@ -54,22 +54,22 @@ export default async function RootLayout({
             <div className="interface-shell">
               {/* Top Header Rail */}
               <header className="h-[64px] col-start-2 row-start-1 flex items-center px-4 z-20 gap-3 bg-transparent">
-                <div className="flex-1 h-[48px] bg-card/40 border border-border rounded-2xl flex items-center px-8 relative group">
+                <div className="flex-1 h-[48px] bg-card/60 dark:bg-card/40 border border-border rounded-2xl flex items-center px-8 relative group">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
-                    <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.25em] font-black">Available for New Projects</span>
+                    <span className="text-[10px] font-code text-foreground dark:text-muted-foreground uppercase tracking-[0.25em] font-black">Available for New Projects</span>
                   </div>
                 </div>
                 
                 <div className="h-[48px] bg-card border border-border rounded-2xl flex items-center gap-6 px-6 shadow-2xl relative transition-all hover:border-primary/20">
-                  <a href={profile.github} target="_blank" rel="noreferrer" title="GitHub" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
+                  <a href={profile.github} target="_blank" rel="noreferrer" title="GitHub" className="text-foreground dark:text-muted-foreground hover:text-primary transition-all hover:scale-110">
                     <Github size={18} strokeWidth={1.5} />
                   </a>
-                  <a href={profile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
+                  <a href={profile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-foreground dark:text-muted-foreground hover:text-primary transition-all hover:scale-110">
                     <Linkedin size={18} strokeWidth={1.5} />
                   </a>
                   <div className="w-px h-4 bg-border" />
-                  <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="text-[11px] font-code text-muted-foreground hover:text-primary transition-all uppercase tracking-widest font-bold border border-border px-5 py-2 rounded-xl bg-muted/50 hover:bg-muted">
+                  <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="text-[11px] font-code text-foreground dark:text-muted-foreground hover:text-primary transition-all uppercase tracking-widest font-bold border border-border px-5 py-2 rounded-xl bg-muted/50 hover:bg-muted">
                     Resume
                   </a>
                 </div>

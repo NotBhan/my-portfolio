@@ -51,7 +51,7 @@ export default async function ContactPage() {
         </div>
         <div>
           <h1 className="text-xl font-black text-foreground uppercase tracking-tight">Connections</h1>
-          <p className="text-[11px] text-muted-foreground font-medium">Let's talk about products, ideas, or collaborations.</p>
+          <p className="text-[11px] text-foreground dark:text-muted-foreground font-medium">Let's talk about products, ideas, or collaborations.</p>
         </div>
       </div>
 
@@ -59,12 +59,12 @@ export default async function ContactPage() {
         {/* Contact & Socials Info */}
         <div className="lg:col-span-5 flex flex-col gap-4">
           {/* Direct Channel */}
-          <div className="bento-card p-5 bg-primary/5 border-primary/10 relative overflow-hidden group">
+          <div className="bento-card p-5 bg-primary/5 border-primary/20 relative overflow-hidden group">
             <Sparkles size={80} className="absolute -right-6 -bottom-6 text-primary/10 group-hover:scale-110 transition-transform duration-1000" />
             
             <div className="relative z-10">
               <h2 className="text-lg font-black text-foreground uppercase tracking-tight mb-1.5">Direct Channel</h2>
-              <p className="text-[10px] text-muted-foreground font-medium leading-relaxed mb-4 max-w-[240px]">
+              <p className="text-[10px] text-foreground dark:text-muted-foreground font-medium leading-relaxed mb-4 max-w-[240px]">
                 Drop me an email directly or find me on professional networks.
               </p>
             </div>
@@ -75,7 +75,7 @@ export default async function ContactPage() {
                   <Mail size={14} />
                 </div>
                 <div className="overflow-hidden">
-                  <span className="block text-[8px] font-bold text-muted-foreground uppercase tracking-widest">Email</span>
+                  <span className="block text-[8px] font-bold text-foreground dark:text-muted-foreground uppercase tracking-widest">Email</span>
                   <span className="block text-[11px] text-foreground font-medium truncate">{profile.email}</span>
                 </div>
               </a>
@@ -85,7 +85,7 @@ export default async function ContactPage() {
                   <Linkedin size={14} />
                 </div>
                 <div>
-                  <span className="block text-[8px] font-bold text-muted-foreground uppercase tracking-widest">LinkedIn</span>
+                  <span className="block text-[8px] font-bold text-foreground dark:text-muted-foreground uppercase tracking-widest">LinkedIn</span>
                   <span className="block text-[11px] text-foreground font-medium">Professional Profile</span>
                 </div>
               </a>
@@ -95,7 +95,7 @@ export default async function ContactPage() {
                   <Github size={14} />
                 </div>
                 <div>
-                  <span className="block text-[8px] font-bold text-muted-foreground uppercase tracking-widest">GitHub</span>
+                  <span className="block text-[8px] font-bold text-foreground dark:text-muted-foreground uppercase tracking-widest">GitHub</span>
                   <span className="block text-[11px] text-foreground font-medium">Source Collections</span>
                 </div>
               </a>
@@ -107,7 +107,7 @@ export default async function ContactPage() {
             <div className="bento-card p-5 bg-card/50 border-border relative overflow-hidden group">
               <div className="relative z-10">
                 <h2 className="text-lg font-black text-foreground uppercase tracking-tight mb-1.5">Presence</h2>
-                <p className="text-[10px] text-muted-foreground font-medium leading-relaxed mb-4">
+                <p className="text-[10px] text-foreground dark:text-muted-foreground font-medium leading-relaxed mb-4">
                   Regular updates and social interactions.
                 </p>
               </div>
@@ -136,7 +136,7 @@ export default async function ContactPage() {
 
         {/* Message Form */}
         <div className="lg:col-span-7 flex flex-col">
-          <div className="bento-card p-5 bg-card/50 h-full flex flex-col">
+          <div className="bento-card p-5 bg-card/50 h-full flex flex-col border-border">
             <div className="flex items-center gap-2 mb-4">
               <MessageSquare size={14} className="text-primary" />
               <h2 className="text-[10px] font-black text-foreground uppercase tracking-[0.2em]">Send a Transmission</h2>
@@ -145,20 +145,20 @@ export default async function ContactPage() {
             <form className="space-y-3 flex-1 flex flex-col">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Full Name</label>
-                  <Input className="bg-muted/10 border-border rounded-lg h-9 focus:border-primary/40 focus:ring-0 text-foreground text-[11px]" placeholder="John Doe" />
+                  <label className="text-[9px] font-bold text-foreground dark:text-muted-foreground uppercase tracking-widest ml-1">Full Name</label>
+                  <Input className="bg-muted/10 border-border rounded-lg h-9 focus:border-primary/40 focus:ring-0 text-foreground text-[11px] placeholder:text-muted-foreground/60" placeholder="John Doe" />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Email Address</label>
-                  <Input className="bg-muted/10 border-border rounded-lg h-9 focus:border-primary/40 focus:ring-0 text-foreground text-[11px]" type="email" placeholder="john@example.com" />
+                  <label className="text-[9px] font-bold text-foreground dark:text-muted-foreground uppercase tracking-widest ml-1">Email Address</label>
+                  <Input className="bg-muted/10 border-border rounded-lg h-9 focus:border-primary/40 focus:ring-0 text-foreground text-[11px] placeholder:text-muted-foreground/60" type="email" placeholder="john@example.com" />
                 </div>
               </div>
               <div className="space-y-1 flex-1 flex flex-col min-h-0">
-                <label className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Message Body</label>
-                <Textarea className="bg-muted/10 border-border rounded-lg min-h-[100px] flex-1 focus:border-primary/40 focus:ring-0 text-foreground text-[11px] resize-none" placeholder="What's on your mind?" />
+                <label className="text-[9px] font-bold text-foreground dark:text-muted-foreground uppercase tracking-widest ml-1">Message Body</label>
+                <Textarea className="bg-muted/10 border-border rounded-lg min-h-[100px] flex-1 focus:border-primary/40 focus:ring-0 text-foreground text-[11px] resize-none placeholder:text-muted-foreground/60" placeholder="What's on your mind?" />
               </div>
               
-              <Button className="w-full h-9 rounded-lg bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-[9px] glow-purple transition-all mt-4 shrink-0">
+              <Button className="w-full h-9 rounded-lg bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-[9px] glow-purple transition-all mt-4 shrink-0 shadow-lg">
                 Initialize Dispatch <Send size={12} className="ml-2" />
               </Button>
             </form>
