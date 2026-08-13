@@ -39,7 +39,6 @@ export default function Navbar() {
   };
 
   if (isMobile) {
-    // Magic Navigation implementation for Mobile
     return (
       <div className="flex justify-center w-full h-full items-center bg-background/80 backdrop-blur-xl border-t border-border/50">
         <div className="relative w-full max-w-[420px] h-[70px] bg-card flex justify-center items-center rounded-t-[20px] px-2">
@@ -54,13 +53,13 @@ export default function Navbar() {
                   >
                     <span className={cn(
                       "relative block transition-all duration-500",
-                      isActive ? "transform -translate-y-[32px] text-primary-foreground" : "text-muted-foreground"
+                      isActive ? "transform -translate-y-[28px] text-primary-foreground" : "text-muted-foreground"
                     )}>
-                      <item.icon size={22} strokeWidth={isActive ? 2.5 : 1.5} />
+                      <item.icon size={20} strokeWidth={isActive ? 2.5 : 1.5} />
                     </span>
                     <span className={cn(
-                      "absolute text-primary text-[9px] font-black uppercase tracking-widest transition-all duration-500 opacity-0 transform translate-y-[20px]",
-                      isActive ? "opacity-100 transform translate-y-[12px]" : ""
+                      "absolute text-primary text-[8px] font-black uppercase tracking-widest transition-all duration-500 opacity-0 transform translate-y-[20px]",
+                      isActive ? "opacity-100 transform translate-y-[10px]" : ""
                     )}>
                       {item.label}
                     </span>
@@ -69,7 +68,6 @@ export default function Navbar() {
               );
             })}
             
-            {/* Theme Toggle as 6th Item */}
             <li className="relative list-none flex-1 h-[70px] z-10">
               <button
                 onClick={toggleTheme}
@@ -77,22 +75,21 @@ export default function Navbar() {
               >
                 <span className="relative block text-muted-foreground transition-all duration-500">
                   {mounted ? (
-                    resolvedTheme === 'dark' ? <Sun size={22} strokeWidth={1.5} /> : <Moon size={22} strokeWidth={1.5} />
+                    resolvedTheme === 'dark' ? <Sun size={20} strokeWidth={1.5} /> : <Moon size={20} strokeWidth={1.5} />
                   ) : (
-                    <div className="w-[22px] h-[22px]" />
+                    <div className="w-[20px] h-[20px]" />
                   )}
                 </span>
-                <span className="absolute text-muted-foreground text-[8px] font-black uppercase tracking-widest transform translate-y-[12px] opacity-60">
+                <span className="absolute text-muted-foreground text-[8px] font-black uppercase tracking-widest transform translate-y-[10px] opacity-60">
                   Theme
                 </span>
               </button>
             </li>
 
-            {/* The Indicator - Calculated for 6 items total (5 links + 1 theme) */}
             <div 
-              className="absolute -top-[35px] w-[50px] h-[50px] bg-primary border-[6px] border-background rounded-full transition-all duration-500 ease-in-out pointer-events-none"
+              className="absolute -top-[30px] w-[48px] h-[48px] bg-primary border-[5px] border-background rounded-full transition-all duration-500 ease-in-out pointer-events-none"
               style={{
-                left: `calc((100% / 6) * ${activeIndex} + (100% / 12) - 25px)`,
+                left: `calc((100% / 6) * ${activeIndex} + (100% / 12) - 24px)`,
               }}
             >
               <div className="magic-indicator-curve-left"></div>
@@ -106,19 +103,16 @@ export default function Navbar() {
 
   return (
     <div className="flex flex-col items-center h-full pt-3 pb-4">
-      {/* Vertical Title Label - Architectural Branding */}
       <div className="mb-14 [writing-mode:vertical-lr] rotate-180 text-[11px] font-black text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[2.5] scale-x-[0.8] origin-center tracking-tighter leading-none shrink-0">
         PORTFOLIO
       </div>
 
-      {/* Branding / Logo */}
       <div className="h-[40px] flex items-center justify-center mb-10 shrink-0">
         <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-primary-foreground font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
           C
         </div>
       </div>
       
-      {/* Primary Navigation Items */}
       <TooltipProvider delayDuration={0}>
         <nav className="flex flex-col gap-6 items-center flex-1">
           {navItems.map((item) => {
@@ -146,7 +140,6 @@ export default function Navbar() {
             );
           })}
 
-          {/* Theme Toggle integrated into the group - Hydration Safe */}
           <Tooltip>
             <TooltipTrigger asChild>
               <button 
