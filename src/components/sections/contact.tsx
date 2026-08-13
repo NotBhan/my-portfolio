@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Contact() {
   return (
-    <div className="bento-card flex flex-col relative overflow-hidden group h-[160px]">
+    <div className="bento-card flex flex-col relative overflow-hidden group flex-1 min-h-[160px]">
       {/* Decorative Card Stack Visual - Behind Content */}
       <div className="absolute bottom-[-15px] right-[-10px] w-[130px] h-[170px] pointer-events-none z-[1]">
         <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/30 rounded-[18px] transform-origin-bottom-right rotate-[4deg] border border-white/5 shadow-2xl" />

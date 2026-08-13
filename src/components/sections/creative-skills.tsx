@@ -7,7 +7,7 @@ export default async function CreativeSkills() {
   const creativeSkills = allCreativeSkills.filter((s) => s.isVisible);
 
   return (
-    <div className="bento-card p-5 flex flex-col gap-3 bg-[#11141b]/40 mt-auto">
+    <div className="bento-card p-5 flex flex-col justify-center gap-3 bg-[#11141b]/40 flex-1">
       <div className="flex items-center gap-2 mb-1">
         <Music size={14} className="text-primary/80" />
         <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Beyond Code</h3>
