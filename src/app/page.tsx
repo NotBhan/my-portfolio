@@ -59,7 +59,7 @@ export default async function Home() {
 
         {/* Sidebar Rail */}
         <aside className="col-start-1 row-start-1 row-end-3 pt-[64px] border-r border-white/5 bg-[#0c0f16] flex flex-col items-center min-h-full">
-          <div className="mt-8 px-2 w-full h-full">
+          <div className="px-2 w-full h-full">
             <SidebarRail />
           </div>
         </aside>

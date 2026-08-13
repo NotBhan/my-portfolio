@@ -22,9 +22,9 @@ export default function Sidebar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="flex flex-col items-center h-full py-6">
+    <div className="flex flex-col items-center h-full py-2">
       {/* Branding / Logo */}
-      <div className="mb-10">
+      <div className="mb-6">
         <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
           C
         </div>
@@ -54,7 +54,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Sidebar Footer: Theme Toggle */}
-      <div className="mt-auto">
+      <div className="mt-auto pb-4">
         <button 
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="p-3 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center rounded-xl hover:bg-white/5"
