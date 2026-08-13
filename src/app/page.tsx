@@ -6,12 +6,11 @@ import Contact from '@/components/sections/contact';
 import SidebarRail from '@/components/navbar';
 import CapabilityCard from '@/components/capability-card';
 import CreativeSkills from '@/components/sections/creative-skills';
-import { getProfile, getSkills } from '@/lib/data';
+import { getProfile } from '@/lib/data';
 import { Github, Linkedin } from 'lucide-react';
 
 export default async function Home() {
   const profile = await getProfile();
-  const skills = await getSkills();
 
   // Curated skills for top row modules
   const webStack = [
@@ -59,22 +58,22 @@ export default async function Home() {
         </header>
 
         {/* Sidebar Rail */}
-        <aside className="col-start-1 row-start-1 row-end-3 pt-[64px] border-r border-white/5 bg-[#0c0f16] flex flex-col items-center">
+        <aside className="col-start-1 row-start-1 row-end-3 pt-[64px] border-r border-white/5 bg-[#0c0f16] flex flex-col items-center min-h-full">
           <div className="mt-8 px-2 w-full h-full">
             <SidebarRail />
           </div>
         </aside>
 
         {/* Main 12-Column Content Surface */}
-        <div className="col-start-2 row-start-2 px-4 pt-2 pb-4 bg-[#0c0f16]">
-          <div className="grid grid-cols-12 gap-[10px] items-stretch content-start pb-12">
+        <div className="col-start-2 row-start-2 px-4 pt-2 pb-4 bg-[#0c0f16] h-auto">
+          <div className="grid grid-cols-12 gap-[10px] items-stretch content-start pb-4">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
-            <div className="col-span-4">
+            <div className="col-span-4 h-full">
               <Hero />
             </div>
 
-            <div className="col-span-4">
+            <div className="col-span-4 h-full">
               <CapabilityCard 
                 title="Web Stack" 
                 skills={webStack}
@@ -82,7 +81,7 @@ export default async function Home() {
               />
             </div>
 
-            <div className="col-span-4">
+            <div className="col-span-4 h-full">
               <CapabilityCard 
                 title="Systems & AI" 
                 skills={systemsAI}
