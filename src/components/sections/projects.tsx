@@ -62,7 +62,7 @@ export default function Projects() {
         />
         
         {/* The Nested Info Card */}
-        <div className="absolute bottom-[12px] left-[12px] z-[4] bg-card/95 backdrop-blur-xl border border-border rounded-[16px] p-4 w-[46%] min-h-[78px] shadow-2xl flex flex-col justify-center gap-4">
+        <div className="absolute bottom-[12px] left-[12px] z-[4] bg-card/95 backdrop-blur-xl border border-border rounded-[16px] p-4 w-[calc(100%-24px)] md:w-[60%] lg:w-[46%] min-h-[78px] shadow-2xl flex flex-col justify-center gap-4">
           <p className="text-[12px] text-foreground font-medium leading-relaxed line-clamp-2">
               {activeProject.description}
           </p>
@@ -83,7 +83,7 @@ export default function Projects() {
         </div>
 
         {/* Vertical Project Stack Navigation */}
-        <div className="absolute right-4 bottom-4 z-20 flex flex-col gap-1.5 w-[145px]">
+        <div className="absolute right-4 bottom-4 z-20 flex flex-col gap-1.5 w-[145px] hidden sm:flex">
           {projects.map((p, i) => (
             <button
               key={p.id}

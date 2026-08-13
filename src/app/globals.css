@@ -67,12 +67,29 @@
 @layer components {
   .interface-shell {
     @apply relative bg-background border border-border shadow-[0_0_50px_rgba(0,0,0,0.05)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden mx-auto transition-all duration-300;
-    width: 1400px;
-    height: 908px;
+    width: calc(100vw - 12px);
+    height: calc(100vh - 12px);
+    max-width: 1400px;
+    max-height: 908px;
     border-radius: var(--outer-radius);
     display: grid;
-    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-columns: 64px minmax(0, 1fr);
     grid-template-rows: 64px auto;
+  }
+
+  @media (min-width: 1024px) {
+    .interface-shell {
+      grid-template-columns: 72px minmax(0, 1fr);
+      width: 98vw;
+      height: 96vh;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .interface-shell {
+      width: 1400px;
+      height: 908px;
+    }
   }
 
   .bento-card {
