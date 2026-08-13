@@ -5,7 +5,7 @@ export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <div className="bento-card h-full relative group carve-bottom-right">
+    <div className="bento-card h-full relative group">
       <div className="flex flex-col h-full relative z-20 p-5 px-6 justify-center">
         {/* Identity Label */}
         <span className="text-[9px] font-code text-primary uppercase tracking-[0.25em] font-black mb-2">

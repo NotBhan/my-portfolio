@@ -60,43 +60,6 @@
     overflow: hidden;
   }
 
-  /* Structural Cut-Out Notches - Now purely decorative and non-clipping */
-  .carve-bottom-right {
-    @apply relative;
-  }
-  .carve-bottom-right::after {
-    content: "";
-    @apply absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] z-10 pointer-events-none;
-    width: 32px;
-    height: 24px;
-    border-top-left-radius: 14px;
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .carve-top-right {
-    @apply relative;
-  }
-  .carve-top-right::after {
-    content: "";
-    @apply absolute -right-[1px] -top-[1px] bg-[#0c0f16] z-10 pointer-events-none;
-    width: 36px;
-    height: 28px;
-    border-bottom-left-radius: 16px;
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  /* Nested Project Info Notch - Structural negative space */
-  .featured-cutout {
-    @apply absolute left-0 bottom-0 bg-[#0c0f16] z-[3] pointer-events-none;
-    width: 48%;
-    height: 94px;
-    border-top-right-radius: 18px;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
   }

@@ -42,8 +42,6 @@ export default async function Home() {
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
               <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.25em] font-black">Available for New Projects</span>
             </div>
-            {/* Architectural Notch: Carves the bottom-right corner to transition into the action region */}
-            <div className="absolute -right-px -bottom-px w-8 h-6 bg-[#0c0f16] border-l border-t border-white/5 rounded-tl-xl pointer-events-none" />
           </div>
           
           <div className="h-[54px] bg-[#11141b] border border-white/10 rounded-2xl flex items-center gap-6 px-8 shadow-2xl relative transition-all hover:border-white/20">

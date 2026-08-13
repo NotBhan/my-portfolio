@@ -41,7 +41,7 @@ export default function Projects() {
   if (!activeProject) return null;
 
   return (
-    <div className="bento-card p-0 flex flex-col relative h-full group carve-top-right" id="projects">
+    <div className="bento-card p-0 flex flex-col relative h-full group" id="projects">
       {/* Background Gradient for Header Readability */}
       <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-transparent pointer-events-none" />
 
@@ -64,9 +64,6 @@ export default function Projects() {
           data-ai-hint="project screenshot"
         />
         
-        {/* Structural Cut-out behind nested card */}
-        <div className="featured-cutout" />
-
         {/* The Nested Info Card */}
         <div className="absolute bottom-[12px] left-[12px] z-[4] bg-[#11141b]/95 backdrop-blur-xl border border-white/5 rounded-[16px] p-4 w-[46%] min-h-[78px] shadow-2xl flex flex-col justify-center gap-4">
           <p className="text-[12px] text-white/90 font-medium leading-relaxed line-clamp-2">
