@@ -9,7 +9,13 @@ import type { Profile } from '@/lib/definitions';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
-import { Save } from 'lucide-react';
+import { Save, Info } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function ProfileForm({ profile: initialProfile }: { profile: Profile }) {
   const [profile, setProfile] = useState<Profile>(initialProfile);
@@ -150,13 +156,37 @@ export default function ProfileForm({ profile: initialProfile }: { profile: Prof
         </div>
 
         <div className="space-y-2 border-t border-border/30 pt-6">
-          <Label className="text-[11px] font-black uppercase tracking-[0.2em] text-primary mb-4 block">Social & Asset URLs</Label>
+          <div className="flex items-center gap-2 mb-4">
+            <Label className="text-[11px] font-black uppercase tracking-[0.2em] text-primary block">Social & Asset URLs</Label>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info size={12} className="text-muted-foreground cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent className="max-w-[200px] text-[10px] font-medium leading-relaxed">
+                  Provide public direct links for your assets. For Google Drive, ensure "Anyone with the link" can view.
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input placeholder="GitHub URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.github || ''} onChange={(e) => handleProfileChange('github', e.target.value)} />
-            <Input placeholder="LinkedIn URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.linkedin || ''} onChange={(e) => handleProfileChange('linkedin', e.target.value)} />
-            <Input placeholder="Instagram URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.instagram || ''} onChange={(e) => handleProfileChange('instagram', e.target.value)} />
-            <Input placeholder="Resume URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.resumeUrl || ''} onChange={(e) => handleProfileChange('resumeUrl', e.target.value)} />
-            <Input placeholder="Profile Picture URL" className="bg-background/50 border-border/50 rounded-xl col-span-full" value={profile.profilePictureUrl || ''} onChange={(e) => handleProfileChange('profilePictureUrl', e.target.value)} />
+            <div className="space-y-1">
+              <Input placeholder="GitHub URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.github || ''} onChange={(e) => handleProfileChange('github', e.target.value)} />
+            </div>
+            <div className="space-y-1">
+              <Input placeholder="LinkedIn URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.linkedin || ''} onChange={(e) => handleProfileChange('linkedin', e.target.value)} />
+            </div>
+            <div className="space-y-1">
+              <Input placeholder="Instagram URL" className="bg-background/50 border-border/50 rounded-xl" value={profile.instagram || ''} onChange={(e) => handleProfileChange('instagram', e.target.value)} />
+            </div>
+            <div className="space-y-1">
+              <Input placeholder="Resume URL (Public PDF link)" className="bg-background/50 border-border/50 rounded-xl" value={profile.resumeUrl || ''} onChange={(e) => handleProfileChange('resumeUrl', e.target.value)} />
+              <p className="text-[9px] text-muted-foreground ml-2">Link to a public PDF file.</p>
+            </div>
+            <div className="space-y-1 col-span-full">
+              <Input placeholder="Profile Picture URL (Direct Image link)" className="bg-background/50 border-border/50 rounded-xl" value={profile.profilePictureUrl || ''} onChange={(e) => handleProfileChange('profilePictureUrl', e.target.value)} />
+              <p className="text-[9px] text-muted-foreground ml-2">Direct URL to an image (png, jpg).</p>
+            </div>
           </div>
         </div>
 

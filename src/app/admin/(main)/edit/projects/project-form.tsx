@@ -30,6 +30,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
         link: '',
         liveLink: '',
         isVisible: true,
+        technologies: [],
       },
     ]);
   };
@@ -38,7 +39,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
     setProjects(projects.filter((p) => p.id !== id));
   };
 
-  const handleProjectChange = (id: string, field: keyof Project, value: string | boolean) => {
+  const handleProjectChange = (id: string, field: keyof Project, value: string | boolean | string[]) => {
     setProjects(projects.map((p) => (p.id === id ? { ...p, [field]: value } : p)));
   };
 
@@ -108,7 +109,7 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
       <form onSubmit={handleSubmit}>
         <div className="space-y-6">
           {projects.map((project, index) => (
-            <div key={project.id} className="space-y-4 rounded-lg border p-4">
+            <div key={project.id} className="space-y-4 rounded-lg border p-4 bg-background/30">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">Project {index + 1}</h3>
                 <div className="flex items-center gap-2">
@@ -152,8 +153,9 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
                   id={`project-image-${project.id}`}
                   value={project.image}
                   onChange={(e) => handleProjectChange(project.id, 'image', e.target.value)}
-                  placeholder="Image URL"
+                  placeholder="Direct link to project screenshot"
                 />
+                <p className="text-[9px] text-muted-foreground ml-2 italic">Use direct image links (e.g., from Unsplash or public drive URLs).</p>
               </div>
               <div className="space-y-2">
                 <Label htmlFor={`project-link-${project.id}`}>Source Code URL</Label>
