@@ -1,3 +1,4 @@
+
 import { getProjects } from '@/lib/data';
 import Image from 'next/image';
 import { ExternalLink, Github, FolderKanban } from 'lucide-react';
@@ -57,11 +58,6 @@ export default async function ProjectsPage() {
                     {tech}
                   </Badge>
                 ))}
-                {project.technologies?.length > 5 && (
-                  <Badge variant="outline" className="text-[8px] border-border text-muted-foreground uppercase font-bold px-2 py-0">
-                    +{project.technologies.length - 5} More
-                  </Badge>
-                )}
               </div>
 
               <div className="flex items-center gap-3 pt-1">
