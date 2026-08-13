@@ -7,10 +7,16 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import type { Project } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, ChevronRight, FolderKanban } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function ProjectForm({ projects: initialProjects }: { projects: Project[] }) {
   const [projects, setProjects] = useState<Project[]>(initialProjects);
@@ -106,83 +112,108 @@ export default function ProjectForm({ projects: initialProjects }: { projects: P
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {projects.map((project, index) => (
-            <div key={project.id} className="space-y-4 rounded-lg border p-4 bg-background/30">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Project {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`project-visible-${project.id}`}
-                    checked={project.isVisible}
-                    onCheckedChange={(checked) => handleProjectChange(project.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`project-visible-${project.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={project.id} value={project.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <FolderKanban size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {project.title || `Untitled Project ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      Project #{index + 1} {project.isVisible ? '// Visible' : '// Hidden'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`project-visible-${project.id}`}
+                        checked={project.isVisible}
+                        onCheckedChange={(checked) => handleProjectChange(project.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`project-visible-${project.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Visibility Status</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveProject(project.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Delete Project
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`project-title-${project.id}`}>Title</Label>
-                <Input
-                  id={`project-title-${project.id}`}
-                  value={project.title}
-                  onChange={(e) => handleProjectChange(project.id, 'title', e.target.value)}
-                  placeholder="Project Title"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`project-desc-${project.id}`}>Description</Label>
-                <Textarea
-                  id={`project-desc-${project.id}`}
-                  value={project.description}
-                  onChange={(e) => handleProjectChange(project.id, 'description', e.target.value)}
-                  placeholder="Project Description"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`project-image-${project.id}`}>Image URL</Label>
-                <Input
-                  id={`project-image-${project.id}`}
-                  value={project.image}
-                  onChange={(e) => handleProjectChange(project.id, 'image', e.target.value)}
-                  placeholder="Direct link to project screenshot"
-                />
-                <p className="text-[9px] text-muted-foreground ml-2 italic">Use direct image links (e.g., from Unsplash or public drive URLs).</p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`project-link-${project.id}`}>Source Code URL</Label>
-                <Input
-                  id={`project-link-${project.id}`}
-                  value={project.link}
-                  onChange={(e) => handleProjectChange(project.id, 'link', e.target.value)}
-                  placeholder="https://github.com/..."
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`project-live-link-${project.id}`}>Live Link</Label>
-                <Input
-                  id={`project-live-link-${project.id}`}
-                  value={project.liveLink || ''}
-                  onChange={(e) => handleProjectChange(project.id, 'liveLink', e.target.value)}
-                  placeholder="https://vercel.app/..."
-                />
-              </div>
-            </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Title</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-11"
+                    value={project.title}
+                    onChange={(e) => handleProjectChange(project.id, 'title', e.target.value)}
+                    placeholder="Project Title"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Description</Label>
+                  <Textarea
+                    className="bg-background/50 rounded-xl min-h-[100px] resize-none"
+                    value={project.description}
+                    onChange={(e) => handleProjectChange(project.id, 'description', e.target.value)}
+                    placeholder="Describe the technical challenges and outcomes..."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Image URL</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-10"
+                      value={project.image}
+                      onChange={(e) => handleProjectChange(project.id, 'image', e.target.value)}
+                      placeholder="Direct image link"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Live Link</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-10"
+                      value={project.liveLink || ''}
+                      onChange={(e) => handleProjectChange(project.id, 'liveLink', e.target.value)}
+                      placeholder="https://..."
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Source Code URL</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-10"
+                    value={project.link}
+                    onChange={(e) => handleProjectChange(project.id, 'link', e.target.value)}
+                    placeholder="GitHub repository link"
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddProject}>
-            Add Project
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddProject} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            New Production
           </Button>
-          <Button type="submit">Save All Projects</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
        <PasswordDialog

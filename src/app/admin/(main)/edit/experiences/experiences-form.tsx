@@ -7,10 +7,16 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import type { Experience } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, History, Calendar } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function ExperiencesForm({ experiences: initialExperiences }: { experiences: Experience[] }) {
   const [experiences, setExperiences] = useState<Experience[]>(initialExperiences);
@@ -104,73 +110,98 @@ export default function ExperiencesForm({ experiences: initialExperiences }: { e
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {experiences.map((experience, index) => (
-            <div key={experience.id} className="space-y-4 rounded-lg border p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Experience {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`experience-visible-${experience.id}`}
-                    checked={experience.isVisible}
-                    onCheckedChange={(checked) => handleExperienceChange(experience.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`experience-visible-${experience.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={experience.id} value={experience.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <History size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {experience.title || `Untitled Role ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {experience.company || 'Unknown Company'} {experience.isVisible ? '// Active' : '// Hidden'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`exp-visible-${experience.id}`}
+                        checked={experience.isVisible}
+                        onCheckedChange={(checked) => handleExperienceChange(experience.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`exp-visible-${experience.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Visibility Status</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveExperience(experience.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Delete Role
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`experience-title-${experience.id}`}>Title</Label>
-                <Input
-                  id={`experience-title-${experience.id}`}
-                  value={experience.title}
-                  onChange={(e) => handleExperienceChange(experience.id, 'title', e.target.value)}
-                  placeholder="Job Title"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`experience-company-${experience.id}`}>Company</Label>
-                <Input
-                  id={`experience-company-${experience.id}`}
-                  value={experience.company}
-                  onChange={(e) => handleExperienceChange(experience.id, 'company', e.target.value)}
-                  placeholder="Company Name"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`experience-duration-${experience.id}`}>Duration</Label>
-                <Input
-                  id={`experience-duration-${experience.id}`}
-                  value={experience.duration}
-                  onChange={(e) => handleExperienceChange(experience.id, 'duration', e.target.value)}
-                  placeholder="e.g., Jan 2022 - Present"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`experience-desc-${experience.id}`}>Description</Label>
-                <Textarea
-                  id={`experience-desc-${experience.id}`}
-                  value={experience.description}
-                  onChange={(e) => handleExperienceChange(experience.id, 'description', e.target.value)}
-                  placeholder="Job Description"
-                />
-              </div>
-            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Job Title</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={experience.title}
+                      onChange={(e) => handleExperienceChange(experience.id, 'title', e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Company</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={experience.company}
+                      onChange={(e) => handleExperienceChange(experience.id, 'company', e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Duration</Label>
+                  <div className="relative">
+                    <Input
+                      className="bg-background/50 rounded-xl h-11 pl-10"
+                      value={experience.duration}
+                      onChange={(e) => handleExperienceChange(experience.id, 'duration', e.target.value)}
+                      placeholder="e.g., Jan 2022 - Present"
+                    />
+                    <Calendar size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Responsibilities</Label>
+                  <Textarea
+                    className="bg-background/50 rounded-xl min-h-[100px] resize-none"
+                    value={experience.description}
+                    onChange={(e) => handleExperienceChange(experience.id, 'description', e.target.value)}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddExperience}>
-            Add Experience
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddExperience} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            Log New Milestone
           </Button>
-          <Button type="submit">Save All Experiences</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog

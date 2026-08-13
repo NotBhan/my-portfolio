@@ -7,10 +7,16 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import type { Activity } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, Zap, Flame } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function ActivitiesForm({ activities: initialActivities }: { activities: Activity[] }) {
   const [activities, setActivities] = useState<Activity[]>(initialActivities);
@@ -103,64 +109,85 @@ export default function ActivitiesForm({ activities: initialActivities }: { acti
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {activities.map((activity, index) => (
-            <div key={activity.id} className="space-y-4 rounded-lg border p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Activity {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`activity-visible-${activity.id}`}
-                    checked={activity.isVisible}
-                    onCheckedChange={(checked) => handleActivityChange(activity.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`activity-visible-${activity.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={activity.id} value={activity.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <Flame size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {activity.title || `Untitled Activity ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {activity.isVisible ? '// Visible' : '// Hidden'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`act-visible-${activity.id}`}
+                        checked={activity.isVisible}
+                        onCheckedChange={(checked) => handleActivityChange(activity.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`act-visible-${activity.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Visibility Status</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveActivity(activity.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Delete Activity
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`activity-title-${activity.id}`}>Title</Label>
-                <Input
-                  id={`activity-title-${activity.id}`}
-                  value={activity.title}
-                  onChange={(e) => handleActivityChange(activity.id, 'title', e.target.value)}
-                  placeholder="Activity Title"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`activity-desc-${activity.id}`}>Description</Label>
-                <Textarea
-                  id={`activity-desc-${activity.id}`}
-                  value={activity.description}
-                  onChange={(e) => handleActivityChange(activity.id, 'description', e.target.value)}
-                  placeholder="Activity Description"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`activity-icon-${activity.id}`}>Icon Name</Label>
-                <Input
-                  id={`activity-icon-${activity.id}`}
-                  value={activity.icon}
-                  onChange={(e) => handleActivityChange(activity.id, 'icon', e.target.value)}
-                  placeholder="e.g., Flame (from lucide-react)"
-                />
-              </div>
-            </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Activity Title</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-11"
+                    value={activity.title}
+                    onChange={(e) => handleActivityChange(activity.id, 'title', e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Description</Label>
+                  <Textarea
+                    className="bg-background/50 rounded-xl min-h-[100px] resize-none"
+                    value={activity.description}
+                    onChange={(e) => handleActivityChange(activity.id, 'description', e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Icon Name (Lucide)</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-10"
+                    value={activity.icon}
+                    onChange={(e) => handleActivityChange(activity.id, 'icon', e.target.value)}
+                    placeholder="e.g., Code, Zap, Heart"
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddActivity}>
-            Add Activity
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddActivity} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            Add Engagement
           </Button>
-          <Button type="submit">Save All Activities</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog
