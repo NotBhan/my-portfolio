@@ -1,59 +1,50 @@
 import BentoCard from '@/components/bento-card';
-import { getSkills } from '@/lib/data';
-import { Star } from 'lucide-react';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { getSkills, getCreativeSkills } from '@/lib/data';
+import { Code2, Braces, Music } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
 
 export default async function Skills() {
   const allSkillData = await getSkills();
-  const skillData = allSkillData
-    .map((category) => ({
-      ...category,
-      skills: category.skills.filter((skill) => skill.isVisible),
-    }))
-    .filter((category) => category.skills.length > 0);
+  const creativeSkills = await getCreativeSkills();
 
   return (
-    <BentoCard
-      title={
-        <div className="flex items-center gap-2">
-          <Star className="h-4 w-4 text-muted-foreground" />
-          <h3 className="text-sm font-semibold">Tech I Use</h3>
-        </div>
-      }
-    >
-      <ScrollArea className="h-full">
-        <div className="space-y-6 pr-4">
-          {skillData.length > 0 ? (
-            skillData.map((category) => (
-              <div key={category.category}>
-                <h3 className="font-semibold text-sm text-foreground mb-3">
-                  {category.category}
-                </h3>
-                <div className="space-y-4">
-                  {category.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-xs font-medium text-muted-foreground">
-                          {skill.name}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {skill.level} {skill.level === 1 ? 'year' : 'years'}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+    <div className="flex flex-col gap-4">
+      {allSkillData.map((category, idx) => (
+        <BentoCard 
+          key={category.category}
+          title={category.category}
+          icon={idx === 0 ? <Code2 size={16} /> : <Braces size={16} />}
+          className="p-6"
+        >
+          <div className="space-y-4">
+            {category.skills.map((skill) => (
+              <div key={skill.name} className="space-y-2">
+                <div className="flex justify-between text-xs font-medium text-muted-foreground uppercase">
+                  <span>{skill.name}</span>
                 </div>
+                <Progress value={skill.level * 80} className="h-2 bg-secondary" />
               </div>
-            ))
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              <p className="text-muted-foreground text-center font-mono text-sm">
-                No skills added yet.
-              </p>
+            ))}
+          </div>
+        </BentoCard>
+      ))}
+
+      <BentoCard 
+        title="Creative Skills"
+        icon={<Music size={16} />}
+        className="p-6"
+      >
+        <div className="space-y-4">
+          {creativeSkills.slice(0, 3).map((skill) => (
+            <div key={skill.name} className="space-y-2">
+              <div className="flex justify-between text-xs font-medium text-muted-foreground uppercase">
+                <span>{skill.name}</span>
+              </div>
+              <Progress value={70} className="h-2 bg-secondary" />
             </div>
-          )}
+          ))}
         </div>
-      </ScrollArea>
-    </BentoCard>
+      </BentoCard>
+    </div>
   );
 }

@@ -1,53 +1,32 @@
-import * as LucideIcons from 'lucide-react';
 import BentoCard from '@/components/bento-card';
 import { getActivities } from '@/lib/data';
-import { Flame } from 'lucide-react';
-import type { Activity } from '@/lib/definitions';
-
-function isLucideIcon(key: string): key is keyof typeof LucideIcons {
-  return key in LucideIcons;
-}
-
-const ActivityIcon = ({ name, className }: { name: string; className?: string }) => {
-  if (isLucideIcon(name)) {
-    const Icon = LucideIcons[name] as React.ElementType;
-    return <Icon className={className} />;
-  }
-  return <LucideIcons.AlertCircle className={className} />;
-};
+import { Zap, Calendar } from 'lucide-react';
 
 export default async function Activities() {
   const allActivities = await getActivities();
-  const activities: Activity[] = allActivities.filter((a) => a.isVisible);
+  const activities = allActivities.filter((a) => a.isVisible);
 
   return (
     <BentoCard
-      title={
-        <div className="flex items-center gap-2">
-          <Flame className="h-4 w-4 text-muted-foreground" />
-          <h3 className="text-sm font-semibold">My Activities</h3>
-        </div>
-      }
+      title="My Activities"
+      icon={<Zap size={16} />}
+      headerAction={<div className="w-4 h-4 rounded-full bg-primary glow-purple" />}
     >
-      {activities.length > 0 ? (
-        <div className="space-y-4">
-          {activities.map((activity) => (
-            <div key={activity.id} className="flex items-start gap-4">
-              <ActivityIcon name={activity.icon} className="h-6 w-6 text-primary mt-1" />
-              <div className='flex-1'>
-                <h4 className="font-semibold text-sm">{activity.title}</h4>
-                <p className="text-xs text-muted-foreground">{activity.description}</p>
-              </div>
+      <div className="space-y-6">
+        {activities.map((activity) => (
+          <div key={activity.id} className="flex gap-4">
+            <div className="w-10 h-10 rounded-xl glass-card flex items-center justify-center shrink-0 border-[#30363d]/30 bg-secondary/20">
+              <Calendar size={18} className="text-muted-foreground" />
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className="flex items-center justify-center h-full">
-          <p className="text-muted-foreground text-center font-mono text-sm">
-            Coming Soon...
-          </p>
-        </div>
-      )}
+            <div className="space-y-1">
+              <h4 className="text-sm font-bold">{activity.title}</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {activity.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </BentoCard>
   );
 }

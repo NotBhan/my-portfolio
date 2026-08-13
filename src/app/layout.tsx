@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Source_Code_Pro } from 'next/font/google';
@@ -6,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import Spotlight from '@/components/spotlight';
 import { Toaster } from '@/components/ui/toaster';
+import Sidebar from '@/components/navbar';
 
 const fontBody = Inter({
   subsets: ['latin'],
@@ -46,7 +46,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Spotlight />
-          {children}
+          <Sidebar />
+          <div className="pl-20">
+            {children}
+          </div>
           <Toaster />
         </ThemeProvider>
       </body>

@@ -1,45 +1,21 @@
-
 'use client';
 import BentoCard from '@/components/bento-card';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import type { Project } from '@/lib/definitions';
-import Image from 'next/image';
+import { FolderKanban, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button';
-import { FolderKanban } from 'lucide-react';
-import {
-  Carousel,
-  type CarouselApi,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import type { Project } from '@/lib/definitions';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [api, setApi] = useState<CarouselApi>();
 
   useEffect(() => {
     async function fetchProjects() {
       try {
         const response = await fetch('/api/data?file=projects.json');
-        if (!response.ok) {
-          throw new Error('Failed to fetch projects');
-        }
-        const allProjects = await response.json();
-        const visibleProjects = allProjects.filter((p: Project) => p.isVisible);
-        setProjects(visibleProjects);
+        const data = await response.json();
+        setProjects(data.filter((p: Project) => p.isVisible));
       } catch (error) {
         console.error(error);
       } finally {
@@ -49,138 +25,46 @@ export default function Projects() {
     fetchProjects();
   }, []);
 
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [api]);
-
-  if (isLoading) {
-    return (
-      <BentoCard
-        title={
-          <div className="flex items-center gap-2">
-            <FolderKanban className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-sm font-semibold">My Projects</h3>
-          </div>
-        }
-      >
-        <div className="flex h-full items-center justify-center">
-          <p className="font-mono text-sm text-muted-foreground">Loading projects...</p>
-        </div>
-      </BentoCard>
-    );
-  }
-
   return (
     <BentoCard
-      title={
-        <div className="flex items-center gap-2">
-          <FolderKanban className="h-4 w-4 text-muted-foreground" />
-          <h3 className="text-sm font-semibold">My Projects</h3>
-        </div>
-      }
+      title="My Projects"
+      icon={<FolderKanban size={16} />}
+      headerAction={<Button variant="ghost" size="sm" className="text-muted-foreground hover:text-white">View all</Button>}
+      className="h-full"
     >
-      {projects.length > 0 ? (
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {projects.map((project) => (
-              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="h-full p-1">
-                      <Card className="flex h-full flex-col overflow-hidden border-border/50 bg-card/50 transition-colors hover:border-primary/50 cursor-pointer">
-                        <CardHeader>
-                          <CardTitle className="font-code text-base">{project.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex-grow font-code text-xs text-muted-foreground">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            width={400}
-                            height={250}
-                            className="mb-2 w-full rounded-md aspect-video object-cover"
-                            placeholder="blur"
-                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
-                          />
-                          <p className="line-clamp-2">{project.description}</p>
-                        </CardContent>
-                        <CardFooter>
-                          <Button variant="default" size="sm" className="w-full font-code text-xs">
-                            View details
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md">
-                    <DialogHeader>
-                      <DialogTitle className="font-code text-xl">{project.title}</DialogTitle>
-                    </DialogHeader>
-                    <DialogDescription asChild>
-                      <div className="space-y-4">
-                        <div className="overflow-hidden rounded-lg">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            width={400}
-                            height={250}
-                            className="w-full rounded-md aspect-video object-cover"
-                            placeholder="blur"
-                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
-                          />
-                        </div>
-                        <p className="font-code text-sm text-muted-foreground">
-                          {project.description}
-                        </p>
-                      </div>
-                    </DialogDescription>
-                    <DialogFooter className="gap-2 sm:justify-start">
-                      {project.link && (
-                        <Button variant="secondary" size="sm" asChild className="font-code text-xs">
-                          <a href={project.link} target="_blank" rel="noopener noreferrer">
-                            Source Code
-                          </a>
-                        </Button>
-                      )}
-                      {project.liveLink && (
-                        <Button variant="default" size="sm" asChild className="font-code text-xs">
-                          <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                            Live Link
-                          </a>
-                        </Button>
-                      )}
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-[-16px] top-1/2 -translate-y-1/2 size-8" />
-          <CarouselNext className="absolute right-[-16px] top-1/2 -translate-y-1/2 size-8" />
-        </Carousel>
-      ) : (
-        <div className="flex h-full items-center justify-center">
-          <p className="font-mono text-sm text-muted-foreground">No projects yet.</p>
+      <div className="relative group">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <div key={project.id} className="glass-card p-4 border-[#30363d]/30 bg-secondary/20 flex flex-col gap-4 group/item hover:bg-secondary/40 transition-colors">
+              <div className="aspect-video relative rounded-xl overflow-hidden">
+                <Image 
+                  src={project.image} 
+                  alt={project.title} 
+                  fill 
+                  className="object-cover" 
+                  data-ai-hint="project screenshot"
+                />
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-bold text-lg">{project.title}</h4>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {project.description}
+                </p>
+              </div>
+              <Button className="mt-auto bg-primary/20 text-primary hover:bg-primary hover:text-white rounded-xl h-10 w-full transition-all">
+                View details
+              </Button>
+            </div>
+          ))}
         </div>
-      )}
+        
+        <button className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 glass-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <ChevronLeft size={20} />
+        </button>
+        <button className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 glass-card rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <ChevronRight size={20} />
+        </button>
+      </div>
     </BentoCard>
   );
 }
