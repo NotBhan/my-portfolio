@@ -7,10 +7,16 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import type { Testimonial } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, MessageSquare, Quote } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function TestimonialsForm({ testimonials: initialTestimonials }: { testimonials: Testimonial[] }) {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(initialTestimonials);
@@ -103,64 +109,88 @@ export default function TestimonialsForm({ testimonials: initialTestimonials }: 
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {testimonials.map((testimonial, index) => (
-            <div key={testimonial.id} className="space-y-4 rounded-lg border p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Testimonial {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`testimonial-visible-${testimonial.id}`}
-                    checked={testimonial.isVisible}
-                    onCheckedChange={(checked) => handleTestimonialChange(testimonial.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`testimonial-visible-${testimonial.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={testimonial.id} value={testimonial.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <MessageSquare size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {testimonial.name || `Feedback ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {testimonial.company || 'Unknown Source'} {testimonial.isVisible ? '// Validated' : '// Pending'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`test-visible-${testimonial.id}`}
+                        checked={testimonial.isVisible}
+                        onCheckedChange={(checked) => handleTestimonialChange(testimonial.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`test-visible-${testimonial.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Verification Status</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveTestimonial(testimonial.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Discard Record
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`testimonial-name-${testimonial.id}`}>Name</Label>
-                <Input
-                  id={`testimonial-name-${testimonial.id}`}
-                  value={testimonial.name}
-                  onChange={(e) => handleTestimonialChange(testimonial.id, 'name', e.target.value)}
-                  placeholder="Client Name"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`testimonial-company-${testimonial.id}`}>Company/Location</Label>
-                <Input
-                  id={`testimonial-company-${testimonial.id}`}
-                  value={testimonial.company}
-                  onChange={(e) => handleTestimonialChange(testimonial.id, 'company', e.target.value)}
-                  placeholder="Company or Location"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`testimonial-quote-${testimonial.id}`}>Quote</Label>
-                <Textarea
-                  id={`testimonial-quote-${testimonial.id}`}
-                  value={testimonial.quote}
-                  onChange={(e) => handleTestimonialChange(testimonial.id, 'quote', e.target.value)}
-                  placeholder="Client's testimonial"
-                />
-              </div>
-            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Contributor Name</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={testimonial.name}
+                      onChange={(e) => handleTestimonialChange(testimonial.id, 'name', e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Organization / Context</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={testimonial.company}
+                      onChange={(e) => handleTestimonialChange(testimonial.id, 'company', e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Testimonial Body</Label>
+                  <div className="relative">
+                    <Textarea
+                      className="bg-background/50 rounded-xl min-h-[100px] resize-none pl-10"
+                      value={testimonial.quote}
+                      onChange={(e) => handleTestimonialChange(testimonial.id, 'quote', e.target.value)}
+                    />
+                    <Quote size={14} className="absolute left-4 top-4 text-primary/30" />
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddTestimonial}>
-            Add Testimonial
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddTestimonial} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            Log New Feedback
           </Button>
-          <Button type="submit">Save All Testimonials</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog

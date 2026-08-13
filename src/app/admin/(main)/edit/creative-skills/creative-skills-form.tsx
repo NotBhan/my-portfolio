@@ -6,10 +6,16 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { CreativeSkill } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, Brush, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { creativeSkills: CreativeSkill[] }) {
   const [skills, setSkills] = useState<CreativeSkill[]>(initialSkills);
@@ -100,46 +106,66 @@ export default function CreativeSkillsForm({ creativeSkills: initialSkills }: { 
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {skills.map((skill, index) => (
-            <div key={skill.id} className="space-y-4 rounded-lg border p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Skill {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`skill-visible-${skill.id}`}
-                    checked={skill.isVisible}
-                    onCheckedChange={(checked) => handleSkillChange(skill.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`skill-visible-${skill.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={skill.id} value={skill.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <Brush size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {skill.name || `Unnamed Creative Skill ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {skill.isVisible ? '// Visible' : '// Hidden'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`cskill-visible-${skill.id}`}
+                        checked={skill.isVisible}
+                        onCheckedChange={(checked) => handleSkillChange(skill.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`cskill-visible-${skill.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Active Status</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveSkill(skill.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Delete Item
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`skill-name-${skill.id}`}>Name</Label>
-                <Input
-                  id={`skill-name-${skill.id}`}
-                  value={skill.name}
-                  onChange={(e) => handleSkillChange(skill.id, 'name', e.target.value)}
-                  placeholder="Skill Name"
-                />
-              </div>
-            </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Skill Label</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-11"
+                    value={skill.name}
+                    onChange={(e) => handleSkillChange(skill.id, 'name', e.target.value)}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddSkill}>
-            Add Skill
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddSkill} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            Add Creative Output
           </Button>
-          <Button type="submit">Save All Skills</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog

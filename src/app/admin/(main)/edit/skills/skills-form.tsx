@@ -6,10 +6,16 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { Skill, SkillCategory } from '@/lib/definitions';
-import { Plus, Trash } from 'lucide-react';
+import { Plus, Trash, Terminal, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function SkillsForm({ skills: initialSkills }: { skills: SkillCategory[] }) {
   const [skillData, setSkillData] = useState<SkillCategory[]>(initialSkills);
@@ -36,22 +42,17 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
     catIndex: number,
     skillIndex: number,
     field: keyof Skill,
-    value: string | number | boolean
+    value: string | boolean
   ) => {
     const newData = [...skillData];
     const skill = newData[catIndex].skills[skillIndex];
-    if (field === 'level' && typeof value === 'string') {
-      const parsedValue = parseFloat(value);
-      (skill[field] as number) = isNaN(parsedValue) ? 0 : parsedValue;
-    } else {
-        (skill[field] as string | number | boolean) = value;
-    }
+    (skill[field] as any) = value;
     setSkillData(newData);
   };
 
   const handleAddSkill = (catIndex: number) => {
     const newData = [...skillData];
-    newData[catIndex].skills.push({ name: 'New Skill', level: 1, isVisible: true });
+    newData[catIndex].skills.push({ name: 'New Skill', isVisible: true });
     setSkillData(newData);
   };
 
@@ -117,89 +118,108 @@ export default function SkillsForm({ skills: initialSkills }: { skills: SkillCat
     }
   };
 
-
   return (
     <>
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {skillData.map((category, catIndex) => (
-          <div key={`category-${catIndex}`} className="rounded-lg border p-4">
-            <div className="flex items-center justify-between">
-              <Label htmlFor={`category-name-${catIndex}`} className="text-lg font-semibold">
-                Category
-              </Label>
-              <Button
-                type="button"
-                variant="destructive"
-                size="icon"
-                onClick={() => handleRemoveCategory(catIndex)}
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
-            </div>
-            <Input
-              id={`category-name-${catIndex}`}
-              value={category.category}
-              onChange={(e) => handleCategoryChange(catIndex, e.target.value)}
-              className="mt-2"
-            />
-
-            <div className="mt-4 space-y-4">
-              {category.skills.map((skill, skillIndex) => (
-                <div key={`skill-${catIndex}-${skillIndex}`} className="ml-4 space-y-2 rounded-md border p-3">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor={`skill-name-${catIndex}-${skillIndex}`}>Skill Name</Label>
-                    <div className="flex items-center gap-2">
-                      <Switch
-                        id={`skill-visible-${catIndex}-${skillIndex}`}
-                        checked={skill.isVisible}
-                        onCheckedChange={(checked) =>
-                          handleSkillChange(catIndex, skillIndex, 'isVisible', checked)
-                        }
-                      />
-                      <Label htmlFor={`skill-visible-${catIndex}-${skillIndex}`}>Visible</Label>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="text-destructive"
-                        onClick={() => handleRemoveSkill(catIndex, skillIndex)}
-                      >
-                        <Trash className="h-4 w-4" />
-                      </Button>
-                    </div>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
+          {skillData.map((category, catIndex) => (
+            <AccordionItem key={`category-${catIndex}`} value={`cat-${catIndex}`} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <Terminal size={14} />
                   </div>
-                  <Input
-                    id={`skill-name-${catIndex}-${skillIndex}`}
-                    value={skill.name}
-                    onChange={(e) => handleSkillChange(catIndex, skillIndex, 'name', e.target.value)}
-                  />
-                  <Label htmlFor={`skill-level-${catIndex}-${skillIndex}`}>Years of Experience</Label>
-                  <Input
-                    id={`skill-level-${catIndex}-${skillIndex}`}
-                    type="number"
-                    step="0.5"
-                    value={skill.level}
-                    onChange={(e) => handleSkillChange(catIndex, skillIndex, 'level', e.target.value)}
-                  />
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {category.category || `Category ${catIndex + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {category.skills.length} technical skills configured
+                    </p>
+                  </div>
                 </div>
-              ))}
-            </div>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              className="mt-4"
-              onClick={() => handleAddSkill(catIndex)}
-            >
-              <Plus className="mr-2 h-4 w-4" /> Add Skill
-            </Button>
-          </div>
-        ))}
-        <div className="flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddCategory}>
-            Add Category
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                  <div className="flex-1 max-w-sm space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Category Title</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-10"
+                      value={category.category}
+                      onChange={(e) => handleCategoryChange(catIndex, e.target.value)}
+                    />
+                  </div>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest mt-4"
+                    onClick={() => handleRemoveCategory(catIndex)}
+                  >
+                    <Trash className="h-3 w-3 mr-2" /> Delete Group
+                  </Button>
+                </div>
+
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center justify-between">
+                     <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Managed Skills</Label>
+                     <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="h-7 rounded-lg text-[9px] font-black uppercase tracking-widest border-primary/20 hover:bg-primary/5"
+                        onClick={() => handleAddSkill(catIndex)}
+                      >
+                        <Plus className="mr-1.5 h-3 w-3" /> Add Item
+                      </Button>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div key={`skill-${catIndex}-${skillIndex}`} className="p-3 rounded-xl bg-background/50 border border-border/50 space-y-3 group hover:border-primary/20 transition-colors">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Switch
+                              id={`skill-visible-${catIndex}-${skillIndex}`}
+                              checked={skill.isVisible}
+                              onCheckedChange={(checked) =>
+                                handleSkillChange(catIndex, skillIndex, 'isVisible', checked)
+                              }
+                            />
+                            <Label htmlFor={`skill-visible-${catIndex}-${skillIndex}`} className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">Active</Label>
+                          </div>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="h-6 w-6 text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={() => handleRemoveSkill(catIndex, skillIndex)}
+                          >
+                            <Trash className="h-3 w-3" />
+                          </Button>
+                        </div>
+                        <Input
+                          className="bg-background border-border/50 h-8 text-xs rounded-lg"
+                          value={skill.name}
+                          onChange={(e) => handleSkillChange(catIndex, skillIndex, 'name', e.target.value)}
+                          placeholder="Skill name"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddCategory} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            New Category
           </Button>
-          <Button type="submit">Save All Skills</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog

@@ -6,10 +6,16 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { Stat } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, LineChart, Activity } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
   const [stats, setStats] = useState<Stat[]>(initialStats);
@@ -17,7 +23,6 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
   const router = useRouter();
   const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
-
 
   const handleAddStat = () => {
     setStats([
@@ -103,64 +108,88 @@ export default function StatsForm({ stats: initialStats }: { stats: Stat[] }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {stats.map((stat, index) => (
-            <div key={stat.id} className="space-y-4 rounded-lg border p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Stat {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`stat-visible-${stat.id}`}
-                    checked={stat.isVisible}
-                    onCheckedChange={(checked) => handleStatChange(stat.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`stat-visible-${stat.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={stat.id} value={stat.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <LineChart size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {stat.label || `Metric ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {stat.value || '0'} {stat.isVisible ? '// Tracking' : '// Dormant'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`stat-visible-${stat.id}`}
+                        checked={stat.isVisible}
+                        onCheckedChange={(checked) => handleStatChange(stat.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`stat-visible-${stat.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Operational Status</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveStat(stat.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Reset Metric
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`stat-value-${stat.id}`}>Value</Label>
-                <Input
-                  id={`stat-value-${stat.id}`}
-                  value={stat.value}
-                  onChange={(e) => handleStatChange(stat.id, 'value', e.target.value)}
-                  placeholder="e.g., 56+"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`stat-label-${stat.id}`}>Label</Label>
-                <Input
-                  id={`stat-label-${stat.id}`}
-                  value={stat.label}
-                  onChange={(e) => handleStatChange(stat.id, 'label', e.target.value)}
-                  placeholder="e.g., Projects"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`stat-icon-${stat.id}`}>Icon Name</Label>
-                <Input
-                  id={`stat-icon-${stat.id}`}
-                  value={stat.icon}
-                  onChange={(e) => handleStatChange(stat.id, 'icon', e.target.value)}
-                  placeholder="e.g., Briefcase (from lucide-react)"
-                />
-              </div>
-            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Metric Value</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={stat.value}
+                      onChange={(e) => handleStatChange(stat.id, 'value', e.target.value)}
+                      placeholder="e.g., 50+"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Label</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={stat.label}
+                      onChange={(e) => handleStatChange(stat.id, 'label', e.target.value)}
+                      placeholder="e.g., Deployed Projects"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Icon Identifier</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-11"
+                    value={stat.icon}
+                    onChange={(e) => handleStatChange(stat.id, 'icon', e.target.value)}
+                    placeholder="e.g., Rocket, Users"
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddStat}>
-            Add Stat
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddStat} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            New Performance Indicator
           </Button>
-          <Button type="submit">Save All Stats</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog

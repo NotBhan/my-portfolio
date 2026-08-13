@@ -6,10 +6,16 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import type { SocialLink } from '@/lib/definitions';
-import { Trash } from 'lucide-react';
+import { Trash, Share2, Globe } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import PasswordDialog from '@/components/password-dialog';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function SocialLinksForm({ socialLinks: initialLinks }: { socialLinks: SocialLink[] }) {
   const [links, setLinks] = useState<SocialLink[]>(initialLinks);
@@ -102,64 +108,88 @@ export default function SocialLinksForm({ socialLinks: initialLinks }: { socialL
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Accordion type="multiple" className="space-y-4">
           {links.map((link, index) => (
-            <div key={link.id} className="space-y-4 rounded-lg border p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Link {index + 1}</h3>
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id={`link-visible-${link.id}`}
-                    checked={link.isVisible}
-                    onCheckedChange={(checked) => handleLinkChange(link.id, 'isVisible', checked)}
-                  />
-                  <Label htmlFor={`link-visible-${link.id}`}>Visible</Label>
-                  <Button
+            <AccordionItem key={link.id} value={link.id} className="border border-border/50 rounded-xl bg-card/20 overflow-hidden px-4">
+              <AccordionTrigger className="hover:no-underline py-4">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <Share2 size={14} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-wider text-foreground">
+                      {link.name || `Link ${index + 1}`}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground font-code uppercase tracking-widest">
+                      {link.isVisible ? '// Connected' : '// Off-Grid'}
+                    </p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 pb-6 space-y-6 border-t border-border/30 mt-2">
+                <div className="flex items-center justify-between pt-2">
+                   <div className="flex items-center gap-3">
+                      <Switch
+                        id={`link-visible-${link.id}`}
+                        checked={link.isVisible}
+                        onCheckedChange={(checked) => handleLinkChange(link.id, 'isVisible', checked)}
+                      />
+                      <Label htmlFor={`link-visible-${link.id}`} className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Public Presence</Label>
+                   </div>
+                   <Button
                     type="button"
                     variant="destructive"
-                    size="icon"
+                    size="sm"
+                    className="h-8 rounded-lg uppercase text-[9px] font-black tracking-widest"
                     onClick={() => handleRemoveLink(link.id)}
                   >
-                    <Trash className="h-4 w-4" />
+                    <Trash className="h-3 w-3 mr-2" /> Sever Link
                   </Button>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`link-name-${link.id}`}>Name</Label>
-                <Input
-                  id={`link-name-${link.id}`}
-                  value={link.name}
-                  onChange={(e) => handleLinkChange(link.id, 'name', e.target.value)}
-                  placeholder="e.g., Twitter"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`link-url-${link.id}`}>URL</Label>
-                <Input
-                  id={`link-url-${link.id}`}
-                  value={link.url}
-                  onChange={(e) => handleLinkChange(link.id, 'url', e.target.value)}
-                  placeholder="https://twitter.com/..."
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`link-icon-${link.id}`}>Icon Name</Label>
-                <Input
-                  id={`link-icon-${link.id}`}
-                  value={link.icon}
-                  onChange={(e) => handleLinkChange(link.id, 'icon', e.target.value)}
-                  placeholder="e.g., Twitter (from lucide-react)"
-                />
-              </div>
-            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Platform Name</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={link.name}
+                      onChange={(e) => handleLinkChange(link.id, 'name', e.target.value)}
+                      placeholder="e.g., Twitter"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Icon Identifier (Lucide)</Label>
+                    <Input
+                      className="bg-background/50 rounded-xl h-11"
+                      value={link.icon}
+                      onChange={(e) => handleLinkChange(link.id, 'icon', e.target.value)}
+                      placeholder="e.g., Twitter, Globe"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Destination URL</Label>
+                  <Input
+                    className="bg-background/50 rounded-xl h-11"
+                    value={link.url}
+                    onChange={(e) => handleLinkChange(link.id, 'url', e.target.value)}
+                    placeholder="https://..."
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-        <div className="mt-6 flex justify-between">
-          <Button type="button" variant="outline" onClick={handleAddLink}>
-            Add Link
+        </Accordion>
+
+        <div className="flex justify-between items-center pt-4">
+          <Button type="button" variant="outline" onClick={handleAddLink} className="h-11 px-6 rounded-xl font-black uppercase tracking-widest text-[10px]">
+            New Connection
           </Button>
-          <Button type="submit">Save All Links</Button>
+          <Button type="submit" className="h-11 px-8 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg shadow-primary/20">
+            Sync Changes
+          </Button>
         </div>
       </form>
       <PasswordDialog
