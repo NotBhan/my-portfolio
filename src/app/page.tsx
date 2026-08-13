@@ -65,8 +65,8 @@ export default async function Home() {
         </aside>
 
         {/* Main 12-Column Content Surface */}
-        <div className="col-start-2 row-start-2 px-4 pt-2 pb-4 bg-[#0c0f16] h-auto">
-          <div className="grid grid-cols-12 gap-[10px] items-stretch content-start pb-4">
+        <div className="col-start-2 row-start-2 px-4 py-4 bg-[#0c0f16] h-auto">
+          <div className="grid grid-cols-12 gap-[10px] items-stretch content-start">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
             <div className="col-span-4 h-full">
