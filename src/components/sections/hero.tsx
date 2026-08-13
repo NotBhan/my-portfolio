@@ -14,7 +14,7 @@ export default async function Hero() {
 
         {/* Name & Role */}
         <div className="space-y-0.5">
-          <h1 className="text-[22px] font-black tracking-tight text-white leading-none uppercase truncate">
+          <h1 className="text-[22px] font-black tracking-tight text-white leading-none uppercase">
             {profile.name}
           </h1>
           <p className="text-[14px] text-primary font-semibold leading-tight">
@@ -26,10 +26,10 @@ export default async function Hero() {
         <div className="flex items-center gap-4 text-[10px] text-muted-foreground font-medium mt-3">
           <span className="flex items-center gap-1.5">
             <MapPin size={10} className="text-primary/70" />
-            {profile.location.split(',')[0]}
+            {profile.location}
           </span>
           <span className="flex items-center gap-1.5">
-            <GraduationCap size={11} className="text-primary/70" />
+            < GraduationCap size={11} className="text-primary/70" />
             {profile.education}
           </span>
         </div>
