@@ -19,17 +19,20 @@ export default async function ContactPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-12 items-stretch">
         {/* Contact Info */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="bento-card p-6 bg-primary/5 border-primary/10 relative overflow-hidden group">
+        <div className="lg:col-span-5 flex flex-col h-full">
+          <div className="bento-card p-6 bg-primary/5 border-primary/10 relative overflow-hidden group h-full flex flex-col justify-between">
             <Sparkles size={100} className="absolute -right-8 -bottom-8 text-primary/10 group-hover:scale-110 transition-transform duration-1000" />
-            <h2 className="text-xl font-black text-foreground uppercase tracking-tight mb-3">Direct Channel</h2>
-            <p className="text-xs text-muted-foreground font-medium leading-relaxed mb-6 max-w-[280px]">
-              Drop me an email directly or find me on professional networks.
-            </p>
             
-            <div className="space-y-3">
+            <div>
+              <h2 className="text-xl font-black text-foreground uppercase tracking-tight mb-2">Direct Channel</h2>
+              <p className="text-xs text-muted-foreground font-medium leading-relaxed mb-6 max-w-[280px]">
+                Drop me an email directly or find me on professional networks.
+              </p>
+            </div>
+            
+            <div className="space-y-2.5 mt-auto">
               <a href={`mailto:${profile.email}`} className="flex items-center gap-4 p-3 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all group">
                 <div className="w-9 h-9 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
                   <Mail size={16} />
@@ -64,14 +67,14 @@ export default async function ContactPage() {
         </div>
 
         {/* Message Form */}
-        <div className="lg:col-span-7">
-          <div className="bento-card p-6 bg-card/50">
-            <div className="flex items-center gap-2 mb-6">
+        <div className="lg:col-span-7 flex flex-col h-full">
+          <div className="bento-card p-6 bg-card/50 h-full flex flex-col">
+            <div className="flex items-center gap-2 mb-5">
               <MessageSquare size={14} className="text-primary" />
               <h2 className="text-xs font-black text-foreground uppercase tracking-[0.2em]">Send a Transmission</h2>
             </div>
 
-            <form className="space-y-4">
+            <form className="space-y-3 flex-1 flex flex-col">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Full Name</label>
@@ -82,12 +85,12 @@ export default async function ContactPage() {
                   <Input className="bg-muted/20 border-border rounded-xl h-10 focus:border-primary/40 focus:ring-0 text-foreground text-xs" type="email" placeholder="john@example.com" />
                 </div>
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 flex-1 flex flex-col min-h-0">
                 <label className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Message Body</label>
-                <Textarea className="bg-muted/20 border-border rounded-xl min-h-[120px] focus:border-primary/40 focus:ring-0 text-foreground text-xs resize-none" placeholder="What's on your mind?" />
+                <Textarea className="bg-muted/20 border-border rounded-xl min-h-[100px] flex-1 focus:border-primary/40 focus:ring-0 text-foreground text-xs resize-none" placeholder="What's on your mind?" />
               </div>
               
-              <Button className="w-full h-10 rounded-xl bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-[10px] glow-purple transition-all">
+              <Button className="w-full h-10 rounded-xl bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-[10px] glow-purple transition-all mt-auto shrink-0">
                 Initialize Dispatch <Send size={12} className="ml-2" />
               </Button>
             </form>
