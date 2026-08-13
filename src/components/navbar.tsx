@@ -22,15 +22,15 @@ export default function Sidebar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="flex flex-col items-center h-full py-2">
-      {/* Branding / Logo */}
-      <div className="mb-6">
+    <div className="flex flex-col items-center h-full pt-3 pb-4">
+      {/* Branding / Logo - Aligned within the header row height (64px) */}
+      <div className="h-[40px] flex items-center justify-center mb-10">
         <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
           C
         </div>
       </div>
       
-      {/* Primary Navigation Items */}
+      {/* Primary Navigation Items - Aligned from top */}
       <nav className="flex flex-col gap-6">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
@@ -53,8 +53,8 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Sidebar Footer: Theme Toggle */}
-      <div className="mt-auto pb-4">
+      {/* Sidebar Footer: Theme Toggle - Pushed to bottom */}
+      <div className="mt-auto">
         <button 
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="p-3 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center rounded-xl hover:bg-white/5"
