@@ -24,10 +24,10 @@
     --input: 217 33% 15%;
     --ring: 262 83% 58%;
     
-    --outer-radius: 26px;
-    --card-radius: 18px;
-    --nested-radius: 13px;
-    --cutout-radius: 14px;
+    --outer-radius: 28px;
+    --card-radius: 20px;
+    --nested-radius: 14px;
+    --cutout-radius: 16px;
   }
 }
 
@@ -36,16 +36,16 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#080a0f] text-foreground font-body antialiased overflow-hidden;
+    @apply bg-[#080a0f] text-foreground font-body antialiased overflow-x-hidden overflow-y-auto custom-scrollbar;
     background-image: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
   }
 }
 
 @layer components {
   .interface-shell {
-    @apply relative bg-[#0c0f16] border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden mx-auto my-4;
-    width: min(1440px, calc(100vw - 32px));
-    height: min(900px, calc(100vh - 32px));
+    @apply relative bg-[#0c0f16] border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden mx-auto my-6;
+    width: min(1480px, calc(100vw - 48px));
+    min-height: calc(100vh - 48px);
     border-radius: var(--outer-radius);
     display: grid;
     grid-template-columns: 72px minmax(0, 1fr);
@@ -57,15 +57,15 @@
     border-radius: var(--card-radius);
   }
 
-  /* Physical Cut-Out Notches using pseudo-elements */
+  /* Physical Cut-Out Notches */
   .carve-bottom-right {
     @apply relative;
   }
   .carve-bottom-right::after {
     content: "";
     @apply absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
-    width: 34px;
-    height: 24px;
+    width: 36px;
+    height: 28px;
     border-top-left-radius: var(--cutout-radius);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -77,8 +77,8 @@
   .carve-top-right::after {
     content: "";
     @apply absolute -right-[1px] -top-[1px] bg-[#0c0f16] z-10;
-    width: 38px;
-    height: 28px;
+    width: 42px;
+    height: 32px;
     border-bottom-left-radius: var(--cutout-radius);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -92,7 +92,7 @@
     content: "";
     @apply absolute -left-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
     width: 54%;
-    height: 94px;
+    height: 104px;
     border-top-right-radius: var(--cutout-radius);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     border-top: 1px solid rgba(255, 255, 255, 0.05);

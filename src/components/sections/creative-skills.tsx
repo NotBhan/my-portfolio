@@ -7,16 +7,16 @@ export default async function CreativeSkills() {
   const creativeSkills = allCreativeSkills.filter((s) => s.isVisible);
 
   return (
-    <div className="bento-card p-4 flex flex-col gap-1.5 bg-[#11141b]/40 min-h-[90px]">
-      <div className="flex items-center gap-1.5">
-        <Music size={10} className="text-primary/70" />
-        <h3 className="text-[9px] font-bold text-white/60 uppercase tracking-widest">Beyond Code</h3>
+    <div className="bento-card p-6 flex flex-col gap-3 bg-[#11141b]/40 min-h-[95px] justify-center">
+      <div className="flex items-center gap-3">
+        <Music size={14} className="text-primary/80" />
+        <h3 className="text-[11px] font-black text-white/70 uppercase tracking-[0.2em]">Beyond Code</h3>
       </div>
-      <div className="flex flex-col gap-1.5">
-        <p className="text-[8px] text-muted-foreground italic">Music production, sound design, and creative experimentation.</p>
-        <div className="flex flex-wrap gap-1">
+      <div className="flex flex-col gap-4">
+        <p className="text-[11px] text-muted-foreground font-medium italic opacity-80">Music production, sound design, and creative experimentation.</p>
+        <div className="flex flex-wrap gap-2">
           {creativeSkills.map((skill) => (
-            <Badge key={skill.id} variant="outline" className="text-[7px] uppercase border-white/10 opacity-60 px-1.5 h-3.5 font-code">
+            <Badge key={skill.id} variant="outline" className="text-[9px] uppercase border-white/10 opacity-70 px-3 py-1 font-code font-bold hover:opacity-100 transition-opacity">
               {skill.name}
             </Badge>
           ))}
