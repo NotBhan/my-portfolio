@@ -53,20 +53,23 @@
   }
 
   .bento-card {
-    @apply bg-[#11141b] border border-white/[0.04] shadow-xl overflow-hidden transition-all duration-300;
+    @apply bg-[#11141b] border border-white/[0.04] shadow-xl relative transition-all duration-300;
     border-radius: var(--card-radius);
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
   }
 
-  /* Physical Cut-Out Notches */
+  /* Structural Cut-Out Notches - Now purely decorative and non-clipping */
   .carve-bottom-right {
     @apply relative;
   }
   .carve-bottom-right::after {
     content: "";
-    @apply absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
-    width: 36px;
-    height: 28px;
-    border-top-left-radius: var(--cutout-radius);
+    @apply absolute -right-[1px] -bottom-[1px] bg-[#0c0f16] z-10 pointer-events-none;
+    width: 32px;
+    height: 24px;
+    border-top-left-radius: 14px;
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
@@ -76,24 +79,20 @@
   }
   .carve-top-right::after {
     content: "";
-    @apply absolute -right-[1px] -top-[1px] bg-[#0c0f16] z-10;
-    width: 42px;
-    height: 32px;
-    border-bottom-left-radius: var(--cutout-radius);
+    @apply absolute -right-[1px] -top-[1px] bg-[#0c0f16] z-10 pointer-events-none;
+    width: 36px;
+    height: 28px;
+    border-bottom-left-radius: 16px;
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  /* Nested Project Info Notch */
-  .carve-bottom-left-nested {
-    @apply relative;
-  }
-  .carve-bottom-left-nested::after {
-    content: "";
-    @apply absolute -left-[1px] -bottom-[1px] bg-[#0c0f16] z-10;
-    width: 54%;
-    height: 104px;
-    border-top-right-radius: var(--cutout-radius);
+  /* Nested Project Info Notch - Structural negative space */
+  .featured-cutout {
+    @apply absolute left-0 bottom-0 bg-[#0c0f16] z-[3] pointer-events-none;
+    width: 48%;
+    height: 94px;
+    border-top-right-radius: 18px;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
   }

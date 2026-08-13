@@ -13,20 +13,28 @@ export default async function Home() {
   const skills = await getSkills();
 
   // Curated skills for top row modules
-  const webStack = skills.find(s => s.category === 'Frontend')?.skills || [];
-  const systemsStack = skills.find(s => s.category === 'Backend & Data')?.skills || [];
-  const aiStack = skills.find(s => s.category === 'AI / GenAI')?.skills || [];
+  const webStack = [
+    { name: 'React', isVisible: true },
+    { name: 'Next.js', isVisible: true },
+    { name: 'TypeScript', isVisible: true },
+    { name: 'JavaScript', isVisible: true },
+    { name: 'Tailwind CSS', isVisible: true },
+    { name: 'HTML/CSS', isVisible: true }
+  ];
 
-  // Filter most important systems/ai tools (max 9 total)
-  const combinedSystemsAI = [
-    ...systemsStack.filter(s => ['Python', 'Django', 'PostgreSQL', 'Firebase'].includes(s.name)),
-    ...aiStack.filter(s => ['Gemini', 'Ollama', 'AI-assisted development'].includes(s.name))
+  const systemsAI = [
+    { name: 'Python', isVisible: true },
+    { name: 'Django', isVisible: true },
+    { name: 'Firebase', isVisible: true },
+    { name: 'Gemini', isVisible: true },
+    { name: 'Ollama', isVisible: true },
+    { name: 'AI-assisted Development', isVisible: true }
   ];
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
       <div className="interface-shell">
-        {/* Top Header Rail - Compact Utility */}
+        {/* Top Header Rail */}
         <header className="h-[64px] col-start-2 row-start-1 flex items-center justify-between px-10 border-b border-white/5 bg-[#0c0f16] z-20">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
@@ -40,7 +48,7 @@ export default async function Home() {
           </div>
         </header>
 
-        {/* Sidebar Rail - Fixed vertical panel */}
+        {/* Sidebar Rail */}
         <aside className="col-start-1 row-start-1 row-end-3 pt-[64px] border-r border-white/5 bg-[#0c0f16] flex flex-col items-center">
           <div className="mt-8 px-2 w-full h-full">
             <SidebarRail />
@@ -61,42 +69,36 @@ export default async function Home() {
                 title="Web Stack" 
                 skills={webStack}
                 icon="Code2"
-                carve="bottom-right"
               />
             </div>
 
             <div className="col-span-4 h-full">
               <CapabilityCard 
                 title="Systems & AI" 
-                skills={combinedSystemsAI}
+                skills={systemsAI}
                 icon="Cpu"
-                carve="bottom-right"
               />
             </div>
 
-            {/* Dominant Feature Area - Row 2 (8-column Landscape Feature) */}
+            {/* Dominant Feature Area - Row 2 */}
             <div className="col-span-8 row-start-2 h-full">
               <Projects />
             </div>
 
-            {/* Right Stack: Activities + CTA (4-column Right Column spanning row 2-3) */}
-            <div className="col-span-4 row-start-2 row-span-2 grid grid-rows-[1fr_135px] gap-[10px]">
+            {/* Right Stack: Activities + CTA */}
+            <div className="col-span-4 row-start-2 row-span-2 grid grid-rows-[1fr_125px] gap-[10px]">
               <Activities />
               <Contact />
             </div>
 
-            {/* Experience Strip - Attached to Feature Bottom */}
+            {/* Experience Strip */}
             <div className="col-span-8 row-start-3 h-full">
               <Experiences />
             </div>
 
-            {/* Sub-footer Section for Secondary Content */}
+            {/* Sub-footer Section */}
             <div className="col-span-12 mt-4 pb-12">
-               <div className="grid grid-cols-12 gap-[10px]">
-                  <div className="col-span-12">
-                    <CreativeSkills />
-                  </div>
-               </div>
+              <CreativeSkills />
             </div>
 
           </div>
