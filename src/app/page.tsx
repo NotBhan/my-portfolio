@@ -32,10 +32,10 @@ export default async function Home() {
   ];
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-2 sm:p-4">
+    <main className="min-h-screen flex items-center justify-center p-2">
       <div className="interface-shell">
         {/* Top Header Rail — Redesigned for Bento Architecture */}
-        <header className="h-[64px] col-start-2 row-start-1 flex items-center px-6 z-20 gap-3 bg-transparent">
+        <header className="h-[64px] col-start-2 row-start-1 flex items-center px-4 z-20 gap-3 bg-transparent">
           <div className="flex-1 h-[48px] bg-[#11141b]/40 border border-white/5 rounded-2xl flex items-center px-8 relative group">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
@@ -65,7 +65,7 @@ export default async function Home() {
         </aside>
 
         {/* Main 12-Column Content Surface */}
-        <div className="col-start-2 row-start-2 px-4 py-4 bg-[#0c0f16] h-auto">
+        <div className="col-start-2 row-start-2 px-4 pt-0 pb-2 bg-[#0c0f16] h-auto">
           <div className="grid grid-cols-12 gap-[10px] items-stretch content-start">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
