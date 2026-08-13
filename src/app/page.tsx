@@ -67,7 +67,7 @@ export default async function Home() {
 
         {/* Main 12-Column Content Surface */}
         <div className="col-start-2 row-start-2 overflow-y-auto p-4 custom-scrollbar bg-[#0c0f16]">
-          <div className="grid grid-cols-12 gap-[10px] items-start content-start">
+          <div className="grid grid-cols-12 gap-[10px] items-start content-start pb-12">
             
             {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
             <div className="col-span-4">
@@ -99,10 +99,6 @@ export default async function Home() {
             <div className="col-span-4 flex flex-col gap-[10px]">
               <Activities />
               <Contact />
-            </div>
-
-            {/* Sub-footer Section */}
-            <div className="col-span-12 mt-4 pb-12">
               <CreativeSkills />
             </div>
 
