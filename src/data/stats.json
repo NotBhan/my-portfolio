@@ -2,15 +2,15 @@
   {
     "id": "1",
     "value": "4",
-    "label": "Deployed Applications",
+    "label": "Deployed Apps",
     "icon": "Rocket",
     "isVisible": true
   },
   {
     "id": "2",
-    "value": "100%",
-    "label": "Commitment",
-    "icon": "Target",
+    "value": "Team Lead",
+    "label": "StudentVoice",
+    "icon": "Users",
     "isVisible": true
   }
 ]

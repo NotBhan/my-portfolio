@@ -1,5 +1,5 @@
 'use client';
-import { Home, User, Briefcase, Star, Globe, Mail, Moon, Sun, Download } from 'lucide-react';
+import { Home, Briefcase, History, Star, Mail, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -8,10 +8,9 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { icon: Home, label: 'Home', href: '/' },
-  { icon: User, label: 'About', href: '#about' },
   { icon: Briefcase, label: 'Projects', href: '#projects' },
+  { icon: History, label: 'Experience', href: '#experience' },
   { icon: Star, label: 'Skills', href: '#skills' },
-  { icon: Globe, label: 'Creative', href: '#creative' },
   { icon: Mail, label: 'Contact', href: '#contact' },
 ];
 

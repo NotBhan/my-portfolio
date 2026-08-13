@@ -4,15 +4,31 @@
     "title": "Full Stack Web Development Intern",
     "company": "Pantech Prolabs India Pvt. Ltd.",
     "duration": "Nov 2024 – Feb 2025",
-    "description": "Worked on real-world full stack projects, focusing on frontend-backend integration and cloud deployments.",
+    "description": "3-month internship focused on building real-world full stack projects and cloud deployments.",
     "isVisible": true
   },
   {
     "id": "2",
-    "title": "Software Developer / Independent Projects",
-    "company": "Self-Employed",
+    "title": "Independent Software Development",
+    "company": "Personal Projects",
     "duration": "2024 – Present",
-    "description": "Building and deploying web applications and AI-powered software products independently, covering frontend development, backend integration, deployment and product iteration.",
+    "description": "Building and deploying AI-powered products and developer tools independently.",
+    "isVisible": true
+  },
+  {
+    "id": "3",
+    "title": "Django Training",
+    "company": "DigitalShakha",
+    "duration": "May 2025 – Jun 2025",
+    "description": "Specialized training in backend development and Django frameworks.",
+    "isVisible": true
+  },
+  {
+    "id": "4",
+    "title": "Web Designing Training",
+    "company": "Resilience Soft",
+    "duration": "Jul 2024 – Aug 2024",
+    "description": "Foundational training in UI/UX and web design principles.",
     "isVisible": true
   }
 ]

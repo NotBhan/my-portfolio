@@ -5,10 +5,19 @@ import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
 import SidebarRail from '@/components/navbar';
 import CapabilityCard from '@/components/capability-card';
-import { getProfile } from '@/lib/data';
+import CreativeSkills from '@/components/sections/creative-skills';
+import { getProfile, getSkills } from '@/lib/data';
 
 export default async function Home() {
   const profile = await getProfile();
+  const skills = await getSkills();
+
+  const webStack = skills.find(s => s.category === 'Frontend')?.skills || [];
+  const progStack = [
+    ...(skills.find(s => s.category === 'Backend & Data')?.skills || []),
+    ...(skills.find(s => s.category === 'AI / GenAI')?.skills || []),
+    ...(skills.find(s => s.category === 'Tools')?.skills || [])
+  ];
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
@@ -46,12 +55,7 @@ export default async function Home() {
             <div className="col-span-4 h-[125px]">
               <CapabilityCard 
                 title="Web Stack" 
-                skills={[
-                  { name: 'React', progress: 90 },
-                  { name: 'Next.js', progress: 85 },
-                  { name: 'TypeScript', progress: 85 },
-                  { name: 'Tailwind', progress: 80 }
-                ]}
+                skills={webStack}
                 icon="Code2"
                 carve="bottom-right"
               />
@@ -59,13 +63,8 @@ export default async function Home() {
 
             <div className="col-span-4 h-[125px]">
               <CapabilityCard 
-                title="Programming + Creative" 
-                skills={[
-                  { name: 'Python', progress: 75 },
-                  { name: 'Django', progress: 70 },
-                  { name: 'PostgreSQL', progress: 65 },
-                  { name: 'Music Prod.', progress: 80 }
-                ]}
+                title="Systems & AI" 
+                skills={progStack}
                 icon="Cpu"
                 carve="bottom-right"
               />
@@ -87,6 +86,15 @@ export default async function Home() {
             <div className="col-span-4 grid grid-rows-[1fr_155px] gap-[10px]">
               <Activities />
               <Contact />
+            </div>
+
+            {/* Sub-footer Section for Demoted Content */}
+            <div className="col-span-12 mt-4 pb-12">
+               <div className="grid grid-cols-12 gap-[10px]">
+                  <div className="col-span-12">
+                    <CreativeSkills />
+                  </div>
+               </div>
             </div>
 
           </div>

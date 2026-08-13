@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin, GraduationCap } from 'lucide-react';
+import { ArrowRight, MapPin, GraduationCap, Rocket } from 'lucide-react';
 import { getProfile } from '@/lib/data';
 import { Button } from '../ui/button';
 import Link from 'next/link';
@@ -9,8 +9,14 @@ export default async function Hero() {
   return (
     <div className="bento-card p-4 h-full relative group carve-bottom-right">
       <div className="flex flex-col h-full justify-between relative z-20">
-        <div className="space-y-0.5">
-          <span className="text-[7px] font-code text-primary/80 uppercase tracking-[0.3em] font-bold">Identity</span>
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="text-[7px] font-code text-primary uppercase tracking-[0.3em] font-bold">Identity</span>
+            <div className="flex items-center gap-1.5 bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
+               <Rocket size={8} className="text-primary animate-pulse" />
+               <span className="text-[7px] font-code text-primary font-bold uppercase tracking-wider">4 Deployed Applications</span>
+            </div>
+          </div>
           <h1 className="text-sm font-black tracking-tighter text-white leading-none truncate">
             {profile.name}
           </h1>
@@ -23,7 +29,7 @@ export default async function Hero() {
           {profile.description}
         </p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="flex items-center gap-1 text-[7px] font-code text-muted-foreground uppercase bg-white/5 px-2 py-0.5 rounded-full border border-white/5">
             <MapPin size={6} className="text-primary" />
             {profile.location.split(',')[0]}
@@ -34,11 +40,16 @@ export default async function Hero() {
           </div>
         </div>
         
-        <div>
-          <Button size="sm" className="bg-primary hover:bg-primary/80 text-white rounded-lg h-5 px-3 text-[8px] font-bold glow-purple transition-all" asChild>
+        <div className="flex gap-2">
+          <Button size="sm" className="bg-primary hover:bg-primary/80 text-white rounded-lg h-6 px-3 text-[8px] font-bold glow-purple transition-all" asChild>
             <Link href="#projects">
-              Projects <ArrowRight size={8} className="ml-1" />
+              View Projects <ArrowRight size={8} className="ml-1" />
             </Link>
+          </Button>
+          <Button size="sm" variant="outline" className="border-white/10 text-white rounded-lg h-6 px-3 text-[8px] font-bold" asChild>
+            <a href={profile.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
           </Button>
         </div>
       </div>

@@ -6,26 +6,37 @@
       { "name": "Next.js", "isVisible": true },
       { "name": "TypeScript", "isVisible": true },
       { "name": "JavaScript", "isVisible": true },
-      { "name": "Tailwind CSS", "isVisible": true }
+      { "name": "Tailwind CSS", "isVisible": true },
+      { "name": "HTML/CSS", "isVisible": true }
     ]
   },
   {
-    "category": "Backend",
+    "category": "Backend & Data",
     "skills": [
       { "name": "Python", "isVisible": true },
       { "name": "Django", "isVisible": true },
       { "name": "Flask", "isVisible": true },
       { "name": "Firebase", "isVisible": true },
-      { "name": "PostgreSQL", "isVisible": true }
+      { "name": "Firestore", "isVisible": true },
+      { "name": "Node.js", "isVisible": true }
     ]
   },
   {
-    "category": "AI",
+    "category": "AI / GenAI",
     "skills": [
       { "name": "Gemini", "isVisible": true },
       { "name": "Genkit", "isVisible": true },
       { "name": "Ollama", "isVisible": true },
       { "name": "AI-assisted development", "isVisible": true }
+    ]
+  },
+  {
+    "category": "Tools",
+    "skills": [
+      { "name": "Git/GitHub", "isVisible": true },
+      { "name": "Electron", "isVisible": true },
+      { "name": "Monaco Editor", "isVisible": true },
+      { "name": "Vercel", "isVisible": true }
     ]
   }
 ]

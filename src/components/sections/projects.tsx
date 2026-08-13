@@ -1,10 +1,11 @@
 'use client';
-import { FolderKanban, Github, ExternalLink } from 'lucide-react';
+import { FolderKanban, Github, ExternalLink, Code2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import type { Project } from '@/lib/definitions';
 import { cn } from '@/lib/utils';
+import { Badge } from '../ui/badge';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -41,14 +42,15 @@ export default function Projects() {
   if (!activeProject) return null;
 
   return (
-    <div className="bento-card p-0 flex flex-col relative h-full group carve-bottom-left">
+    <div className="bento-card p-0 flex flex-col relative h-full group carve-bottom-left" id="projects">
       {/* Absolute top label */}
-      <div className="absolute top-6 left-6 z-20">
-        <div className="flex items-center gap-2 mb-1">
-          <FolderKanban size={12} className="text-primary/70" />
-          <span className="text-[8px] font-code text-primary uppercase tracking-[0.2em] font-bold">Featured Production</span>
+      <div className="absolute top-5 left-5 z-20 space-y-0.5">
+        <div className="flex items-center gap-2 mb-0.5">
+          <FolderKanban size={10} className="text-primary/70" />
+          <span className="text-[7px] font-code text-primary uppercase tracking-[0.2em] font-bold">Featured Production</span>
         </div>
-        <h3 className="text-xl font-black text-white">{activeProject.title}</h3>
+        <h3 className="text-lg font-black text-white leading-none">{activeProject.title}</h3>
+        <p className="text-[8px] font-bold text-primary/80 uppercase tracking-wider">{activeProject.subtitle}</p>
       </div>
 
       <div className="flex-1 relative">
@@ -56,26 +58,35 @@ export default function Projects() {
           src={activeProject.image} 
           alt={activeProject.title} 
           fill 
-          className="object-cover transition-all duration-700 group-hover:scale-105 z-0" 
+          className="object-cover transition-all duration-700 group-hover:scale-105 z-0 opacity-40 group-hover:opacity-60" 
           data-ai-hint="project screenshot"
         />
         
-        {/* The Nested Info Card - Physically breaking into the surface */}
-        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b] border border-white/5 rounded-[14px] p-4 w-[min(430px,58%)] min-h-[105px] shadow-2xl flex flex-col justify-center">
-          <p className="text-[10px] text-white/90 font-medium leading-relaxed mb-3 line-clamp-3">
-            {activeProject.description}
-          </p>
+        {/* The Nested Info Card */}
+        <div className="absolute bottom-[10px] left-[10px] z-30 bg-[#11141b]/95 backdrop-blur-md border border-white/5 rounded-[14px] p-4 w-[min(430px,58%)] min-h-[110px] shadow-2xl flex flex-col justify-center gap-3">
+          <div className="space-y-1.5">
+            <p className="text-[9px] text-white/90 font-medium leading-relaxed line-clamp-3">
+                {activeProject.description}
+            </p>
+            <div className="flex flex-wrap gap-1">
+                {activeProject.technologies.slice(0, 5).map(tech => (
+                    <Badge key={tech} variant="secondary" className="bg-white/5 text-[7px] h-3 px-1 text-muted-foreground border-none">
+                        {tech}
+                    </Badge>
+                ))}
+            </div>
+          </div>
           <div className="flex gap-2">
             {activeProject.liveLink && (
-              <Button size="sm" className="bg-primary hover:bg-primary/80 text-white rounded-lg h-7 px-3 text-[9px] font-bold" asChild>
+              <Button size="sm" className="bg-primary hover:bg-primary/80 text-white rounded-lg h-6 px-3 text-[8px] font-bold" asChild>
                 <a href={activeProject.liveLink} target="_blank" rel="noopener noreferrer">
-                  Live Demo <ExternalLink size={10} className="ml-1" />
+                  LIVE DEMO <ExternalLink size={8} className="ml-1" />
                 </a>
               </Button>
             )}
-            <Button variant="outline" size="sm" className="bg-white/5 border-white/10 hover:bg-white/10 rounded-lg h-7 px-3 text-[9px] font-bold" asChild>
+            <Button variant="outline" size="sm" className="bg-white/5 border-white/10 hover:bg-white/10 rounded-lg h-6 px-3 text-[8px] font-bold" asChild>
               <a href={activeProject.link} target="_blank" rel="noopener noreferrer">
-                <Github size={10} className="mr-1" /> Source Code
+                SOURCE <Github size={8} className="ml-1" />
               </a>
             </Button>
           </div>
