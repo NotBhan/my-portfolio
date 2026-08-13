@@ -20,7 +20,7 @@
     "title": "Full Stack Web Development Intern",
     "company": "Pantech Prolabs India Pvt. Ltd.",
     "duration": "Nov 2024 – Feb 2025",
-    "description": "3-month internship focused on building real-world full stack projects and cloud deployments.",
+    "description": "3-month internship focused on full-stack web development and practical application development.",
     "isVisible": true
   },
   {
@@ -29,6 +29,14 @@
     "company": "Resilience Soft",
     "duration": "Jul 2024 – Aug 2024",
     "description": "Foundational training in UI/UX and web design principles.",
+    "isVisible": true
+  },
+  {
+    "id": "5",
+    "title": "B. Tech CSE",
+    "company": "Chouksey Engineering College",
+    "duration": "Nov 2022 - May 2026",
+    "description": "Completed my B. Tech Degree in Computer Science and Engineering.",
     "isVisible": true
   }
 ]

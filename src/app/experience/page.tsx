@@ -14,7 +14,7 @@ export default async function ExperiencePage() {
         </div>
         <div>
           <h1 className="text-xl font-black text-foreground uppercase tracking-tight">Professional Path</h1>
-          <p className="text-[11px] text-muted-foreground font-medium">My journey through roles, internships, and research.</p>
+          <p className="text-[11px] text-muted-foreground font-medium">My journey through development, internships, and technical training.</p>
         </div>
       </div>
 

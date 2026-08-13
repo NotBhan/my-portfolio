@@ -36,7 +36,7 @@ export default function LayoutShell({ children, profile }: LayoutShellProps) {
               <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
               <span className="text-[8px] md:text-[10px] font-code text-foreground dark:text-muted-foreground uppercase tracking-[0.2em] md:tracking-[0.25em] font-black truncate">
                 <span className="md:hidden">Open for work</span>
-                <span className="hidden md:inline">Available for New Projects</span>
+                <span className="hidden md:inline">OPEN TO SOFTWARE DEVELOPMENT OPPORTUNITIES</span>
               </span>
             </div>
           </div>
