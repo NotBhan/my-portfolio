@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import Spotlight from '@/components/spotlight';
 import { Toaster } from '@/components/ui/toaster';
-import Sidebar from '@/components/navbar';
 
 const fontBody = Inter({
   subsets: ['latin'],
@@ -46,8 +45,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Spotlight />
-          <Sidebar />
-          <div className="lg:pl-32 transition-all duration-300">
+          <div className="transition-all duration-300">
             {children}
           </div>
           <Toaster />

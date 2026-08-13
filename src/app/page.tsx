@@ -11,7 +11,7 @@ export default async function Home() {
   const profile = await getProfile();
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-2 lg:p-4 overflow-hidden">
+    <main className="min-h-screen flex items-center justify-center bg-[#080a0f] overflow-hidden">
       <div className="interface-shell">
         <Sidebar />
 
