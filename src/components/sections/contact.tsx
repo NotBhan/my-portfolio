@@ -6,14 +6,14 @@ export default function Contact() {
     <div className="bento-card flex flex-col relative overflow-hidden group flex-1 min-h-[160px]">
       {/* Decorative Card Stack Visual - Behind Content */}
       <div className="absolute bottom-[-15px] right-[-10px] w-[130px] h-[170px] pointer-events-none z-[1]">
-        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/30 rounded-[18px] transform-origin-bottom-right rotate-[4deg] border border-white/5 shadow-2xl" />
-        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/10 rounded-[18px] transform-origin-bottom-right translate-x-[-12px] translate-y-[-8px] rotate-[-3deg] border border-white/5" />
-        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/20 rounded-[18px] transform-origin-bottom-right translate-x-[-24px] translate-y-[-16px] rotate-[-10deg] border border-white/5" />
+        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/30 rounded-[18px] transform-origin-bottom-right rotate-[4deg] border border-border shadow-2xl" />
+        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/10 rounded-[18px] transform-origin-bottom-right translate-x-[-12px] translate-y-[-8px] rotate-[-3deg] border border-border" />
+        <div className="absolute bottom-0 right-0 w-[80px] h-[140px] bg-primary/20 rounded-[18px] transform-origin-bottom-right translate-x-[-24px] translate-y-[-16px] rotate-[-10deg] border border-border" />
       </div>
       
       <div className="relative z-20 flex flex-col justify-between h-full p-[18px]">
         <div className="space-y-1">
-          <h3 className="text-[20px] font-black text-white leading-none uppercase tracking-tight">Let's Work<br />Together</h3>
+          <h3 className="text-[20px] font-black text-foreground leading-none uppercase tracking-tight">Let's Work<br />Together</h3>
           <p className="text-[11px] text-muted-foreground font-medium max-w-[160px] leading-relaxed">
             Building the next generation of products.
           </p>

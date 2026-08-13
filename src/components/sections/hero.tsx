@@ -14,7 +14,7 @@ export default async function Hero() {
 
         {/* Name & Role */}
         <div className="space-y-0.5">
-          <h1 className="text-[22px] font-black tracking-tight text-white leading-none uppercase">
+          <h1 className="text-[22px] font-black tracking-tight text-foreground leading-none uppercase">
             {profile.name}
           </h1>
           <p className="text-[14px] text-primary font-semibold leading-tight">

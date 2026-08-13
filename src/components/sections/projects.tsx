@@ -42,16 +42,13 @@ export default function Projects() {
 
   return (
     <div className="bento-card p-0 flex flex-col relative h-[372px] group" id="projects">
-      {/* Background Gradient for Header Readability */}
-      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-transparent pointer-events-none" />
-
       {/* Upper-left overlay heading */}
       <div className="absolute top-[22px] left-[24px] z-20 space-y-1.5">
         <div className="flex items-center gap-2 mb-1">
           <FolderKanban size={14} className="text-primary/90" />
           <span className="text-[9px] font-code text-primary uppercase tracking-[0.25em] font-black">Featured Production</span>
         </div>
-        <h3 className="text-[22px] font-black text-white leading-none uppercase tracking-tight">{activeProject.title}</h3>
+        <h3 className="text-[22px] font-black text-white leading-none uppercase tracking-tight mix-blend-difference">{activeProject.title}</h3>
       </div>
 
       <div className="flex-1 relative">
@@ -59,7 +56,7 @@ export default function Projects() {
           src={activeProject.image} 
           alt={activeProject.title} 
           fill 
-          className="object-cover transition-all duration-1000 group-hover:scale-105 z-0 opacity-60 dark:opacity-60 group-hover:opacity-80" 
+          className="object-cover transition-all duration-1000 group-hover:scale-105 z-0 opacity-80 dark:opacity-60" 
           priority
           data-ai-hint="project screenshot"
         />
@@ -92,8 +89,8 @@ export default function Projects() {
               key={p.id}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "h-[34px] bg-card/40 border border-border px-3 flex items-center justify-between text-left transition-all hover:bg-card/60 rounded-[10px] backdrop-blur-xl",
-                activeIndex === i ? "border-primary/50 bg-primary/20 -translate-x-2" : "opacity-60 grayscale hover:grayscale-0 hover:opacity-100"
+                "h-[34px] bg-card/60 border border-border px-3 flex items-center justify-between text-left transition-all hover:bg-card rounded-[10px] backdrop-blur-xl",
+                activeIndex === i ? "border-primary/50 bg-primary/20 -translate-x-2 shadow-lg" : "opacity-70 hover:opacity-100"
               )}
             >
               <span className="text-[9px] font-bold text-foreground uppercase truncate tracking-wide">{p.title}</span>

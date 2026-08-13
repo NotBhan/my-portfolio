@@ -19,7 +19,7 @@ export default async function Skills() {
     <BentoCard 
       title="Technology Stack"
       icon={<Code2 size={20} className="text-primary/70" />}
-      className="p-8 bg-[#151921]/60 h-full"
+      className="p-8 bg-card/50 h-full"
     >
       <div className="space-y-8 mt-4">
         {allSkillData.map((category) => (
@@ -28,7 +28,7 @@ export default async function Skills() {
               <div className="p-2 bg-primary/10 rounded-xl text-primary">
                 {getIcon(category.category)}
               </div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-widest">{category.category}</h3>
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-widest">{category.category}</h3>
             </div>
             
             <div className="flex flex-wrap gap-2">
@@ -36,7 +36,7 @@ export default async function Skills() {
                 <Badge 
                   key={skill.name} 
                   variant="secondary" 
-                  className="px-4 py-2 bg-secondary/20 hover:bg-secondary/40 text-muted-foreground hover:text-white transition-colors text-sm font-medium border-white/5 rounded-xl"
+                  className="px-4 py-2 bg-muted/40 hover:bg-muted/80 text-foreground transition-colors text-sm font-medium border-border rounded-xl"
                 >
                   {skill.name}
                 </Badge>
