@@ -1,4 +1,3 @@
-
 'use client';
 import { FolderKanban, Github, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -60,14 +59,14 @@ export default function Projects() {
           src={activeProject.image} 
           alt={activeProject.title} 
           fill 
-          className="object-cover transition-all duration-1000 group-hover:scale-105 z-0 opacity-60 group-hover:opacity-80" 
+          className="object-cover transition-all duration-1000 group-hover:scale-105 z-0 opacity-60 dark:opacity-60 group-hover:opacity-80" 
           priority
           data-ai-hint="project screenshot"
         />
         
         {/* The Nested Info Card */}
-        <div className="absolute bottom-[12px] left-[12px] z-[4] bg-[#11141b]/95 backdrop-blur-xl border border-white/5 rounded-[16px] p-4 w-[46%] min-h-[78px] shadow-2xl flex flex-col justify-center gap-4">
-          <p className="text-[12px] text-white/90 font-medium leading-relaxed line-clamp-2">
+        <div className="absolute bottom-[12px] left-[12px] z-[4] bg-card/95 backdrop-blur-xl border border-border rounded-[16px] p-4 w-[46%] min-h-[78px] shadow-2xl flex flex-col justify-center gap-4">
+          <p className="text-[12px] text-foreground font-medium leading-relaxed line-clamp-2">
               {activeProject.description}
           </p>
           <div className="flex gap-3">
@@ -78,7 +77,7 @@ export default function Projects() {
                 </a>
               </Button>
             )}
-            <Button variant="outline" size="sm" className="bg-white/5 border-white/10 hover:bg-white/10 rounded-xl h-8 px-4 text-[10px] font-bold tracking-wide" asChild>
+            <Button variant="outline" size="sm" className="bg-muted/50 border-border hover:bg-muted rounded-xl h-8 px-4 text-[10px] font-bold tracking-wide" asChild>
               <a href={activeProject.link} target="_blank" rel="noopener noreferrer">
                 SOURCE <Github size={10} className="ml-2" />
               </a>
@@ -93,12 +92,12 @@ export default function Projects() {
               key={p.id}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "h-[34px] glass-card border-white/5 bg-white/5 px-3 flex items-center justify-between text-left transition-all hover:bg-white/10 rounded-[10px] backdrop-blur-xl",
+                "h-[34px] bg-card/40 border border-border px-3 flex items-center justify-between text-left transition-all hover:bg-card/60 rounded-[10px] backdrop-blur-xl",
                 activeIndex === i ? "border-primary/50 bg-primary/20 -translate-x-2" : "opacity-60 grayscale hover:grayscale-0 hover:opacity-100"
               )}
             >
-              <span className="text-[9px] font-bold text-white uppercase truncate tracking-wide">{p.title}</span>
-              <div className={cn("w-1 h-1 rounded-full", activeIndex === i ? "bg-primary shadow-[0_0_8px_rgba(139,92,246,0.8)]" : "bg-white/20")} />
+              <span className="text-[9px] font-bold text-foreground uppercase truncate tracking-wide">{p.title}</span>
+              <div className={cn("w-1 h-1 rounded-full", activeIndex === i ? "bg-primary shadow-[0_0_8px_rgba(139,92,246,0.8)]" : "bg-muted-foreground/40")} />
             </button>
           ))}
         </div>

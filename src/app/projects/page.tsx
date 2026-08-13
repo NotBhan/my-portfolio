@@ -15,7 +15,7 @@ export default async function ProjectsPage() {
           <FolderKanban size={20} />
         </div>
         <div>
-          <h1 className="text-2xl font-black text-white uppercase tracking-tight">Full Project Gallery</h1>
+          <h1 className="text-2xl font-black text-foreground uppercase tracking-tight">Full Project Gallery</h1>
           <p className="text-sm text-muted-foreground font-medium">An exhaustive list of my builds, tools, and prototypes.</p>
         </div>
       </div>
@@ -37,14 +37,14 @@ export default async function ProjectsPage() {
               </div>
             </div>
             
-            <div className="p-6 flex flex-col flex-1 gap-4 bg-[#11141b]/95">
-              <p className="text-sm text-white/70 leading-relaxed line-clamp-3">
+            <div className="p-6 flex flex-col flex-1 gap-4 bg-card/95">
+              <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
                 {project.description}
               </p>
               
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.technologies?.map(tech => (
-                  <Badge key={tech} variant="secondary" className="text-[10px] bg-white/5 border-white/5 text-muted-foreground uppercase font-bold tracking-wider">
+                  <Badge key={tech} variant="secondary" className="text-[10px] bg-muted/50 border-border text-muted-foreground uppercase font-bold tracking-wider">
                     {tech}
                   </Badge>
                 ))}
@@ -58,7 +58,7 @@ export default async function ProjectsPage() {
                     </a>
                   </Button>
                 )}
-                <Button variant="outline" size="sm" className="bg-white/5 border-white/10 hover:bg-white/10 text-white rounded-xl flex-1" asChild>
+                <Button variant="outline" size="sm" className="bg-muted/50 border-border hover:bg-muted text-foreground rounded-xl flex-1" asChild>
                   <a href={project.link} target="_blank" rel="noopener noreferrer">
                     <Github size={14} className="mr-2" /> Source
                   </a>
