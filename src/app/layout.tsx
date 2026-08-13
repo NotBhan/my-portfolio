@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Source_Code_Pro } from 'next/font/google';
@@ -23,14 +24,14 @@ export const metadata: Metadata = {
   description: 'A personal portfolio website with a celestial theme.',
   icons: {
     icon: [
-      { url: '/favicon/favicon.ico' },
-      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon.ico', rel: 'icon' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png', rel: 'icon' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png', rel: 'icon' },
     ],
+    shortcut: ['/favicon/favicon.ico'],
     apple: [
-      { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png', rel: 'apple-touch-icon' },
     ],
-    shortcut: '/favicon/favicon.ico',
   },
 };
 
