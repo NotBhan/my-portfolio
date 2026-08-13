@@ -1,0 +1,32 @@
+# Chandrabhan Mahato
+
+> Frontend / Full-Stack Developer based in Chhattisgarh, India. Building modern web applications with React, Next.js, TypeScript, and AI integrations.
+
+## Overview
+Chandrabhan Mahato is a Software Developer (B.Tech CSE) specializing in React, Next.js, TypeScript, and AI-assisted development (Gemini, Genkit, Ollama). He builds scalable web applications, interactive AI developer environments, and full-stack solutions.
+
+## Core Technical Skills
+- **Frontend**: React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML/CSS
+- **Backend & Data**: Python, Django, Flask, Node.js, Firebase, Firestore
+- **AI & GenAI Integration**: Gemini API, Firebase Genkit, Ollama, AI-assisted workflows
+- **Developer Tools**: Git/GitHub, Electron, Monaco Editor, Vercel
+
+## Featured Projects
+- **CaramelPepper**: AI Coding Environment built with Next.js, React, TypeScript, Firebase, Electron, Genkit, and Monaco Editor. (Live: https://caramelpepper.vercel.app | Repo: https://github.com/NotBhan/caramelpepper)
+- **ExamPrep AI**: AI Study Platform transforming syllabi into structured study tools, topic organization, quizzes, and AI tutoring. (Live: https://examprep-ai-five.vercel.app | Repo: https://github.com/NotBhan/examprep-ai)
+- **StudentVoice**: Campus Feedback Platform connecting anonymous student reports with admin workflows and AI analysis. (Live: https://student-voice-sigma.vercel.app | Repo: https://github.com/NotBhan/team-epicode--student-voice)
+
+## Work Experience
+- **Independent Software Development** (2024 – Present): Building & deploying AI-powered products and developer tools.
+- **Full Stack Web Development Intern** at Pantech Prolabs India (Nov 2024 – Feb 2025): Building full-stack web applications and cloud deployments.
+- **Django Training** at DigitalShakha (May 2025 – Jun 2025): Backend development and Django REST frameworks.
+- **Web Designing Training** at Resilience Soft (Jul 2024 – Aug 2024): UI/UX design principles.
+
+## Connect & Links
+- **GitHub**: https://github.com/NotBhan
+- **LinkedIn**: https://www.linkedin.com/in/chandrabhan-mahato-49622a264
+- **Instagram**: https://www.instagram.com/ig_cbhan
+- **Email**: chandrabhan09.dev@gmail.com
+
+## Additional Details
+For full profile background, detailed project breakdown, and skill catalog, read [llms-full.txt](/llms-full.txt).

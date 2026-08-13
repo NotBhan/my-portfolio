@@ -20,6 +20,7 @@ const fontCode = Source_Code_Pro({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://chandrabhan.dev'),
   title: 'Chandrabhan - Portfolio',
   description: 'A personal portfolio website with a celestial theme.',
   icons: {

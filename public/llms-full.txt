@@ -1,0 +1,92 @@
+# Chandrabhan Mahato - Full Portfolio & Developer Information
+
+> Comprehensive background, projects, skill inventory, and experience profile for LLMs and search engines.
+
+## 1. Professional Summary
+- **Name**: Chandrabhan Mahato
+- **Role**: Software Developer / Frontend / Full-Stack Developer
+- **Education**: B.Tech in Computer Science and Engineering (CSE)
+- **Location**: Chhattisgarh, India
+- **Languages**: English, Hindi
+- **Email**: chandrabhan09.dev@gmail.com
+- **Bio**: Software developer specializing in building and shipping web applications with React, Next.js, and TypeScript, with a strong focus on AI-powered products, developer tools, and intuitive user experiences.
+
+---
+
+## 2. Technical Skills Inventory
+
+### Frontend Development
+- **Frameworks & Libraries**: React, Next.js (App Router, Server Components, Route Handlers)
+- **Languages**: TypeScript, JavaScript (ES6+)
+- **Styling & UI**: Tailwind CSS, CSS3, HTML5, Responsive Web Design, Dark Mode design, Glassmorphism, UI components (Radix UI / Lucide)
+
+### Backend & Databases
+- **Backend Languages & Frameworks**: Python, Django, Flask, Node.js
+- **Cloud Databases & BaaS**: Firebase, Cloud Firestore, Realtime Database
+- **API Architecture**: REST APIs, Next.js API Routes, Server Actions
+
+### Artificial Intelligence & GenAI Integrations
+- **AI Models & Frameworks**: Google Gemini API, Firebase Genkit, Ollama (local LLMs)
+- **AI Features**: Autonomous code assistance, AI study planner & tutoring, syllabus-to-quiz synthesis, AI sentiment & feedback analysis
+
+### Tooling & Infrastructure
+- **Version Control**: Git, GitHub
+- **Desktop Application Development**: Electron
+- **Editor & UI Components**: Monaco Editor
+- **Deployment & Hosting**: Vercel, Firebase App Hosting
+
+---
+
+## 3. Detailed Projects Showcase
+
+### CaramelPepper (AI Coding Environment)
+- **Role**: Creator & Lead Developer
+- **Subtitle**: AI Coding Environment
+- **Description**: An AI-powered coding environment combining modern web developer tooling with cloud and local LLM workflows. Incorporates a Monaco-based code editor, file workspace support, and AI-assisted code generation.
+- **Tech Stack**: Next.js, React, TypeScript, Firebase, Electron, Genkit, Monaco Editor
+- **Links**:
+  - Live Application: https://caramelpepper.vercel.app
+  - GitHub Repository: https://github.com/NotBhan/caramelpepper
+
+### ExamPrep AI (AI Study Platform)
+- **Role**: Creator & Lead Developer
+- **Subtitle**: AI Study Platform
+- **Description**: An AI study assistant that ingests syllabi and produces structured learning materials, study timelines, topic breakdowns, practice quizzes, and an AI tutor for interactive Q&A.
+- **Tech Stack**: Next.js, React, TypeScript, Tailwind CSS, Gemini API, Genkit
+- **Links**:
+  - Live Application: https://examprep-ai-five.vercel.app
+  - GitHub Repository: https://github.com/NotBhan/examprep-ai
+
+### StudentVoice (Campus Feedback Platform)
+- **Role**: Team Lead (4-member team)
+- **Subtitle**: Campus Feedback Platform
+- **Description**: An anonymous student feedback platform connecting issue reporting with university administrative workflows and AI sentiment/topic analysis.
+- **Tech Stack**: Next.js, React, TypeScript, Tailwind CSS, Gemini API, Genkit
+- **Links**:
+  - Live Application: https://student-voice-sigma.vercel.app
+  - GitHub Repository: https://github.com/NotBhan/team-epicode--student-voice
+
+---
+
+## 4. Experience & Education Timeline
+
+- **Independent Software Development** | Personal Projects | 2024 – Present
+  - Designed, architected, and deployed full-stack Next.js and AI applications.
+  - Open-sourced key developer tools and interactive web platforms.
+
+- **Full Stack Web Development Intern** | Pantech Prolabs India Pvt. Ltd. | Nov 2024 – Feb 2025
+  - 3-month engineering internship focusing on production web application features, backend endpoints, and cloud deployments.
+
+- **Django Training** | DigitalShakha | May 2025 – Jun 2025
+  - Intensive training in Python backend architecture, ORM, authentication, and Django REST Framework.
+
+- **Web Designing Training** | Resilience Soft | Jul 2024 – Aug 2024
+  - Practical training on user experience (UI/UX) layout structuring, color systems, and modern responsive design.
+
+---
+
+## 5. Social & Contact Information
+- **GitHub**: https://github.com/NotBhan
+- **LinkedIn**: https://www.linkedin.com/in/chandrabhan-mahato-49622a264
+- **Instagram**: https://www.instagram.com/ig_cbhan
+- **Email**: chandrabhan09.dev@gmail.com
