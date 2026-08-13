@@ -23,7 +23,12 @@ export default function Sidebar() {
 
   return (
     <div className="flex flex-col items-center h-full pt-3 pb-4">
-      {/* Branding / Logo - Aligned within the header row height (64px) */}
+      {/* Vertical Title Label - Aligned to top */}
+      <div className="mb-8 [writing-mode:vertical-lr] rotate-180 text-[9px] font-black tracking-[0.6em] text-muted-foreground/25 uppercase pointer-events-none select-none">
+        Portfolio
+      </div>
+
+      {/* Branding / Logo - Representing Profile Identity */}
       <div className="h-[40px] flex items-center justify-center mb-10">
         <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
           C
