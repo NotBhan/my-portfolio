@@ -24,7 +24,7 @@ export default function Sidebar() {
   return (
     <div className="flex flex-col items-center h-full pt-3 pb-4">
       {/* Vertical Title Label - Aligned to top */}
-      <div className="mb-8 [writing-mode:vertical-lr] rotate-180 text-[12px] font-black tracking-[0.4em] text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[1.5] origin-center">
+      <div className="mb-10 [writing-mode:vertical-lr] rotate-180 text-[14px] font-black text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[1.8] origin-center tracking-tighter">
         Portfolio
       </div>
 
