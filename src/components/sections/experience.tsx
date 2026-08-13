@@ -1,4 +1,4 @@
-import { History, Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar } from 'lucide-react';
 import { getExperiences } from '@/lib/data';
 
 export default async function Experiences() {
@@ -6,36 +6,23 @@ export default async function Experiences() {
   const experiences = allExperiences.filter((e) => e.isVisible);
 
   return (
-    <div className="glass-card p-8 flex flex-col gap-8 relative overflow-hidden">
-      <div className="flex items-center justify-between">
-         <div className="space-y-1">
-            <span className="text-[10px] font-code text-primary uppercase tracking-[0.2em] font-bold">Professional History</span>
-            <h3 className="text-2xl font-black text-white">Experience</h3>
-         </div>
+    <div className="nested-module p-4 flex flex-col gap-3 group relative overflow-hidden backdrop-blur-xl bg-[#1a1f29]/80 border-white/10">
+      <div className="flex items-center gap-2">
+         <Briefcase size={14} className="text-primary" />
+         <span className="text-[9px] font-code text-primary uppercase tracking-[0.2em] font-bold">Latest Exp</span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {experiences.map((exp) => (
-          <div key={exp.id} className="nested-module flex flex-col gap-3 group hover:border-primary/20 transition-colors">
-            <div className="flex items-center justify-between">
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                <Briefcase size={16} />
-              </div>
-              <div className="flex items-center gap-2 text-[10px] font-code text-muted-foreground uppercase">
-                <Calendar size={12} />
-                {exp.duration}
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold text-white group-hover:text-primary transition-colors">{exp.title}</h4>
-              <p className="text-xs text-muted-foreground font-medium">{exp.company}</p>
+      <div className="space-y-3">
+        {experiences.slice(0, 2).map((exp) => (
+          <div key={exp.id} className="space-y-1">
+            <h4 className="text-[10px] font-bold text-white truncate">{exp.title}</h4>
+            <div className="flex items-center justify-between text-[8px] text-muted-foreground font-code uppercase tracking-wider">
+              <span>{exp.company}</span>
+              <span className="flex items-center gap-1"><Calendar size={8} /> {exp.duration.split('–')[0]}</span>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Experience nested cut-out visual placeholder */}
-      <div className="absolute -bottom-1 -right-1 w-16 h-16 bg-[#0c0f16] rounded-tl-[2.5rem] border-t border-l border-white/[0.03]" />
     </div>
   );
 }
