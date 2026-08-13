@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Tooltip,
   TooltipContent,
@@ -25,7 +24,6 @@ export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const isMobile = useIsMobile();
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -38,9 +36,10 @@ export default function Navbar() {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
-  if (isMobile) {
-    return (
-      <div className="flex justify-center w-full h-full items-center px-4 pb-4">
+  return (
+    <>
+      {/* Mobile Magic Navigation */}
+      <div className="flex md:hidden justify-center w-full h-full items-center px-4 pb-4">
         <div className="relative w-full max-w-[420px] h-[64px] bg-card/60 backdrop-blur-xl flex justify-center items-center rounded-2xl border border-border/50 shadow-2xl px-2">
           <ul className="flex w-full relative">
             {navItems.map((item, index) => {
@@ -86,7 +85,7 @@ export default function Navbar() {
               </button>
             </li>
 
-            {/* Subtle Indicator */}
+            {/* Indicator */}
             <div 
               className="absolute -top-[1px] w-[40px] h-[3px] transition-all duration-500 ease-in-out pointer-events-none"
               style={{
@@ -99,71 +98,70 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="flex flex-col items-center h-full pt-3 pb-4">
-      <div className="mb-14 [writing-mode:vertical-lr] rotate-180 text-[11px] font-black text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[1] scale-x-[0.8] origin-center tracking-tighter leading-none shrink-0">
-        PORTFOLIO
-      </div>
-
-      <div className="h-[40px] flex items-center justify-center mb-10 shrink-0">
-        <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-primary-foreground font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-          C
+      {/* Desktop Sidebar Navigation */}
+      <div className="hidden md:flex flex-col items-center h-full pt-3 pb-4">
+        <div className="mb-14 [writing-mode:vertical-lr] rotate-180 text-[11px] font-black text-muted-foreground/30 uppercase pointer-events-none select-none font-code transform scale-y-[1] scale-x-[0.8] origin-center tracking-tighter leading-none shrink-0">
+          PORTFOLIO
         </div>
-      </div>
-      
-      <TooltipProvider delayDuration={0}>
-        <nav className="flex flex-col gap-6 items-center flex-1">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Tooltip key={item.label}>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "relative p-2.5 text-muted-foreground transition-all duration-300 hover:text-primary group flex items-center justify-center",
-                      isActive && "text-primary"
-                    )}
-                  >
-                    {isActive && (
-                      <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-primary rounded-l-full shadow-[0_0_15px_rgba(139,92,246,0.6)]" />
-                    )}
-                    <item.icon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent side="right" sideOffset={15} className="bg-card border-border text-foreground font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xl">
-                  {item.label}
-                </TooltipContent>
-              </Tooltip>
-            );
-          })}
 
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button 
-                onClick={toggleTheme}
-                className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center h-[42px] w-[42px]"
-              >
-                {mounted ? (
-                  resolvedTheme === 'dark' ? (
-                    <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+        <div className="h-[40px] flex items-center justify-center mb-10 shrink-0">
+          <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-primary-foreground font-black text-xl shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+            C
+          </div>
+        </div>
+        
+        <TooltipProvider delayDuration={0}>
+          <nav className="flex flex-col gap-6 items-center flex-1">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Tooltip key={item.label}>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "relative p-2.5 text-muted-foreground transition-all duration-300 hover:text-primary group flex items-center justify-center",
+                        isActive && "text-primary"
+                      )}
+                    >
+                      {isActive && (
+                        <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-primary rounded-l-full shadow-[0_0_15px_rgba(139,92,246,0.6)]" />
+                      )}
+                      <item.icon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="right" sideOffset={15} className="bg-card border-border text-foreground font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xl">
+                    {item.label}
+                  </TooltipContent>
+                </Tooltip>
+              );
+            })}
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button 
+                  onClick={toggleTheme}
+                  className="relative p-2.5 text-muted-foreground hover:text-primary transition-all duration-300 group flex items-center justify-center h-[42px] w-[42px]"
+                >
+                  {mounted ? (
+                    resolvedTheme === 'dark' ? (
+                      <Sun size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+                    ) : (
+                      <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+                    )
                   ) : (
-                    <Moon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-                  )
-                ) : (
-                  <div className="w-[22px] h-[22px]" />
-                )}
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="right" sideOffset={15} className="bg-card border-border text-foreground font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xl">
-              {resolvedTheme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
-            </TooltipContent>
-          </Tooltip>
-        </nav>
-      </TooltipProvider>
-    </div>
+                    <div className="w-[22px] h-[22px]" />
+                  )}
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="right" sideOffset={15} className="bg-card border-border text-foreground font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xl">
+                {resolvedTheme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
+              </TooltipContent>
+            </Tooltip>
+          </nav>
+        </TooltipProvider>
+      </div>
+    </>
   );
 }
