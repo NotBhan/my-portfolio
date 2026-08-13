@@ -53,13 +53,13 @@ export default function Navbar() {
                   >
                     <span className={cn(
                       "relative block transition-all duration-500",
-                      isActive ? "transform -translate-y-[28px] text-primary-foreground" : "text-muted-foreground"
+                      isActive ? "transform -translate-y-[24px] text-primary-foreground" : "text-muted-foreground"
                     )}>
                       <item.icon size={20} strokeWidth={isActive ? 2.5 : 1.5} />
                     </span>
                     <span className={cn(
                       "absolute text-primary text-[8px] font-black uppercase tracking-widest transition-all duration-500 opacity-0 transform translate-y-[20px]",
-                      isActive ? "opacity-100 transform translate-y-[10px]" : ""
+                      isActive ? "opacity-100 transform translate-y-[12px]" : ""
                     )}>
                       {item.label}
                     </span>
@@ -87,7 +87,7 @@ export default function Navbar() {
             </li>
 
             <div 
-              className="absolute -top-[30px] w-[48px] h-[48px] bg-primary border-[5px] border-background rounded-full transition-all duration-500 ease-in-out pointer-events-none"
+              className="absolute -top-[24px] w-[48px] h-[48px] bg-primary border-[5px] border-background rounded-full transition-all duration-500 ease-in-out pointer-events-none"
               style={{
                 left: `calc((100% / 6) * ${activeIndex} + (100% / 12) - 24px)`,
               }}
