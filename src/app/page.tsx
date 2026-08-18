@@ -5,10 +5,11 @@ import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
 import CapabilityCard from '@/components/capability-card';
 import CreativeSkills from '@/components/sections/creative-skills';
-import { getHomeCards } from '@/lib/data';
+import { getHomeCards, getActivities } from '@/lib/data';
 
 export default async function Home() {
   const allHomeCards = await getHomeCards();
+  const activities = await getActivities();
   const visibleCards = allHomeCards.filter(c => c.isVisible !== false);
 
   const defaultCards = [
@@ -76,7 +77,7 @@ export default async function Home() {
 
       <div className="col-span-12 lg:col-span-4 flex flex-col gap-[10px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-[10px]">
-          <Activities />
+          <Activities activities={activities} />
           <Contact />
         </div>
         <CreativeSkills />

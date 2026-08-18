@@ -96,3 +96,8 @@ export type HomeCard = {
   isVisible: boolean;
   skills: HomeCardSkill[];
 };
+
+export type SiteSettings = {
+  showTestimonials: boolean;
+};
+

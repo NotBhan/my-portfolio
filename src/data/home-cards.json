@@ -6,27 +6,23 @@
     "isVisible": true,
     "skills": [
       {
+        "name": "TypeScript | JavaScript",
+        "isVisible": true
+      },
+      {
         "name": "React",
         "isVisible": true
       },
       {
-        "name": "Next.js",
-        "isVisible": true
-      },
-      {
-        "name": "TypeScript",
-        "isVisible": true
-      },
-      {
-        "name": "JavaScript",
-        "isVisible": true
-      },
-      {
-        "name": "Tailwind CSS",
+        "name": "BootStrap | Tailwind CSS",
         "isVisible": true
       },
       {
         "name": "HTML/CSS",
+        "isVisible": true
+      },
+      {
+        "name": "AstroJS",
         "isVisible": true
       }
     ]
@@ -38,23 +34,23 @@
     "isVisible": true,
     "skills": [
       {
-        "name": "Python",
+        "name": "Python | Django",
         "isVisible": true
       },
       {
-        "name": "Django",
+        "name": "Node.js | Firebase",
         "isVisible": true
       },
       {
-        "name": "Firebase",
+        "name": "Local LLMs",
         "isVisible": true
       },
       {
-        "name": "Gemini",
+        "name": "Gemini |Ollama",
         "isVisible": true
       },
       {
-        "name": "Ollama",
+        "name": "LLM Integrations",
         "isVisible": true
       },
       {

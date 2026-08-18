@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import type { Project, SkillCategory, Testimonial, Stat, Profile, CreativeSkill, Experience, SocialLink, Activity, HomeCard } from './definitions';
+import type { Project, SkillCategory, Testimonial, Stat, Profile, CreativeSkill, Experience, SocialLink, Activity, HomeCard, SiteSettings } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
 const dataFilePath = (filename: string) => path.join(process.cwd(), 'src', 'data', filename);
@@ -10,7 +10,7 @@ async function readData<T>(filename: string): Promise<T> {
   try {
     const filePath = dataFilePath(filename);
     const jsonData = await fs.readFile(filePath, 'utf-8');
-    if (filename === 'profile.json') {
+    if (filename === 'profile.json' || filename === 'settings.json') {
       return JSON.parse(jsonData) as T;
     }
     const data = JSON.parse(jsonData);
@@ -20,13 +20,13 @@ async function readData<T>(filename: string): Promise<T> {
     return data as T;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-      if (filename === 'profile.json') {
+      if (filename === 'profile.json' || filename === 'settings.json') {
         return {} as T; 
       }
       return [] as unknown as T;
     }
     console.error(`Error reading ${filename}:`, error);
-    if (filename === 'profile.json') {
+    if (filename === 'profile.json' || filename === 'settings.json') {
       return {} as T;
     }
     return [] as unknown as T;
@@ -63,3 +63,9 @@ export const getCreativeSkills = () => readDataArray<CreativeSkill>('creative-sk
 export const getSocialLinks = () => readDataArray<SocialLink>('social-links.json');
 export const getActivities = () => readDataArray<Activity>('activities.json');
 export const getHomeCards = () => readDataArray<HomeCard>('home-cards.json');
+export const getSettings = async (): Promise<SiteSettings> => {
+  const settings = await readData<SiteSettings>('settings.json');
+  return {
+    showTestimonials: settings?.showTestimonials ?? false,
+  };
+};

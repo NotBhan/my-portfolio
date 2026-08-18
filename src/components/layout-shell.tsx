@@ -3,16 +3,17 @@
 import { usePathname } from 'next/navigation';
 import { Github, Linkedin } from 'lucide-react';
 import Navbar from '@/components/navbar';
-import type { Profile } from '@/lib/definitions';
+import type { Profile, SiteSettings } from '@/lib/definitions';
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 type LayoutShellProps = {
   children: ReactNode;
   profile: Profile;
+  settings?: SiteSettings;
 };
 
-export default function LayoutShell({ children, profile }: LayoutShellProps) {
+export default function LayoutShell({ children, profile, settings }: LayoutShellProps) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith('/admin');
 
@@ -80,7 +81,7 @@ export default function LayoutShell({ children, profile }: LayoutShellProps) {
           "bg-background z-30 shrink-0",
           "fixed bottom-0 left-0 right-0 h-[70px] z-[50] md:static md:col-start-1 md:row-start-1 md:row-end-3 md:border-r md:border-border md:min-h-full md:h-auto"
         )}>
-          <Navbar />
+          <Navbar showTestimonials={settings?.showTestimonials} />
         </aside>
 
         {/* Content surface */}

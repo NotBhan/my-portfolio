@@ -23,7 +23,6 @@ import {
   Share2,
   Flame,
   LineChart,
-  PanelLeftClose,
   LogOut,
   LayoutGrid,
 } from 'lucide-react';
@@ -86,33 +85,31 @@ export default function AdminDashboardLayout({
 
   return (
     <SidebarProvider>
-      <Sidebar className="border-r border-border bg-card/50 backdrop-blur-xl">
-        <SidebarHeader className="p-4">
-          <div className="flex h-12 items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-black shadow-[0_0_15px_rgba(139,92,246,0.4)]">
+      <Sidebar collapsible="icon" className="border-r border-border bg-card/50 backdrop-blur-xl">
+        <SidebarHeader className="p-3 group-data-[collapsible=icon]:p-2 transition-all">
+          <div className="flex h-10 items-center justify-between group-data-[collapsible=icon]:justify-center mb-2">
+            <div className="flex items-center gap-2.5 min-w-0 group-data-[collapsible=icon]:hidden">
+              <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-black shadow-[0_0_15px_rgba(139,92,246,0.4)] shrink-0">
                 C
               </div>
-              <h2 className="text-sm font-black uppercase tracking-[0.2em] group-data-[collapsible=icon]:hidden">
+              <h2 className="text-sm font-black uppercase tracking-[0.2em] truncate">
                 Terminal
               </h2>
             </div>
-            <SidebarTrigger className="hover:bg-primary/10 hover:text-primary">
-                <PanelLeftClose size={18} />
-            </SidebarTrigger>
+            <SidebarTrigger className="h-8 w-8 rounded-xl hover:bg-primary/10 hover:text-primary text-muted-foreground transition-colors shrink-0" />
           </div>
           
-          <div className="mb-6 px-2 [writing-mode:vertical-lr] rotate-180 text-[9px] font-black text-muted-foreground/20 uppercase pointer-events-none select-none font-code transform scale-y-[2.5] scale-x-[0.8] tracking-tighter group-data-[collapsible=icon]:hidden">
+          <div className="mb-4 px-2 [writing-mode:vertical-lr] rotate-180 text-[9px] font-black text-muted-foreground/20 uppercase pointer-events-none select-none font-code transform scale-y-[2.5] scale-x-[0.8] tracking-tighter group-data-[collapsible=icon]:hidden">
             ADMINISTRATION
           </div>
 
           <SidebarSeparator className="bg-border/50" />
           
-          <SidebarMenu className="mt-4">
+          <SidebarMenu className="mt-2">
             <SidebarMenuItem>
               <Link href="/" passHref>
-                <SidebarMenuButton as="a" tooltip="Back to Home" className="h-10 px-4 rounded-xl hover:bg-primary/10 hover:text-primary transition-all group">
-                  <Home className="h-5 w-5" />
+                <SidebarMenuButton as="a" tooltip="Back to Home" className="h-10 px-3.5 rounded-xl hover:bg-primary/10 hover:text-primary transition-all group">
+                  <Home className="h-4 w-4 shrink-0" />
                   <span className="font-bold uppercase tracking-widest text-[10px]">Portal Home</span>
                 </SidebarMenuButton>
               </Link>
@@ -120,7 +117,7 @@ export default function AdminDashboardLayout({
           </SidebarMenu>
         </SidebarHeader>
         
-        <SidebarContent className="px-3 pb-4">
+        <SidebarContent className="px-2 group-data-[collapsible=icon]:px-1.5 pb-4">
           <SidebarMenu className="gap-1">
             {navItems.map((item) => (
               <SidebarMenuItem key={item.label}>
@@ -130,7 +127,7 @@ export default function AdminDashboardLayout({
                     isActive={pathname === item.href}
                     tooltip={item.label}
                     className={cn(
-                      "h-10 px-4 rounded-xl transition-all font-bold uppercase tracking-widest text-[10px]",
+                      "h-10 px-3.5 rounded-xl transition-all font-bold uppercase tracking-widest text-[10px]",
                       pathname === item.href 
                         ? "bg-primary text-primary-foreground shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:bg-primary/90" 
                         : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
@@ -143,15 +140,15 @@ export default function AdminDashboardLayout({
               </SidebarMenuItem>
             ))}
             
-            <SidebarSeparator className="my-4 bg-border/30" />
+            <SidebarSeparator className="my-3 bg-border/30" />
             
             <SidebarMenuItem>
               <SidebarMenuButton 
                 onClick={handleLogout}
                 tooltip="Logout"
-                className="h-10 px-4 rounded-xl hover:bg-destructive/10 hover:text-destructive transition-all font-bold uppercase tracking-widest text-[10px]"
+                className="h-10 px-3.5 rounded-xl hover:bg-destructive/10 hover:text-destructive transition-all font-bold uppercase tracking-widest text-[10px]"
               >
-                <LogOut className="h-4 w-4" />
+                <LogOut className="h-4 w-4 shrink-0" />
                 <span>Logout Session</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -162,9 +159,14 @@ export default function AdminDashboardLayout({
       <SidebarInset className="bg-background">
         <main className="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10 flex justify-center">
             <div className="w-full max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <header className="flex items-center gap-2 mb-6 opacity-50">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.3em] font-black">Configuration Mode // System Live</span>
+                <header className="flex items-center justify-between gap-3 mb-6">
+                  <div className="flex items-center gap-3">
+                    <SidebarTrigger className="md:hidden h-8 w-8 rounded-lg hover:bg-primary/10 hover:text-primary text-muted-foreground" />
+                    <div className="flex items-center gap-2 opacity-60">
+                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      <span className="text-[10px] font-code text-muted-foreground uppercase tracking-[0.3em] font-black">Configuration Mode // System Live</span>
+                    </div>
+                  </div>
                 </header>
                 {children}
             </div>
@@ -174,3 +176,4 @@ export default function AdminDashboardLayout({
     </SidebarProvider>
   );
 }
+

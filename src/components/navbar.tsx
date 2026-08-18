@@ -1,5 +1,5 @@
 'use client';
-import { Home, Briefcase, History, Star, Mail, Moon, Sun } from 'lucide-react';
+import { Home, Briefcase, History, Star, Mail, Moon, Sun, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -12,19 +12,26 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 
-const navItems = [
-  { icon: Home, label: 'Home', href: '/' },
-  { icon: Briefcase, label: 'Projects', href: '/projects' },
-  { icon: History, label: 'Experience', href: '/experience' },
-  { icon: Star, label: 'Skills', href: '/skills' },
-  { icon: Mail, label: 'Contact', href: '/contact' },
-];
+type NavbarProps = {
+  showTestimonials?: boolean;
+};
 
-export default function Navbar() {
+export default function Navbar({ showTestimonials = false }: NavbarProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const navItems = [
+    { icon: Home, label: 'Home', href: '/' },
+    { icon: Briefcase, label: 'Projects', href: '/projects' },
+    { icon: History, label: 'Experience', href: '/experience' },
+    { icon: Star, label: 'Skills', href: '/skills' },
+    ...(showTestimonials ? [{ icon: MessageSquare, label: 'Reviews', href: '/testimonials' }] : []),
+    { icon: Mail, label: 'Contact', href: '/contact' },
+  ];
+
+  const totalSlots = navItems.length + 1; // +1 for theme button
 
   useEffect(() => {
     setMounted(true);
@@ -89,7 +96,7 @@ export default function Navbar() {
             <div 
               className="absolute -top-[1px] w-[40px] h-[3px] transition-all duration-500 ease-in-out pointer-events-none"
               style={{
-                left: `calc((100% / 6) * ${activeIndex} + (100% / 12) - 20px)`,
+                left: `calc((100% / ${totalSlots}) * ${activeIndex} + (100% / (${totalSlots} * 2)) - 20px)`,
               }}
             >
               <div className="w-full h-full bg-primary rounded-full shadow-[0_0_8px_rgba(139,92,246,0.8)]" />

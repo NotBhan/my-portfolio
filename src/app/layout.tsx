@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import Spotlight from '@/components/spotlight';
 import { Toaster } from '@/components/ui/toaster';
-import { getProfile } from '@/lib/data';
+import { getProfile, getSettings } from '@/lib/data';
 import LayoutShell from '@/components/layout-shell';
 
 const fontBody = Inter({
@@ -43,6 +43,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const profile = await getProfile();
+  const settings = await getSettings();
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -60,7 +61,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Spotlight />
-          <LayoutShell profile={profile}>
+          <LayoutShell profile={profile} settings={settings}>
             {children}
           </LayoutShell>
           <Toaster />

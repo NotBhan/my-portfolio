@@ -1,5 +1,25 @@
 [
   {
+    "id": "4",
+    "title": "RE:Track",
+    "description": "A local-first AI context engine that analyzes software repositories and generates task-relevant context packages for coding agents.",
+    "image": "https://drive.google.com/thumbnail?id=1fQDW0A9DKe1ErE6PsIYPka-haYZlH2vV",
+    "link": "https://github.com/NotBhan/re-track",
+    "liveLink": "",
+    "isVisible": true,
+    "isFeatured": true,
+    "technologies": [
+      "React",
+      "Vite",
+      "Tauri",
+      "Python",
+      "Codegrpahcontext",
+      "COGNEE",
+      "RUST",
+      "Typescript"
+    ]
+  },
+  {
     "id": "1",
     "title": "CaramelPepper",
     "subtitle": "AI Coding Environment",
@@ -56,16 +76,5 @@
     ],
     "isVisible": true,
     "isFeatured": false
-  },
-  {
-    "id": "4",
-    "title": "RE:Track",
-    "description": "A local-first AI context engine that analyzes software repositories and generates task-relevant context packages for coding agents.",
-    "image": "https://drive.google.com/thumbnail?id=1fQDW0A9DKe1ErE6PsIYPka-haYZlH2vV",
-    "link": "https://github.com/NotBhan/re-track",
-    "liveLink": "",
-    "isVisible": true,
-    "isFeatured": true,
-    "technologies": []
   }
 ]

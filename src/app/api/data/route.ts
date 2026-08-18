@@ -13,6 +13,7 @@ const ALLOWED_FILES = [
   'social-links.json',
   'activities.json',
   'home-cards.json',
+  'settings.json',
 ];
 
 export async function GET(request: Request) {
