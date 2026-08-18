@@ -55,17 +55,17 @@
       "Genkit"
     ],
     "isVisible": true,
-    "isFeatured": true
+    "isFeatured": false
   },
   {
     "id": "4",
-    "title": "Andes Context",
-    "description": "AndesContext enables AI coding agents to start every task with the right project knowledge instead of repeatedly rediscovering it.",
+    "title": "RE:Track",
+    "description": "A local-first AI context engine that analyzes software repositories and generates task-relevant context packages for coding agents.",
     "image": "https://drive.google.com/thumbnail?id=1fQDW0A9DKe1ErE6PsIYPka-haYZlH2vV",
-    "link": "github.com/NotBhan/andes-context",
+    "link": "https://github.com/NotBhan/re-track",
     "liveLink": "",
     "isVisible": true,
-    "isFeatured": false,
+    "isFeatured": true,
     "technologies": []
   }
 ]

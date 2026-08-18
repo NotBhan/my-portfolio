@@ -25,6 +25,7 @@ import {
   LineChart,
   PanelLeftClose,
   LogOut,
+  LayoutGrid,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -33,6 +34,7 @@ import { useToast } from '@/hooks/use-toast';
 
 const navItems = [
   { href: '/admin/edit/profile', label: 'Profile', icon: User },
+  { href: '/admin/edit/home-cards', label: 'Home Cards', icon: LayoutGrid },
   { href: '/admin/edit/experiences', label: 'Experiences', icon: History },
   { href: '/admin/edit/projects', label: 'Projects', icon: Briefcase },
   { href: '/admin/edit/skills', label: 'Tech Skills', icon: Star },

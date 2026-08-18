@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import type { Project, SkillCategory, Testimonial, Stat, Profile, CreativeSkill, Experience, SocialLink, Activity } from './definitions';
+import type { Project, SkillCategory, Testimonial, Stat, Profile, CreativeSkill, Experience, SocialLink, Activity, HomeCard } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
 const dataFilePath = (filename: string) => path.join(process.cwd(), 'src', 'data', filename);
@@ -62,3 +62,4 @@ export const getProfile = () => readData<Profile>('profile.json');
 export const getCreativeSkills = () => readDataArray<CreativeSkill>('creative-skills.json');
 export const getSocialLinks = () => readDataArray<SocialLink>('social-links.json');
 export const getActivities = () => readDataArray<Activity>('activities.json');
+export const getHomeCards = () => readDataArray<HomeCard>('home-cards.json');

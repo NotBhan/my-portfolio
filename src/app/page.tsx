@@ -5,48 +5,68 @@ import Activities from '@/components/sections/activities';
 import Contact from '@/components/sections/contact';
 import CapabilityCard from '@/components/capability-card';
 import CreativeSkills from '@/components/sections/creative-skills';
+import { getHomeCards } from '@/lib/data';
 
 export default async function Home() {
-  const webStack = [
-    { name: 'React', isVisible: true },
-    { name: 'Next.js', isVisible: true },
-    { name: 'TypeScript', isVisible: true },
-    { name: 'JavaScript', isVisible: true },
-    { name: 'Tailwind CSS', isVisible: true },
-    { name: 'HTML/CSS', isVisible: true }
+  const allHomeCards = await getHomeCards();
+  const visibleCards = allHomeCards.filter(c => c.isVisible !== false);
+
+  const defaultCards = [
+    {
+      id: '1',
+      title: 'Web Stack',
+      icon: 'Code2',
+      isVisible: true,
+      skills: [
+        { name: 'React', isVisible: true },
+        { name: 'Next.js', isVisible: true },
+        { name: 'TypeScript', isVisible: true },
+        { name: 'JavaScript', isVisible: true },
+        { name: 'Tailwind CSS', isVisible: true },
+        { name: 'HTML/CSS', isVisible: true }
+      ]
+    },
+    {
+      id: '2',
+      title: 'Systems & AI',
+      icon: 'Cpu',
+      isVisible: true,
+      skills: [
+        { name: 'Python', isVisible: true },
+        { name: 'Django', isVisible: true },
+        { name: 'Firebase', isVisible: true },
+        { name: 'Gemini', isVisible: true },
+        { name: 'Ollama', isVisible: true },
+        { name: 'AI-assisted Development', isVisible: true }
+      ]
+    }
   ];
 
-  const systemsAI = [
-    { name: 'Python', isVisible: true },
-    { name: 'Django', isVisible: true },
-    { name: 'Firebase', isVisible: true },
-    { name: 'Gemini', isVisible: true },
-    { name: 'Ollama', isVisible: true },
-    { name: 'AI-assisted Development', isVisible: true }
-  ];
+  const cards = visibleCards.length > 0 ? visibleCards : defaultCards;
 
   return (
     <div className="grid grid-cols-12 gap-[10px] items-stretch content-start pb-4">
-      {/* Top Row: IDENTITY | WEB STACK | SYSTEMS + AI */}
+      {/* Top Row: IDENTITY | CAPABILITY CARDS */}
       <div className="col-span-12 md:col-span-6 lg:col-span-4 h-full min-h-[140px]">
         <Hero />
       </div>
 
-      <div className="col-span-12 md:col-span-6 lg:col-span-4 h-full min-h-[140px]">
-        <CapabilityCard 
-          title="Web Stack" 
-          skills={webStack}
-          icon="Code2"
-        />
-      </div>
-
-      <div className="col-span-12 lg:col-span-4 h-full min-h-[140px]">
-        <CapabilityCard 
-          title="Systems & AI" 
-          skills={systemsAI}
-          icon="Cpu"
-        />
-      </div>
+      {cards.map((card, index) => (
+        <div 
+          key={card.id} 
+          className={
+            index === 0 
+              ? "col-span-12 md:col-span-6 lg:col-span-4 h-full min-h-[140px]" 
+              : "col-span-12 lg:col-span-4 h-full min-h-[140px]"
+          }
+        >
+          <CapabilityCard 
+            title={card.title} 
+            skills={card.skills}
+            icon={card.icon}
+          />
+        </div>
+      ))}
 
       {/* Main Content Area */}
       <div className="col-span-12 lg:col-span-8 flex flex-col gap-[10px]">

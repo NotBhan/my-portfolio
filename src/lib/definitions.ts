@@ -83,3 +83,16 @@ export type Activity = {
   icon: string;
   isVisible: boolean;
 };
+
+export type HomeCardSkill = {
+  name: string;
+  isVisible: boolean;
+};
+
+export type HomeCard = {
+  id: string;
+  title: string;
+  icon: string;
+  isVisible: boolean;
+  skills: HomeCardSkill[];
+};

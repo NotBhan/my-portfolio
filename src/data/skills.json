@@ -2,41 +2,154 @@
   {
     "category": "Frontend",
     "skills": [
-      { "name": "React", "isVisible": true },
-      { "name": "Next.js", "isVisible": true },
-      { "name": "TypeScript", "isVisible": true },
-      { "name": "JavaScript", "isVisible": true },
-      { "name": "Tailwind CSS", "isVisible": true },
-      { "name": "HTML/CSS", "isVisible": true }
+      {
+        "name": "React",
+        "isVisible": true
+      },
+      {
+        "name": "Next.js",
+        "isVisible": true
+      },
+      {
+        "name": "TypeScript",
+        "isVisible": true
+      },
+      {
+        "name": "JavaScript",
+        "isVisible": true
+      },
+      {
+        "name": "Tailwind CSS",
+        "isVisible": true
+      },
+      {
+        "name": "HTML/CSS",
+        "isVisible": true
+      }
     ]
   },
   {
     "category": "Backend & Data",
     "skills": [
-      { "name": "Python", "isVisible": true },
-      { "name": "Django", "isVisible": true },
-      { "name": "Flask", "isVisible": true },
-      { "name": "Firebase", "isVisible": true },
-      { "name": "Firestore", "isVisible": true },
-      { "name": "Node.js", "isVisible": true }
+      {
+        "name": "Python",
+        "isVisible": true
+      },
+      {
+        "name": "Django",
+        "isVisible": true
+      },
+      {
+        "name": "Flask",
+        "isVisible": true
+      },
+      {
+        "name": "Node.js",
+        "isVisible": true
+      },
+      {
+        "name": "Firebase",
+        "isVisible": true
+      },
+      {
+        "name": "Firestore",
+        "isVisible": true
+      },
+      {
+        "name": "REST APIs",
+        "isVisible": true
+      }
     ]
   },
   {
     "category": "AI / GenAI",
     "skills": [
-      { "name": "Gemini", "isVisible": true },
-      { "name": "Genkit", "isVisible": true },
-      { "name": "Ollama", "isVisible": true },
-      { "name": "AI-assisted development", "isVisible": true }
+      {
+        "name": "Gemini",
+        "isVisible": true
+      },
+      {
+        "name": "Genkit",
+        "isVisible": false
+      },
+      {
+        "name": "Ollama",
+        "isVisible": true
+      },
+      {
+        "name": "LLM Integration",
+        "isVisible": true
+      },
+      {
+        "name": "AI Agents",
+        "isVisible": true
+      },
+      {
+        "name": "Prompt Engineering",
+        "isVisible": true
+      },
+      {
+        "name": "Local LLMs",
+        "isVisible": true
+      },
+      {
+        "name": "AI-Assisted Development",
+        "isVisible": true
+      }
     ]
   },
   {
     "category": "Tools",
     "skills": [
-      { "name": "Git/GitHub", "isVisible": true },
-      { "name": "Electron", "isVisible": true },
-      { "name": "Monaco Editor", "isVisible": true },
-      { "name": "Vercel", "isVisible": true }
+      {
+        "name": "Git/GitHub",
+        "isVisible": true
+      },
+      {
+        "name": "Electron",
+        "isVisible": true
+      },
+      {
+        "name": "Monaco Editor",
+        "isVisible": true
+      },
+      {
+        "name": "Vercel",
+        "isVisible": true
+      },
+      {
+        "name": "Docker",
+        "isVisible": true
+      },
+      {
+        "name": "Linux",
+        "isVisible": true
+      },
+      {
+        "name": "VS Code/Zed",
+        "isVisible": true
+      }
+    ]
+  },
+  {
+    "category": "Code Intelligence",
+    "skills": [
+      {
+        "name": "AST Analysis",
+        "isVisible": true
+      },
+      {
+        "name": "Code Graphs",
+        "isVisible": true
+      },
+      {
+        "name": "Context Engineering",
+        "isVisible": true
+      },
+      {
+        "name": "Context Engineering",
+        "isVisible": true
+      }
     ]
   }
 ]

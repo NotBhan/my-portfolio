@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "title": "Web Stack",
+    "icon": "Code2",
+    "isVisible": true,
+    "skills": [
+      {
+        "name": "React",
+        "isVisible": true
+      },
+      {
+        "name": "Next.js",
+        "isVisible": true
+      },
+      {
+        "name": "TypeScript",
+        "isVisible": true
+      },
+      {
+        "name": "JavaScript",
+        "isVisible": true
+      },
+      {
+        "name": "Tailwind CSS",
+        "isVisible": true
+      },
+      {
+        "name": "HTML/CSS",
+        "isVisible": true
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Systems & AI",
+    "icon": "Cpu",
+    "isVisible": true,
+    "skills": [
+      {
+        "name": "Python",
+        "isVisible": true
+      },
+      {
+        "name": "Django",
+        "isVisible": true
+      },
+      {
+        "name": "Firebase",
+        "isVisible": true
+      },
+      {
+        "name": "Gemini",
+        "isVisible": true
+      },
+      {
+        "name": "Ollama",
+        "isVisible": true
+      },
+      {
+        "name": "AI-assisted Development",
+        "isVisible": true
+      }
+    ]
+  }
+]
